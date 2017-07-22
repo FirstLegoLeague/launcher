@@ -2,7 +2,8 @@
 
 const { app, Menu, Tray, nativeImage } = require('electron')
 const path = require('path')
-const url = require('url')
+const opn = require('opn')
+const { Server } = require('./server');
 
 
 function getIcon() {
@@ -18,16 +19,25 @@ function getIcon() {
     return nativeImage.createFromPath(path.join(__dirname, 'images', iconFilename))
 }
 
+let server = null
 let tray = null
 app.on('ready', () => {
 
+    server = new Server()
+    server.start()
+
     tray = new Tray(getIcon())
     const contextMenu = Menu.buildFromTemplate([
-        {label: 'Item1', type: 'radio'},
-        {label: 'Item2', type: 'radio'},
-        {label: 'Item3', type: 'radio', checked: true},
-        {label: 'Item4', type: 'radio'}
+        { label: 'Scoring', type: 'normal', click: () => {
+            opn('http://localhost:1390')
+        } },
+        { type: 'separator'},
+        { label: 'Quit', type: 'normal', role: 'quit' }
     ])
     tray.setToolTip('This is my application.')
     tray.setContextMenu(contextMenu)
 })
+
+app.on('before-quit', () => {
+    server.close()
+});
