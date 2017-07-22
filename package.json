@@ -2,7 +2,7 @@
   "name": "fll-launcher",
   "version": "1.0.0",
   "description": "A Luancher to the FIRST LEGO League scoring system",
-  "main": "main.js",
+  "main": "app/main.js",
   "author": "Roy Shmueli",
   "license": "MIT",
   "dependencies": {
