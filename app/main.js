@@ -16,7 +16,7 @@ function getIcon() {
         iconFilename = 'icon-linux.png'
     }
 
-    return nativeImage.createFromPath(path.join(__dirname, 'images', iconFilename))
+    return path.join(__dirname, 'images', iconFilename)
 }
 
 let server = null

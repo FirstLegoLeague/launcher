@@ -1,12 +1,25 @@
 {
   "name": "fll-launcher",
   "version": "1.0.0",
-  "description": "A Luancher to the FIRST LEGO League scoring system",
+  "description": "A Launcher to the FIRST LEGO League scoring system",
   "main": "app/main.js",
   "author": "Roy Shmueli",
   "license": "MIT",
+  "scripts": {
+    "build:win": "electron-builder -w --dir",
+    "build:linux": "electron-builder -l --dir",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.fll-tools.launcher",
+    "productName": "FIRST LEGO League Launcher",
+    "artifactName": "fll-launcher-${version}"
+  },
   "dependencies": {
-    "electron": "^1.6.11",
     "opn": "^5.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.6.11",
+    "electron-builder": "^19.16.2"
   }
 }
