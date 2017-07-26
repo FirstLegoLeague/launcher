@@ -47,7 +47,6 @@ RUN yarn install --frozen-lockfile && \
     yarn cache clean
 
 COPY build /code/build
-COPY modules /code/modules
 COPY app /code/app
 
 RUN yarn build:win -- --c.directories.output=/bundle

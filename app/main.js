@@ -7,16 +7,7 @@ const { Server } = require('./server');
 
 
 function getIcon() {
-    let iconFilename
-
-    if (process.platform === 'win32') {
-        iconFilename = 'icon-win.ico'
-    }
-    else {
-        iconFilename = 'icon-linux.png'
-    }
-
-    return path.join(__dirname, 'images', iconFilename)
+    return path.join(__dirname, 'images', 'icon.png');
 }
 
 let server = null
