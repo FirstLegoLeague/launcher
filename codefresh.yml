@@ -4,7 +4,7 @@ steps:
     title: 'Linting and testing app'
     image: node:6.11.1-wheezy
     commands:
-      - yarn install
+      - yarn install --frozen-lockfile
       - yarn lint
   build:
     type: build
