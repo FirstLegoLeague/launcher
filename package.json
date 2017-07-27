@@ -5,6 +5,9 @@
   "main": "app/main.js",
   "author": "Roy Shmueli",
   "license": "MIT",
+  "engines": {
+    "node": ">=6.11.1"
+  },
   "scripts": {
     "lint": "eslint app/**/*.js",
     "lint:fix": "yarn run lint -- --fix",

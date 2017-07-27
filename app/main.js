@@ -1,8 +1,10 @@
 'use strict'
 
 const { app, Menu, Tray } = require('electron')
+
 const path = require('path')
 const opn = require('opn')
+
 const { Server } = require('./server')
 
 function getIcon () {
