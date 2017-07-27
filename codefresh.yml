@@ -1,8 +1,14 @@
 version: '1.0'
 steps:
+  test:
+    title: 'Linting and testing app'
+    image: node:6.11.1-wheezy
+    commands:
+      - yarn install --frozen-lockfile
+      - yarn lint
   build:
     type: build
-    title: 'Building Setup File'
+    title: 'Building windows setup file'
     image_name: windows-setup
     dockerfile: windows/Dockerfile
   deploy:
