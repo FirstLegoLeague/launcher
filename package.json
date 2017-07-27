@@ -6,6 +6,8 @@
   "author": "Roy Shmueli",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint app/**/*.js",
+    "lint:fix": "yarn run lint -- --fix",
     "build:win": "electron-builder -w --dir",
     "build:linux": "electron-builder -l --dir",
     "postinstall": "electron-builder install-app-deps"
@@ -20,6 +22,12 @@
   },
   "devDependencies": {
     "electron": "^1.6.11",
-    "electron-builder": "^19.16.2"
+    "electron-builder": "^19.16.2",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
