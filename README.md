@@ -6,25 +6,25 @@ FIRST LEGO League Launcher
 ==========================
 
 This is the "FIRST LEGO League - Scoring System" Launcher. This project connect
-all the scoring system components to create a single execution file.
+ all the scoring system components to create a single execution file.
 
 Using
 -----
 
 Currently the launcher is in first alpha step and includes only the
-'fllscoring'. To take a look on it you can download is
-[here](https://s3.eu-central-1.amazonaws.com/fll-scoring-launcher/FLL-scoring-setup.exe)
+ 'fllscoring'. To take a look on it you can download is
+ [here](https://s3.eu-central-1.amazonaws.com/fll-scoring-launcher/FLL-scoring-setup.exe)
 
 Contributing
 ---------------
 
 To contribute to this repository, please make a fork, make your changes and
-submit a pull request.
+ submit a pull request.
 
 This way of work allows us to maintain proper code quality, which is important
-when working with a large amount of people on the same project. Feel free to
-join the discussion on the [issues page](https://github.com/FirstLegoLeague/fllscoring/issues)
-.
+ when working with a large amount of people on the same project. Feel free to
+ join the discussion on the [issues page](https://github.com/FirstLegoLeague/fllscoring/issues)
+ .
 
 The best way to work on a feature or a bug is to follow these steps:
 
@@ -89,6 +89,9 @@ To run the build, just use the shell script:
 ```
 ./${platform}/build.sh
 ```
+
+NOTE: the build script is a cross-compile script. you should be able
+ to run the script on any platform to create every platform-installation
 
 Available platforms:
  - windows
