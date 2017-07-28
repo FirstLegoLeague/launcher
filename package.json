@@ -9,6 +9,7 @@
     "node": ">=6.11.1"
   },
   "scripts": {
+    "start": "electron .",
     "lint": "eslint app/**/*.js",
     "lint:fix": "yarn run lint -- --fix",
     "build:win": "electron-builder -w --dir",
