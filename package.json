@@ -19,7 +19,10 @@
   "build": {
     "appId": "com.fll-tools.launcher",
     "productName": "FIRST LEGO League Launcher",
-    "artifactName": "fll-launcher-${version}"
+    "artifactName": "fll-launcher-${version}",
+    "directories": {
+      "buildResources": "resources"
+    }
   },
   "dependencies": {
     "opn": "^5.1.0"
