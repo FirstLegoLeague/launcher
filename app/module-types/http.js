@@ -2,15 +2,14 @@
 
 const Promise = require('bluebird')
 const request = require('request')
-const path = require('path')
 const AdmZip = require('adm-zip')
 
 const requestAsync = Promise.promisify(request, { multiArgs: true })
 
 exports.HttpModule = class {
-  constructor (name, options) {
+  constructor (name, path, options) {
     this.name = name
-    this.modulePath = path.join(process.cwd(), 'modules', name)
+    this.path = path
     this.url = options.url
 
     Object.freeze(this)
@@ -29,6 +28,6 @@ exports.HttpModule = class {
         return zipBody
       })
       .then(body => new AdmZip(body))
-      .then(zip => Promise.fromCallback(cb => zip.extractAllToAsync(this.modulePath, true, cb)))
+      .then(zip => Promise.fromCallback(cb => zip.extractAllToAsync(this.path, true, cb)))
   }
 }

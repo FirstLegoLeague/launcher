@@ -3,8 +3,9 @@
 const Promise = require('bluebird')
 
 exports.NodeModule = class {
-  constructor (name, options) {
+  constructor (name, path, options) {
     this.name = name
+    this.path = path
 
     Object.freeze(this)
   }

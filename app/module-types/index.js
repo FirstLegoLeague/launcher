@@ -8,11 +8,11 @@ const modulesTypes = {
   node: NodeModule
 }
 
-exports.moduleFactory = (name, options) => {
+exports.moduleFactory = (name, path, options) => {
   const Module = modulesTypes[options.type]
 
   if (Module) {
-    return new Module(name, options)
+    return new Module(name, path, options)
   } else {
     throw new Error('Unknown module type')
   }

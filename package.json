@@ -31,8 +31,7 @@
     "js-yaml": "^3.9.0",
     "mkdirp": "^0.5.1",
     "opn": "^5.1.0",
-    "request": "^2.81.0",
-    "yauzl": "^2.8.0"
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "electron": "^1.6.11",
