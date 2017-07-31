@@ -1,3 +1,7 @@
+### Project related ###
+
+/modules
+/dist
 
 # Created by https://www.gitignore.io/api/node
 
@@ -63,5 +67,3 @@ typings/
 
 
 # End of https://www.gitignore.io/api/node
-
-/dist

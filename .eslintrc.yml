@@ -1,6 +1,10 @@
 extends: standard
 
 rules:
+  arrow-parens:
+  - warn
+  - as-needed
+  - requireForBlockBody: false
   no-var: warn
   prefer-arrow-callback: warn
   prefer-const: warn
@@ -24,7 +28,6 @@ rules:
   node/no-unsupported-features: warn
   node/shebang: warn
 
-  promise/avoid-new: warn
   promise/catch-or-return: warn
   promise/no-callback-in-promise: warn
   promise/no-native: warn
