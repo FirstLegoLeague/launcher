@@ -10,13 +10,13 @@ mhub-relay:
 mq-protocols:
   type: http
   url: https://github.com/FirstLegoLeague/mq-protocols/archive/master.zip
-fllscroing:
+scroing:
   type: node
-  package: "@first-lego-league/fllscoring"
+  package: "@first-lego-league/scoring"
   script: ./localserver.js
-display-system:
+display:
   type: node
-  package: "@first-lego-league/display-system"
+  package: "@first-lego-league/display"
   script: ./displayserver.js
 clock:
   type: node

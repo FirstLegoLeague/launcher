@@ -21,9 +21,11 @@ fs.readFileAsync(path.join(__dirname, '../modules.yml'))
   .map(module => {
     console.log(`Start downloading module "${module.name}"...`)
     return mkdirpAsync(module.path)
-      .then(module.download())
-      .then(() => console.log(`Finish downloading module "${module.name}".`))
-  }, { concurrency: 4 })
+      .then(() => module.download())
+      .then(() => {
+        console.log(`Finish downloading module "${module.name}".`)
+      })
+  }, { concurrency: 2 })
   .catch(err => {
     console.error(err.message)
     console.error(err.stack)

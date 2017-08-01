@@ -28,10 +28,12 @@
   "dependencies": {
     "adm-zip": "^0.4.7",
     "bluebird": "^3.5.0",
+    "gunzip-maybe": "^1.4.1",
     "js-yaml": "^3.9.0",
     "mkdirp": "^0.5.1",
     "opn": "^5.1.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "tar-fs": "^1.15.3"
   },
   "devDependencies": {
     "electron": "^1.6.11",
