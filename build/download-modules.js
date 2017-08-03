@@ -4,12 +4,14 @@ const Promise = require('bluebird')
 const mkdirp = require('mkdirp')
 const yaml = require('js-yaml')
 const path = require('path')
+const rimraf = require('rimraf')
 const fs = require('fs')
 
 const { moduleFactory } = require('../app/module-types')
 
 Promise.promisifyAll(fs)
 
+const rimrafAsync = Promise.promisify(rimraf)
 const mkdirpAsync = Promise.promisify(mkdirp)
 
 fs.readFileAsync(path.join(__dirname, '../modules.yml'))
@@ -20,7 +22,8 @@ fs.readFileAsync(path.join(__dirname, '../modules.yml'))
   })
   .map(module => {
     console.log(`Start downloading module "${module.name}"...`)
-    return mkdirpAsync(module.path)
+    return rimrafAsync(module.path)
+      .then(() => mkdirpAsync(module.path))
       .then(() => module.download())
       .then(() => {
         console.log(`Finish downloading module "${module.name}".`)

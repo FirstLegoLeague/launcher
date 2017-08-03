@@ -8,8 +8,9 @@ mhub-relay:
   script: ./bin/mhub-relay
   arguments: [ -c, ./modules/mq-protocols/relays/table-relay.conf.json ]
 mq-protocols:
-  type: http
-  url: https://github.com/FirstLegoLeague/mq-protocols/archive/master.zip
+  type: node
+  package: "@first-lego-league/protocols"
+  script: null
 scroing:
   type: node
   package: "@first-lego-league/scoring"

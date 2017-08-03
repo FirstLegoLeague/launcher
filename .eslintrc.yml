@@ -5,6 +5,7 @@ rules:
   - warn
   - as-needed
   - requireForBlockBody: false
+  no-shadow: warn
   no-var: warn
   prefer-arrow-callback: warn
   prefer-const: warn

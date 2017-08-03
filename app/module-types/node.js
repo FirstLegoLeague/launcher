@@ -2,8 +2,9 @@
 
 const Promise = require('bluebird')
 const request = require('request')
+const { join } = require('path')
 const tar = require('tar-fs')
-const { spawn } = require('child_process')
+const { spawn, fork } = require('child_process')
 const { createGunzip } = require('zlib')
 
 const requestAsync = Promise.promisify(request, { multiArgs: true })
@@ -17,7 +18,28 @@ exports.NodeModule = class {
 
     this.package = options.package
 
+    if (options.script) {
+      this.script = join(this.path, options.script)
+    }
+    this.arguments = options.arguments || []
+
     Object.freeze(this)
+  }
+
+  start () {
+    if (this.script) {
+      const child = fork(this.script, this.arguments, {
+        stdio: 'inherit'
+      })
+
+      return () => new Promise(resolve => {
+        child
+          .on('exit', resolve)
+          .kill()
+      })
+    } else {
+      return Promise.resolve()
+    }
   }
 
   download () {

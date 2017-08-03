@@ -1,14 +1,31 @@
 'use strict'
 
+const Promise = require('bluebird')
+const fs = require('fs')
 const path = require('path')
-const { fork } = require('child_process')
+const yaml = require('js-yaml')
+
+const { moduleFactory } = require('./module-types')
+
+Promise.promisifyAll(fs)
 
 exports.Server = class {
+  constructor (modulesFile) {
+    this.modulesPromise = fs.readFileAsync(modulesFile)
+      .then(yaml.safeLoad)
+      .then(modules => {
+        return Object.keys(modules)
+          .map(name => moduleFactory(name, path.join(__dirname, '../modules', name), modules[name]))
+      })
+  }
+
   start () {
-    this.process = fork(path.join(__dirname, '../modules/fllscoring/localserver'))
+    this.stopFunctionPromise = this.modulesPromise
+      .map(module => module.start())
   }
 
   close () {
-    this.process.kill()
+    return this.stopFunctionPromise
+      .each(stop => stop())
   }
 }
