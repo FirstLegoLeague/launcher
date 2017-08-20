@@ -28,8 +28,9 @@ fs.readFileAsync(path.join(__dirname, '../modules.yml'))
       .then(() => {
         console.log(`Finish downloading module "${module.name}".`)
       })
-  }, { concurrency: 2 })
+  }, { concurrency: 1 })
   .catch(err => {
     console.error(err.message)
     console.error(err.stack)
+    process.exit(1)
   })

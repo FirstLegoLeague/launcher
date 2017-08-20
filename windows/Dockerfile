@@ -29,26 +29,17 @@ RUN cd innosetup && \
 
 WORKDIR /code
 
-RUN mkdir modules && \
-    cd modules && \
-    curl -fsSL -o fllscoring.zip https://github.com/FirstLegoLeague/fllscoring/archive/master.zip && \
-    unzip fllscoring.zip && \
-    mv fllscoring-master fllscoring && \
-    rm fllscoring.zip
-
-RUN cd modules/fllscoring && \
-    yarn install --production && \
-    yarn cache clean
-
-COPY package.json /code/
-COPY yarn.lock /code/
+COPY package.json yarn.lock /code/
 
 RUN yarn install --frozen-lockfile && \
     yarn cache clean
 
+COPY resources /code/resources
 COPY build /code/build
 COPY app /code/app
+COPY modules.yml /code/
 
+RUN yarn modules:download
 RUN yarn build:win -- --c.directories.output=/bundle
 
 COPY windows/setup/* /installer/
