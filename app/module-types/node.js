@@ -4,7 +4,7 @@ const Promise = require('bluebird')
 const request = require('request')
 const { join } = require('path')
 const tar = require('tar-fs')
-const { spawn, fork } = require('child_process')
+const { exec, fork } = require('child_process')
 const { createGunzip } = require('zlib')
 
 const requestAsync = Promise.promisify(request, { multiArgs: true })
@@ -89,7 +89,7 @@ exports.NodeModule = class {
         })
       })
       .then(() => new Promise((resolve, reject) => {
-        spawn('yarn', ['--production', '--pure-lockfile'], {
+        exec('yarn --production --pure-lockfile', {
           cwd: this.path,
           stdio: 'ignore'
         })
