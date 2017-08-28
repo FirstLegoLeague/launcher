@@ -14,7 +14,7 @@ function getIcon () {
 let server = null
 let tray = null
 app.on('ready', () => {
-  server = new Server(path.join(__dirname, '..', 'modules.yml'))
+  server = new Server(path.join(process.cwd(), 'modules.yml'))
   server.start()
 
   tray = new Tray(getIcon())

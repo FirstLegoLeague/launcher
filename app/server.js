@@ -15,7 +15,7 @@ exports.Server = class {
       .then(yaml.safeLoad)
       .then(modules => {
         return Object.keys(modules)
-          .map(name => moduleFactory(name, path.join(__dirname, '../modules', name), modules[name]))
+          .map(name => moduleFactory(name, path.join(process.cwd(), 'modules', name), modules[name]))
       })
   }
 

@@ -39,7 +39,10 @@ COPY build /code/build
 COPY app /code/app
 COPY modules.yml /code/
 
-RUN yarn modules:download
+RUN yarn modules:download && \
+    mkdir -p /bundle && \
+    mv ./modules /bundle/modules && \
+    cp ./modules.yml /bundle/modules.yml
 RUN yarn build:win -- --c.directories.output=/bundle
 
 COPY windows/setup/* /installer/
