@@ -1,28 +1,34 @@
 mhub:
   type: node
   package: mhub
+  version: 0.9.1
   script: ./bin/mhub-server
 mhub-relay:
   type: node
   package: mhub-relay
+  version: 1.1.0
   script: ./bin/mhub-relay
   arguments: [ -c, ./modules/mq-protocols/relays/table-relay.conf.json ]
 mq-protocols:
   type: node
   package: "@first-lego-league/protocols"
+  version: 0.0.1
   script: null
 scroing:
   type: node
   package: "@first-lego-league/scoring"
+  version: 0.3.5
   script: ./localserver.js
   link: 'http://localhost:1390/'
 display:
   type: node
   package: "@first-lego-league/display"
+  version: 0.0.5
   script: ./displayserver.js
   link: 'http://localhost:1391/'
 clock:
   type: node
   package: "@first-lego-league/clock"
+  version: 0.0.2
   script: ./localserver.js
   link: 'http://localhost:1392/'
