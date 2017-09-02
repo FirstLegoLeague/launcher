@@ -15,11 +15,14 @@ scroing:
   type: node
   package: "@first-lego-league/scoring"
   script: ./localserver.js
+  link: 'http://localhost:1390/'
 display:
   type: node
   package: "@first-lego-league/display"
   script: ./displayserver.js
+  link: 'http://localhost:1391/'
 clock:
   type: node
   package: "@first-lego-league/clock"
   script: ./localserver.js
+  link: 'http://localhost:1392/'

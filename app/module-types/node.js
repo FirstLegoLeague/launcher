@@ -16,6 +16,7 @@ exports.NodeModule = class {
     this.name = name
     this.path = path
 
+    this.link = options.link
     this.package = options.package
 
     if (options.script) {

@@ -1,10 +1,10 @@
 'use strict'
 
-const { app, Menu, Tray } = require('electron')
+const { app, Tray } = require('electron')
 
 const path = require('path')
-const opn = require('opn')
 
+const { buildAppMenu } = require('./menu')
 const { Server } = require('./server')
 
 function getIcon () {
@@ -15,22 +15,18 @@ let server = null
 let tray = null
 app.on('ready', () => {
   server = new Server(path.join(process.cwd(), 'modules.yml'))
-  server.start()
 
-  tray = new Tray(getIcon())
-  const contextMenu = Menu.buildFromTemplate([
-    {
-      label: 'Scoring',
-      type: 'normal',
-      click: () => {
-        opn('http://localhost:1390')
-      }
-    },
-    { type: 'separator' },
-    { label: 'Quit', type: 'normal', role: 'quit' }
-  ])
-  tray.setToolTip('This is my application.')
-  tray.setContextMenu(contextMenu)
+  server.start()
+    .then(() => buildAppMenu(server.getModules()))
+    .then(appMenu => {
+      tray = new Tray(getIcon())
+      const contextMenu = appMenu
+      tray.setToolTip('FIRST LEGO League Scoring System')
+      tray.setContextMenu(contextMenu)
+    })
+    .catch(err => {
+      console.error(err)
+    })
 })
 
 app.on('before-quit', () => {
