@@ -20,12 +20,19 @@ exports.Server = class {
   }
 
   start () {
-    this.stopFunctionPromise = this.modulesPromise
+    this.stopFunctionsPromise = this.modulesPromise
       .map(module => module.start())
+
+    return this.stopFunctionsPromise
+      .return()
   }
 
   close () {
-    return this.stopFunctionPromise
+    return this.stopFunctionsPromise
       .each(stop => stop())
+  }
+
+  getModules () {
+    return this.modulesPromise
   }
 }
