@@ -18,6 +18,7 @@ exports.NodeModule = class {
 
     this.link = options.link
     this.package = options.package
+    this.version = options.version
 
     if (options.script) {
       this.script = join(this.path, options.script)
@@ -57,8 +58,7 @@ exports.NodeModule = class {
         return body
       })
       .then(body => {
-        const version = body['dist-tags'].latest
-        const { tarball } = body.versions[version].dist
+        const { tarball } = body.versions[this.version].dist
 
         return new Promise((resolve, reject) => {
           const req = request({
