@@ -5,6 +5,7 @@ const { app, Tray } = require('electron')
 const path = require('path')
 
 const { buildAppMenu } = require('./menu')
+const { buildMainWindow } = require('./window')
 const { Server } = require('./server')
 
 function getIcon () {
@@ -26,7 +27,8 @@ app.on('ready', () => {
     })
     .catch(err => {
       console.error(err)
-    })
+    });
+  buildMainWindow();
 })
 
 app.on('before-quit', () => {
