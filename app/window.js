@@ -13,7 +13,8 @@ let mainWindow
 
 exports.buildMainWindow = () => {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, icon: getIcon()});
+  mainWindow = new BrowserWindow({width: 800, height: 600, icon: getIcon()})
+  // Disable the menubar
   mainWindow.setMenu(null)
 
   // and load the index.html of the app.
@@ -24,7 +25,7 @@ exports.buildMainWindow = () => {
   }))
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
