@@ -1,14 +1,14 @@
 'use strict'
 
-const { app, Tray } = require('electron')
+const {app, Tray} = require('electron')
 
 const path = require('path')
 
-const { buildAppMenu } = require('./menu')
-const { buildMainWindow } = require('./window')
-const { Server } = require('./server')
+const {buildAppMenu} = require('./menu')
+const {buildMainWindow} = require('./window')
+const {Server} = require('./server')
 
-function getIcon () {
+function getIcon() {
   return path.join(__dirname, 'images', 'icon.png')
 }
 
@@ -25,10 +25,11 @@ app.on('ready', () => {
       tray.setToolTip('FIRST LEGO League Scoring System')
       tray.setContextMenu(contextMenu)
     })
+    .then(() => buildMainWindow())
     .catch(err => {
       console.error(err)
     });
-  buildMainWindow();
+
 })
 
 app.on('before-quit', () => {
