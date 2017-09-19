@@ -14,7 +14,7 @@ mq-protocols:
   package: "@first-lego-league/protocols"
   version: 0.0.1
   script: null
-scroing:
+scoring:
   type: node
   package: "@first-lego-league/scoring"
   version: 0.3.5
