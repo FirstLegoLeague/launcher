@@ -19,7 +19,7 @@ image-server:
   package: "@first-lego-league/image-server"
   version: 1.0.1
   script: ./index.js
-scroing:
+scoring:
   type: node
   package: "@first-lego-league/scoring"
   version: 0.4.2
