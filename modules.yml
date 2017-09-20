@@ -12,23 +12,28 @@ mhub-relay:
 mq-protocols:
   type: node
   package: "@first-lego-league/protocols"
-  version: 0.0.1
+  version: 0.0.3
   script: null
+image-server:
+  type: node
+  package: "@first-lego-league/image-server"
+  version: 1.0.1
+  script: ./index.js
 scoring:
   type: node
   package: "@first-lego-league/scoring"
-  version: 0.3.5
+  version: 0.4.2
   script: ./localserver.js
   link: 'http://localhost:1390/'
 display:
   type: node
   package: "@first-lego-league/display"
-  version: 0.0.5
+  version: 1.0.1
   script: ./displayserver.js
   link: 'http://localhost:1391/'
 clock:
   type: node
   package: "@first-lego-league/clock"
-  version: 0.0.2
+  version: 1.1.0
   script: ./localserver.js
   link: 'http://localhost:1392/'

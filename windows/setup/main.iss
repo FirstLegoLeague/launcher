@@ -13,10 +13,6 @@ DisableProgramGroupPage=yes
 
 [Components]
 Name: "Basic"; Description: "Basic installation" ; Types: full custom; Flags: fixed
-Name: "Plugin_1"; Description: "Plugin 1 for the system" ; Types: full custom;
-Name: "Plugin_2"; Description: "Plugin 2 for the system" ; Types: full custom;
-Name: "Plugin_3"; Description: "Plugin 3 for the system" ; Types: full custom;
-Name: "Plugin_4"; Description: "Plugin 4 for the system" ; Types: full custom;
 
 [Dirs]
 Name: "{app}\data"
