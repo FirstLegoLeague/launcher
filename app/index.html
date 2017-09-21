@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <title>FIRST LEGO League scoring system</title>
   <style>
-    td>a {
-      font-size: 4.5vh;
+    @font-face {
+      font-family: Roboto;
+      src: url('/fonts/Roboto-Light.ttf');
     }
 
-    th,
-    td {
-      font-size: 4.5vh;
+    body {
+      font-family: Roboto;
     }
 
     a {
@@ -23,11 +23,16 @@
   <script>
     const opn = require('opn');
     const ip = require('ip');
+
     var addressAdmin = `http://${ip.address()}:1390/admin`;
     let addressScoring = `http://${ip.address()}:1390/`;
     var addressClock = `http://${ip.address()}:1392/`;
     var addressDisplay = `http://${ip.address()}:1391/`;
+    let { app } = require('electron').remote;
+
   </script>
+  <script src="creditsJs.js"></script>
+
 </head>
 
 <body>
@@ -57,7 +62,7 @@
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td><a id="stop">Stop</a></td>
+      <td><a id="stop" onclick="app.quit()">Quit</a></td>
       <td>Will stop the engine</td>
     </tr>
   </table>
@@ -68,6 +73,9 @@
       <td style="text-align:center;"><img src="images/FIRST-FLL-HYDRO-DYNAMICS-web-logo.png" style="height:100px; text-align:right"></td>
     </tr>
   </table>
+  <button onclick="openCredits()">
+    Credits
+  </button>
   <script>
     document.getElementById('scoreAtag').innerHTML = `${addressScoring}`;
     document.getElementById('displayAtag').innerHTML = `${addressDisplay}`;
