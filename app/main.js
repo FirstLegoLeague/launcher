@@ -1,7 +1,7 @@
 'use strict'
 
-const {app, Tray} = require('electron')
-
+const {app} = require('electron')
+const {Tray} = require('electron')
 const path = require('path')
 
 const {buildAppMenu} = require('./menu')
