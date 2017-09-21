@@ -13,70 +13,44 @@
         body {
             font-family: Roboto;
         }
-
-        td > a {
-            font-size: 3.5vh;
-        }
-
-        th,
-        td {
-            font-size: 3.5vh;
-        }
-
-        a {
-            color: rgba(0, 0, 238, 1);
-            text-decoration: underline;
-            cursor: pointer;
-        }
-    </style>
-    <script>
-        const opn = require('opn');
-        const ip = require('ip');
-        let addressAdmin = `http://${ip.address()}:1390/admin`;
-        let addressScore = `http://${ip.address()}:1390/`;
-        let addressClock = `http://${ip.address()}:1392/`;
-        let addressDisplay = `http://${ip.address()}:1391/`;
-
-        function setHref() {
-            let add = ip.address();
-            let fllscoring = `${add}:1390/`
-            document.getElementById('ScoreEntry').href = fllscoring;
-        }
-
-        function load() {
-            document.getElementById("ScoreEntryIP").innerText = addressScore;
-            document.getElementById("ClockIP").innerText = addressClock;
-            document.getElementById("DisplayIP").innerText = addressDisplay;
-        }
-
-
-    </script>
+    a {
+      color: rgba(0, 0, 238, 1);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    const opn = require('opn');
+    const ip = require('ip');
+    var addressAdmin = `http://${ip.address()}:1390/admin`;
+    let addressScoring = `http://${ip.address()}:1390/`;
+    var addressClock = `http://${ip.address()}:1392/`;
+    var addressDisplay = `http://${ip.address()}:1391/`;
+  </script>
 </head>
 
-<body onload="load()">
+<body>
 <table width="100%">
     <tr>
-        <th style="width:30%">System Components</th>
-        <th style="text-align:right;"><img
-            src="http://flluae.org/wp-content/uploads/2017/08/FLL-full-triangle_with-new-logo.jpg"
-            style="height:100px;"/></th>
+      <th style="width:30%">System Components</th>
+      <th style="text-align:right;"><img src="images/FLL-full-triangle_with-new-logo.jpg" style="height:100px;" /></th>
     </tr>
     <tr>
         <td><a id="Management" onclick="opn(addressAdmin)">Management</a></td>
     </tr>
     <tr>
-        <td><a id="ScoreEntry" onclick="opn(addressScore)">Score Entry</a></td>
-        <td><a id="ScoreEntryIP" onclick="opn(addressScore)"></a> from other computers</td>
+      <td><a id="ScoreEntry" onclick="opn(addressScoring)">Score Entry</a></td>
+      <td><a id="scoreAtag" onclick="opn(addressScoring)"></a> from other computers</td>
+    </tr>
+    <tr>
+      <td><a id="Display" onclick="opn(addressDisplay)">Team Score Display</a></td>
+      <td><a id="displayAtag" onclick="opn(addressDisplay)"></a>from other computers</td>
+    </tr>
+    <tr>
+      <td><a id="Clock" onclick="opn(addressClock)">Robot Game Timer</a></td>
+      <td><a id="clockAtag" onclick="opn(addressClock)"></a> from other computers</td>
     </tr>
 
-    <tr>
-        <td><a id="Clock" onclick="opn(addressClock)">Robot Game Timer</a></td>
-        <td><a id="ClockIP" onclick="opn(addressClock)"></a> from other computers</td>
-    </tr>
-    <tr>
-        <td><a id="Display" onclick="opn(addressDisplay)">Team Score Display</a></td>
-        <td><a id="DisplayIP" onclick="opn(addressDisplay)"></a> from other computers</td>
-    </tr>
     <tr>
         <Td>&nbsp;</Td>
         <td>&nbsp;</td>
@@ -90,11 +64,14 @@
 <br>
 <table width="100%">
     <tr>
-        <!-- <td width="50%"><img src="images\FIRSTLego_IconVert_RGB.png" style="height:100px;"></td> -->
-        <td style="text-align:center;"><img src="images/FIRST-FLL-HYDRO-DYNAMICS-web-logo.png"
-                                            style="height:100px; text-align:right"></td>
+      <td style="text-align:center;"><img src="images/FIRST-FLL-HYDRO-DYNAMICS-web-logo.png" style="height:100px; text-align:right"></td>
     </tr>
-</table>
+  </table>
+  <script>
+    document.getElementById('scoreAtag').innerHTML = `${addressScoring}`;
+    document.getElementById('displayAtag').innerHTML = `${addressDisplay}`;
+    document.getElementById('clockAtag').innerHTML = `${addressClock}`;
+  </script>>
 </body>
 
 </html>
