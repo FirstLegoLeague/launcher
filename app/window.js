@@ -13,14 +13,17 @@ const url = require('url')
 exports.mainWindow = null
 exports.buildMainWindow = () => {
   // Create the browser window.
-  exports.mainWindow = new BrowserWindow({width: 800, height: 600})
-
+  exports.mainWindow = new BrowserWindow({width: 800, height: 600, icon: getIcon()})
+  // Disable the menubar
+  exports.mainWindow.setMenu(null)
+                     
   // and load the index.html of the app.
   exports.mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
+
 
   // Emitted when the window is closed.
   exports.mainWindow.on('closed', function () {
@@ -29,7 +32,6 @@ exports.buildMainWindow = () => {
     // when you should delete the corresponding element.
     exports.mainWindow = null
   })
-
 }
 
 // This method will be called when Electron has finished
@@ -56,3 +58,7 @@ exports.buildMainWindow = () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+function getIcon() {
+  return path.join(__dirname, 'images', 'icon.png')
+}

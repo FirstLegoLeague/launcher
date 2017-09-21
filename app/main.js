@@ -6,9 +6,10 @@ const path = require('path')
 
 const {buildAppMenu} = require('./menu')
 const window = require('./window')
+
 const {Server} = require('./server')
 
-function getIcon () {
+function getIcon() {
   return path.join(__dirname, 'images', 'icon.png')
 }
 
@@ -39,10 +40,11 @@ if (isSecondInstance) {
         tray.setToolTip('FIRST LEGO League Scoring System')
         tray.setContextMenu(contextMenu)
       })
+      .then(() => window.buildMainWindow())
       .catch(err => {
         console.error(err)
       })
-    window.buildMainWindow()
+    
   })
 
   app.on('before-quit', () => {

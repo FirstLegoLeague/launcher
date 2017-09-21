@@ -2,18 +2,17 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>FIRST LEGO League scoring system</title>
-  <style>
-    td>a {
-      font-size: 4.5vh;
-    }
+    <meta charset="UTF-8">
+    <title>FIRST LEGO League scoring system</title>
+    <style>
+        @font-face {
+            font-family: Roboto;
+            src: url('/fonts/Roboto-Light.ttf');
+        }
 
-    th,
-    td {
-      font-size: 4.5vh;
-    }
-
+        body {
+            font-family: Roboto;
+        }
     a {
       color: rgba(0, 0, 238, 1);
       text-decoration: underline;
@@ -32,13 +31,13 @@
 </head>
 
 <body>
-  <table width="100%">
+<table width="100%">
     <tr>
       <th style="width:30%">System Components</th>
       <th style="text-align:right;"><img src="images/FLL-full-triangle_with-new-logo.jpg" style="height:100px;" /></th>
     </tr>
     <tr>
-      <td><a id="Management" onclick="opn(addressAdmin)">Management</a></td>
+        <td><a id="Management" onclick="opn(addressAdmin)">Management</a></td>
     </tr>
     <tr>
       <td><a id="ScoreEntry" onclick="opn(addressScoring)">Score Entry</a></td>
@@ -54,17 +53,17 @@
     </tr>
 
     <tr>
-      <Td>&nbsp;</Td>
-      <td>&nbsp;</td>
+        <Td>&nbsp;</Td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
       <td><a id="stop" onclick="app.quit()">Quit</a></td>
       <td>Will stop the engine</td>
     </tr>
-  </table>
-  <br>
-  <br>
-  <table width="100%">
+</table>
+<br>
+<br>
+<table width="100%">
     <tr>
       <td style="text-align:center;"><img src="images/FIRST-FLL-HYDRO-DYNAMICS-web-logo.png" style="height:100px; text-align:right"></td>
     </tr>
