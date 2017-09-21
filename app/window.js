@@ -13,7 +13,7 @@ const url = require('url')
 exports.mainWindow = null
 exports.buildMainWindow = () => {
   // Create the browser window.
-  exports.mainWindow = new BrowserWindow({width: 800, height: 600, icon: getIcon()})
+  exports.mainWindow = new BrowserWindow({width: 600, height: 475, icon: getIcon()})
   // Disable the menubar
   exports.mainWindow.setMenu(null)
                      
