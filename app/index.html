@@ -26,6 +26,7 @@
     let addressScoring = `http://${ip.address()}:1390/`;
     var addressClock = `http://${ip.address()}:1392/`;
     var addressDisplay = `http://${ip.address()}:1391/`;
+    let {app} = require('electron').remote;
   </script>
 </head>
 
@@ -56,8 +57,8 @@
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><a id="stop">Stop</a></td>
-        <td>Will stop the engine</td>
+      <td><a id="stop" onclick="app.quit()">Quit</a></td>
+      <td>Will stop the engine</td>
     </tr>
 </table>
 <br>

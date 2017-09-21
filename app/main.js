@@ -5,7 +5,8 @@ const {app, Tray} = require('electron')
 const path = require('path')
 
 const {buildAppMenu} = require('./menu')
-const {buildMainWindow} = require('./window')
+const window = require('./window')
+
 const {Server} = require('./server')
 
 function getIcon() {
@@ -14,24 +15,39 @@ function getIcon() {
 
 let server = null
 let tray = null
-app.on('ready', () => {
-  server = new Server(path.join(process.cwd(), 'modules.yml'))
 
-  server.start()
-    .then(() => buildAppMenu(server.getModules()))
-    .then(appMenu => {
-      tray = new Tray(getIcon())
-      const contextMenu = appMenu
-      tray.setToolTip('FIRST LEGO League Scoring System')
-      tray.setContextMenu(contextMenu)
-    })
-    .then(() => buildMainWindow())
-    .catch(err => {
-      console.error(err)
-    });
-
+const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
+  // Someone tried to run a second instance, we should focus our window.
+  if (window.mainWindow) {
+    if (window.mainWindow.isMinimized()) window.mainWindow.restore()
+    window.mainWindow.show()
+  } else {
+    window.buildMainWindow()
+  }
 })
 
-app.on('before-quit', () => {
-  server.close()
-})
+if (isSecondInstance) {
+  app.quit()
+} else {
+  app.on('ready', () => {
+    server = new Server(path.join(process.cwd(), 'modules.yml'))
+
+    server.start()
+      .then(() => buildAppMenu(server.getModules()))
+      .then(appMenu => {
+        tray = new Tray(getIcon())
+        const contextMenu = appMenu
+        tray.setToolTip('FIRST LEGO League Scoring System')
+        tray.setContextMenu(contextMenu)
+      })
+      .then(() => window.buildMainWindow())
+      .catch(err => {
+        console.error(err)
+      })
+    
+  })
+
+  app.on('before-quit', () => {
+    server.close()
+  })
+}
