@@ -15,7 +15,7 @@ exports.buildMainWindow = () => {
   // Create the browser window.
   exports.mainWindow = new BrowserWindow({width: 800, height: 600, icon: getIcon()})
   // Disable the menubar
-  mainWindow.setMenu(null)
+  exports.mainWindow.setMenu(null)
                      
   // and load the index.html of the app.
   exports.mainWindow.loadURL(url.format({
