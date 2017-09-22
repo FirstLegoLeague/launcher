@@ -12,17 +12,17 @@ mhub-relay:
 mq-protocols:
   type: node
   package: "@first-lego-league/protocols"
-  version: 0.0.4
+  version: 0.0.5
   script: null
 image-server:
   type: node
   package: "@first-lego-league/image-server"
-  version: 1.0.2
+  version: 1.0.3
   script: ./index.js
 scoring:
   type: node
   package: "@first-lego-league/scoring"
-  version: 0.5.0
+  version: 0.5.1
   script: ./localserver.js
   link: 'http://localhost:1390/'
 display:
