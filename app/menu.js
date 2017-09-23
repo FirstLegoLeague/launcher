@@ -1,9 +1,10 @@
 'use strict'
 
-const { Menu } = require('electron')
+const {Menu} = require('electron')
 const opn = require('opn')
 const ip = require('ip')
 const clipboard = require('clipboardy')
+const window = require('./window');
 
 exports.buildAppMenu = modulesPromise => {
   return modulesPromise
@@ -24,7 +25,21 @@ exports.buildAppMenu = modulesPromise => {
       const ipAddress = ip.address()
 
       return Menu.buildFromTemplate(modules.concat([
-        { type: 'separator' },
+        {type: 'separator'},
+        {
+          label: 'Open Window',
+          type: 'normal',
+          click: () => {
+            // if window allready exists show it otherwise create a new one
+            if (!window.mainWindow) {
+              window.buildMainWindow()
+            } else {
+              window.mainWindow.restore()
+              window.mainWindow.show()
+            }
+          }
+        },
+        {type: 'separator'},
         {
           label: `IP: ${ipAddress}`,
           type: 'normal',
@@ -35,7 +50,7 @@ exports.buildAppMenu = modulesPromise => {
               })
           }
         },
-        { label: 'Quit', type: 'normal', role: 'quit' }
+        {label: 'Quit', type: 'normal', role: 'quit'}
       ]))
     })
 }
