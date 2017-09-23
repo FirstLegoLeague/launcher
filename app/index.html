@@ -27,6 +27,12 @@
     var addressClock = `http://${ip.address()}:1392/`;
     var addressDisplay = `http://${ip.address()}:1391/`;
     let {app} = require('electron').remote;
+
+    function confirmQuit() {
+        if(confirm("Are you sure you want to quit?"))
+            app.quit()
+    }
+
   </script>
 </head>
 
@@ -57,7 +63,7 @@
         <td>&nbsp;</td>
     </tr>
     <tr>
-      <td><a id="stop" onclick="app.quit()">Quit</a></td>
+      <td><a id="stop" onclick="confirmQuit()">Quit</a></td>
       <td>Will stop the engine</td>
     </tr>
 </table>
