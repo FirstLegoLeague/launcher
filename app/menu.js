@@ -4,7 +4,7 @@ const {Menu} = require('electron')
 const opn = require('opn')
 const ip = require('ip')
 const clipboard = require('clipboardy')
-const window = require('./window');
+const window = require('./window')
 
 exports.buildAppMenu = modulesPromise => {
   return modulesPromise
