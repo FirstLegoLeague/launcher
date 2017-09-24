@@ -6,6 +6,7 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+const pjson = require('../package.json')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -16,7 +17,8 @@ exports.buildMainWindow = () => {
   exports.mainWindow = new BrowserWindow({width: 800, height: 600, icon: getIcon()})
   // Disable the menubar
   exports.mainWindow.setMenu(null)
-                     
+  // Setting the window title
+  exports.mainWindow.setTitle('FIRST LEGO League scoring v' + pjson.version)
   // and load the index.html of the app.
   exports.mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
