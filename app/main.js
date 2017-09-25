@@ -38,7 +38,7 @@ if (isSecondInstance) {
       .then(appMenu => {
         tray = new Tray(getIcon())
         const contextMenu = appMenu
-        tray.setToolTip('FIRST LEGO League Scoring System')
+        tray.setToolTip('FIRST LEGO League Scoring')
         tray.setContextMenu(contextMenu)
       })
       .then(() => window.buildMainWindow())
