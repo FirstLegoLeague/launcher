@@ -16,7 +16,7 @@ exports.buildMainWindow = () => {
   exports.mainWindow = new BrowserWindow({width: 600, height: 475, icon: getIcon()})
   // Disable the menubar
   exports.mainWindow.setMenu(null)
-                     
+
   // and load the index.html of the app.
   exports.mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -27,6 +27,10 @@ exports.buildMainWindow = () => {
 
   // Emitted when the window is closed.
   exports.mainWindow.on('closed', function () {
+    // Showing message so people will know its in system tray
+    var dialog = electron.dialog
+    dialog.showMessageBox({message: 'This window is still available in the tray'})
+
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
