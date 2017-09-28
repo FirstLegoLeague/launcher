@@ -25,6 +25,7 @@ scoring:
   package: "@first-lego-league/scoring"
   version: 0.5.1
   script: ./localserver.js
+  arguments: [-c, ./modules/mq-protocols/fllscoring-configs/multiusers.conf.js]
   link: 'http://localhost:1390/'
 display:
   type: node
@@ -37,4 +38,5 @@ clock:
   package: "@first-lego-league/clock"
   version: 1.1.1
   script: ./localserver.js
+  arguments: [-c, ./modules/mq-protocols/clock-configs/multiusers.conf.js]
   link: 'http://localhost:1392/'
