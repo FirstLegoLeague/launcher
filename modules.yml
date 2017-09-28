@@ -3,6 +3,7 @@ mhub:
   package: mhub
   version: 0.9.1
   script: ./bin/mhub-server
+  arguments: [-c, ./modules/mq-protocols/mhub-configs/multiusers.conf.json]
 mhub-relay:
   type: node
   package: mhub-relay
