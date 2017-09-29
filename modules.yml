@@ -1,3 +1,8 @@
+mq-protocols:
+  type: node
+  package: "@first-lego-league/protocols"
+  version: 0.0.5
+  script: ./generate_passwords
 mhub:
   type: node
   package: mhub
@@ -10,11 +15,6 @@ mhub-relay:
   version: 1.1.0
   script: ./bin/mhub-relay
   arguments: [ -c, ./modules/mq-protocols/relays/table-relay.conf.json ]
-mq-protocols:
-  type: node
-  package: "@first-lego-league/protocols"
-  version: 0.0.5
-  script: null
 image-server:
   type: node
   package: "@first-lego-league/image-server"
@@ -25,7 +25,7 @@ scoring:
   package: "@first-lego-league/scoring"
   version: 0.5.1
   script: ./localserver.js
-  arguments: [-c, ./modules/mq-protocols/fllscoring-configs/multiusers.conf.js]
+  arguments: [-c, ../../mq-protocols/fllscoring-configs/multiusers.conf]
   link: 'http://localhost:1390/'
 display:
   type: node
