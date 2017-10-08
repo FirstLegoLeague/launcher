@@ -20,6 +20,9 @@ exports.NodeModule = class {
     this.package = options.package
     this.version = options.version
 
+    this.dataDir = join(this.path, options.dataDir)
+    this.resetScript = join(this.path, options.resetScript)
+
     if (options.script) {
       this.script = join(this.path, options.script)
     }
