@@ -21,8 +21,8 @@ exports.NodeModule = class {
     this.package = options.package
     this.version = options.version
 
-    this.dataDir = join(this.path, options.dataDir)
-    this.resetScript = join(this.path, options.resetScript)
+    this.dataDir = options.dataDir ? join(this.path, options.dataDir) : undefined
+    this.resetScript = options.resetScript ? join(this.path, options.resetScript) : undefined
     this.resetArguments = options.resetArguments || []
 
     if (options.script) {
