@@ -2,12 +2,13 @@
 
 const Promise = require('bluebird')
 const request = require('request')
-const { join } = require('path')
+const {join} = require('path')
 const tar = require('tar-fs')
-const { exec, fork } = require('child_process')
-const { createGunzip } = require('zlib')
+const {exec, fork, spawn} = require('child_process')
+const {createGunzip} = require('zlib')
+const fs = require('fs')
 
-const requestAsync = Promise.promisify(request, { multiArgs: true })
+const requestAsync = Promise.promisify(request, {multiArgs: true})
 
 const NPM_REGISTRY_BASE_URL = 'https://registry.npmjs.org'
 
@@ -22,6 +23,7 @@ exports.NodeModule = class {
 
     this.dataDir = join(this.path, options.dataDir)
     this.resetScript = join(this.path, options.resetScript)
+    this.resetArguments = options.resetArguments || []
 
     if (options.script) {
       this.script = join(this.path, options.script)
@@ -47,6 +49,24 @@ exports.NodeModule = class {
     }
   }
 
+  reset () {
+    let unlinkPromise
+    if (this.dataDir) {
+      unlinkPromise = fs.unlink(this.dataDir)
+    } else {
+      unlinkPromise = Promise.resolve()
+    }
+    let scriptPromise
+    if (this.resetScript) {
+      scriptPromise = new Promise((resolve, reject) => {
+        spawn(this.resetScript, this.resetArguments, {stdio: 'inherit'}).on('exit', resolve)
+      })
+    } else {
+      scriptPromise = Promise.resolve()
+    }
+    return Promise.all([scriptPromise, unlinkPromise])
+  }
+
   download () {
     return requestAsync({
       baseUrl: NPM_REGISTRY_BASE_URL,
@@ -61,7 +81,7 @@ exports.NodeModule = class {
         return body
       })
       .then(body => {
-        const { tarball } = body.versions[this.version].dist
+        const {tarball} = body.versions[this.version].dist
 
         return new Promise((resolve, reject) => {
           const req = request({
