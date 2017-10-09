@@ -32,7 +32,7 @@ if (isSecondInstance) {
 } else {
   app.on('ready', () => {
     server = new Server(path.join(process.cwd(), 'modules.yml'))
-
+    exports.server = server
     server.start()
       .then(() => buildAppMenu(server.getModules()))
       .then(appMenu => {
