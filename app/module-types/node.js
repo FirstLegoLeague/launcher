@@ -6,7 +6,7 @@ const {join} = require('path')
 const tar = require('tar-fs')
 const {exec, fork, spawn} = require('child_process')
 const {createGunzip} = require('zlib')
-const fs = require('fs')
+const rimraf = require('rimraf')
 
 const requestAsync = Promise.promisify(request, {multiArgs: true})
 
@@ -52,7 +52,7 @@ exports.NodeModule = class {
   reset () {
     let unlinkPromise
     if (this.dataDir) {
-      unlinkPromise = fs.unlink(this.dataDir)
+      unlinkPromise = new Promise(resolve => rimraf(this.dataDir, resolve))
     } else {
       unlinkPromise = Promise.resolve()
     }
