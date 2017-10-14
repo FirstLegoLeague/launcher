@@ -2,12 +2,13 @@
 
 const Promise = require('bluebird')
 const request = require('request')
-const { join } = require('path')
+const {join} = require('path')
 const tar = require('tar-fs')
-const { exec, fork } = require('child_process')
-const { createGunzip } = require('zlib')
+const {exec, fork, spawn} = require('child_process')
+const {createGunzip} = require('zlib')
+const rimraf = require('rimraf')
 
-const requestAsync = Promise.promisify(request, { multiArgs: true })
+const requestAsync = Promise.promisify(request, {multiArgs: true})
 
 const NPM_REGISTRY_BASE_URL = 'https://registry.npmjs.org'
 
@@ -19,6 +20,10 @@ exports.NodeModule = class {
     this.link = options.link
     this.package = options.package
     this.version = options.version
+
+    this.dataDir = options.dataDir ? join(this.path, options.dataDir) : undefined
+    this.resetScript = options.resetScript ? join(this.path, options.resetScript) : undefined
+    this.resetArguments = options.resetArguments || []
 
     if (options.script) {
       this.script = join(this.path, options.script)
@@ -44,6 +49,24 @@ exports.NodeModule = class {
     }
   }
 
+  reset () {
+    let unlinkPromise
+    if (this.dataDir) {
+      unlinkPromise = new Promise(resolve => rimraf(this.dataDir, resolve))
+    } else {
+      unlinkPromise = Promise.resolve()
+    }
+    let scriptPromise
+    if (this.resetScript) {
+      scriptPromise = new Promise((resolve, reject) => {
+        spawn(this.resetScript, this.resetArguments, {stdio: 'inherit'}).on('exit', resolve)
+      })
+    } else {
+      scriptPromise = Promise.resolve()
+    }
+    return Promise.all([scriptPromise, unlinkPromise])
+  }
+
   download () {
     return requestAsync({
       baseUrl: NPM_REGISTRY_BASE_URL,
@@ -58,7 +81,7 @@ exports.NodeModule = class {
         return body
       })
       .then(body => {
-        const { tarball } = body.versions[this.version].dist
+        const {tarball} = body.versions[this.version].dist
 
         return new Promise((resolve, reject) => {
           const req = request({

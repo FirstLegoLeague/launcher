@@ -24,6 +24,7 @@ scoring:
   type: node
   package: "@first-lego-league/scoring"
   version: 0.5.1
+  dataDir: ./data
   script: ./localserver.js
   arguments: [-c, ../../mq-protocols/fllscoring-configs/multiusers.conf]
   link: 'http://localhost:1390/'

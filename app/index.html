@@ -31,6 +31,7 @@
     var addressClock = `http://${ip.address()}:1392/`;
     var addressDisplay = `http://${ip.address()}:1391/`;
     let {app} = require('electron').remote;
+    let main = require('electron').remote.require('./main')
 
     function confirmQuit() {
         if(confirm("Are you sure you want to quit?"))
@@ -42,6 +43,14 @@
       protocol: 'file:',
       slashes: true
     });
+
+    function resetData () {
+        if (confirm(`Are you sure you want to reset all competition data? \n This is irreversible`)) {
+            if (confirm(`Are you SURE you want to reset all competition data? \n This is irreversible; Make sure you don't disappoint the teams, it's their big day`)) {
+                main.server.resetData();
+            }
+        }
+    }
 
   </script>
 
@@ -76,6 +85,10 @@
     <tr>
       <td><a id="stop" onclick="confirmQuit()">Quit</a></td>
       <td>Will stop the engine</td>
+    </tr>
+    <tr>
+        <td><a id="reset" onclick="resetData()">Reset Competition Data</a></td>
+        <td>Will delete all competition data</td>
     </tr>
   </table>
   <br>

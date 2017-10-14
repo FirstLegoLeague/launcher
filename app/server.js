@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 
-const { moduleFactory } = require('./module-types')
+const {moduleFactory} = require('./module-types')
 
 Promise.promisifyAll(fs)
 
@@ -34,5 +34,12 @@ exports.Server = class {
 
   getModules () {
     return this.modulesPromise
+  }
+
+  resetData () {
+    this.getModules()
+      .then(modules =>
+        Promise.all(modules.map(module => module.reset()))
+      )
   }
 }
