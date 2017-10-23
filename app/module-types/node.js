@@ -7,6 +7,9 @@ const tar = require('tar-fs')
 const {exec, fork, spawn} = require('child_process')
 const {createGunzip} = require('zlib')
 const rimraf = require('rimraf')
+const rotate = require('rotating-file-stream')
+const fs = require('fs')
+const logPath = require('../logDirectory')
 
 const requestAsync = Promise.promisify(request, {multiArgs: true})
 
@@ -35,9 +38,20 @@ exports.NodeModule = class {
 
   start () {
     if (this.script) {
-      const child = fork(this.script, this.arguments, {
-        stdio: 'inherit'
+      const moduleLogPath = join(logPath, this.name)
+      if (!fs.existsSync(moduleLogPath)) {
+        fs.mkdirSync(moduleLogPath)
+      }
+      var stream = rotate(this.name, {
+        size: '10M',
+        interval: '1d',
+        path: moduleLogPath
       })
+      const child = fork(this.script, this.arguments, {
+        stdio: ['pipe', 'pipe', 'pipe', 'ipc']
+      })
+      child.stdout.pipe(stream)
+      child.stderr.pipe(stream)
 
       return () => new Promise(resolve => {
         child
