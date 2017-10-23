@@ -8,7 +8,7 @@ const window = require('./window')
 
 const {Server} = require('./server')
 
-function getIcon() {
+function getIcon () {
   return path.join(__dirname, 'images', 'icon.png')
 }
 
@@ -48,7 +48,12 @@ if (isSecondInstance) {
 
   })
 
+  app.on('window-all-closed', event => { // this prevents the app from trying to quit when you close the main window
+    event.preventDefault()
+  })
+
   app.on('before-quit', () => {
+    window.mainWindow.destroy() // prevents it from showing any closing dialog
     server.close()
   })
 }
