@@ -29,7 +29,9 @@ exports.Server = class {
 
   close () {
     return this.stopFunctionsPromise
-      .each(stop => stop())
+      .each(stop => {
+        stop()
+      })
   }
 
   getModules () {

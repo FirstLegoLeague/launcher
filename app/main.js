@@ -58,7 +58,12 @@ if (isSecondInstance) {
 
   })
 
+  app.on('window-all-closed', event => { // this prevents the app from trying to quit when you close the main window
+    event.preventDefault()
+  })
+
   app.on('before-quit', () => {
+    window.mainWindow.destroy() // prevents it from showing any closing dialog
     server.close()
   })
 }
