@@ -1,7 +1,7 @@
 const fs = require('fs')
-const {join} = require('path')
+const {resolve} = require('path')
 
-const logPath = join(__dirname, '..', 'log')
+const logPath = resolve(__dirname, '..', 'log')
 
 if (!fs.existsSync(logPath)) {
   fs.mkdirSync(logPath)

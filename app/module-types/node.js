@@ -2,7 +2,7 @@
 
 const Promise = require('bluebird')
 const request = require('request')
-const {join} = require('path')
+const {join, resolve} = require('path')
 const tar = require('tar-fs')
 const {exec, fork, spawn} = require('child_process')
 const {createGunzip} = require('zlib')
@@ -38,7 +38,7 @@ exports.NodeModule = class {
 
   start () {
     if (this.script) {
-      const moduleLogPath = join(logPath, this.name)
+      const moduleLogPath = resolve(logPath, this.name)
       if (!fs.existsSync(moduleLogPath)) {
         fs.mkdirSync(moduleLogPath)
       }
