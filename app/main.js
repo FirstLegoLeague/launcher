@@ -8,6 +8,9 @@ const window = require('./window')
 
 const {Server} = require('./server')
 
+const logPath = require('./logDirectory')
+const rotate = require('rotating-file-stream')
+
 function getIcon () {
   return path.join(__dirname, 'images', 'icon.png')
 }
@@ -31,6 +34,13 @@ if (isSecondInstance) {
   app.quit()
 } else {
   app.on('ready', () => {
+    var stream = rotate('launcher', {
+      size: '10M',
+      interval: '1d',
+      path: logPath
+    })
+    process.stdout.pipe(stream)
+    process.stderr.pipe(stream)
     server = new Server(path.join(process.cwd(), 'modules.yml'))
     exports.server = server
     server.start()
