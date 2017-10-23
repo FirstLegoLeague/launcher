@@ -26,17 +26,19 @@ exports.buildMainWindow = () => {
     slashes: true
   }))
 
-
-  // Emitted when the window is closed.
+  // Emitted after the window is closed, in any way shape or form
   exports.mainWindow.on('closed', function () {
-    // Showing message so people will know its in system tray
-    var dialog = electron.dialog
-    dialog.showMessageBox({message: 'This window is still available in the tray'})
-
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     exports.mainWindow = null
+  })
+
+  // Emitted before the window is closed by the user or using the the close() function
+  exports.mainWindow.on('close', () => {
+    // Showing message so people will know its in system tray
+    var dialog = electron.dialog
+    dialog.showMessageBox({message: 'This window is still available in the tray'})
   })
 }
 
@@ -65,6 +67,6 @@ exports.buildMainWindow = () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-function getIcon() {
+function getIcon () {
   return path.join(__dirname, 'images', 'icon.png')
 }
