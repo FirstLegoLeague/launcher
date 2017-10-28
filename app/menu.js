@@ -11,7 +11,7 @@ exports.buildAppMenu = modulesPromise => {
     .reduce((menuItems, module) => {
       if (module.link) {
         return menuItems.concat({
-          label: module.name,
+          label: module.name + ` | ${module.link.split(':')[2].replace('/', '')}`,
           type: 'normal',
           click: () => {
             opn(module.link)
