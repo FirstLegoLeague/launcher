@@ -63,7 +63,9 @@ if (isSecondInstance) {
   })
 
   app.on('before-quit', () => {
-    window.mainWindow.destroy() // prevents it from showing any closing dialog
+    if (window.mainWindow) {
+      window.mainWindow.destroy() // prevents it from showing any closing dialog
+    }
     server.close()
   })
 }
