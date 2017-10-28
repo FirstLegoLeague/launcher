@@ -7,8 +7,8 @@ const {buildAppMenu} = require('./menu')
 const window = require('./window')
 
 const {Server} = require('./server')
+const logPath = require('./module-types/logDirectory')
 
-const logPath = require('./logDirectory')
 const rotate = require('rotating-file-stream')
 
 function getIcon () {
@@ -39,8 +39,8 @@ if (isSecondInstance) {
       interval: '1d',
       path: logPath
     })
-    process.stdout.pipe(stream)
-    process.stderr.pipe(stream)
+    // process.stdout.pipe(stream)
+    // process.stderr.pipe(stream)
     server = new Server(path.join(process.cwd(), 'modules.yml'))
     exports.server = server
     server.start()

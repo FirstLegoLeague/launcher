@@ -1,6 +1,7 @@
 ### Project related ###
 
 /log
+/app/log
 /modules
 /dist
 
