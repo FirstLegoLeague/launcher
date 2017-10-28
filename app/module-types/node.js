@@ -9,7 +9,7 @@ const {createGunzip} = require('zlib')
 const rimraf = require('rimraf')
 const rotate = require('rotating-file-stream')
 const fs = require('fs')
-const logPath = require('../logDirectory')
+const logPath = require('./logDirectory')
 
 const requestAsync = Promise.promisify(request, {multiArgs: true})
 
