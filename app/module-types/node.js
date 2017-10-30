@@ -9,7 +9,6 @@ const {createGunzip} = require('zlib')
 const rimraf = require('rimraf')
 const rotate = require('rotating-file-stream')
 const fs = require('fs')
-const logPath = require('../logDirectory')
 
 const requestAsync = Promise.promisify(request, {multiArgs: true})
 
@@ -36,7 +35,7 @@ exports.NodeModule = class {
     Object.freeze(this)
   }
 
-  start () {
+  start (logPath) {
     if (this.script) {
       const moduleLogPath = resolve(logPath, this.name)
       if (!fs.existsSync(moduleLogPath)) {
