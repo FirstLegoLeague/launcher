@@ -23,7 +23,7 @@ image-server:
 scoring:
   type: node
   package: "@first-lego-league/scoring"
-  version: 0.6.1
+  version: 0.6.2
   dataDir: ./data
   script: ./localserver.js
   arguments: [-c, ../../mq-protocols/fllscoring-configs/multiusers.conf]
