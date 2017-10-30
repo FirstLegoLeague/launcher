@@ -20,9 +20,9 @@ exports.Server = class {
       })
   }
 
-  start (logPath) {
+  start () {
     this.stopFunctionsPromise = this.modulesPromise
-      .map(module => module.start())
+      .map(module => module.start(logPath))
 
     return this.stopFunctionsPromise
       .return()

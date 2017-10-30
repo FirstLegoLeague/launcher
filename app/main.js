@@ -39,8 +39,11 @@ if (isSecondInstance) {
       interval: '1d',
       path: logPath
     })
-    process.stdout.pipe(stream)
-    process.stderr.pipe(stream)
+    // Commented out, because of current bug in electron logging.
+    // TODO solve this.
+    // For reference: https://github.com/electron/electron/issues/683
+    // process.stdout.pipe(stream)
+    // process.stderr.pipe(stream)
     server = new Server(path.join(process.cwd(), 'modules.yml'))
     exports.server = server
     server.start()
