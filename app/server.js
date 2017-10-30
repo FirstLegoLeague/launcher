@@ -4,6 +4,7 @@ const Promise = require('bluebird')
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
+const logPath = require('./logDirectory')
 
 const {moduleFactory} = require('./module-types')
 
@@ -19,7 +20,7 @@ exports.Server = class {
       })
   }
 
-  start () {
+  start (logPath) {
     this.stopFunctionsPromise = this.modulesPromise
       .map(module => module.start())
 
