@@ -52,6 +52,21 @@
         }
     }
 
+    const glob = require('glob')
+    const fs = require('fs')
+    const {dialog} = require('electron').remote
+
+    function changeSponsor (filename) {
+        var imagesDir = path.resolve(process.cwd(), 'modules', 'image-server', 'images')//this is where the launcher assumes the modules to be
+        var originalImageFile = path.resolve(imagesDir, glob.sync(`${filename}.*`, {cwd: imagesDir}).pop())
+        var newImage = dialog.showOpenDialog({properties: ['openFile']}).pop()
+        var replacmentImageFile = path.resolve(imagesDir, `${filename}.${newImage.split('.').pop()}`)//extract file extension and include it
+        fs.createReadStream(newImage).pipe(fs.createWriteStream(replacmentImageFile))
+        if (originalImageFile.localeCompare(replacmentImageFile) !== 0) { //if the original image file is not the same as the replacement - e.g. it has a different extension, delete the old one
+            fs.unlink(originalImageFile)
+        }
+    }
+
   </script>
 
 </head>
@@ -100,6 +115,8 @@
   </table>
   <a href="passwords.html">Passwords</a>
   <a href="credits.html">Credits</a>
+  <a onclick="changeSponsor('sponsor1')">Choose Sponsor 1</a>
+  <a onclick="changeSponsor('sponsor2')">Choose Sponsor 2</a>
   <script>
     document.getElementById('scoreAtag').innerHTML = `${addressScoring}`;
     document.getElementById('displayAtag').innerHTML = `${addressDisplay}`;
