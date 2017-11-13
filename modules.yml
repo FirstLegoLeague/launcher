@@ -31,7 +31,7 @@ scoring:
 display:
   type: node
   package: "@first-lego-league/display"
-  version: 1.1.1
+  version: 1.1.2
   script: ./displayserver.js
   link: 'http://localhost:1391/'
 clock:
