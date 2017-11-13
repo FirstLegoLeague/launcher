@@ -14,7 +14,7 @@ const pjson = require('../package.json')
 exports.mainWindow = null
 exports.buildMainWindow = () => {
   // Create the browser window.
-  exports.mainWindow = new BrowserWindow({width: 600, height: 475, icon: getIcon()})
+  exports.mainWindow = new BrowserWindow({width: 600, height: 500, icon: getIcon()})
   // Disable the menubar
   exports.mainWindow.setMenu(null)
   // Setting the window title
