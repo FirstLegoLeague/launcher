@@ -21,7 +21,7 @@
     }
   </style>
   <script>
-    const opn = require('opn');
+    const {shell} = require('electron');
     const ip = require('ip');
     const path = require('path');
     const url = require('url');
@@ -78,19 +78,19 @@
       <th style="text-align:right;"><img src="images/FLL-full-triangle_with-new-logo.jpg" style="height:100px;" /></th>
     </tr>
     <tr>
-      <td><a id="Management" onclick="opn(addressAdmin)">Management</a></td>
+      <td><a id="Management" onclick="shell.openExternal(addressAdmin)">Management</a></td>
     </tr>
     <tr>
-      <td><a id="ScoreEntry" onclick="opn(addressScoring)">Score Entry</a></td>
-      <td><a id="scoreAtag" onclick="opn(addressScoring)"></a> from other computers</td>
+      <td><a id="ScoreEntry" onclick="shell.openExternal(addressScoring)">Score Entry</a></td>
+      <td><a id="scoreAtag" onclick="shell.openExternal(addressScoring)"></a> from other computers</td>
     </tr>
     <tr>
-      <td><a id="Display" onclick="opn(addressDisplay)">Team Score Display</a></td>
-      <td><a id="displayAtag" onclick="opn(addressDisplay)"></a>from other computers</td>
+      <td><a id="Display" onclick="shell.openExternal(addressDisplay)">Team Score Display</a></td>
+      <td><a id="displayAtag" onclick="shell.openExternal(addressDisplay)"></a>from other computers</td>
     </tr>
     <tr>
-      <td><a id="Clock" onclick="opn(addressClock)">Robot Game Timer</a></td>
-      <td><a id="clockAtag" onclick="opn(addressClock)"></a> from other computers</td>
+      <td><a id="Clock" onclick="shell.openExternal(addressClock)">Robot Game Timer</a></td>
+      <td><a id="clockAtag" onclick="shell.openExternal(addressClock)"></a> from other computers</td>
     </tr>
 
     <tr>

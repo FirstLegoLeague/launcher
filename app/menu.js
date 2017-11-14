@@ -1,7 +1,7 @@
 'use strict'
 
 const {Menu} = require('electron')
-const opn = require('opn')
+const {shell} = require('electron')
 const ip = require('ip')
 const clipboard = require('clipboardy')
 const window = require('./window')
@@ -14,7 +14,7 @@ exports.buildAppMenu = modulesPromise => {
           label: module.name,
           type: 'normal',
           click: () => {
-            opn(module.link)
+            shell.openExternal(module.link)
           }
         })
       } else {
