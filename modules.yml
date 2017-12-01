@@ -23,7 +23,7 @@ image-server:
 scoring:
   type: node
   package: "@first-lego-league/scoring"
-  version: 0.6.6
+  version: 0.6.7
   dataDir: ./data
   script: ./localserver.js
   arguments: [-c, ../../mq-protocols/fllscoring-configs/multiusers.conf]
@@ -37,7 +37,7 @@ display:
 clock:
   type: node
   package: "@first-lego-league/clock"
-  version: 1.2.0
+  version: 1.2.1
   script: ./localserver.js
   arguments: [-c, ./modules/mq-protocols/clock-configs/multiusers.conf.js]
   link: 'http://localhost:1392/'
