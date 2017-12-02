@@ -18,12 +18,12 @@ mhub-relay:
 image-server:
   type: node
   package: "@first-lego-league/image-server"
-  version: 1.1.1
+  version: 1.2.0
   script: ./index.js
 scoring:
   type: node
   package: "@first-lego-league/scoring"
-  version: 0.6.7
+  version: 0.6.8
   dataDir: ./data
   script: ./localserver.js
   arguments: [-c, ../../mq-protocols/fllscoring-configs/multiusers.conf]
@@ -37,7 +37,7 @@ display:
 clock:
   type: node
   package: "@first-lego-league/clock"
-  version: 1.2.1
+  version: 1.2.2
   script: ./localserver.js
   arguments: [-c, ./modules/mq-protocols/clock-configs/multiusers.conf.js]
   link: 'http://localhost:1392/'
