@@ -30,6 +30,7 @@
     let addressScoring = `http://${ip.address()}:1390/`;
     var addressClock = `http://${ip.address()}:1392/`;
     var addressDisplay = `http://${ip.address()}:1391/`;
+    var addressImages = `http://${ip.address()}:1395/`;
     let {app} = require('electron').remote;
     let main = require('electron').remote.require('./main')
 
@@ -98,6 +99,7 @@
       <td style="text-align:center;"><img src="images/FIRST-FLL-HYDRO-DYNAMICS-web-logo.png" style="height:100px; text-align:right"></td>
     </tr>
   </table>
+  <a onclick="opn(addressImages)">Change Images On Display</a>
   <a href="passwords.html">Passwords</a>
   <a href="credits.html">Credits</a>
   <script>
