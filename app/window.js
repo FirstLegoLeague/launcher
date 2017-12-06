@@ -3,7 +3,7 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-
+require('electron-debug')({enabled: true})
 const path = require('path')
 const url = require('url')
 const pjson = require('../package.json')

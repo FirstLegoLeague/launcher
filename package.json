@@ -32,6 +32,7 @@
     "adm-zip": "^0.4.7",
     "bluebird": "^3.5.0",
     "clipboardy": "^1.1.4",
+    "electron-debug": "^1.4.0",
     "electron-is-dev": "^0.3.0",
     "ip": "^1.1.5",
     "js-yaml": "^3.9.0",
