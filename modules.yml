@@ -1,7 +1,7 @@
 mq-protocols:
   type: node
   package: "@first-lego-league/protocols"
-  version: 0.1.5
+  version: 0.1.6
   script: ./generate_passwords
 mhub:
   type: node
@@ -23,7 +23,7 @@ image-server:
 scoring:
   type: node
   package: "@first-lego-league/scoring"
-  version: 0.7.6
+  version: 0.7.7
   dataDir: ./data
   script: ./localserver.js
   arguments: [-c, ../../mq-protocols/fllscoring-configs/multiusers.conf]
