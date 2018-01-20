@@ -1,7 +1,7 @@
 mq-protocols:
   type: node
   package: "@first-lego-league/protocols"
-  version: 0.1.6
+  version: 0.1.7
   script: ./generate_passwords
 mhub:
   type: node
