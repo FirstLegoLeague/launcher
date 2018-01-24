@@ -32,7 +32,8 @@
     var addressDisplay = `http://${ip.address()}:1391/`;
     var addressImages = `http://${ip.address()}:1395/`;
     let {app} = require('electron').remote;
-    let main = require('electron').remote.require('./main')
+    let main = require('electron').remote.require('./main');
+    let zipLogs = require('./ZipLogs').zipLogs;
 
     function confirmQuit() {
         if(confirm("Are you sure you want to quit?"))
@@ -102,6 +103,7 @@
   <a onclick="shell.openExternal(addressImages)">Change Images On Display</a>
   <a href="passwords.html">Passwords</a>
   <a href="credits.html">Credits</a>
+  <a onclick="zipLogs()">Zip Logs To Desktop</a>
   <script>
     document.getElementById('scoreAtag').innerHTML = `${addressScoring}`;
     document.getElementById('displayAtag').innerHTML = `${addressDisplay}`;
