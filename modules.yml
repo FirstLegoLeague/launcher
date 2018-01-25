@@ -1,7 +1,7 @@
 mq-protocols:
   type: node
   package: "@first-lego-league/protocols"
-  version: 0.1.8
+  version: 0.1.9
   script: ./generate_passwords
 mhub:
   type: node
@@ -23,7 +23,7 @@ image-server:
 scoring:
   type: node
   package: "@first-lego-league/scoring"
-  version: 0.7.9
+  version: 0.8.1
   dataDir: ./data
   script: ./localserver.js
   arguments: [-c, ../../mq-protocols/fllscoring-configs/multiusers.conf]
@@ -37,7 +37,7 @@ display:
 clock:
   type: node
   package: "@first-lego-league/clock"
-  version: 1.2.3
+  version: 1.2.4
   script: ./localserver.js
   arguments: [-c, ./modules/mq-protocols/clock-configs/multiusers.conf.js]
   link: 'http://localhost:1392/'
