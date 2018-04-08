@@ -19,7 +19,6 @@ exports.NodeModule = class {
     this.name = description.name
     this.path = modulePath
 
-    console.log(this.path, description.script)
     this.script = path.join(this.path, description.script)
     this.arguments = description.arguments || []
 

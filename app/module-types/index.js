@@ -1,10 +1,10 @@
 'use strict'
 
-const { HttpModule } = require('./http')
+const { WebModule } = require('./web')
 const { NodeModule } = require('./node')
 
 const modulesTypes = {
-  http: HttpModule,
+  web: WebModule,
   node: NodeModule
 }
 

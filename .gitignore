@@ -1,8 +1,9 @@
 ### Project related ###
 
-/log
-/app/log
 /modules
+/internals
+/data
+/tmp
 /dist
 
 # Created by https://www.gitignore.io/api/node
