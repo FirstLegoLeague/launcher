@@ -2,30 +2,23 @@
 
 const Promise = require('bluebird')
 const fs = require('fs')
-const path = require('path')
-const yaml = require('js-yaml')
-const logPath = require('./logDirectory')
 
-const {moduleFactory} = require('./module-types')
+const { loadModules } = require('./module-loader')
+const { loadLogsOptions } = require('./logs')
 
 Promise.promisifyAll(fs)
 
 exports.Server = class {
   constructor (modulesFile) {
-    this.modulesPromise = fs.readFileAsync(modulesFile)
-      .then(yaml.safeLoad)
-      .then(modules => {
-        return Object.keys(modules)
-          .map(name => moduleFactory(name, path.join(process.cwd(), 'modules', name), modules[name]))
-      })
+    this.modulesPromise = loadModules()
   }
 
   start () {
-    this.stopFunctionsPromise = this.modulesPromise
-      .map(module => module.start(logPath))
-
-    return this.stopFunctionsPromise
-      .return()
+    return loadLogsOptions()
+      .then(logsOptions => this.modulesPromise
+        .map(module => module.start(logsOptions))
+      )
+      .then(stopFunctions => { this.stopFunctionsPromise = Promise.resolve(stopFunctions) })
   }
 
   close () {
@@ -44,5 +37,8 @@ exports.Server = class {
       .then(modules =>
         Promise.all(modules.map(module => module.reset()))
       )
+      .catch(() => {
+        console.error('Failed to reset modules data')
+      })
   }
 }

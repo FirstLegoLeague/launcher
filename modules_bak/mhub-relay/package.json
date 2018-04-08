@@ -1,0 +1,39 @@
+{
+  "name": "mhub-relay",
+  "version": "1.1.0",
+  "description": "Message router for MHub protocol",
+  "main": "relay.js",
+  "bin": {
+    "mhub-relay": "./bin/mhub-relay"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./bin/mhub-relay",
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poelstra/mhub-relay.git"
+  },
+  "keywords": [
+    "mhub",
+    "relay",
+    "message",
+    "router"
+  ],
+  "author": "Martin Poelstra <martin@beryllium.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poelstra/mhub-relay/issues"
+  },
+  "homepage": "https://github.com/poelstra/mhub-relay#readme",
+  "dependencies": {
+    "mhub": "^0.3.0",
+    "yargs": "^3.31.0"
+  },
+  "typings": "./relay.d.ts",
+  "devDependencies": {
+    "typescript": "~1.7.5"
+  }
+}

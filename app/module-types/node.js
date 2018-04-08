@@ -2,52 +2,47 @@
 
 const Promise = require('bluebird')
 const request = require('request')
-const {join, resolve} = require('path')
+const path = require('path')
 const tar = require('tar-fs')
-const {exec, fork, spawn} = require('child_process')
-const {createGunzip} = require('zlib')
+const { exec, fork, spawn } = require('child_process')
+const { createGunzip } = require('zlib')
 const rimraf = require('rimraf')
 const rotate = require('rotating-file-stream')
 const fs = require('fs')
 
-const requestAsync = Promise.promisify(request, {multiArgs: true})
+const requestAsync = Promise.promisify(request, { multiArgs: true })
 
 const NPM_REGISTRY_BASE_URL = 'https://registry.npmjs.org'
 
 exports.NodeModule = class {
-  constructor (name, path, options) {
-    this.name = name
-    this.path = path
+  constructor (modulePath, description) {
+    this.name = description.name
+    this.path = modulePath
 
-    this.link = options.link
-    this.package = options.package
-    this.version = options.version
-
-    this.dataDir = options.dataDir ? join(this.path, options.dataDir) : undefined
-    this.resetScript = options.resetScript ? join(this.path, options.resetScript) : undefined
-    this.resetArguments = options.resetArguments || []
-
-    if (options.script) {
-      this.script = join(this.path, options.script)
-    }
-    this.arguments = options.arguments || []
+    console.log(this.path, description.script)
+    this.script = path.join(this.path, description.script)
+    this.arguments = description.arguments || []
 
     Object.freeze(this)
   }
 
-  start (logPath) {
+  start (options) {
     if (this.script) {
-      const moduleLogPath = resolve(logPath, this.name)
-      if (!fs.existsSync(moduleLogPath)) {
-        fs.mkdirSync(moduleLogPath)
+      if (!fs.existsSync(options.logsDirectory)) {
+        fs.mkdirSync(options.logsDirectory)
       }
-      var stream = rotate(this.name, {
+      const stream = rotate(`${this.name}.log`, {
         size: '10M',
         interval: '1d',
-        path: moduleLogPath
+        path: options.logsDirectory
       })
       const child = fork(this.script, this.arguments, {
-        stdio: ['pipe', 'pipe', 'pipe', 'ipc']
+        stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
+        env: {
+          'DATA_DIR': options.datadir,
+          'AUTH_SECRET': options.secret,
+          'LOG_LEVEL': options.logLevel
+        }
       })
       child.stdout.pipe(stream)
       child.stderr.pipe(stream)
@@ -72,7 +67,7 @@ exports.NodeModule = class {
     let scriptPromise
     if (this.resetScript) {
       scriptPromise = new Promise((resolve, reject) => {
-        spawn(this.resetScript, this.resetArguments, {stdio: 'inherit'}).on('exit', resolve)
+        spawn(this.resetScript, this.resetArguments, { stdio: 'inherit' }).on('exit', resolve)
       })
     } else {
       scriptPromise = Promise.resolve()
@@ -94,7 +89,7 @@ exports.NodeModule = class {
         return body
       })
       .then(body => {
-        const {tarball} = body.versions[this.version].dist
+        const { tarball } = body.versions[this.version].dist
 
         return new Promise((resolve, reject) => {
           const req = request({

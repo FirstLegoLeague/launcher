@@ -1,0 +1,19 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <script src="config.js"></script>
+    <script src="js/audio5.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/ngStorage.min.js"></script>
+    <script src="js/ClockCtrl.js"></script>
+    <link rel="stylesheet" href="css/Clock.css">
+
+    <title>Clock</title>
+</head>
+
+<body ng-app="Clock" ng-controller="ClockCtrl" ng-style="bodyStyle()">
+    <p ng-show="state=='edit'"><input ng-model="armTime"></p>
+    <p class="clock" ng-class="state" ng-style="clockStyle()">
+        {{time|time:tenths}}
+    </p>
+</body>

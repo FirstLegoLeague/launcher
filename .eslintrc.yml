@@ -7,8 +7,11 @@ rules:
   - requireForBlockBody: false
   no-shadow: warn
   no-var: warn
+  object-curly-spacing: [ warn, always ]
   prefer-arrow-callback: warn
   prefer-const: warn
+#  strict: [ warn, global ]
+
 
   import/newline-after-import: warn
   import/no-absolute-path: warn

@@ -1,0 +1,21 @@
+{
+	"connections": {
+		"local": "ws://localhost:13900",
+		"remote": "ws://localhost:13901"
+	},
+	"bindings": {
+		"simple": {
+			"input": "local/default",
+			"output": "remote/default"
+		},
+		"complex": {
+			"input": [
+				{ "node": "local/default", "pattern": "*" }
+			],
+			"transform": "exampleTransform.js",
+			"output": [
+				"local/test"
+			]
+		}
+	}
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<script src="js/audio5.js"></script>
+<link rel="stylesheet" href="css/Clock.css">
+<script src="js/angular.min.js"></script>
+<script src="js/ngStorage.min.js"></script>
+<script src="js/ClockControlsCtrl.js"></script>
+
+<body ng-app="Clock" ng-controller="ClockControlsCtrl" class="controls">
+    <fieldset>
+        <legend>Clock control</legend>
+        <p>
+            <label>Seconds:</label>
+            <input type="text" ng-model="config.seconds">
+        </p>
+        <p>
+            <button class="arm" ng-click="arm(config.seconds)">Arm (a)</button>
+            <button class="start" ng-click="start()">Start (s)</button>
+            <button class="stop" ng-click="stop()">Stop (x)</button>
+            <button ng-click="pause()">Pause (space)</button>
+            <button ng-click="mode()">Toggle tenths (t)</button>
+        </p>
+    </fieldset>
+    <fieldset>
+        <legend>MHub Config</legend>
+        <p>
+            <label>Host</label>
+            <input ng-model="config.host">
+        </p>
+        <p>
+            <label>Node</label>
+            <input ng-model="config.node">
+        </p>
+        <p>
+            <button ng-click="update(config)">Update config</button>
+        </p>
+    </fieldset>
+</body>

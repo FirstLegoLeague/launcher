@@ -1,15 +1,11 @@
 'use strict'
 
-const {app, Tray} = require('electron')
+const { app, Tray } = require('electron')
 const path = require('path')
 
-const {buildAppMenu} = require('./menu')
 const window = require('./window')
-
-const {Server} = require('./server')
-const logPath = require('./logDirectory')
-
-const rotate = require('rotating-file-stream')
+const { Server } = require('./server')
+const { buildAppMenu } = require('./menu')
 
 function getIcon () {
   return path.join(__dirname, 'images', 'icon.png')
@@ -34,11 +30,6 @@ if (isSecondInstance) {
   app.quit()
 } else {
   app.on('ready', () => {
-    var stream = rotate('launcher', {
-      size: '10M',
-      interval: '1d',
-      path: logPath
-    })
     // Commented out, because of current bug in electron logging.
     // TODO solve this.
     // For reference: https://github.com/electron/electron/issues/683
@@ -58,7 +49,6 @@ if (isSecondInstance) {
       .catch(err => {
         console.error(err)
       })
-
   })
 
   app.on('window-all-closed', event => { // this prevents the app from trying to quit when you close the main window
