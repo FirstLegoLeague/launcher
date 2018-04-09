@@ -19,9 +19,9 @@ function generateCaddyFileContent (caddyFile, sites) {
 }
 
 class Caddy {
-  constructor (executablePath, caddyFile, logStream) {
-    this.executable = executablePath
-    this.caddyFile = caddyFile
+  constructor (logStream) {
+    this.executable = CADDY_EXECUTABLE_PATH
+    this.caddyFile = CADDY_FILE_PATH
     this.logStream = logStream
 
     this.sites = []
@@ -61,4 +61,4 @@ class Caddy {
   }
 }
 
-exports.caddy = new Caddy(CADDY_EXECUTABLE_PATH, CADDY_FILE_PATH)
+exports.Caddy = Caddy

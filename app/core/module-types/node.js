@@ -31,6 +31,7 @@ exports.NodeModule = class {
       const child = fork(this.script, this.arguments, {
         stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
         env: {
+          'PORT': options.port,
           'DATA_DIR': options.datadir,
           'AUTH_SECRET': options.secret,
           'LOG_LEVEL': options.logLevel

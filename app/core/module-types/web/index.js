@@ -1,7 +1,5 @@
 'use strict'
 
-const { caddy } = require('../../caddy')
-
 exports.WebModule = class {
   constructor (modulePath, description) {
     this.name = description.name
@@ -9,11 +7,10 @@ exports.WebModule = class {
     this.index = description.index
   }
 
-  start (options) {
+  start (options, { caddy }) {
     return caddy.addSite({
       port: options.port,
       root: this.path
     })
-      .then(() => caddy.start())
   }
 }
