@@ -4,8 +4,9 @@ const fs = require('fs')
 const Promise = require('bluebird')
 
 const { Caddy } = require('./caddy')
+const { Mongo } = require('./mongo')
 const { loadModules } = require('./module-loader')
-const { loadLogsOptions } = require('./logs')
+const { loadLogsOptions, createLogStream } = require('./logs')
 
 Promise.promisifyAll(fs)
 
@@ -14,19 +15,26 @@ const STARTING_PORT = 1300
 exports.Server = class {
   constructor (modulesFile) {
     this.modulesPromise = loadModules()
-    this.caddy = new Caddy()
+    this.mainLogStream = createLogStream('main')
+    this.caddy = new Caddy(createLogStream('caddy'))
+    this.mongo = new Mongo(createLogStream('mongo'))
   }
 
   start () {
-    return loadLogsOptions()
+    return Promise.resolve()
+      .then(() => this.mongo.start())
+      .then(() => loadLogsOptions())
       .then(logsOptions => this.modulesPromise
         .map((module, i) => module.start(Object.assign({
-          port: STARTING_PORT + i
+          port: STARTING_PORT + i,
+          logStream: this.mainLogStream
         }, logsOptions), {
-          caddy: this.caddy
+          caddy: this.caddy,
+          mongo: this.mongo
         }))
       )
       .then(stopFunctions => { this.modulesStopFunctionsPromise = Promise.resolve(stopFunctions) })
+      .then(() => this.caddy.start())
   }
 
   close () {

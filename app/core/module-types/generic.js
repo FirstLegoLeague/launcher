@@ -23,7 +23,7 @@ exports.GenericModule = class {
   start (options) {
     const stream = options.logStream
     const child = exec(this.command, this.arguments, {
-      stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
+      stdio: ['pipe', 'pipe', 'pipe'],
       env: {
         'DATA_DIR': options.datadir,
         'AUTH_SECRET': options.secret,

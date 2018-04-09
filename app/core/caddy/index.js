@@ -31,12 +31,12 @@ class Caddy {
     if (this.child === undefined) {
       return generateCaddyFileContent(this.caddyFile, this.sites)
         .then(() => {
-          // const stream = this.logStream
+          const stream = this.logStream
           const child = execFile(this.executable, ['-conf', this.caddyFile], {
-            stdio: ['pipe', 'pipe', 'pipe', 'ipc']
+            stdio: ['pipe', 'pipe', 'pipe']
           })
-          // child.stdout.pipe(stream)
-          // child.stderr.pipe(stream)
+          child.stdout.pipe(stream)
+          child.stderr.pipe(stream)
 
           return () => new Promise(resolve => {
             child
