@@ -14,41 +14,46 @@ const mkdirpAsync = Promise.promisify(mkdirp)
 const rimrafAsync = Promise.promisify(rimraf)
 
 const DEFAULT_INTERNALS_DIR = path.join(__dirname, '../internals')
-const CADDY_DIR = 'caddy'
+const MONGO_PACKED_DIR_REGEX = /^mongodb-[^/]*\//
+const MONGO_DIR = 'mongo'
 
 function getDefaultPlatform () {
-  return (process.platform === 'win32') ? 'windows' : process.platform
+  return (process.platform === 'darwin') ? 'osx' : process.platform
 }
 
 function getDefaultArch () {
   if (process.arch === 'x32') {
-    return '386'
+    return 'i386'
   }
 
   if (process.arch === 'x64') {
-    return 'amd64'
+    return 'x86_64'
   }
 
   return process.arch
 }
 
 function createDownloadLink (platform, arch) {
-  return `https://caddyserver.com/download/${platform}/${arch}?license=personal`
+  const extension = (platform === 'win32') ? 'zip' : 'tgz'
+  const ubuntuAddition = (platform === 'linux') ? '-ubuntu1604' : ''
+
+  return `http://downloads.mongodb.org/${platform}/mongodb-${platform}-${arch}` +
+    `${ubuntuAddition}-v3.2-latest.${extension}`
 }
 
-exports.getCaddy = function (internalsDir, platform, arch) {
+exports.getMongo = function (internalsDir, platform, arch) {
   internalsDir = internalsDir || DEFAULT_INTERNALS_DIR
   platform = platform || getDefaultPlatform()
   arch = arch || getDefaultArch()
 
-  const caddyLink = createDownloadLink(platform, arch)
-  const caddyPath = path.resolve(internalsDir, CADDY_DIR)
+  const mongoLink = createDownloadLink(platform, arch)
+  const mongoPath = path.resolve(internalsDir, MONGO_DIR)
 
-  return rimrafAsync(caddyPath)
-    .then(() => mkdirpAsync(caddyPath))
+  return rimrafAsync(mongoPath)
+    .then(() => mkdirpAsync(mongoPath))
     .then(() => new Promise((resolve, reject) => {
       const req = request({
-        url: caddyLink,
+        url: mongoLink,
         encoding: null,
         gzip: true
       })
@@ -57,7 +62,7 @@ exports.getCaddy = function (internalsDir, platform, arch) {
         if (response.statusCode === 200) {
           if (response.headers['content-type'] === 'application/zip') {
             req
-              .pipe(unzip.Extract({ path: caddyPath })
+              .pipe(unzip.Extract({ path: mongoPath })
                 .on('close', () => {
                   resolve()
                 }))
@@ -65,7 +70,12 @@ exports.getCaddy = function (internalsDir, platform, arch) {
           } else if (response.headers['content-type'] === 'application/x-gzip') {
             req
               .pipe(createGunzip())
-              .pipe(tar.extract(caddyPath)
+              .pipe(tar.extract(mongoPath, {
+                map: header => {
+                  header.name = header.name.replace(MONGO_PACKED_DIR_REGEX, '')
+                  return header
+                }
+              })
                 .on('finish', () => {
                   resolve()
                 }))
@@ -83,12 +93,12 @@ exports.getCaddy = function (internalsDir, platform, arch) {
 if (require.main === module) {
   caporal
     .description('Download the relevant caddy executable')
-    .option('--platform, -p <platform>', 'Platform for executable', ['windows', 'darwin', 'linux'])
-    .option('--arch <arch>', 'CPU architecture', ['386', 'amd64'])
+    .option('--platform, -p <platform>', 'Platform for executable', ['win32', 'osx', 'linux'])
+    .option('--arch <arch>', 'CPU architecture', ['i386', 'x86_64'])
     .option('--internals-dir, -i <internalsDir>', 'The path to the internals directory')
     .action((args, options) => {
-      exports.getCaddy(options.internalsDir, options.platform, options.arch)
-        .then(() => console.info('Caddy downloaded successfully.'))
+      exports.getMongo(options.internalsDir, options.platform, options.arch)
+        .then(() => console.info('Mongo downloaded successfully.'))
         .catch(err => console.error(err))
     })
 

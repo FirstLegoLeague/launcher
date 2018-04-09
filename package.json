@@ -15,7 +15,7 @@
     "lint:fix": "yarn run lint -- --fix",
     "build:win": "electron-builder -w --dir",
     "build:linux": "electron-builder -l --dir",
-    "get-internals": "./dev-scripts/get-all.js",
+    "get-internals": "node ./dev-scripts/get-all-internals.js",
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
