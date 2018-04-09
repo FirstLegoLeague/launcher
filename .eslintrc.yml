@@ -1,5 +1,8 @@
 extends: standard
 
+parserOptions:
+  sourceType: script
+
 rules:
   arrow-parens:
   - warn
@@ -10,7 +13,7 @@ rules:
   object-curly-spacing: [ warn, always ]
   prefer-arrow-callback: warn
   prefer-const: warn
-#  strict: [ warn, global ]
+  strict: [ warn, global ]
 
 
   import/newline-after-import: warn
@@ -26,9 +29,7 @@ rules:
     - parent
     newlines-between: always-and-inside-groups
 
-  node/exports-style:
-  - warn
-  - exports
+  node/exports-style: [ warn, exports ]
   node/no-unsupported-features: warn
   node/shebang: warn
 
