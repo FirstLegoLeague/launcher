@@ -7,10 +7,10 @@ const { getCaddy } = require('./get-caddy')
 caporal
   .description('Download all internals of the launcher')
   .option('--internals-dir, -i <internalsDir>', 'The path to the internals directory')
-  .action((args, options, logger) => {
+  .action((args, options) => {
     getCaddy(options.internalsDir)
-      .then(() => logger.info('Caddy downloaded successfully.'))
-      .catch(err => logger.error(err))
+      .then(() => console.info('Caddy downloaded successfully.'))
+      .catch(err => console.error(err))
   })
 
 caporal.parse(process.argv)

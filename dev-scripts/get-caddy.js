@@ -13,7 +13,7 @@ const { createGunzip } = require('zlib')
 const mkdirpAsync = Promise.promisify(mkdirp)
 const rimrafAsync = Promise.promisify(rimraf)
 
-const DEFAULT_INTERNALS_DIR = path.join(__dirname, 'internals')
+const DEFAULT_INTERNALS_DIR = path.join(__dirname, '../internals')
 const CADDY_DIR = 'caddy'
 
 function getDefaultPlatform () {
@@ -86,10 +86,10 @@ if (require.main === module) {
     .option('--platform, -p <platform>', 'Platform for executable', ['windows', 'darwin', 'linux'])
     .option('--arch <arch>', 'CPU architecture', ['x32', 'x64'])
     .option('--internals-dir, -i <internalsDir>', 'The path to the internals directory')
-    .action((args, options, logger) => {
+    .action((args, options) => {
       exports.getCaddy(options.internalsDir, options.platform, options.arch)
-        .then(() => logger.info('Caddy downloaded successfully.'))
-        .catch(err => logger.error(err))
+        .then(() => console.info('Caddy downloaded successfully.'))
+        .catch(err => console.error(err))
     })
 
   caporal.parse(process.argv)
