@@ -4,7 +4,7 @@ const { app, Tray } = require('electron')
 const path = require('path')
 
 const window = require('./window')
-const { Server } = require('./server')
+const { Server } = require('./core/server')
 const { buildAppMenu } = require('./menu')
 
 function getIcon () {

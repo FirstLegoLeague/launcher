@@ -5,7 +5,7 @@ const path = require('path')
 const yaml = require('js-yaml')
 const Promise = require('bluebird')
 
-const { moduleFactory } = require('./module-types')
+const { moduleFactory } = require('./module-types/index')
 
 Promise.promisifyAll(fs)
 

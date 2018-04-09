@@ -1,6 +1,6 @@
 'use strict'
 
-const { WebModule } = require('./web')
+const { WebModule } = require('./web/index')
 const { NodeModule } = require('./node')
 
 const modulesTypes = {
