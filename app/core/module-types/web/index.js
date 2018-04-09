@@ -1,6 +1,6 @@
 'use strict'
 
-const { caddy } = require('./caddy')
+const { caddy } = require('../../caddy')
 
 exports.WebModule = class {
   constructor (modulePath, description) {
