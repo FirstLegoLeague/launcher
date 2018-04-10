@@ -4,7 +4,6 @@ const fs = require('fs')
 const path = require('path')
 const Promise = require('bluebird')
 const { MongoClient } = require('mongodb')
-const { execFile } = require('child_process')
 
 Promise.promisifyAll(fs)
 Promise.promisifyAll(MongoClient)
@@ -18,33 +17,28 @@ function getMongoConnection () {
 }
 
 class Mongo {
-  constructor (logStream) {
+  constructor (serviceManager, logStream) {
     this.executable = MONGO_EXECUTABLE_PATH
     this.logStream = logStream
+    this.serviceManager = serviceManager
 
     this.databases = []
   }
 
   start () {
-    if (this.child === undefined) {
-      return Promise.resolve()
-        .then(() => {
-          const stream = this.logStream
-          const child = execFile(this.executable, ['--dbpath', './data/$mongo'], {
-            stdio: ['pipe', 'pipe', 'pipe']
-          })
-          child.stdout.pipe(stream)
-          child.stderr.pipe(stream)
+    return this.serviceManager.startService({
+      serviceId: this.serviceId,
+      logStream: this.logStream,
+      executable: this.executable,
+      arguments: ['--dbpath', './data/$mongo']
+    })
+      .then(serviceId => {
+        this.serviceId = serviceId
+      })
+  }
 
-          return () => new Promise(resolve => {
-            child
-              .on('exit', resolve)
-              .kill()
-          })
-        })
-    } else {
-      return Promise.resolve()
-    }
+  stop () {
+    return this.serviceManager.stopService(this.serviceId)
   }
 
   createDatabase (name) {

@@ -1,8 +1,6 @@
 'use strict'
 
-const os = require('os')
 const Promise = require('bluebird')
-const { exec } = require('child_process')
 
 exports.GenericModule = class {
   constructor (modulePath, description) {
@@ -12,7 +10,7 @@ exports.GenericModule = class {
     if (typeof description.command === 'string') {
       this.command = description.command
     } else {
-      this.command = description.command[os.platform()]
+      this.command = description.command[process.platform]
     }
 
     this.arguments = description.arguments || []
@@ -20,23 +18,33 @@ exports.GenericModule = class {
     Object.freeze(this)
   }
 
-  start (options) {
-    const stream = options.logStream
-    const child = exec(this.command, this.arguments, {
-      stdio: ['pipe', 'pipe', 'pipe'],
-      env: {
-        'DATA_DIR': options.datadir,
-        'AUTH_SECRET': options.secret,
-        'LOG_LEVEL': options.logLevel
-      }
-    })
-    child.stdout.pipe(stream)
-    child.stderr.pipe(stream)
-
-    return () => new Promise(resolve => {
-      child
-        .on('exit', resolve)
-        .kill()
-    })
+  start (options, { mongo, serviceManager }) {
+    return Promise.resolve()
+      .then(() => {
+        if (this.requirements.includes('mongo')) {
+          return mongo.createDatabase(this.name)
+            .then(uri => {
+              return { 'MONGO_URI': uri }
+            })
+        } else {
+          return {}
+        }
+      })
+      .then(additionalEnv => {
+        return serviceManager.startService({
+          logStream: options.logStream,
+          executable: this.command,
+          arguments: this.arguments,
+          env: Object.assign({
+            'PORT': options.port,
+            'DATA_DIR': options.datadir,
+            'AUTH_SECRET': options.secret,
+            'LOG_LEVEL': options.logLevel
+          }, additionalEnv)
+        })
+      })
+      .then(serviceId => {
+        return () => serviceManager.stopService(serviceId)
+      })
   }
 }

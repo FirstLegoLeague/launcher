@@ -4,7 +4,6 @@ const fs = require('fs')
 const ejs = require('ejs')
 const path = require('path')
 const Promise = require('bluebird')
-const { execFile } = require('child_process')
 
 Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
@@ -19,34 +18,30 @@ function generateCaddyFileContent (caddyFile, sites) {
 }
 
 class Caddy {
-  constructor (logStream) {
+  constructor (serviceManager, logStream) {
     this.executable = CADDY_EXECUTABLE_PATH
     this.caddyFile = CADDY_FILE_PATH
+    this.serviceManager = serviceManager
     this.logStream = logStream
 
     this.sites = []
   }
 
   start () {
-    if (this.child === undefined) {
-      return generateCaddyFileContent(this.caddyFile, this.sites)
-        .then(() => {
-          const stream = this.logStream
-          const child = execFile(this.executable, ['-conf', this.caddyFile], {
-            stdio: ['pipe', 'pipe', 'pipe']
-          })
-          child.stdout.pipe(stream)
-          child.stderr.pipe(stream)
+    return this.serviceManager.startService({
+      init: () => generateCaddyFileContent(this.caddyFile, this.sites),
+      serviceId: this.serviceId,
+      logStream: this.logStream,
+      executable: this.executable,
+      arguments: ['-conf', this.caddyFile]
+    })
+      .then(serviceId => {
+        this.serviceId = serviceId
+      })
+  }
 
-          return () => new Promise(resolve => {
-            child
-              .on('exit', resolve)
-              .kill()
-          })
-        })
-    } else {
-      return Promise.resolve()
-    }
+  stop () {
+    return this.serviceManager.stopService(this.serviceId)
   }
 
   addSite (site) {

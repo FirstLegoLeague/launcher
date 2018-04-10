@@ -7,6 +7,7 @@ const { Caddy } = require('./caddy')
 const { Mongo } = require('./mongo')
 const { loadModules } = require('./module-loader')
 const { loadLogsOptions, createLogStream } = require('./logs')
+const { ServiceManager } = require('./services')
 
 Promise.promisifyAll(fs)
 
@@ -16,8 +17,11 @@ exports.Server = class {
   constructor (modulesFile) {
     this.modulesPromise = loadModules()
     this.mainLogStream = createLogStream('main')
-    this.caddy = new Caddy(createLogStream('caddy'))
-    this.mongo = new Mongo(createLogStream('mongo'))
+    this.serviceManager = new ServiceManager()
+    this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
+    this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
+
+    this.modulesStopFunctionsPromise = Promise.resolve([])
   }
 
   start () {
@@ -30,7 +34,8 @@ exports.Server = class {
           logStream: this.mainLogStream
         }, logsOptions), {
           caddy: this.caddy,
-          mongo: this.mongo
+          mongo: this.mongo,
+          serviceManager: this.serviceManager
         }))
       )
       .then(stopFunctions => { this.modulesStopFunctionsPromise = Promise.resolve(stopFunctions) })
@@ -39,9 +44,11 @@ exports.Server = class {
 
   close () {
     return this.modulesStopFunctionsPromise
-      .each(stop => {
+      .map(stop => {
         stop()
       })
+      .then(() => this.caddy.stop())
+      .then(() => this.mongo.stop())
   }
 
   getModules () {

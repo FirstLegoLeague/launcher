@@ -12,5 +12,6 @@ exports.WebModule = class {
       port: options.port,
       root: this.path
     })
+      .return(() => {})
   }
 }
