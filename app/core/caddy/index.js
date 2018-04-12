@@ -10,7 +10,7 @@ Promise.promisifyAll(ejs)
 
 const CADDY_EXECUTABLE_PATH = path.resolve('./internals/caddy/caddy')
 const CADDY_FILE_TEMPLATE = path.join(__dirname, 'caddy-file.ejs')
-const CADDY_FILE_PATH = path.resolve('./tmp/CaddyFile')
+const CADDY_FILE_PATH = path.resolve('./tmp/$CaddyFile')
 
 function generateCaddyFileContent (caddyFile, sites) {
   return ejs.renderFileAsync(CADDY_FILE_TEMPLATE, { sites })
@@ -20,7 +20,7 @@ function generateCaddyFileContent (caddyFile, sites) {
 class Caddy {
   constructor (serviceManager, logStream) {
     this.executable = CADDY_EXECUTABLE_PATH
-    this.configFile = CADDY_FILE_PATH
+    this.caddyFile = CADDY_FILE_PATH
     this.serviceManager = serviceManager
     this.logStream = logStream
 
@@ -29,11 +29,11 @@ class Caddy {
 
   start () {
     return this.serviceManager.startService({
-      init: () => generateCaddyFileContent(this.configFile, this.sites),
+      init: () => generateCaddyFileContent(this.caddyFile, this.sites),
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: this.executable,
-      arguments: ['-conf', this.configFile]
+      arguments: ['-conf', this.caddyFile]
     })
       .then(serviceId => {
         this.serviceId = serviceId
@@ -48,7 +48,7 @@ class Caddy {
     this.sites.push(site)
 
     if (this.child !== undefined) {
-      return generateCaddyFileContent(this.configFile, this.sites)
+      return generateCaddyFileContent(this.caddyFile, this.sites)
         .then(() => this.child.kill('SIGUSR1'))
     } else {
       return Promise.resolve()

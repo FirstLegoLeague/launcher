@@ -12,7 +12,7 @@ const MHUB_EXECUTABLE_PATH = path.resolve('./internals/mhub/bin/mhub-server')
 const MHUB_FILE_TEMPLATE = path.join(__dirname, 'mhub-config.ejs')
 const MHUB_FILE_PATH = path.resolve('./tmp/$mhub.config.json')
 
-function generateCaddyFileContent (configFile) {
+function generateConfigFileContent (configFile) {
   return ejs.renderFileAsync(MHUB_FILE_TEMPLATE, {})
     .then(content => fs.writeFileAsync(configFile, content))
 }
@@ -27,7 +27,7 @@ class Mhub {
 
   start () {
     return this.serviceManager.startService({
-      init: () => generateCaddyFileContent(this.configFile, this.sites),
+      init: () => generateConfigFileContent(this.configFile, this.sites),
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: process.execPath,
