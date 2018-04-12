@@ -3,17 +3,25 @@
 const fs = require('fs')
 const path = require('path')
 const Promise = require('bluebird')
-const { MongoClient } = require('mongodb')
 
 Promise.promisifyAll(fs)
-Promise.promisifyAll(MongoClient)
 
 const MONGO_EXECUTABLE_PATH = path.resolve('./internals/mongo/bin/mongod')
-const MONOG_URL = 'mongodb://localhost:27017'
 
-function getMongoConnection () {
-  return MongoClient.connectAsync(MONOG_URL)
-    .disposer(db => db.close())
+function createMongoUri (options) {
+  const parts = ['mongodb://']
+
+  if (options.credentials) {
+    parts.push(options.credentials.user, ':', options.credentials.password, '@')
+  }
+
+  parts.push(options.host || 'localhost', ':', options.port || '27017')
+
+  if (options.db) {
+    parts.push('/', options.db)
+  }
+
+  return parts.join('')
 }
 
 class Mongo {
@@ -42,7 +50,9 @@ class Mongo {
   }
 
   createDatabase (name) {
-    return Promise.resovle(`${MONOG_URL}/${name}`)
+    return Promise.resovle(createMongoUri({
+      db: name
+    }))
   }
 }
 

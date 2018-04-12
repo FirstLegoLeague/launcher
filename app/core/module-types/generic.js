@@ -14,6 +14,7 @@ exports.GenericModule = class {
     }
 
     this.arguments = description.arguments || []
+    this.requirements = description.require || []
 
     Object.freeze(this)
   }
@@ -21,7 +22,7 @@ exports.GenericModule = class {
   start (options, { mongo, serviceManager }) {
     return Promise.resolve()
       .then(() => {
-        if (this.requirements.includes('mongo')) {
+        if (this.requirements.includes('mongodb')) {
           return mongo.createDatabase(this.name)
             .then(uri => {
               return { 'MONGO_URI': uri }

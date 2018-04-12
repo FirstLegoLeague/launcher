@@ -22,7 +22,8 @@ exports.ServiceManager = class {
           return Promise.try(init)
             .then(() => {
               const child = execFile(options.executable, options.arguments, {
-                stdio: ['pipe', 'pipe', 'pipe']
+                stdio: ['pipe', 'pipe', 'pipe'],
+                env: options.env || {}
               })
               child.stdout.pipe(options.logStream)
               child.stderr.pipe(options.logStream)
