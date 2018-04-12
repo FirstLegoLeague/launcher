@@ -20,7 +20,7 @@ function generateCaddyFileContent (caddyFile, sites) {
 class Caddy {
   constructor (serviceManager, logStream) {
     this.executable = CADDY_EXECUTABLE_PATH
-    this.caddyFile = CADDY_FILE_PATH
+    this.configFile = CADDY_FILE_PATH
     this.serviceManager = serviceManager
     this.logStream = logStream
 
@@ -29,11 +29,11 @@ class Caddy {
 
   start () {
     return this.serviceManager.startService({
-      init: () => generateCaddyFileContent(this.caddyFile, this.sites),
+      init: () => generateCaddyFileContent(this.configFile, this.sites),
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: this.executable,
-      arguments: ['-conf', this.caddyFile]
+      arguments: ['-conf', this.configFile]
     })
       .then(serviceId => {
         this.serviceId = serviceId
@@ -48,7 +48,7 @@ class Caddy {
     this.sites.push(site)
 
     if (this.child !== undefined) {
-      return generateCaddyFileContent(this.caddyFile, this.sites)
+      return generateCaddyFileContent(this.configFile, this.sites)
         .then(() => this.child.kill('SIGUSR1'))
     } else {
       return Promise.resolve()

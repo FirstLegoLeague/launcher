@@ -50,7 +50,7 @@ class Mongo {
   }
 
   createDatabase (name) {
-    return Promise.resovle(createMongoUri({
+    return Promise.resolve(createMongoUri({
       db: name
     }))
   }

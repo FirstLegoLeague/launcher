@@ -3,6 +3,7 @@
 const fs = require('fs')
 const Promise = require('bluebird')
 
+const { Mhub } = require('./mhub')
 const { Caddy } = require('./caddy')
 const { Mongo } = require('./mongo')
 const { loadModules } = require('./module-loader')
@@ -18,6 +19,7 @@ exports.Server = class {
     this.modulesPromise = loadModules()
     this.mainLogStream = createLogStream('main')
     this.serviceManager = new ServiceManager()
+    this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'))
     this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
     this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
 
@@ -26,6 +28,7 @@ exports.Server = class {
 
   start () {
     return Promise.resolve()
+      .then(() => this.mhub.start())
       .then(() => this.mongo.start())
       .then(() => loadLogsOptions())
       .then(logsOptions => this.modulesPromise
@@ -33,6 +36,7 @@ exports.Server = class {
           port: STARTING_PORT + i,
           logStream: this.mainLogStream
         }, logsOptions), {
+          mhub: this.mhub,
           caddy: this.caddy,
           mongo: this.mongo,
           serviceManager: this.serviceManager

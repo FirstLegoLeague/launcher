@@ -1,0 +1,80 @@
+{
+    "listen": [
+        {
+            "type": "websocket",
+            "port": 13900
+        },
+        {
+            "type": "tcp",
+            "port": 13902
+        }
+    ],
+    "verbose": true,
+    "nodes": {
+        "default": "Exchange"
+    },
+    "bindings": [],
+    "users": {
+        "admin": "admin_password",
+        "ref": "referee_password",
+        "scorekeeper": "scorekeeper_password",
+        "clock": "clock_password",
+        "mc": "mc_password"
+    },
+    "rights": {
+        "": {
+            "subscribe": true,
+            "publish": {
+                "default": [
+                    "background:*",
+                    "camera:*",
+                    "gallery:*",
+                    "clock:*",
+                    "time:*",
+                    "twitter:*",
+                    "lowThird:*",
+                    "list:*",
+                    "sprite:*",
+                    "css:*",
+                    "table:*",
+                    "geometry:*",
+                    "emojione:*"
+                ]
+            }
+        },
+        "admin": true,
+        "ref": {
+            "subscribe": true,
+            "publish": {
+                "default": [
+                    "scores:*",
+                    "settings:*"
+                ]
+            }
+        },
+        "scorekeeper": {
+            "subscribe": true,
+            "publish": {
+                "default": "scores:*"
+            }
+        },
+        "clock": {
+            "subscribe": true,
+            "publish": {
+                "default": [
+                    "clock:*"
+                ]
+            }
+        },
+        "mc": {
+            "subscribe": true,
+            "publish": {
+                "default": [
+                    "table:*",
+                    "list:*"
+                ]
+            }
+        }
+    },
+    "storage": "./storage/"
+}
