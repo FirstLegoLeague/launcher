@@ -1,11 +1,14 @@
+'use strict'
+
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-require('electron-debug')({enabled: true})
+require('electron-debug')({ enabled: true })
 const path = require('path')
 const url = require('url')
+
 const pjson = require('../package.json')
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -14,7 +17,7 @@ const pjson = require('../package.json')
 exports.mainWindow = null
 exports.buildMainWindow = () => {
   // Create the browser window.
-  exports.mainWindow = new BrowserWindow({width: 600, height: 500, icon: getIcon()})
+  exports.mainWindow = new BrowserWindow({ width: 600, height: 500, icon: getIcon() })
   // Disable the menubar
   exports.mainWindow.setMenu(null)
   // Setting the window title
@@ -27,7 +30,7 @@ exports.buildMainWindow = () => {
   }))
 
   // Emitted after the window is closed, in any way shape or form
-  exports.mainWindow.on('closed', function () {
+  exports.mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
@@ -36,9 +39,7 @@ exports.buildMainWindow = () => {
 
   // Emitted before the window is closed by the user or using the the close() function
   exports.mainWindow.on('close', () => {
-    // Showing message so people will know its in system tray
-    var dialog = electron.dialog
-    dialog.showMessageBox({message: 'This window is still available in the tray'})
+    app.quit()
   })
 }
 

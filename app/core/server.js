@@ -9,6 +9,7 @@ const { Mongo } = require('./mongo')
 const { loadModules } = require('./module-loader')
 const { loadLogsOptions, createLogStream } = require('./logs')
 const { ServiceManager } = require('./services')
+const { Configurator } = require('./configurator')
 
 Promise.promisifyAll(fs)
 
@@ -19,6 +20,10 @@ exports.Server = class {
     this.modulesPromise = loadModules()
     this.mainLogStream = createLogStream('main')
     this.serviceManager = new ServiceManager()
+    this.configurator = new Configurator()
+
+    this.modulesPromise.map(module => this.configurator.addModule(module))
+
     this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'))
     this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
     this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
@@ -29,6 +34,7 @@ exports.Server = class {
   start () {
     return Promise.resolve()
       .then(() => this.mhub.start())
+      .then(() => this.configurator.start())
       .then(() => this.mongo.start())
       .then(() => loadLogsOptions())
       .then(logsOptions => this.modulesPromise
