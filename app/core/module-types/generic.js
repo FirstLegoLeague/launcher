@@ -13,8 +13,11 @@ exports.GenericModule = class {
       this.command = description.command[process.platform]
     }
 
-    this.arguments = description.arguments || []
-    this.requirements = description.require || []
+    this.arguments = (description.arguments || []).slice()
+    Object.freeze(this.arguments)
+
+    this.requirements = (description.require || []).slice()
+    Object.freeze(this.requirements)
 
     Object.freeze(this)
   }
