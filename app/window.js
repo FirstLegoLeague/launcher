@@ -24,7 +24,7 @@ exports.buildMainWindow = () => {
   exports.mainWindow.setTitle('FIRST LEGO League scoring v' + pjson.version)
   // and load the index.html of the app.
   exports.mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, '../ui/index.html'),
     protocol: 'file:',
     slashes: true
   }))

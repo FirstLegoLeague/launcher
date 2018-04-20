@@ -6,7 +6,7 @@ const Promise = require('bluebird')
 
 const LOG_SIZE = '10M'
 const LOG_INTERVAL = '1d'
-const LOG_DIR = path.resolve('./logs')
+const LOG_DIR = path.resolve('./logs/')
 
 exports.createLogStream = name => {
   return rotate(`${name}.log`, {

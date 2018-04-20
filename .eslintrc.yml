@@ -1,4 +1,6 @@
-extends: standard
+extends:
+- standard
+- plugin:react/recommended
 
 parserOptions:
   sourceType: script
