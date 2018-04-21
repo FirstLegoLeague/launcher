@@ -10,12 +10,16 @@ const { ModuleSettings } = require('./module')
 class Settings extends React.Component {
   constructor (props) {
     super(props)
-    electron.remote.require('./main').server.getModules()
-      .then(modules => {
-        console.log('MODULES', modules)
-        this.setState({ modules })
-      })
-      .catch(err => console.error(err))
+    this.adapter = electron.remote.require('./main').settingsAdapter
+
+    this.adapter.getModulesNames((err, modulesNames) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+
+      this.setState({ modules: modulesNames })
+    })
 
     this.state = {
       modules: []
@@ -29,14 +33,9 @@ class Settings extends React.Component {
       <Switch>
         <Route exact path={`/settings`} />
         <Route path={`/settings/:module`}
-          render={({ match }) => this.renderModuleSettings(match.params.module)} />
+          render={({ match }) => <ModuleSettings name={match.params.module} />} />
       </Switch>
     </div>
-  }
-
-  renderModuleSettings (moduleName) {
-    const module = this.state.modules.find(m => m.name === moduleName)
-    return <ModuleSettings module={module} />
   }
 }
 

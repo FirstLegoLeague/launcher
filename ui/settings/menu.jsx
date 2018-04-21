@@ -8,15 +8,15 @@ const { NavLink } = require('react-router-dom')
 class SettingsMenu extends React.Component {
   render () {
     return this.props.modules
-      .map(m => <NavLink key={m.name}
-        to={`/settings/${m.name}`}
-        activeStyle={{ 'font-weight': 'bold' }}>{m.name}
+      .map(name => <NavLink key={name}
+        to={`/settings/${name}`}
+        activeStyle={{ 'font-weight': 'bold' }}>{name}
       </NavLink>)
   }
 }
 
 SettingsMenu.propTypes = {
-  modules: PropTypes.arrayOf(PropTypes.object)
+  modules: PropTypes.arrayOf(PropTypes.string)
 }
 
 exports.SettingsMenu = SettingsMenu

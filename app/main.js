@@ -5,6 +5,7 @@ const path = require('path')
 
 const window = require('./window')
 const { Server } = require('./core/server')
+const { SettingsAdapter } = require('./adapters/settings')
 const { buildAppMenu } = require('./menu')
 
 function getIcon () {
@@ -37,6 +38,9 @@ if (isSecondInstance) {
     // process.stderr.pipe(stream)
     server = new Server(path.join(process.cwd(), 'modules.yml'))
     exports.server = server
+
+    exports.settingsAdapter = new SettingsAdapter(server.configurator)
+
     server.start()
       .then(() => buildAppMenu(server.getModules()))
       .then(appMenu => {

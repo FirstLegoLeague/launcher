@@ -22,7 +22,10 @@ exports.Server = class {
     this.serviceManager = new ServiceManager()
     this.configurator = new Configurator()
 
-    this.modulesPromise.map(module => this.configurator.addModule(module))
+    this.modulesPromise
+      .map(module => this.configurator.addModule(module))
+      .then(() => this.configurator.seal())
+      .catch(err => console.error(err))
 
     this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'))
     this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
@@ -32,12 +35,14 @@ exports.Server = class {
   }
 
   start () {
-    return Promise.resolve()
-      .then(() => this.mhub.start())
-      .then(() => this.configurator.start())
-      .then(() => this.mongo.start())
-      .then(() => loadLogsOptions())
-      .then(logsOptions => this.modulesPromise
+    return Promise.all([
+      this.modulesPromise,
+      loadLogsOptions(),
+      this.mhub.start()
+        .then(() => this.configurator.start()),
+      this.mongo.start()
+    ])
+      .then(([modules, logsOptions]) => modules
         .map((module, i) => module.start(Object.assign({
           port: STARTING_PORT + i,
           logStream: this.mainLogStream

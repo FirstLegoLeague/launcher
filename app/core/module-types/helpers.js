@@ -1,0 +1,53 @@
+'use strict'
+
+const Promise = require('bluebird')
+
+exports.immutableObject = function immutableObject (element) {
+  if (['string', 'number', 'boolean'].includes(typeof element)) {
+    return element
+  } else if (Array.isArray(element)) {
+    return Object.freeze(element.map(e => immutableObject(e)))
+  } else if (element && element.constructor === Object) {
+    return Object.freeze(Object.keys(element).reduce((newObject, key) => {
+      newObject[key] = immutableObject(element[key])
+      return newObject
+    }, {}))
+  } else {
+    throw new Error(`Unsupported type (${(element === null) ? 'null' : typeof element}) for immutable objects`)
+  }
+}
+
+exports.immutableArray = array => {
+  array = array || []
+  return Object.freeze(array.slice())
+}
+
+exports.startModuleProcess = (options, { mongo, serviceManager }, moduleOptions) => {
+  return Promise.resolve()
+    .then(() => {
+      if (moduleOptions.requirements.includes('mongodb')) {
+        return mongo.createDatabase(moduleOptions.name)
+          .then(uri => {
+            return { 'MONGO_URI': uri }
+          })
+      } else {
+        return {}
+      }
+    })
+    .then(additionalEnv => {
+      return serviceManager.startService({
+        logStream: options.logStream,
+        executable: moduleOptions.executable,
+        arguments: moduleOptions.arguments,
+        env: Object.assign({
+          'PORT': options.port,
+          'DATA_DIR': options.datadir,
+          'AUTH_SECRET': options.secret,
+          'LOG_LEVEL': options.logLevel
+        }, additionalEnv, moduleOptions.env)
+      })
+    })
+    .then(serviceId => {
+      return () => serviceManager.stopService(serviceId)
+    })
+}

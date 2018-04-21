@@ -5,6 +5,8 @@ const rimraf = require('rimraf')
 const Promise = require('bluebird')
 const { spawn } = require('child_process')
 
+const { immutableObject, immutableArray, startModuleProcess } = require('./helpers')
+
 exports.NodeModule = class {
   constructor (modulePath, description) {
     this.name = description.name
@@ -12,44 +14,22 @@ exports.NodeModule = class {
 
     this.script = path.join(this.path, description.script)
 
-    this.arguments = (description.arguments || []).slice()
-    Object.freeze(this.arguments)
-
-    this.requirements = (description.require || []).slice()
-    Object.freeze(this.requirements)
+    this.scriptArguments = immutableArray(description.arguments)
+    this.requirements = immutableArray(description.require)
+    this.config = immutableObject(description.config || [])
 
     Object.freeze(this)
   }
 
-  start (options, { mongo, serviceManager }) {
-    return Promise.resolve()
-      .then(() => {
-        if (this.requirements.includes('mongodb')) {
-          return mongo.createDatabase(this.name)
-            .then(uri => {
-              return { 'MONGO_URI': uri }
-            })
-        } else {
-          return {}
-        }
-      })
-      .then(additionalEnv => {
-        return serviceManager.startService({
-          logStream: options.logStream,
-          executable: process.execPath,
-          arguments: [this.script].concat(this.arguments),
-          env: Object.assign({
-            'PORT': options.port,
-            'DATA_DIR': options.datadir,
-            'AUTH_SECRET': options.secret,
-            'LOG_LEVEL': options.logLevel,
-            'ELECTRON_RUN_AS_NODE': '1'
-          }, additionalEnv)
-        })
-      })
-      .then(serviceId => {
-        return () => serviceManager.stopService(serviceId)
-      })
+  start (options, dependencies) {
+    return startModuleProcess(options, dependencies, {
+      requirements: this.requirements,
+      executable: process.execPath,
+      arguments: [this.script].concat(this.arguments),
+      env: {
+        'ELECTRON_RUN_AS_NODE': '1'
+      }
+    })
   }
 
   reset () {
