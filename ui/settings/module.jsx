@@ -16,7 +16,7 @@ class ModuleSettings extends React.Component {
       Promise.fromCallback(cb => this.adapter.getModuleConfig(props.name, cb))
         .then(config => this.setState({ config })),
       Promise.fromCallback(cb => this.adapter.getModuleValues(props.name, cb))
-        .then(values => this.setState({ values, initValues: values }))
+        .then(values => this.setState({ values }))
     ])
       .then(() => this.setState({ loading: false }))
       .catch(err => {
@@ -24,6 +24,7 @@ class ModuleSettings extends React.Component {
       })
 
     this.state = {
+      changed: {},
       loading: true
     }
   }
@@ -47,7 +48,7 @@ class ModuleSettings extends React.Component {
     return fields.map(f => <Field
       {...f}
       key={f.name}
-      value={this.state.initValues[f.name]}
+      value={this.state.values[f.name]}
       onValueChange={this.updateValue.bind(this, f.name)}
     />)
   }
@@ -61,11 +62,17 @@ class ModuleSettings extends React.Component {
   }
 
   updateValue (fieldName, value) {
-    this.setState({ values: Object.assign(this.state.values, { [fieldName]: value }) })
+    this.setState({
+      values: Object.assign({}, this.state.values, { [fieldName]: value }),
+      changed: Object.assign({}, this.state.changed, { [fieldName]: value })
+    })
   }
 
   save () {
-    Promise.fromCallback(cb => this.adapter.saveValues(this.props.name, this.state.values, cb))
+    const changed = this.state.changed
+    this.setState({ changed: {} })
+
+    Promise.fromCallback(cb => this.adapter.saveValues(this.props.name, changed, cb))
       .catch(console.error)
   }
 }
