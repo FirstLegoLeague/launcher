@@ -20,16 +20,17 @@ exports.Server = class {
     this.modulesPromise = loadModules()
     this.mainLogStream = createLogStream('main')
     this.serviceManager = new ServiceManager()
-    this.configurator = new Configurator()
+
+    this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'))
+    this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
+    this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
+
+    this.configurator = new Configurator(this.mhub)
 
     this.modulesPromise
       .map(module => this.configurator.addModule(module))
       .then(() => this.configurator.seal())
       .catch(err => console.error(err))
-
-    this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'))
-    this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
-    this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
 
     this.modulesStopFunctionsPromise = Promise.resolve([])
   }
@@ -38,8 +39,7 @@ exports.Server = class {
     return Promise.all([
       this.modulesPromise,
       loadLogsOptions(),
-      this.mhub.start()
-        .then(() => this.configurator.start()),
+      this.mhub.start(),
       this.mongo.start()
     ])
       .then(([modules, logsOptions]) => modules

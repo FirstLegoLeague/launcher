@@ -3,25 +3,17 @@
 const Keyv = require('keyv')
 const path = require('path')
 const Promise = require('bluebird')
-const { MClient } = require('mhub')
 const EventEmitter = require('events')
 
-const MHUB_CONNECTION_STRING = 'ws://localhost:13900'
-const MHUB_NODE_NAME = 'default'
 const STORAGE_PATH = path.resolve('./tmp/$config.sqlite')
 
 exports.Configurator = class extends EventEmitter {
-  constructor () {
+  constructor (mhub) {
     super()
     this.storage = new Keyv(`sqlite://${STORAGE_PATH}`)
     this.configMetadata = {}
+    this.mhub = mhub
     this.sealed = false
-  }
-
-  start () {
-    this.started = true
-    this.emit('start')
-    this.mhub = new MClient(MHUB_CONNECTION_STRING)
   }
 
   seal () {
@@ -56,7 +48,7 @@ exports.Configurator = class extends EventEmitter {
       .then(() => {
         this.storage.set(`${moduleName}/${fieldName}`, value)
       })
-      .then(() => this.mhub.publish(MHUB_NODE_NAME, 'config:update', {
+      .then(() => this.mhub.publish('config:update', {
         module: moduleName,
         fields: [
           {
