@@ -1,9 +1,8 @@
 extends:
 - standard
-- plugin:react/recommended
 
 parserOptions:
-  sourceType: script
+  sourceType: module
 
 rules:
   arrow-parens:
@@ -15,7 +14,6 @@ rules:
   object-curly-spacing: [ warn, always ]
   prefer-arrow-callback: warn
   prefer-const: warn
-  strict: [ warn, global ]
 
 
   import/newline-after-import: warn
@@ -32,7 +30,6 @@ rules:
     newlines-between: always-and-inside-groups
 
   node/exports-style: [ warn, exports ]
-  node/no-unsupported-features: warn
   node/shebang: warn
 
   promise/catch-or-return: warn

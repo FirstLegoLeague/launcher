@@ -4,9 +4,10 @@ const { app, Tray } = require('electron')
 const path = require('path')
 
 const window = require('./window')
-const { Server } = require('./core/server')
-const { SettingsAdapter } = require('./adapters/settings')
 const { buildAppMenu } = require('./menu')
+
+const { Server } = require('../src/main/server')
+const { SettingsAdapter } = require('../src/main/adapters/settings')
 
 function getIcon () {
   return path.join(__dirname, 'images', 'icon.png')
