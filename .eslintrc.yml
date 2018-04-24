@@ -4,6 +4,9 @@ extends:
 parserOptions:
   sourceType: module
 
+plugins:
+  - html
+
 rules:
   arrow-parens:
   - warn

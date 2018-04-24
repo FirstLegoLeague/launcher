@@ -1,11 +1,11 @@
 'use strict'
 
-import path from 'path'
-// import { Tray } from electron
-import { app, BrowserWindow } from 'electron'
+const path = require('path')
+// const { Tray } = require('electron')
+const { app, BrowserWindow } = require('electron')
 
-import { Server } from './server'
-import { SettingsAdapter } from './adapters/settings'
+const { Server } = require('./server')
+const { SettingsAdapter } = require('./adapters/settings')
 
 /**
  * Set `__static` path to static files in production
@@ -30,6 +30,8 @@ function createWindow () {
     title: 'FIRST LEGO League scoring',
     useContentSize: true
   })
+
+  mainWindow.setMenu(null)
 
   mainWindow.loadURL(winURL)
 
