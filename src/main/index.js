@@ -53,13 +53,13 @@ let server = null
 
 const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
   // Someone tried to run a second instance, we should focus our window.
-  if (window.mainWindow) {
-    if (window.mainWindow.isMinimized()) {
-      window.mainWindow.restore()
-      window.mainWindow.show()
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) {
+      mainWindow.restore()
+      mainWindow.show()
     }
   } else {
-    window.buildMainWindow()
+    createWindow()
   }
 })
 
@@ -96,8 +96,8 @@ if (isSecondInstance) {
   })
 
   app.on('before-quit', () => {
-    if (window.mainWindow) {
-      window.mainWindow.destroy() // prevents it from showing any closing dialog
+    if (mainWindow) {
+      mainWindow.destroy() // prevents it from showing any closing dialog
     }
     server.close()
   })
