@@ -39,7 +39,8 @@ exports.Server = class {
     return Promise.all([
       this.modulesPromise,
       loadLogsOptions(),
-      this.mhub.start(),
+      this.mhub.start()
+        .then(() => this.configurator.start()),
       this.mongo.start()
     ])
       .then(([modules, logsOptions]) => modules

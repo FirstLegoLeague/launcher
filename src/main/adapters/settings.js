@@ -25,8 +25,8 @@ exports.SettingsAdapter = class {
   }
 
   saveValues (moduleName, values, callback) {
-    return Promise.resolve(Object.keys(values))
-      .map(key => this.configurator.setField(moduleName, key, values[key]))
+    return Promise.resolve()
+      .then(() => this.configurator.setFields(moduleName, values))
       .asCallback(callback)
   }
 }

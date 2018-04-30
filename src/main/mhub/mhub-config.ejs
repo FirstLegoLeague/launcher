@@ -11,7 +11,8 @@
     ],
     "verbose": true,
     "nodes": {
-        "default": "Exchange"
+        "default": "Exchange",
+        "configuration": "TopicStore"
     },
     "bindings": [],
     "users": {
@@ -25,8 +26,10 @@
         "": {
             "subscribe": true,
             "publish": {
+                "configuration": [
+                    "config:*"
+                ],
                 "default": [
-                    "config:*",
                     "background:*",
                     "camera:*",
                     "gallery:*",

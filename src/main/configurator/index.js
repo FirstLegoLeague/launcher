@@ -14,12 +14,34 @@ exports.Configurator = class extends EventEmitter {
     this.configMetadata = {}
     this.mhub = mhub
     this.sealed = false
+    this.started = false
+  }
+
+  _publishConfiguration (moduleName) {
+    return this.getFields(moduleName)
+      .then(Object.entries)
+      .map(([name, value]) => {
+        return { name, value }
+      })
+      .then(fields => {
+        return this.mhub.publish('configuration', `config:${moduleName}`, { fields })
+      })
   }
 
   seal () {
     this.sealed = true
     Object.freeze(this.configMetadata)
     this.emit('seal')
+  }
+
+  start () {
+    if (!this.started) {
+      return this.getConfigMetadata()
+        .then(Object.keys)
+        .map(moduleName => this._publishConfiguration(moduleName))
+    } else {
+      return Promise.resolve()
+    }
   }
 
   addModule (module) {
@@ -43,20 +65,10 @@ exports.Configurator = class extends EventEmitter {
       .then(() => this.configMetadata)
   }
 
-  setField (moduleName, fieldName, value) {
-    return Promise.resolve()
-      .then(() => {
-        this.storage.set(`${moduleName}/${fieldName}`, value)
-      })
-      .then(() => this.mhub.publish('config:update', {
-        module: moduleName,
-        fields: [
-          {
-            name: fieldName,
-            value
-          }
-        ]
-      }))
+  setFields (moduleName, fieldsValues) {
+    return Promise.resolve(Object.entries(fieldsValues))
+      .map(([name, value]) => this.storage.set(`${moduleName}/${name}`, value))
+      .then(() => this._publishConfiguration(moduleName))
   }
 
   getField (moduleName, fieldName) {
