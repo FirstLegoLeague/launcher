@@ -5,6 +5,7 @@
       type="checkbox"
       :name="field.name"
       :checked="value"
+      @change="$emit('value-change', $event.target.checked)"
     />
   </label>
 </template>

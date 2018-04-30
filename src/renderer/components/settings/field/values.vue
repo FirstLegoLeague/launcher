@@ -7,6 +7,7 @@
             :name="field.name"
             :value="v"
             :checked="value === v"
+            @change="$event.target.checked && $emit('value-change', $event.target.value)"
         /> {{ v }}
     </label>
     </div>

@@ -7,6 +7,7 @@
             :minLength="field.minLength"
             :maxLength="field.maxLength"
             :value="value"
+            @change="$emit('value-change', $event.target.value)"
         />
     </label>
 </template>

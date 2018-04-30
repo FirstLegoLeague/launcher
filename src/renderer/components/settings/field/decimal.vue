@@ -4,9 +4,10 @@
         <input
             type="number"
             :name="field.name"
-            :value="field.value"
+            :value="value"
             :min="field.min"
             :max="field.max"
+            @change="$emit('value-change', $event.target.value)"
         />
     </label>
 </template>
