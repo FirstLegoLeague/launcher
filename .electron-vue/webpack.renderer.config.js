@@ -37,6 +37,7 @@ const rendererConfig = {
         use: {
           loader: 'eslint-loader',
           options: {
+            emitWarning: process.env.NODE_ENV !== 'production',
             formatter: require('eslint-friendly-formatter')
           }
         }
