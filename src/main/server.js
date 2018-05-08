@@ -13,7 +13,7 @@ const { Configurator } = require('./configurator')
 
 Promise.promisifyAll(fs)
 
-const STARTING_PORT = 1300
+const STARTING_PORT = 2828
 
 exports.Server = class {
   constructor (modulesFile) {
@@ -39,13 +39,14 @@ exports.Server = class {
     return Promise.all([
       this.modulesPromise,
       loadLogsOptions(),
+      this.getPortsAllocation(),
       this.mhub.start()
         .then(() => this.configurator.start()),
       this.mongo.start()
     ])
-      .then(([modules, logsOptions]) => modules
+      .then(([modules, logsOptions, portsAllocations]) => modules
         .map((module, i) => module.start(Object.assign({
-          port: STARTING_PORT + i,
+          port: portsAllocations[module.name],
           logStream: this.mainLogStream
         }, logsOptions), {
           mhub: this.mhub,
@@ -69,6 +70,15 @@ exports.Server = class {
 
   getModules () {
     return this.modulesPromise
+  }
+
+  getPortsAllocation () {
+    return this.modulesPromise
+      .then(modules => modules.map(m => m.name)
+        .sort()
+        .map((name, index) => ({ [name]: STARTING_PORT + index }))
+        .reduce((object, keyValue) => Object.assign(object, keyValue), {})
+      )
   }
 
   resetData () {
