@@ -50,6 +50,19 @@ exports.Configurator = class extends EventEmitter {
     }
 
     this.configMetadata[module.name] = module.config
+    return Promise.resolve(Object.values(module.config))
+      .reduce((fields, group) => fields.concat(group.fields), [])
+      .map(field => {
+        const key = `${module.name}/${field.name}`
+        if (field.default !== undefined) {
+          return Promise.resolve(this.storage.get(key))
+            .then(value => {
+              if (value === undefined) {
+                return this.storage.set(key, field.default)
+              }
+            })
+        }
+      })
   }
 
   getConfigMetadata () {
