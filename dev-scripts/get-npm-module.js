@@ -1,29 +1,17 @@
 'use strict'
 
 const tar = require('tar-fs')
-const path = require('path')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
-const caporal = require('caporal')
 const request = require('request')
 const Promise = require('bluebird')
 const { exec } = require('child_process')
 const { createGunzip } = require('zlib')
 
-const mkdirpAsync = Promise.promisify(mkdirp)
-const rimrafAsync = Promise.promisify(rimraf)
 const requestAsync = Promise.promisify(request, { multiArgs: true })
 
-const DEFAULT_MODULES_DIR = path.join(__dirname, '../modules')
 const NPM_REGISTRY_BASE_URL = 'https://registry.npmjs.org'
 
-exports.getNpmModule = function (modulesDir, moduleOptions) {
-  modulesDir = modulesDir || DEFAULT_MODULES_DIR
-
-  const modulePath = path.resolve(modulesDir, moduleOptions.name)
-
-  return rimrafAsync(modulePath)
-    .then(() => mkdirpAsync(modulePath))
+exports.getNpmModule = function ({ directory }, moduleOptions) {
+  return Promise.resolve()
     .then(() => requestAsync({
       baseUrl: NPM_REGISTRY_BASE_URL,
       url: `/${moduleOptions.package.replace('/', '%2F')}/`,
@@ -50,7 +38,7 @@ exports.getNpmModule = function (modulesDir, moduleOptions) {
           if (response.statusCode === 200) {
             req
               .pipe(createGunzip())
-              .pipe(tar.extract(modulePath, {
+              .pipe(tar.extract(directory, {
                 map: header => {
                   if (header.name.startsWith('package/')) {
                     header.name = header.name.substring('package/'.length)
@@ -70,7 +58,7 @@ exports.getNpmModule = function (modulesDir, moduleOptions) {
     })
     .then(() => new Promise((resolve, reject) => {
       exec('yarn --production --pure-lockfile', {
-        cwd: modulePath,
+        cwd: directory,
         stdio: 'ignore'
       })
         .on('error', reject)
@@ -82,20 +70,4 @@ exports.getNpmModule = function (modulesDir, moduleOptions) {
           }
         })
     }))
-}
-
-if (require.main === module) {
-  caporal
-    .description('Download the relevant caddy executable')
-    .argument('<name>', 'The name of the module')
-    .argument('<package>', 'The name of the npm package')
-    .argument('<version>', 'The version of the npm package')
-    .option('--modules-dir, -m <modulesDir>', 'The path to the modules directory')
-    .action((args, options) => {
-      exports.getNpmModule(options.modulesDir, args)
-        .then(() => console.info(`Module "${args.name}" downloaded successfully.`))
-        .catch(err => console.error(err))
-    })
-
-  caporal.parse(process.argv)
 }

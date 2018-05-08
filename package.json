@@ -9,7 +9,7 @@
     "node": ">=6.11.4"
   },
   "scripts": {
-    "modules:download": "node ./dev-scripts/get-all-modules.js",
+    "get": "node ./dev-scripts/get.js",
     "start": "node .electron-vue/dev-runner.js",
     "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
@@ -17,7 +17,6 @@
     "build:linux": "node .electron-vue/build.js && electron-builder -l --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
-    "get-internals": "node ./dev-scripts/get-all-internals.js",
     "postinstall": "electron-builder install-app-deps",
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",

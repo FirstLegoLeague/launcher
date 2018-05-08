@@ -2,50 +2,36 @@
 
 const tar = require('tar-fs')
 const unzip = require('unzip-stream')
-const path = require('path')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
-const caporal = require('caporal')
 const request = require('request')
 const Promise = require('bluebird')
 const { createGunzip } = require('zlib')
 
-const mkdirpAsync = Promise.promisify(mkdirp)
-const rimrafAsync = Promise.promisify(rimraf)
-
-const DEFAULT_INTERNALS_DIR = path.join(__dirname, '../internals')
-const CADDY_DIR = 'caddy'
-
-function getDefaultPlatform () {
-  return (process.platform === 'win32') ? 'windows' : process.platform
+function calculateCaddyPlatform (platform) {
+  return (platform === 'win32') ? 'windows' : platform
 }
 
-function getDefaultArch () {
-  if (process.arch === 'x32') {
+function calculateCaddyArch (arch) {
+  if (arch === 'x32') {
     return '386'
   }
 
-  if (process.arch === 'x64') {
+  if (arch === 'x64') {
     return 'amd64'
   }
 
-  return process.arch
+  throw new Error(`Unknown architecture '${arch}' for caddy`)
 }
 
 function createDownloadLink (platform, arch) {
-  return `https://caddyserver.com/download/${platform}/${arch}?license=personal`
+  const caddyPlatform = calculateCaddyPlatform(platform)
+  const caddyArch = calculateCaddyArch(arch)
+  return `https://caddyserver.com/download/${caddyPlatform}/${caddyArch}?license=personal`
 }
 
-exports.getCaddy = function (internalsDir, platform, arch) {
-  internalsDir = internalsDir || DEFAULT_INTERNALS_DIR
-  platform = platform || getDefaultPlatform()
-  arch = arch || getDefaultArch()
-
+exports.getCaddy = function ({ directory, platform, arch }) {
   const caddyLink = createDownloadLink(platform, arch)
-  const caddyPath = path.resolve(internalsDir, CADDY_DIR)
 
-  return rimrafAsync(caddyPath)
-    .then(() => mkdirpAsync(caddyPath))
+  return Promise.resolve()
     .then(() => new Promise((resolve, reject) => {
       const req = request({
         url: caddyLink,
@@ -57,7 +43,7 @@ exports.getCaddy = function (internalsDir, platform, arch) {
         if (response.statusCode === 200) {
           if (response.headers['content-type'] === 'application/zip') {
             req
-              .pipe(unzip.Extract({ path: caddyPath })
+              .pipe(unzip.Extract({ path: directory })
                 .on('close', () => {
                   resolve()
                 }))
@@ -65,7 +51,7 @@ exports.getCaddy = function (internalsDir, platform, arch) {
           } else if (response.headers['content-type'] === 'application/x-gzip') {
             req
               .pipe(createGunzip())
-              .pipe(tar.extract(caddyPath)
+              .pipe(tar.extract(directory)
                 .on('finish', () => {
                   resolve()
                 }))
@@ -78,19 +64,4 @@ exports.getCaddy = function (internalsDir, platform, arch) {
         }
       })
     }))
-}
-
-if (require.main === module) {
-  caporal
-    .description('Download the relevant caddy executable')
-    .option('--platform, -p <platform>', 'Platform for executable', ['windows', 'darwin', 'linux'])
-    .option('--arch <arch>', 'CPU architecture', ['386', 'amd64'])
-    .option('--internals-dir, -i <internalsDir>', 'The path to the internals directory')
-    .action((args, options) => {
-      exports.getCaddy(options.internalsDir, options.platform, options.arch)
-        .then(() => console.info('Caddy downloaded successfully.'))
-        .catch(err => console.error(err))
-    })
-
-  caporal.parse(process.argv)
 }
