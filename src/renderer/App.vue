@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-      <Menu></Menu>
+    <MainMenu></MainMenu>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import Menu from './components/menu'
+  import MainMenu from './components/menu'
 
   export default {
     name: 'app',
-    components: { Menu }
+    components: { MainMenu }
   }
 </script>
 

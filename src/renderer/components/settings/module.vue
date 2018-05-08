@@ -9,6 +9,7 @@
           <SettingsGroup v-for="group in titledGroups"
                          :group="group"
                          :values="values"
+                         :key="group.name"
                          @value-change="updateValue"
           />
           <button @click="save">Save</button>

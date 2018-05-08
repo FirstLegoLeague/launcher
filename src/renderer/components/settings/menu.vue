@@ -1,6 +1,6 @@
 <template>
   <div>
-      <router-link v-for="module in modules" :to="{ name: 'settings-module', params: { module } }">
+      <router-link v-for="module in modules" :to="{ name: 'settings-module', params: { module } }" :key="module">
           {{ module }}
       </router-link>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: 'menu',
+    name: 'settings-menu',
     props: [ 'modules' ]
   }
 </script>

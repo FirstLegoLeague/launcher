@@ -4,6 +4,7 @@
         <Field v-for="field in group.fields"
                :field="field"
                :value="values[field.name]"
+               :key="field.name"
                @value-change="v => $emit('value-change', field.name, v)"
         />
     </div>
