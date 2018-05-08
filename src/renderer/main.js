@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import App from './App'
+import App from './app'
 import router from './router'
 
 if (!process.env.IS_WEB) {
