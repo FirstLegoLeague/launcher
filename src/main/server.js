@@ -52,7 +52,8 @@ exports.Server = class {
           mhub: this.mhub,
           caddy: this.caddy,
           mongo: this.mongo,
-          serviceManager: this.serviceManager
+          serviceManager: this.serviceManager,
+          portsAllocations
         }))
       )
       .then(stopFunctions => { this.modulesStopFunctionsPromise = Promise.resolve(stopFunctions) })

@@ -22,7 +22,13 @@ exports.immutableArray = array => {
   return Object.freeze(array.slice())
 }
 
-exports.startModuleProcess = (options, { mongo, serviceManager }, moduleOptions) => {
+function createDiscoveryEnvironment (portAllocation) {
+  return Object.entries(portAllocation)
+    .map(([key, value]) => ({ [`MODULE_${key.toUpperCase().replace(/-/g, '_')}_URL`]: `http://localhost:${value}` }))
+    .reduce((obj, kv) => Object.assign(obj, kv), {})
+}
+
+exports.startModuleProcess = (options, { mongo, serviceManager, portsAllocations }, moduleOptions) => {
   return Promise.resolve()
     .then(() => {
       if (moduleOptions.requirements.includes('mongodb')) {
@@ -44,7 +50,7 @@ exports.startModuleProcess = (options, { mongo, serviceManager }, moduleOptions)
           'DATA_DIR': options.datadir,
           'AUTH_SECRET': options.secret,
           'LOG_LEVEL': options.logLevel
-        }, additionalEnv, moduleOptions.env)
+        }, createDiscoveryEnvironment(portsAllocations), additionalEnv, moduleOptions.env)
       })
     })
     .then(serviceId => {
