@@ -1,0 +1,19 @@
+cache:
+ - "%LOCALAPPDATA%\\Yarn"
+
+environment:
+  nodejs_version: "6"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - yarn install --frozen-lockfile
+  - yarn run get
+  - dir
+
+build:
+  - yarn run build:win
+  - echo hello world
+  - dir
