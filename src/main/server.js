@@ -60,13 +60,21 @@ exports.Server = class {
       .then(() => this.caddy.start())
   }
 
+  restart () {
+    return this.close()
+      .then(() => this.start())
+  }
+
   close () {
     return this.modulesStopFunctionsPromise
       .map(stop => {
         stop()
       })
-      .then(() => this.caddy.stop())
-      .then(() => this.mongo.stop())
+      .then(() => [
+        this.caddy.stop(),
+        this.mongo.stop(),
+        this.mhub.stop()
+      ])
   }
 
   getModules () {
@@ -80,15 +88,5 @@ exports.Server = class {
         .map((name, index) => ({ [name]: STARTING_PORT + index }))
         .reduce((object, keyValue) => Object.assign(object, keyValue), {})
       )
-  }
-
-  resetData () {
-    this.getModules()
-      .then(modules =>
-        Promise.all(modules.map(module => module.reset()))
-      )
-      .catch(() => {
-        console.error('Failed to reset modules data')
-      })
   }
 }

@@ -5,7 +5,7 @@ const path = require('path')
 const Promise = require('bluebird')
 const EventEmitter = require('events')
 
-const STORAGE_PATH = path.resolve('./tmp/$config.sqlite')
+const STORAGE_PATH = path.resolve('./data/$config.sqlite')
 
 exports.Configurator = class extends EventEmitter {
   constructor (mhub) {
