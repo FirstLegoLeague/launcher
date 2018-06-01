@@ -6,7 +6,7 @@
   "author": "Roy Shmueli",
   "license": "MIT",
   "engines": {
-    "node": ">=6.11.4"
+    "node": ">=8.2.1"
   },
   "scripts": {
     "get": "node ./dev-scripts/get.js",

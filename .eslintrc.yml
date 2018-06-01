@@ -33,6 +33,7 @@ rules:
     newlines-between: always-and-inside-groups
 
   node/exports-style: [ warn, exports ]
+  node/no-unsupported-features: warn
   node/shebang: warn
 
   promise/catch-or-return: warn
