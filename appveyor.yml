@@ -13,7 +13,7 @@ install:
   - yarn run get
   - dir
 
-build:
+build_script:
   - yarn run build:win
   - echo hello world
   - dir
