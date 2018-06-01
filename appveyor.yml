@@ -12,4 +12,4 @@ install:
 
 build_script:
   - yarn run build:win --c.directories.output=./bundle
-  - "C:\Program Files (x86)\Inno Setup 5\ISCC.exe" /Odist .\windows\setup\main.iss
+  - \"C:\Program Files (x86)\Inno Setup 5\ISCC.exe\" /Odist .\windows\setup\main.iss
