@@ -17,5 +17,5 @@ build_script:
   - "\"C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe\" /Odist .\\windows\\setup\\main.iss"
 
 artifacts:
-  - path: C:\projects\launcher\dist\mysetup.exe
+  - path: .\dist\mysetup.exe
     name: Installer
