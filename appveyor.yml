@@ -4,11 +4,11 @@ cache:
 platform: x64
 
 environment:
-  nodejs_version: "8.2.1 x64"
+  nodejs_version: "8.2.1"
 
 # Install scripts. (runs after repo cloning)
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version x64
   - yarn install --frozen-lockfile
   - yarn run get all -p win32 --arch x64 -i ./internals -m ./modules
 
