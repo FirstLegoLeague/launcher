@@ -1,6 +1,8 @@
 cache:
  - "%LOCALAPPDATA%\\Yarn"
 
+platform: x64
+
 environment:
   nodejs_version: "8.2.1"
 
