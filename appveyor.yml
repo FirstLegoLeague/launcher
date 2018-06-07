@@ -15,3 +15,7 @@ install:
 build_script:
   - yarn run build:win --c.directories.output=./dist/
   - "\"C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe\" /Odist .\\windows\\setup\\main.iss"
+
+artifacts:
+  - path: C:\projects\launcher\dist\mysetup.exe
+    name: Installer
