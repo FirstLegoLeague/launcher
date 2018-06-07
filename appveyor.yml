@@ -6,8 +6,6 @@ platform: x64
 environment:
   nodejs_version: "8.2.1"
 
-version: {branch}-{build}
-
 # Install scripts. (runs after repo cloning)
 install:
   - ps: Install-Product node $env:nodejs_version x64
