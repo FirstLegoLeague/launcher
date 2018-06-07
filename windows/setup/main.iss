@@ -1,7 +1,7 @@
 
-#define app ".\bundle\win-unpacked"
-#define modules ".\bundle\modules"
-#define internals ".\bundle\internals"
+#define app "..\..\dist\win-unpacked"
+#define modules "..\..\modules"
+#define internals "..\..\internals"
 
 [Setup]
 AppName=FIRST LEGO League - Scoring System
