@@ -11,5 +11,5 @@ install:
   - yarn run get all -p win32 --arch x64 -i ./internals -m ./modules
 
 build_script:
-  - yarn run build:win --c.directories.output=./dist/bundle
+  - yarn run build:win --c.directories.output=./dist/
   - "\"C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe\" /Odist .\\windows\\setup\\main.iss"
