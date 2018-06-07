@@ -16,8 +16,8 @@ build_script:
   - yarn run build:win --c.directories.output=./dist/
   - >-
     "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
-    /FFIRST_LEGO_League_Tournament_Management_System_Setup_{version}.exe .\\windows\\setup\\main.iss
+    /FFIRST_LEGO_League_Tournament_Management_System_Setup_$env:version .\\windows\\setup\\main.iss
 
 artifacts:
-  - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_{version}.exe
+  - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_$env:version.exe
     name: Installer
