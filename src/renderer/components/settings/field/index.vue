@@ -9,6 +9,7 @@
   import DecimalField from './decimal'
   import BooleanField from './boolean'
   import StringField from './string'
+  import PasswordField from './password'
   import ValuesField from './values'
 
   export default {
@@ -32,6 +33,9 @@
           break
         case 'string':
           fieldComponent = StringField
+          break
+        case 'password':
+          fieldComponent = PasswordField
           break
         case 'values':
           fieldComponent = ValuesField
