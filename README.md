@@ -1,4 +1,4 @@
-[![Codefresh build status](https://g.codefresh.io/api/badges/build?repoOwner=FirstLegoLeague&repoName=Launcher&branch=master&pipelineName=Launcher&accountName=2roy999&type=cf-1)](https://g.codefresh.io/repositories/FirstLegoLeague/Launcher/builds?filter=trigger:build;branch:master;service:5974fb50aa64aa00013419e3~Launcher)
+[![Build status](https://ci.appveyor.com/api/projects/status/0y2bsm8ku11q6vyt?svg=true)](https://ci.appveyor.com/project/2roy999/launcher-8a1fe)
 [![David Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher.png)](https://david-dm.org/FirstLegoLeague/Launcher)
 [![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher/dev-status.png)](https://david-dm.org/FirstLegoLeague/Launcher#info=devDependencies)
 
