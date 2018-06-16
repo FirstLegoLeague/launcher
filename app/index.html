@@ -11,7 +11,7 @@
     }
 
     body {
-      font-family: Roboto;
+      font-family: Roboto, serif;
     }
 
     a {
@@ -26,11 +26,11 @@
     const path = require('path');
     const url = require('url');
 
-    var addressAdmin = `http://${ip.address()}:1390/admin`;
+    const addressAdmin = `http://${ip.address()}:1390/admin`;
     let addressScoring = `http://${ip.address()}:1390/`;
-    var addressClock = `http://${ip.address()}:1392/`;
-    var addressDisplay = `http://${ip.address()}:1391/`;
-    var addressImages = `http://${ip.address()}:1395/`;
+    const addressClock = `http://${ip.address()}:1392/`;
+    const addressDisplay = `http://${ip.address()}:1391/`;
+    const addressImages = `http://${ip.address()}:1395/`;
     let {app} = require('electron').remote;
     let main = require('electron').remote.require('./main');
     let zipLogs = require('./ZipLogs').zipLogs;
@@ -40,10 +40,10 @@
             app.quit()
     }
 
-    var creditsFile = url.format({
-      pathname: path.join(__dirname, 'credits.html'),
-      protocol: 'file:',
-      slashes: true
+    const creditsFile = url.format({
+        pathname: path.join(__dirname, 'credits.html'),
+        protocol: 'file:',
+        slashes: true
     });
 
     function resetData () {
@@ -63,6 +63,9 @@
     <tr>
       <th style="width:30%">System Components</th>
       <th style="text-align:right;"><img src="images/FLL-full-triangle_with-new-logo.jpg" style="height:100px;" /></th>
+    </tr>
+    <tr>
+      <td><a id="Settings"></a></td>
     </tr>
     <tr>
       <td><a id="Management" onclick="shell.openExternal(addressAdmin)">Management</a></td>

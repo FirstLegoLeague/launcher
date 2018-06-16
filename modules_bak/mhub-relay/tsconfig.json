@@ -1,0 +1,39 @@
+{
+    "version": "1.7.5",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "isolatedModules": false,
+        "declaration": true,
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "moduleResolution": "node"
+    },
+    "filesGlob": [
+        "./typings/tsd.d.ts",
+        "./**/*.ts",
+        "./**/*.tsx",
+        "!./**.d.ts",
+        "!./node_modules/**/*"
+    ],
+    "files": [
+        "./typings/tsd.d.ts",
+        "./config.ts",
+        "./exampleTransform.ts",
+        "./mhub-relay.ts",
+        "./relay.ts",
+        "./typings/es6-promise/es6-promise.d.ts",
+        "./typings/node-uuid/node-uuid.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/ws/ws.d.ts",
+        "./typings/yargs/yargs.d.ts",
+        "./util.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}

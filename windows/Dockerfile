@@ -1,4 +1,4 @@
-FROM node:6.11.1-wheezy
+FROM node:8.11.1-stretch
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,15 +7,15 @@ RUN dpkg --add-architecture i386
 RUN sed -i "s/main/main contrib non-free/" etc/apt/sources.list
 
 RUN apt-get update && apt-get install -yq \
-    apt-transport-https \
     curl \
     unrar \
-    unzip
+    unzip \
+    wine
 
-RUN curl -fsSL -o Release.key https://dl.winehq.org/wine-builds/Release.key && \
-    apt-key add Release.key && \
-    echo deb https://dl.winehq.org/wine-builds/debian/ wheezy main | tee /etc/apt/sources.list.d/winehq.list && \
-    apt-get update && apt-get install -yq winehq-devel
+#RUN curl -fsSL -o Release.key https://dl.winehq.org/wine-builds/Release.key && \
+#    apt-key add Release.key && \
+#    echo deb https://dl.winehq.org/wine-builds/debian/ wheezy main | tee /etc/apt/sources.list.d/winehq.list && \
+#    apt-get update && apt-get install -yq winehq-devel
 
 # innosetup
 RUN mkdir innosetup && \
@@ -32,17 +32,19 @@ WORKDIR /code
 COPY package.json yarn.lock /code/
 
 RUN yarn install --frozen-lockfile && \
+    yarn postinstall --platform win32 && \
     yarn cache clean
 
-COPY resources /code/resources
-COPY build /code/build
-COPY app /code/app
-COPY modules.yml /code/
+COPY . /code/
+
+RUN node ./dev-scripts/get-caddy.js -p windows -i /bundle/internals
+RUN node ./dev-scripts/get-mongo.js -p win32 -i /bundle/internals
+RUN node ./dev-scripts/get-mhub.js -i /bundle/internals
 
 RUN yarn modules:download && \
     mkdir -p /bundle && \
-    mv ./modules /bundle/modules && \
-    cp ./modules.yml /bundle/modules.yml
+    mv ./modules /bundle/modules
+
 RUN yarn build:win -- --c.directories.output=/bundle
 
 COPY windows/setup/* /installer/

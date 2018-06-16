@@ -1,0 +1,8 @@
+<% sites.forEach(site => { %>
+:<%= site.port %> {
+root <%= site.root -%>
+<% if(site.index) { %>
+index <%= site.index -%>
+<% } %>
+}
+<% }) %>

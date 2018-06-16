@@ -1,7 +1,7 @@
 
-#define app "..\bundle\win-unpacked"
-#define modules "..\bundle\modules"
-#define modulesFile "..\bundle\modules.yml"
+#define app "..\..\dist\win-unpacked"
+#define modules "..\..\modules"
+#define internals "..\..\internals"
 
 [Setup]
 AppName=FIRST LEGO League - Scoring System
@@ -16,12 +16,13 @@ Name: "Basic"; Description: "Basic installation" ; Types: full custom; Flags: fi
 
 [Dirs]
 Name: "{app}\data"
-Name: "{app}\components"
+Name: "{app}\logs"
+Name: "{app}\tmp"
 
 [Files]
 Source: "{#app}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; Components: "Basic";
 Source: "{#modules}\*"; DestDir: "{app}\modules"; Flags: ignoreversion recursesubdirs; Components: "Basic";
-Source: "{#modulesFile}"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; Components: "Basic";
+Source: "{#internals}\*"; DestDir: "{app}\internals"; Flags: ignoreversion recursesubdirs; Components: "Basic";
 
 [Icons]
 Name: "{commondesktop}\FIRST LEGO League Scoring"; Filename: "{app}\FIRST LEGO League Launcher.exe"

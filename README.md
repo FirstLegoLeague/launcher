@@ -71,6 +71,9 @@ Development
 
 - Clone the repository
 - Run from cmd `yarn install`
+- Run from cmd `yarn get all` - this would download all external
+  modules for the luancher. Use `yarn get --help` to change the modules
+  that would download.
 
 ### Run Program Locally ###
 The simple way run:

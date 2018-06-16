@@ -3,6 +3,8 @@
 
 /dist
 /modules
+/internals
+/data
 
 # Created by https://www.gitignore.io/api/node
 

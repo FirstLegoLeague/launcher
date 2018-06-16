@@ -1,0 +1,9 @@
+/*
+    example phonegap build config file
+    copy and rename to "pgbuildconfig.json"
+    then run "grunt phonegap"
+*/
+{
+    "username": "you@yourhost.com",
+    "password": "mysecretpassord"
+}

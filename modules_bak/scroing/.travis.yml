@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 0.10
+before_install:
+  - "npm i -g bower karma-cli"
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+after_script:
+  - ls ./coverage
+  - 'npm install coveralls@2.10.0 && cat "./coverage/Firefox 31.0.0 (Linux)/lcov.info" | coveralls'
