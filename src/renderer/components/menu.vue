@@ -1,7 +1,8 @@
 <template>
     <div>
+        <router-link :to="{ name: 'home-page' }">Home</router-link>
         <router-link :to="{ name: 'settings' }">Settings</router-link>
-        <!--<router to={`/settings`} activeStyle={{ 'font-weight': 'bold' }}>Settings</a>-->
+        <router-link :to="{ name: 'credits-page' }">Credits</router-link>
     </div>
 </template>
 
