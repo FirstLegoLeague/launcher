@@ -47,7 +47,7 @@ class Mhub {
       .then(serviceId => {
         this.serviceId = serviceId
       })
-      .delay(500)
+      .delay(1000)
       .then(() => this.connect())
   }
 
