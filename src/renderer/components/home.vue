@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Hello World</h1>
+        <h1><i>FIRST</i> LEGO League Tournament Management System</h1>
         <button @click="saveLogs">Save Logs</button>
     </div>
 </template>
