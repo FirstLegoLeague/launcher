@@ -16,7 +16,13 @@
 </template>
 
 <script>
-  import sha256 from 'sha256'
+  import crypto from 'crypto'
+
+  function sha256 (password) {
+    return crypto.createHash('sha256')
+       .update(password)
+       .digest('base64')
+  }
   
   export default {
     name: 'password-field',
