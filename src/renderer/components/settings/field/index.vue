@@ -37,6 +37,7 @@
           break
         case 'password':
           fieldComponent = PasswordField
+          break
         case 'file':
           fieldComponent = FileField
           break
