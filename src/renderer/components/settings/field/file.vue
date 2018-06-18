@@ -4,8 +4,6 @@
         <input
             type="file"
             :name="field.name"
-            :minLength="field.minLength"
-            :maxLength="field.maxLength"
             :value="value"
             @change="$emit('value-change', $event.target.value)"
         />
