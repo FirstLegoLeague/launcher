@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path')
+const AdmZip = require('adm-zip')
 const rotate = require('rotating-file-stream')
 const Promise = require('bluebird')
 
@@ -21,4 +22,10 @@ exports.loadLogsOptions = () => {
     logsDirectory: LOG_DIR,
     logLevel: process.env.LOG_LEVEL
   })
+}
+
+exports.saveLogs = filePath => {
+  const zip = new AdmZip()
+  zip.addLocalFolder(LOG_DIR, 'logs')
+  return Promise.fromCallback(cb => zip.writeZip(filePath, cb))
 }
