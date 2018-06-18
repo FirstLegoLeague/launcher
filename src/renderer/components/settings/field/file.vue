@@ -5,6 +5,7 @@
             type="file"
             :name="field.name"
             :value="value"
+            :accept="field.extensions"
             @change="$emit('value-change', $event.target.value)"
         />
     </label>
