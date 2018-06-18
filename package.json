@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@keyv/sqlite": "^1.2.12",
-    "adm-zip": "^0.4.7",
+    "adm-zip": "^0.4.11",
     "bluebird": "^3.5.0",
     "clipboardy": "^1.1.4",
     "ejs": "^2.5.8",

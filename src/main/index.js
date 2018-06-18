@@ -6,6 +6,7 @@ const { app, BrowserWindow } = require('electron')
 
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
+const homeAdapter = require('./adapters/home')
 
 /**
  * Set `__static` path to static files in production
@@ -76,6 +77,7 @@ if (isSecondInstance) {
     exports.server = server
 
     exports.settingsAdapter = new SettingsAdapter(server.configurator)
+    exports.homeAdapter = homeAdapter
 
     server.start()
       // .then(() => buildAppMenu(server.getModules()))
