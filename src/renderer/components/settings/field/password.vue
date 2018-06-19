@@ -11,17 +11,23 @@
                 :value="value"
             />
         </label>
-        <button @click="$emit('value-change', sha256(value))"></button>
+        <button @click="$emit('value-change', hashedJson(value))"></button>
     </div>
 </template>
 
 <script>
   import crypto from 'crypto'
+  
+  const SALT_LENGTH = 6
 
-  function sha256 (password) {
-    return crypto.createHash('sha256')
-      .update(password)
+  function hashedJson (password) {
+    let salt = crypto.randomBytes(Math.ceil(SALT_LENGTH/2))
+            .toString('base64')
+            .slice(0, SALT_LENGTH)
+    let hashedPassword = crypto.createHash('sha256')
+      .update(password + salt)
       .digest('base64')
+    return { hash: hashedPassword, salt }
   }
   
   export default {
@@ -29,7 +35,7 @@
     props: ['field'],
     editing: false,
     value: '',
-    sha256
+    hashedJson
   }
 </script>
 
