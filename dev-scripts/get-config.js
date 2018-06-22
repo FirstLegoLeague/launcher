@@ -3,7 +3,8 @@
 const { getMhub } = require('./get-mhub')
 const { getCaddy } = require('./get-caddy')
 const { getMongo } = require('./get-mongo')
-const { getNpmModule } = require('./get-npm-module')
+const { getNpmModule } = require('./.get/get-npm-module')
+const { getByHttp } = require('./get-by-http')
 
 // eslint-disable-next-line node/exports-style
 module.exports = {
