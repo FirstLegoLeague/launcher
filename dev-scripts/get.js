@@ -7,7 +7,7 @@ const mkdirp = require('mkdirp')
 const caporal = require('caporal')
 const Promise = require('bluebird')
 
-const config = require('./get-config')
+const config = require('./config.get')
 
 Promise.promisifyAll(fs)
 
