@@ -4,7 +4,7 @@ const { getMhub } = require('./.get/get-mhub')
 const { getCaddy } = require('./.get/get-caddy')
 const { getMongo } = require('./.get/get-mongo')
 const { getNpmModule } = require('./.get/get-npm-module')
-const { getByHttp } = require('./get-by-http')
+const { getByHttp } = require('./.get/get-by-http')
 
 // eslint-disable-next-line node/exports-style
 module.exports = {
@@ -25,15 +25,21 @@ module.exports = {
         version: '0.9.1'
       }
     },
-    display: {
+    scoring2: {
       get: getNpmModule,
       options: {
-        package: '@first-lego-league/display',
-        version: '1.1.6'
+        version: 'FirstLegoLeague/scoring#dev/standard'
+      }
+    },
+    schedule: {
+      get: getNpmModule,
+      options: {
+        version: 'FirstLegoLeague/schedule#master'
       }
     }
   },
   custom: {
-    npm: getNpmModule
+    npm: getNpmModule,
+    http: getByHttp
   }
 }
