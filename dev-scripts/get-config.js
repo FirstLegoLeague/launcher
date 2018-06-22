@@ -1,8 +1,8 @@
 'use strict'
 
-const { getMhub } = require('./get-mhub')
-const { getCaddy } = require('./get-caddy')
-const { getMongo } = require('./get-mongo')
+const { getMhub } = require('./.get/get-mhub')
+const { getCaddy } = require('./.get/get-caddy')
+const { getMongo } = require('./.get/get-mongo')
 const { getNpmModule } = require('./.get/get-npm-module')
 const { getByHttp } = require('./get-by-http')
 
