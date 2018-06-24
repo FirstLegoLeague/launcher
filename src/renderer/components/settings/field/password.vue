@@ -22,7 +22,7 @@
 
   function hashedJson (password) {
     const salt = crypto.randomBytes(RANDOM_BYTES_COUNT)
-            .toString('base64')
+      .toString('base64')
     const hashedPassword = crypto.createHash('sha256')
       .update(password + salt)
       .digest('base64')
