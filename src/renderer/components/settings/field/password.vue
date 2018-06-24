@@ -18,13 +18,12 @@
 <script>
   import crypto from 'crypto'
   
-  const SALT_LENGTH = 6
+  const RANDOM_BYTES_COUNT = 6
 
   function hashedJson (password) {
-    let salt = crypto.randomBytes(Math.ceil(SALT_LENGTH/2))
+    const salt = crypto.randomBytes(RANDOM_BYTES_COUNT)
             .toString('base64')
-            .slice(0, SALT_LENGTH)
-    let hashedPassword = crypto.createHash('sha256')
+    const hashedPassword = crypto.createHash('sha256')
       .update(password + salt)
       .digest('base64')
     return { hash: hashedPassword, salt }
