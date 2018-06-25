@@ -9,7 +9,7 @@ Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
 
 const CADDY_EXECUTABLE_PATH = path.resolve('./internals/caddy/caddy')
-const CADDY_FILE_TEMPLATE = path.join(__dirname, 'caddy-file.ejs')
+const CADDY_FILE_TEMPLATE = path.join(__static, 'caddy-file.ejs')
 const CADDY_FILE_PATH = path.resolve('./tmp/$CaddyFile')
 
 function generateCaddyFileContent (caddyFile, sites) {
