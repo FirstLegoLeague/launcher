@@ -2,19 +2,24 @@
 
 const Keyv = require('keyv')
 const path = require('path')
+const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 const EventEmitter = require('events')
+
+const mkdirpAsync = Promise.promisify(mkdirp)
 
 const STORAGE_PATH = path.resolve('./data/$config.sqlite')
 
 exports.Configurator = class extends EventEmitter {
   constructor (mhub) {
     super()
-    this.storage = new Keyv(`sqlite://${STORAGE_PATH}`)
     this.configMetadata = {}
     this.mhub = mhub
     this.sealed = false
     this.started = false
+
+    this.storagePromise = mkdirpAsync(path.dirname(STORAGE_PATH))
+      .then(() => new Keyv(`sqlite://${STORAGE_PATH}`))
   }
 
   _publishConfiguration (moduleName) {
@@ -50,19 +55,21 @@ exports.Configurator = class extends EventEmitter {
     }
 
     this.configMetadata[module.name] = module.config
-    return Promise.resolve(Object.values(module.config))
-      .reduce((fields, group) => fields.concat(group.fields), [])
-      .map(field => {
-        const key = `${module.name}/${field.name}`
-        if (field.default !== undefined) {
-          return Promise.resolve(this.storage.get(key))
-            .then(value => {
-              if (value === undefined) {
-                return this.storage.set(key, field.default)
-              }
-            })
-        }
-      })
+    return this.storagePromise.then(storage => {
+      return Promise.resolve(Object.values(module.config))
+        .reduce((fields, group) => fields.concat(group.fields), [])
+        .map(field => {
+          const key = `${module.name}/${field.name}`
+          if (field.default !== undefined) {
+            return Promise.resolve(storage.get(key))
+              .then(value => {
+                if (value === undefined) {
+                  return storage.set(key, field.default)
+                }
+              })
+          }
+        })
+    })
   }
 
   getConfigMetadata () {
@@ -79,13 +86,15 @@ exports.Configurator = class extends EventEmitter {
   }
 
   setFields (moduleName, fieldsValues) {
-    return Promise.resolve(Object.entries(fieldsValues))
-      .map(([name, value]) => this.storage.set(`${moduleName}/${name}`, value))
-      .then(() => this._publishConfiguration(moduleName))
+    return this.storagePromise.then(storage => {
+      return Promise.resolve(Object.entries(fieldsValues))
+        .map(([name, value]) => storage.set(`${moduleName}/${name}`, value))
+        .then(() => this._publishConfiguration(moduleName))
+    })
   }
 
   getField (moduleName, fieldName) {
-    return Promise.resolve(this.storage.get(`${moduleName}/${fieldName}`))
+    return this.storagePromise.then(storage => storage.get(`${moduleName}/${fieldName}`))
   }
 
   getFields (moduleName) {

@@ -2,9 +2,12 @@
 
 const fs = require('fs')
 const path = require('path')
+const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 
 Promise.promisifyAll(fs)
+
+const mkdirpAsync = Promise.promisify(mkdirp)
 
 const MONGO_EXECUTABLE_PATH = path.resolve('./internals/mongo/bin/mongod')
 
@@ -34,12 +37,13 @@ class Mongo {
   }
 
   start () {
-    return this.serviceManager.startService({
-      serviceId: this.serviceId,
-      logStream: this.logStream,
-      executable: this.executable,
-      arguments: ['--dbpath', './data/$mongo']
-    })
+    return mkdirpAsync('./data/$mongo')
+      .then(() => this.serviceManager.startService({
+        serviceId: this.serviceId,
+        logStream: this.logStream,
+        executable: this.executable,
+        arguments: ['--dbpath', './data/$mongo']
+      }))
       .then(serviceId => {
         this.serviceId = serviceId
       })
