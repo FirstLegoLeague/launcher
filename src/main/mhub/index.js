@@ -3,11 +3,14 @@
 const fs = require('fs')
 const ejs = require('ejs')
 const path = require('path')
+const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 const { MClient } = require('mhub')
 
 Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
+
+const mkdirpAsync = Promise.promisify(mkdirp)
 
 const MHUB_CONNECTION_STRING = 'ws://localhost:13900'
 // const MHUB_NODE_NAME = 'default'
@@ -16,7 +19,8 @@ const MHUB_FILE_TEMPLATE = path.join(__static, 'mhub-config.ejs')
 const MHUB_FILE_PATH = path.resolve('./tmp/$mhub.config.json')
 
 function generateConfigFileContent (configFile) {
-  return ejs.renderFileAsync(MHUB_FILE_TEMPLATE, {})
+  return mkdirpAsync(path.dirname(configFile))
+    .then(() => ejs.renderFileAsync(MHUB_FILE_TEMPLATE, {}))
     .then(content => fs.writeFileAsync(configFile, content))
 }
 
