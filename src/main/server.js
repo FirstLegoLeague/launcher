@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const Promise = require('bluebird')
+const randomstring = require('randomstring')
 
 const { Mhub } = require('./mhub')
 const { Caddy } = require('./caddy')
@@ -14,6 +15,11 @@ const { Configurator } = require('./configurator')
 Promise.promisifyAll(fs)
 
 const STARTING_PORT = 2828
+const SECRET_LENGTH = 12
+const RANDOMSTRING_OPTIONS = {
+  length: SECRET_LENGTH,
+  charset: 'alphabetic'
+}
 
 exports.Server = class {
   constructor (modulesFile) {
@@ -21,7 +27,10 @@ exports.Server = class {
     this.mainLogStream = createLogStream('main')
     this.serviceManager = new ServiceManager()
 
-    this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'))
+    this.secret = randomstring.generate(RANDOMSTRING_OPTIONS)
+    this.protectedMhubPassword = randomstring.generate(RANDOMSTRING_OPTIONS)
+    const mhubOptions = { protectedPassword: this.protectedMhubPassword, configurationPassword: this.secret }
+    this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'), mhubOptions)
     this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
     this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
 
@@ -47,6 +56,8 @@ exports.Server = class {
       .then(([modules, logsOptions, portsAllocations]) => modules
         .map((module, i) => module.start(Object.assign({
           port: portsAllocations[module.name],
+          secret: this.secret,
+          protectedMhubPassword: this.protectedMhubPassword,
           logStream: this.mainLogStream
         }, logsOptions), {
           mhub: this.mhub,

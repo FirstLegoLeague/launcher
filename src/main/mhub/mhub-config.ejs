@@ -9,75 +9,62 @@
             "port": 13902
         }
     ],
-    "verbose": true,
+    "logging": "debug",
     "nodes": {
-        "default": "Exchange",
+        "public": "Exchange",
+        "protected": "Exchange",
         "configuration": "TopicStore"
     },
     "bindings": [],
     "users": {
-        "admin": "admin_password",
-        "ref": "referee_password",
-        "scorekeeper": "scorekeeper_password",
-        "clock": "clock_password",
-        "mc": "mc_password"
+        "launcher": "<%= launcherPassword %>",
+        "protected-client": "<%= protectedPassword %>",
+        "configuration": "<%= configurationPassword %>"
     },
     "rights": {
         "": {
-            "subscribe": true,
+            "subscribe": {
+                "public": true,
+                "protected": true,
+                "configuration": false
+            },
             "publish": {
+                "public": true,
+                "protected": false,
+                "configuration": false
+            }
+        },
+        "protected-client": {
+            "subscribe": {
+                "public": true,
+                "protected": true,
+                "configuration": false
+            },
+            "publish": {
+                "public": true,
+                "protected": true,
+                "configuration": false
+            }
+        },
+        "configuration": {
+            "subscribe": {
+                "public": false,
+                "protected": false,
                 "configuration": [
                     "config:*"
-                ],
-                "default": [
-                    "background:*",
-                    "camera:*",
-                    "gallery:*",
-                    "clock:*",
-                    "time:*",
-                    "twitter:*",
-                    "lowThird:*",
-                    "list:*",
-                    "sprite:*",
-                    "css:*",
-                    "table:*",
-                    "geometry:*",
-                    "emojione:*"
+                ]
+            },
+            "publish": {
+                "public": false,
+                "protected": false,
+                "configuration": [
+                    "config:*"
                 ]
             }
         },
-        "admin": true,
-        "ref": {
+        "launcher": {
             "subscribe": true,
-            "publish": {
-                "default": [
-                    "scores:*",
-                    "settings:*"
-                ]
-            }
-        },
-        "scorekeeper": {
-            "subscribe": true,
-            "publish": {
-                "default": "scores:*"
-            }
-        },
-        "clock": {
-            "subscribe": true,
-            "publish": {
-                "default": [
-                    "clock:*"
-                ]
-            }
-        },
-        "mc": {
-            "subscribe": true,
-            "publish": {
-                "default": [
-                    "table:*",
-                    "list:*"
-                ]
-            }
+            "publish": true
         }
     },
     "storage": "./storage/"

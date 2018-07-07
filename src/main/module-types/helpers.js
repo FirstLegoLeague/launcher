@@ -48,7 +48,8 @@ exports.startModuleProcess = (options, { mongo, serviceManager, portsAllocations
         env: Object.assign({
           'PORT': options.port,
           'DATA_DIR': options.datadir,
-          'AUTH_SECRET': options.secret,
+          'SECRET': options.secret,
+          'PROTECTED_MHUB_PASSWORD': options.protectedMhubPassword,
           'LOG_LEVEL': options.logLevel
         }, createDiscoveryEnvironment(portsAllocations), additionalEnv, moduleOptions.env)
       })
