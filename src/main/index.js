@@ -1,5 +1,7 @@
 'use strict'
 
+require('./static') // Must run before everything
+
 const path = require('path')
 // const { Tray } = require('electron')
 const { app, BrowserWindow } = require('electron')
@@ -7,14 +9,6 @@ const { app, BrowserWindow } = require('electron')
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
 const homeAdapter = require('./adapters/home')
-
-/**
- * Set `__static` path to static files in production
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
- */
-if (process.env.NODE_ENV !== 'development') {
-  global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
-}
 
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
@@ -57,8 +51,8 @@ const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) 
   if (mainWindow) {
     if (mainWindow.isMinimized()) {
       mainWindow.restore()
-      mainWindow.show()
     }
+    mainWindow.show()
   } else {
     createWindow()
   }
