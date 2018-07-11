@@ -89,11 +89,10 @@ exports.Configurator = class extends EventEmitter {
   }
 
   setFields (moduleName, fieldsValues) {
-    const self = this
     return this.storagePromise.then(storage => {
       return Promise.resolve(Object.entries(fieldsValues))
         .map(([name, value]) => {
-          const field = Object.values(self.configMetadata[moduleName])
+          const field = Object.values(this.configMetadata[moduleName])
             .reduce((fields, group) => fields.concat(group.fields), [])
             .filter(f => f.name === name)
           storage.set(`${moduleName}/${name}`, getUpdatedValue(field, value))
