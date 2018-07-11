@@ -16,7 +16,7 @@ const mkdirpAsync = Promise.promisify(mkdirp)
 const MHUB_CONNECTION_STRING = 'ws://localhost:13900'
 // const MHUB_NODE_NAME = 'default'
 const MHUB_EXECUTABLE_PATH = path.resolve('./internals/mhub/bin/mhub-server')
-const MHUB_FILE_TEMPLATE = path.join(__dirname, 'mhub-config.ejs')
+const MHUB_FILE_TEMPLATE = path.join(__static, 'mhub-config.ejs')
 const MHUB_FILE_PATH = path.resolve('./tmp/$mhub.config.json')
 
 function generateConfigFileContent (configFile, options) {
