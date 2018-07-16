@@ -13,16 +13,12 @@
         />
       </label>
       <button @click="toggleShow"></button>
-      <button @click="$emit('value-change', hashedJson(value))"></button>
+      <button @click="$emit('value-change', value)"></button>
     </div>
   </div>
 </template>
 
 <script>
-  import crypto from 'crypto'
-
-  const RANDOM_BYTES_COUNT = 6
-
   export default {
     name: 'password-field',
     props: ['field'],
@@ -37,14 +33,6 @@
       toggleEditing () {
         this.value = ''
         this.editing = !this.editing
-      },
-      hashedJson (password) {
-        const salt = crypto.randomBytes(RANDOM_BYTES_COUNT)
-          .toString('base64')
-        const hashedPassword = crypto.createHash('sha256')
-          .update(password + salt)
-          .digest('base64')
-        return { hash: hashedPassword, salt }
       },
       toggleShow () {
         this.inputType = (this.inputType === 'password') ? 'text' : 'password'

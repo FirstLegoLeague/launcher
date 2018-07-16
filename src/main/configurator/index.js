@@ -6,6 +6,8 @@ const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 const EventEmitter = require('events')
 
+const { getDefaultValue, getUpdatedValue } = require('./types')
+
 const mkdirpAsync = Promise.promisify(mkdirp)
 
 const STORAGE_PATH = path.resolve('./data/$config.sqlite')
@@ -60,11 +62,12 @@ exports.Configurator = class extends EventEmitter {
         .reduce((fields, group) => fields.concat(group.fields), [])
         .map(field => {
           const key = `${module.name}/${field.name}`
-          if (field.default !== undefined) {
+          const defaultValue = getDefaultValue(field)
+          if (defaultValue !== undefined) {
             return Promise.resolve(storage.get(key))
               .then(value => {
                 if (value === undefined) {
-                  return storage.set(key, field.default)
+                  return storage.set(key, defaultValue)
                 }
               })
           }
@@ -88,7 +91,12 @@ exports.Configurator = class extends EventEmitter {
   setFields (moduleName, fieldsValues) {
     return this.storagePromise.then(storage => {
       return Promise.resolve(Object.entries(fieldsValues))
-        .map(([name, value]) => storage.set(`${moduleName}/${name}`, value))
+        .map(([name, value]) => {
+          const field = Object.values(this.configMetadata[moduleName])
+            .reduce((fields, group) => fields.concat(group.fields), [])
+            .filter(f => f.name === name)
+          storage.set(`${moduleName}/${name}`, getUpdatedValue(field, value))
+        })
         .then(() => this._publishConfiguration(moduleName))
     })
   }
