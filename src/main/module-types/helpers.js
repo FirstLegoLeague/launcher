@@ -45,6 +45,7 @@ exports.startModuleProcess = (options, { mongo, serviceManager, portsAllocations
         logStream: options.logStream,
         executable: moduleOptions.executable,
         arguments: moduleOptions.arguments,
+        cwd: moduleOptions.path,
         env: Object.assign({
           'PORT': options.port,
           'DATA_DIR': options.datadir,
