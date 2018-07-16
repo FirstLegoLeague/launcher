@@ -38,6 +38,7 @@ exports.GenericModule = class {
         return serviceManager.startService({
           logStream: options.logStream,
           executable: this.command,
+          cwd: this.path,
           arguments: this.arguments,
           env: Object.assign({
             'PORT': options.port,

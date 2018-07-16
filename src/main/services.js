@@ -23,7 +23,8 @@ exports.ServiceManager = class {
             .then(() => {
               const child = execFile(options.executable, options.arguments, {
                 stdio: ['pipe', 'pipe', 'pipe'],
-                env: options.env || {}
+                env: options.env || {},
+                cwd: options.cwd || '.'
               })
               child.stdout.pipe(options.logStream)
               child.stderr.pipe(options.logStream)
