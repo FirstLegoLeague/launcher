@@ -32,7 +32,7 @@ function createEnvironmentDirectory (caddyEnvDir) {
 }
 
 function generateWebEnvironment (caddyEnvDir, environmentName, env) {
-  const envFile = path.join(caddyEnvDir, `${environmentName}.json`)
+  const envFile = path.join(caddyEnvDir, `${environmentName}.json.tpl`)
 
   return fs.writeFileAsync(envFile, JSON.stringify(env))
 }

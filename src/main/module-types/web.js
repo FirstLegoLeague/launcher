@@ -2,9 +2,11 @@
 
 const { immutableObject } = require('./helpers')
 
+const { $ } = require('../caddy/templates')
+
 function createEnvironment (portsAllocations) {
   return Object.entries(portsAllocations)
-    .map(([module, port]) => ({ [module]: `http://localhost:${port}` }))
+    .map(([module, port]) => ({ [module]: $`http://${$.host}:${port}` }))
     .reduce((object, keyValue) => Object.assign(object, keyValue), {})
 }
 

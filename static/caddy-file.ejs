@@ -8,9 +8,10 @@
 
 :<%= site.port %>/environment.json {
     root <%= envDir %>
+    templates
     rewrite {
         if {path} is /environment.json
-        to /<%= site.id %>.json
+        to /<%= site.id %>.json.tpl
     }
     rewrite {
         to /
