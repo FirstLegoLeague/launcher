@@ -1,8 +1,19 @@
 <% sites.forEach(site => { %>
 :<%= site.port %> {
-root <%= site.root -%>
-<% if(site.index) { %>
-index <%= site.index -%>
-<% } %>
+    root <%= site.root -%>
+    <% if(site.index) { %>
+    index <%= site.index -%>
+    <% } %>
+}
+
+:<%= site.port %>/environment.json {
+    root <%= envDir %>
+    rewrite {
+        if {path} is /environment.json
+        to /<%= site.id %>.json
+    }
+    rewrite {
+        to /
+    }
 }
 <% }) %>
