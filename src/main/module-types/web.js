@@ -2,6 +2,14 @@
 
 const { immutableObject } = require('./helpers')
 
+const { $ } = require('../caddy/templates')
+
+function createEnvironment (portsAllocations) {
+  return Object.entries(portsAllocations)
+    .map(([module, port]) => ({ [module]: $`http://${$.host}:${port}` }))
+    .reduce((object, keyValue) => Object.assign(object, keyValue), {})
+}
+
 exports.WebModule = class {
   constructor (modulePath, description) {
     this.name = description.name
@@ -13,10 +21,11 @@ exports.WebModule = class {
     Object.freeze(this)
   }
 
-  start (options, { caddy }) {
+  start (options, { caddy, portsAllocations }) {
     return caddy.addSite({
       port: options.port,
-      root: this.path
+      root: this.path,
+      env: createEnvironment(portsAllocations)
     })
       .return(() => {})
   }

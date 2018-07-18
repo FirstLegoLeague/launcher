@@ -25,10 +25,16 @@ module.exports = {
         version: '0.9.1'
       }
     },
-    scoring2: {
+    'identity-provider': {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/scoring#dev/standard'
+        version: 'FirstLegoLeague/identity-provider#dev/standard'
+      }
+    },
+    'display': {
+      get: getNpmModule,
+      options: {
+        version: 'FirstLegoLeague/display#master'
       }
     },
     schedule: {
