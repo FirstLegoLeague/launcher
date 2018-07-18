@@ -36,6 +36,7 @@ exports.GenericModule = class {
       })
       .then(additionalEnv => {
         return serviceManager.startService({
+          name: this.name,
           logStream: options.logStream,
           executable: this.command,
           path: this.path,

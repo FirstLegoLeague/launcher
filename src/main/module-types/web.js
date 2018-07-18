@@ -25,6 +25,7 @@ exports.WebModule = class {
 
   start (options, { caddy, portsAllocations }) {
     return caddy.addSite({
+      name: this.name,
       port: options.port,
       root: this.path,
       env: createEnvironment(portsAllocations)

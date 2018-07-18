@@ -42,6 +42,7 @@ exports.startModuleProcess = (options, { mongo, serviceManager, portsAllocations
     })
     .then(additionalEnv => {
       return serviceManager.startService({
+        serviceName: moduleOptions.name,
         logStream: options.logStream,
         executable: moduleOptions.executable,
         arguments: moduleOptions.arguments,

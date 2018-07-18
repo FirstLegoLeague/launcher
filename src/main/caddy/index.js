@@ -6,6 +6,7 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 const rimraf = require('rimraf')
 const Promise = require('bluebird')
+const randomatic = require('randomatic')
 
 Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
@@ -58,6 +59,7 @@ class Caddy {
 
         return Promise.all([caddyFilePromise, siteEnvFilesPromise])
       },
+      serviceName: 'caddy',
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: this.executable,
@@ -74,7 +76,7 @@ class Caddy {
 
   addSite (site) {
     this.sites.push(Object.assign({}, site, {
-      id: 'w' + new Date().valueOf()
+      id: `${site.name}-${randomatic('a0', 5)}`
     }))
 
     if (this.child !== undefined) {

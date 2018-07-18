@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const Promise = require('bluebird')
-const randomstring = require('randomstring')
+const randomatic = require('randomatic')
 
 const { Mhub } = require('./mhub')
 const { Caddy } = require('./caddy')
@@ -17,10 +17,6 @@ Promise.promisifyAll(fs)
 
 const STARTING_PORT = 2828
 const SECRET_LENGTH = 12
-const RANDOMSTRING_OPTIONS = {
-  length: SECRET_LENGTH,
-  charset: 'alphabetic'
-}
 
 exports.Server = class {
   constructor (modulesFile) {
@@ -28,8 +24,8 @@ exports.Server = class {
     this.mainLogStream = createLogStream('main')
     this.serviceManager = new ServiceManager()
 
-    this.secret = randomstring.generate(RANDOMSTRING_OPTIONS)
-    this.protectedMhubPassword = randomstring.generate(RANDOMSTRING_OPTIONS)
+    this.secret = randomatic('Aa', SECRET_LENGTH)
+    this.protectedMhubPassword = randomatic('Aa', SECRET_LENGTH)
     const mhubOptions = { protectedPassword: this.protectedMhubPassword, configurationPassword: this.secret }
     this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'), mhubOptions)
     this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
