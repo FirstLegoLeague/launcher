@@ -1,5 +1,7 @@
 'use strict'
 
+const Promise = require('bluebird')
+
 const { immutableObject } = require('./helpers')
 
 exports.WebModule = class {
@@ -18,6 +20,6 @@ exports.WebModule = class {
       port: options.port,
       root: this.path
     })
-      .return(() => {})
+      .return(() => Promise.resolve())
   }
 }

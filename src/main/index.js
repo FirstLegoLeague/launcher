@@ -3,6 +3,7 @@
 require('./static') // Must run before everything
 
 const path = require('path')
+const Promise = require('bluebird')
 // const { Tray } = require('electron')
 const { app, BrowserWindow } = require('electron')
 
@@ -14,6 +15,8 @@ let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
+
+let server = null
 
 function createWindow () {
   /**
@@ -35,7 +38,11 @@ function createWindow () {
   })
 
   mainWindow.on('close', () => {
-    app.quit()
+    const serverClosePromise = server ? server.close() : Promise.resolve()
+
+    serverClosePromise
+      .finally(app.quit())
+      .catch(err => console.error(err))
   })
 }
 
@@ -43,7 +50,6 @@ function createWindow () {
 //   return path.join(__dirname, 'images', 'icon.png')
 // }
 
-let server = null
 // let tray = null
 
 const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
@@ -70,7 +76,7 @@ if (isSecondInstance) {
     server = new Server(path.join(process.cwd(), 'modules.yml'))
     exports.server = server
 
-    exports.settingsAdapter = new SettingsAdapter(server.configurator)
+    exports.settingsAdapter = new SettingsAdapter(server.moduleConfigurator, server.globalConfigurator)
     exports.homeAdapter = homeAdapter
 
     server.start()

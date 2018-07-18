@@ -3,8 +3,12 @@
 const Promise = require('bluebird')
 
 exports.SettingsAdapter = class {
-  constructor (configurator) {
-    this.configurator = configurator
+  constructor (moduleConfigurator, globalConfigurator) {
+    this.configurator = moduleConfigurator
+    this.globalConfigurator = globalConfigurator
+
+    this.globalModulePromise =
+      globalConfigurator.getConfigMetadata().then(Object.keys).get(0)
   }
 
   getModulesNames (callback) {
@@ -21,6 +25,24 @@ exports.SettingsAdapter = class {
 
   getModuleValues (moduleName, callback) {
     return this.configurator.getFields(moduleName)
+      .asCallback(callback)
+  }
+
+  getGlobalConfig (callback) {
+    return this.globalModulePromise
+      .then(module => this.globalConfigurator.getConfigMetadata().get(module))
+      .asCallback(callback)
+  }
+
+  getGlobalConfigValues (callback) {
+    return this.globalModulePromise
+      .then(module => this.globalConfigurator.getFields(module))
+      .asCallback(callback)
+  }
+
+  saveGlobalValues (values, callback) {
+    return this.globalModulePromise
+      .then(module => this.globalConfigurator.setFields(module, values))
       .asCallback(callback)
   }
 

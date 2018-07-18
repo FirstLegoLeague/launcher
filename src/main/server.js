@@ -11,6 +11,7 @@ const { loadModules } = require('./module-loader')
 const { loadLogsOptions, createLogStream } = require('./logs')
 const { ServiceManager } = require('./services')
 const { Configurator } = require('./configurator')
+const { globalModuleConfig } = require('./global-config')
 
 Promise.promisifyAll(fs)
 
@@ -34,14 +35,29 @@ exports.Server = class {
     this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
     this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
 
-    this.configurator = new Configurator(this.mhub)
+    this.moduleConfigurator = new Configurator()
+
+    this.moduleConfigurator.on('new', ({ moduleName, fields }) => {
+      return this.mhub.publish('configuration', `config:${moduleName}`, { fields })
+    })
 
     this.modulesPromise
-      .map(module => this.configurator.addModule(module))
-      .then(() => this.configurator.seal())
+      .map(module => this.moduleConfigurator.addModule(module))
+      .then(() => this.moduleConfigurator.seal())
       .catch(err => console.error(err))
 
     this.modulesStopFunctionsPromise = Promise.resolve([])
+
+    this.globalConfigurator = new Configurator()
+
+    this.globalConfigurator.addModule(globalModuleConfig)
+      .then(() => this.globalConfigurator.seal())
+      .catch(err => console.error(err))
+
+    this.globalConfigurator.on('new', () => {
+      this.restart()
+        .catch(err => console.error(err))
+    })
   }
 
   start () {
@@ -49,16 +65,18 @@ exports.Server = class {
       this.modulesPromise,
       loadLogsOptions(),
       this.getPortsAllocation(),
+      this.globalConfigurator.getFields(globalModuleConfig.name),
       this.mhub.start()
-        .then(() => this.configurator.start()),
+        .then(() => this.moduleConfigurator.start()),
       this.mongo.start()
     ])
-      .then(([modules, logsOptions, portsAllocations]) => modules
+      .then(([modules, logsOptions, portsAllocations, globalConfig]) => modules
         .map((module, i) => module.start(Object.assign({
           port: portsAllocations[module.name],
           secret: this.secret,
           protectedMhubPassword: this.protectedMhubPassword,
-          logStream: this.mainLogStream
+          logStream: this.mainLogStream,
+          globalConfig
         }, logsOptions), {
           mhub: this.mhub,
           caddy: this.caddy,
@@ -79,13 +97,15 @@ exports.Server = class {
   close () {
     return this.modulesStopFunctionsPromise
       .map(stop => {
-        stop()
+        return stop()
+          .catch(err => console.error(err))
       })
       .then(() => [
         this.caddy.stop(),
         this.mongo.stop(),
         this.mhub.stop()
       ])
+      .all()
   }
 
   getModules () {
