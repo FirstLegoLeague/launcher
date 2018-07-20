@@ -13,10 +13,9 @@ const mkdirpAsync = Promise.promisify(mkdirp)
 const STORAGE_PATH = path.resolve('./data/$config.sqlite')
 
 exports.Configurator = class extends EventEmitter {
-  constructor (mhub) {
+  constructor () {
     super()
     this.configMetadata = {}
-    this.mhub = mhub
     this.sealed = false
     this.started = false
 
@@ -30,9 +29,7 @@ exports.Configurator = class extends EventEmitter {
       .map(([name, value]) => {
         return { name, value }
       })
-      .then(fields => {
-        return this.mhub.publish('configuration', `config:${moduleName}`, { fields })
-      })
+      .then(fields => this.emit('new', { moduleName, fields }))
   }
 
   seal () {
@@ -53,7 +50,7 @@ exports.Configurator = class extends EventEmitter {
 
   addModule (module) {
     if (this.sealed) {
-      throw new Error('Can\'t add module to a sealed configurator')
+      throw new Error('Can\'t add module to a sealed moduleConfigurator')
     }
 
     this.configMetadata[module.name] = module.config

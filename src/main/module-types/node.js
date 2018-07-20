@@ -23,6 +23,7 @@ exports.NodeModule = class {
 
   start (options, dependencies) {
     return startModuleProcess(options, dependencies, {
+      name: this.name,
       requirements: this.requirements,
       executable: process.execPath,
       path: this.path,

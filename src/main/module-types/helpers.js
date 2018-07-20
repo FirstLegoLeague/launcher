@@ -42,6 +42,7 @@ exports.startModuleProcess = (options, { mhub, mongo, serviceManager, portsAlloc
     })
     .then(additionalEnv => {
       return serviceManager.startService({
+        serviceName: moduleOptions.name,
         logStream: options.logStream,
         executable: moduleOptions.executable,
         arguments: moduleOptions.arguments,
@@ -51,8 +52,8 @@ exports.startModuleProcess = (options, { mhub, mongo, serviceManager, portsAlloc
           'DATA_DIR': options.datadir,
           'SECRET': options.secret,
           'PROTECTED_MHUB_PASSWORD': options.protectedMhubPassword,
-          'LOG_LEVEL': options.logLevel,
-          'MHUB': mhub.url
+          'LOG_LEVEL': options.globalConfig.logLevel,
+          'MHUB_URI': mhub.url
         }, createDiscoveryEnvironment(portsAllocations), additionalEnv, moduleOptions.env)
       })
     })

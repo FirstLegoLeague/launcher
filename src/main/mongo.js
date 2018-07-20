@@ -39,6 +39,7 @@ class Mongo {
   start () {
     return mkdirpAsync('./data/$mongo')
       .then(() => this.serviceManager.startService({
+        serviceName: 'mongo',
         serviceId: this.serviceId,
         logStream: this.logStream,
         executable: this.executable,

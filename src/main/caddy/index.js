@@ -6,6 +6,7 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 const rimraf = require('rimraf')
 const Promise = require('bluebird')
+const randomatic = require('randomatic')
 
 Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
@@ -32,9 +33,14 @@ function createEnvironmentDirectory (caddyEnvDir) {
 }
 
 function generateWebEnvironment (caddyEnvDir, environmentName, env) {
-  const envFile = path.join(caddyEnvDir, `${environmentName}.json.tpl`)
+  const envFile = path.join(caddyEnvDir, `${environmentName}.json`)
 
   return fs.writeFileAsync(envFile, JSON.stringify(env))
+}
+
+function removeWebEnvironment (caddyEnvDir, environmentName) {
+  const envFile = path.join(caddyEnvDir, `${environmentName}.json`)
+  return fs.unlinkAsync(envFile)
 }
 
 class Caddy {
@@ -58,6 +64,7 @@ class Caddy {
 
         return Promise.all([caddyFilePromise, siteEnvFilesPromise])
       },
+      serviceName: 'caddy',
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: this.executable,
@@ -74,12 +81,26 @@ class Caddy {
 
   addSite (site) {
     this.sites.push(Object.assign({}, site, {
-      id: 'w' + new Date().valueOf()
+      id: `${site.name}-${randomatic('a0', 5)}`
     }))
 
     if (this.child !== undefined) {
       return generateCaddyFileContent(this.caddyFile, this.sites)
         .then(() => generateWebEnvironment(this.caddyEnvDir, site.id, site.env))
+        .then(() => this.child.kill('SIGUSR1'))
+    } else {
+      return Promise.resolve()
+    }
+  }
+
+  removeSite (siteName) {
+    const siteIndex = this.sites.findIndex(s => s.name === siteName)
+    const site = this.sites[siteIndex]
+    this.sites.splice(siteIndex, 1)
+
+    if (this.child !== undefined) {
+      return generateCaddyFileContent(this.caddyFile, this.sites)
+        .then(() => removeWebEnvironment(this.caddyEnvDir, site.id))
         .then(() => this.child.kill('SIGUSR1'))
     } else {
       return Promise.resolve()

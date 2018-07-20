@@ -4,8 +4,8 @@ const fs = require('fs')
 const ejs = require('ejs')
 const path = require('path')
 const mkdirp = require('mkdirp')
-const randomstring = require('randomstring')
 const Promise = require('bluebird')
+const randomatic = require('randomatic')
 const { MClient } = require('mhub')
 
 Promise.promisifyAll(fs)
@@ -32,7 +32,7 @@ class Mhub {
     this.serviceManager = serviceManager
     this.logStream = logStream
     this.options = Object.assign(options, {
-      launcherPassword: randomstring.generate({ length: 12, charset: 'alphabetic' })
+      launcherPassword: randomatic('Aa', 12)
     })
 
     this.client = new MClient(MHUB_CONNECTION_STRING, {
@@ -44,6 +44,7 @@ class Mhub {
   start () {
     return this.serviceManager.startService({
       init: () => generateConfigFileContent(this.configFile, this.options),
+      serviceName: 'mhub',
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: process.execPath,
@@ -70,7 +71,8 @@ class Mhub {
   }
 
   stop () {
-    return this.serviceManager.stopService(this.serviceId)
+    return Promise.resolve(this.client.close())
+      .then(() => this.serviceManager.stopService(this.serviceId))
   }
 
   get url () {
