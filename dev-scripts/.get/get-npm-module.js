@@ -9,6 +9,8 @@ const { resolveUrl } = require('./npm-resolvers')
 
 const requestAsync = Promise.promisify(request, { multiArgs: true })
 
+const MESSAGE_SIZE_THRESHOLD = 2 << 10
+
 exports.getNpmModule = function ({ directory }, moduleOptions) {
   return resolveUrl(moduleOptions.package, moduleOptions.version)
     .then(url => requestAsync({
@@ -20,7 +22,8 @@ exports.getNpmModule = function ({ directory }, moduleOptions) {
       if (response.statusCode === 200) {
         return decompress(body, directory, { strip: 1 })
       } else {
-        throw new Error(`Could not download module: ${this.name}`)
+        const message = response.body.length < MESSAGE_SIZE_THRESHOLD ? `: ${response.body.toString()}` : ''
+        throw new Error(`Could not download module: ${moduleOptions.name}${message}`)
       }
     })
     .then(() => new Promise((resolve, reject) => {

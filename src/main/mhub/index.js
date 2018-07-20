@@ -72,6 +72,10 @@ class Mhub {
   stop () {
     return this.serviceManager.stopService(this.serviceId)
   }
+
+  get url () {
+    return MHUB_CONNECTION_STRING
+  }
 }
 
 exports.Mhub = Mhub
