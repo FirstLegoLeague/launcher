@@ -22,8 +22,7 @@ exports.createLogStream = name => {
 
 exports.loadLogsOptions = () => {
   return Promise.resolve({
-    logsDirectory: LOG_DIR,
-    logLevel: process.env.LOG_LEVEL
+    logsDirectory: LOG_DIR
   })
 }
 

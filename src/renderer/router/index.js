@@ -12,9 +12,14 @@ export default new Router({
     },
     {
       path: '/settings',
-      name: 'settings',
       component: require('@/components/settings').default,
       children: [
+        {
+          path: '',
+          name: 'settings',
+          component: require('@/components/settings/global').default,
+          props: false
+        },
         {
           path: ':module',
           name: 'settings-module',
