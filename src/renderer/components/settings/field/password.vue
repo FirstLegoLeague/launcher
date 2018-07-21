@@ -1,7 +1,7 @@
 <template>
   <div>
     {{ field.display || field.name }}
-    <button @click="toggleEditing"></button>
+    <button @click="toggleEditing">Edit</button>
     <div v-if="editing">
       <label>
         <input
@@ -12,8 +12,8 @@
           v-model="value"
         />
       </label>
-      <button @click="toggleShow"></button>
-      <button @click="$emit('value-change', value)"></button>
+      <button @click="toggleShow">{{ isShowingPassword ? 'hide' : 'show' }}</button>
+      <button @click="$emit('value-change', value)">Change</button>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@
     props: ['field'],
     data: function () {
       return {
+        isShowingPassword: false,
         inputType: 'password',
         editing: false,
         value: ''
@@ -35,6 +36,7 @@
         this.editing = !this.editing
       },
       toggleShow () {
+        this.isShowingPassword = !this.isShowingPassword
         this.inputType = (this.inputType === 'password') ? 'text' : 'password'
       }
     }

@@ -56,6 +56,7 @@ function getModule (name, options) {
         console.log(`Skipping download of module ${name}`)
       }
     })
+    .tapCatch(() => rimrafAsync(options.directory))
 }
 
 function getAll (options) {

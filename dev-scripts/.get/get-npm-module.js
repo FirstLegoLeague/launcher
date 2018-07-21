@@ -22,8 +22,8 @@ exports.getNpmModule = function ({ directory }, moduleOptions) {
       if (response.statusCode === 200) {
         return decompress(body, directory, { strip: 1 })
       } else {
-        const message = response.body.length < MESSAGE_SIZE_THRESHOLD ? `: ${response.body.toString()}` : ''
-        throw new Error(`Could not download module: ${moduleOptions.name}${message}`)
+        const message = response.body.length < MESSAGE_SIZE_THRESHOLD ? `: ${response.body.toString().trim()}` : ''
+        throw new Error(`Could not download module '${moduleOptions.name}'${message}`)
       }
     })
     .then(() => new Promise((resolve, reject) => {
@@ -36,7 +36,7 @@ exports.getNpmModule = function ({ directory }, moduleOptions) {
           if (code === 0) {
             resolve()
           } else {
-            reject(new Error(`Could not install module: ${moduleOptions.name}`))
+            reject(new Error(`Could not install module '${moduleOptions.name}'`))
           }
         })
     }))
