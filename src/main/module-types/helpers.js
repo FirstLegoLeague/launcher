@@ -28,7 +28,7 @@ function createDiscoveryEnvironment (portAllocation) {
     .reduce((obj, kv) => Object.assign(obj, kv), {})
 }
 
-exports.startModuleProcess = (options, { mongo, serviceManager, portsAllocations }, moduleOptions) => {
+exports.startModuleProcess = (options, { mhub, mongo, serviceManager, portsAllocations }, moduleOptions) => {
   return Promise.resolve()
     .then(() => {
       if (moduleOptions.requirements.includes('mongodb')) {
@@ -52,7 +52,8 @@ exports.startModuleProcess = (options, { mongo, serviceManager, portsAllocations
           'DATA_DIR': options.datadir,
           'SECRET': options.secret,
           'PROTECTED_MHUB_PASSWORD': options.protectedMhubPassword,
-          'LOG_LEVEL': options.globalConfig.logLevel
+          'LOG_LEVEL': options.globalConfig.logLevel,
+          'MHUB_URI': mhub.url
         }, createDiscoveryEnvironment(portsAllocations), additionalEnv, moduleOptions.env)
       })
     })

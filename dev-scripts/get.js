@@ -50,12 +50,13 @@ function getModule (name, options) {
           directory: options.directory,
           platform: options.platform,
           arch: options.arch
-        }, Object.assign({}, options.moduleOptions, module.options))
+        }, Object.assign({}, options.moduleOptions, module.options, { name }))
           .then(() => console.log(`Finish download of module ${name}.`))
       } else {
         console.log(`Skipping download of module ${name}`)
       }
     })
+    .tapCatch(() => rimrafAsync(options.directory))
 }
 
 function getAll (options) {

@@ -1,6 +1,7 @@
 'use strict'
 
 const fs = require('fs')
+const path = require('path')
 const Promise = require('bluebird')
 const randomatic = require('randomatic')
 
@@ -17,6 +18,7 @@ Promise.promisifyAll(fs)
 
 const STARTING_PORT = 2828
 const SECRET_LENGTH = 12
+const DATA_DIR = path.resolve('./data/')
 
 exports.Server = class {
   constructor (modulesFile) {
@@ -70,6 +72,7 @@ exports.Server = class {
         .map((module, i) => module.start(Object.assign({
           port: portsAllocations[module.name],
           secret: this.secret,
+          dataDir: DATA_DIR,
           protectedMhubPassword: this.protectedMhubPassword,
           logStream: this.mainLogStream,
           globalConfig

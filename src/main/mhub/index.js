@@ -74,6 +74,10 @@ class Mhub {
     return Promise.resolve(this.client.close())
       .then(() => this.serviceManager.stopService(this.serviceId))
   }
+
+  get url () {
+    return MHUB_CONNECTION_STRING
+  }
 }
 
 exports.Mhub = Mhub

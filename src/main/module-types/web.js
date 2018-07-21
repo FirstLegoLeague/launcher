@@ -6,16 +6,22 @@ const camelCase = require('camelcase')
 const { immutableObject } = require('./helpers')
 
 function getIp (netConnection) {
-  return os.networkInterfaces()[netConnection]
+  const networkInterfaces = os.networkInterfaces()
+
+  return os.networkInterfaces()[netConnection || Object.keys(networkInterfaces)[0]]
     .find(i => i.family === 'IPv4').address
 }
 
 function createEnvironment (portsAllocations, globalConfig) {
   const ip = getIp(globalConfig.netConnection)
 
-  return Object.entries(portsAllocations)
+  const discoveryServices = Object.entries(portsAllocations)
     .map(([module, port]) => ({ [`module${camelCase(module, { pascalCase: true })}Url`]: `http://${ip}:${port}` }))
     .reduce((object, keyValue) => Object.assign(object, keyValue), {})
+
+  return Object.assign(discoveryServices, {
+    'mhubUri': `ws://${ip}:13900/`
+  })
 }
 
 exports.WebModule = class {
