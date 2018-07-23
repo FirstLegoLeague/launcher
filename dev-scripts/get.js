@@ -14,6 +14,7 @@ Promise.promisifyAll(fs)
 const rimrafAsync = Promise.promisify(rimraf)
 const mkdirpAsync = Promise.promisify(mkdirp)
 
+const DEFAULT_CONCURRENCY = 5
 const DEFAULT_INTERNALS_DIR = path.join(__dirname, '../internals')
 const DEFAULT_MODULES_DIR = path.join(__dirname, '../modules')
 
@@ -57,7 +58,6 @@ function getModule (name, options) {
       }
     })
     .tapCatch(() => rimrafAsync(options.directory))
-    .tapCatch(() => { process.exitCode = 1 })
 }
 
 function getAll (options) {
@@ -81,7 +81,7 @@ function getAll (options) {
         arch: options.arch,
         force: options.force
       })
-    })
+    }, { concurrency: options.concurrency })
 }
 
 caporal
@@ -91,6 +91,8 @@ caporal
   .command('all', 'Download all modules for the launcher')
   .option('--platform, -p <platform>', 'Platform for executable', ['win32', 'darwin', 'linux'], process.platform)
   .option('--arch <arch>', 'CPU architecture', ['x32', 'x64'], process.arch)
+  .option('--concurrency, -c <concurrency>', 'Number of modules downloaded in the same time',
+    caporal.INT, DEFAULT_CONCURRENCY)
   .option('--force', 'Force downloading the modules')
   .option('--internals-dir, -i <internalsDir>', 'The path to the internals directory', null, DEFAULT_INTERNALS_DIR)
   .option('--modules-dir, -m <modulesDir>', 'The path to the modules directory', null, DEFAULT_MODULES_DIR)
@@ -99,7 +101,10 @@ caporal
   .option('--excludes <exclude>', 'Exclude a module', caporal.REPEATABLE, [])
   .action((args, options) => {
     getAll(options)
-      .catch(err => console.error(err.message))
+      .catch(err => {
+        console.error(err.message)
+        process.exitCode = 1
+      })
   })
   .command('module', 'Download one module')
   .argument('<name>', 'The name of the module', Object.keys(config.modules))
@@ -110,7 +115,10 @@ caporal
   .option('--option <moduleOptions>', 'A option of the module type', /^[a-z]+=/i)
   .action((args, options) => {
     getModule(args.name, options)
-      .catch(err => console.error(err.message))
+      .catch(err => {
+        console.error(err.message)
+        process.exitCode = 1
+      })
   })
   .command('custom', 'Download a custom module')
   .argument('<type>', 'The name of the module', Object.keys(config.custom))
