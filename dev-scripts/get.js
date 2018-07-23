@@ -57,6 +57,7 @@ function getModule (name, options) {
       }
     })
     .tapCatch(() => rimrafAsync(options.directory))
+    .tapCatch(() => { process.exitCode = 1 })
 }
 
 function getAll (options) {
