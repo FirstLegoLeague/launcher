@@ -9,7 +9,8 @@ Promise.promisifyAll(fs)
 
 const mkdirpAsync = Promise.promisify(mkdirp)
 
-const MONGO_EXECUTABLE_PATH = path.resolve('./internals/mongo/bin/mongod')
+const FILE_EXTENSION = (process.platform === 'win32') ? '.exe' : ''
+const MONGO_EXECUTABLE_PATH = path.resolve(`./internals/mongo/bin/mongod${FILE_EXTENSION}`)
 
 function createMongoUri (options) {
   const parts = ['mongodb://']
