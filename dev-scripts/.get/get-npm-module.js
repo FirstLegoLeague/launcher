@@ -27,7 +27,7 @@ exports.getNpmModule = function ({ directory }, moduleOptions) {
       }
     })
     .then(() => new Promise((resolve, reject) => {
-      exec('yarn --production --pure-lockfile', {
+      exec('yarn --production --pure-lockfile --mutex network', {
         cwd: directory,
         stdio: 'ignore'
       })
