@@ -42,7 +42,11 @@ rules:
     - modules
   node/shebang: warn
 
-  promise/catch-or-return: warn
+  promise/catch-or-return:
+  - warn
+  - terminationMethod:
+    - catch
+    - asCallback
   promise/no-callback-in-promise: warn
   promise/no-native: warn
   promise/no-return-wrap: warn
