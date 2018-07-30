@@ -1,6 +1,7 @@
 'use strict'
 
 const fs = require('fs')
+const os = require('os')
 const path = require('path')
 const Promise = require('bluebird')
 const randomatic = require('randomatic')
@@ -109,6 +110,17 @@ exports.Server = class {
 
   getModules () {
     return this.modulesPromise
+  }
+
+  getIp () {
+    return this.globalConfigurator.getFields(globalModuleConfig.name)
+      .get('netConnection')
+      .then(netConnection => {
+        const networkInterfaces = os.networkInterfaces()
+
+        return os.networkInterfaces()[netConnection || Object.keys(networkInterfaces)[0]]
+          .find(i => i.family === 'IPv4').address
+      })
   }
 
   getPortsAllocation () {

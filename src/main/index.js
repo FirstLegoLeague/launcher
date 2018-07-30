@@ -9,7 +9,7 @@ const { app, BrowserWindow } = require('electron')
 
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
-const homeAdapter = require('./adapters/home')
+const { HomeAdapter } = require('./adapters/home')
 
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
@@ -77,7 +77,7 @@ if (isSecondInstance) {
     exports.server = server
 
     exports.settingsAdapter = new SettingsAdapter(server.moduleConfigurator, server.globalConfigurator)
-    exports.homeAdapter = homeAdapter
+    exports.homeAdapter = new HomeAdapter(server)
 
     server.start()
       // .then(() => buildAppMenu(server.getModules()))
