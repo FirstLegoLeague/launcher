@@ -42,7 +42,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '1.0.0'
+        version: '0.0.7-alpha-2'
       }
     },
     scoring: {
