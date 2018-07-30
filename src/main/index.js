@@ -25,7 +25,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 563,
     width: 1000,
-    title: 'FIRST LEGO League scoring',
+    title: 'FIRST LEGO League Tournament Management System',
     useContentSize: true
   })
 
