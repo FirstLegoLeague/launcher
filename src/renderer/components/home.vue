@@ -7,6 +7,16 @@
 
         <h1>Tournament Management System</h1>
 
+        <table>
+            <tbody>
+            <tr v-for="module in modules">
+                <td>{{module.name}}</td>
+                <td><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
+                <td><button class="button" @click="() => saveInClipboard(module.site)">Copy</button></td>
+            </tr>
+            </tbody>
+        </table>
+
         <button class="button" @click="saveLogs">Save Logs</button>
     </div>
 </template>
@@ -38,11 +48,43 @@
               console.error(err)
             })
         })
+      },
+      openSite (event, site) {
+        event.preventDefault()
+
+        Promise.fromCallback(cb => this.adapter.openSite(site, cb))
+          .catch(err => {
+            console.error(err)
+          })
+      },
+      saveInClipboard (site) {
+        this.clipboard.writeText(site)
+      }
+    },
+    data () {
+      return {
+        modules: []
       }
     },
     mounted () {
       this.dialog = this.$electron.remote.dialog
+      this.clipboard = this.$electron.remote.clipboard
       this.adapter = this.$electron.remote.require('./main').homeAdapter
+
+      Promise.all([
+        Promise.fromCallback(cb => this.adapter.getPortsAllocation(cb)),
+        Promise.fromCallback(cb => this.adapter.getIp(cb))
+      ])
+        .then(([portsAllocation, ip]) => {
+          this.modules = Object.entries(portsAllocation)
+            .map(([module, port]) => ({
+              name: module,
+              site: `http://${ip}:${port}/`
+            }))
+        })
+        .catch(err => {
+          console.error(err)
+        })
     }
   }
 </script>
