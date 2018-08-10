@@ -1,7 +1,13 @@
 <template>
-    <div>
-        <h1><i>FIRST</i> LEGO League Tournament Management System</h1>
-        <button @click="saveLogs">Save Logs</button>
+    <div class="text-center">
+        <div class="clearfix">
+            <img class="float-left" src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png">
+            <img class="float-right" src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_wide.png">
+        </div>
+
+        <h1>Tournament Management System</h1>
+
+        <button class="button" @click="saveLogs">Save Logs</button>
     </div>
 </template>
 
