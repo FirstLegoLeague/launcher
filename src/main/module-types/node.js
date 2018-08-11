@@ -27,7 +27,7 @@ exports.NodeModule = class {
       requirements: this.requirements,
       executable: process.execPath,
       path: this.path,
-      arguments: [this.script].concat(this.arguments),
+      arguments: [this.script].concat(this.arguments || []),
       env: {
         'ELECTRON_RUN_AS_NODE': '1'
       }
