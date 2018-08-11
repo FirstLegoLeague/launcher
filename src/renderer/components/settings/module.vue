@@ -53,21 +53,35 @@
         Promise.fromCallback(cb => this.adapter.saveValues(this.module, changedValues, cb))
           .then(() => window.alert('Settings Saved!'))
           .catch(console.error)
+      },
+      fetchConfig (moudleName) {
+        return Promise.all([
+          Promise.fromCallback(cb => this.adapter.getModuleConfig(moudleName, cb))
+            .then(config => { this.config = config }),
+          Promise.fromCallback(cb => this.adapter.getModuleValues(moudleName, cb))
+            .then(values => { this.values = values })
+        ])
+          .then(() => { this.loading = false })
       }
     },
     mounted () {
       this.adapter = this.$electron.remote.require('./main').settingsAdapter
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => vm.fetchConfig(vm.module)
+        .catch(err => {
+          console.error(err)
+        }))
+    },
+    beforeRouteUpdate (to, from, next) {
+      this.loading = true
 
-      Promise.all([
-        Promise.fromCallback(cb => this.adapter.getModuleConfig(this.module, cb))
-          .then(config => { this.config = config }),
-        Promise.fromCallback(cb => this.adapter.getModuleValues(this.module, cb))
-          .then(values => { this.values = values })
-      ])
-        .then(() => { this.loading = false })
+      this.fetchConfig(to.params.module)
         .catch(err => {
           console.error(err)
         })
+
+      next()
     }
   }
 </script>
