@@ -49,7 +49,7 @@ exports.startModuleProcess = (options, { mhub, mongo, serviceManager, portsAlloc
         cwd: moduleOptions.path,
         env: Object.assign({
           'PORT': options.port,
-          'DATA_DIR': options.datadir,
+          'DATA_DIR': options.dataDir,
           'SECRET': options.secret,
           'PROTECTED_MHUB_PASSWORD': options.protectedMhubPassword,
           'LOG_LEVEL': options.globalConfig.logLevel,
