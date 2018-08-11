@@ -19,6 +19,8 @@ const MHUB_EXECUTABLE_PATH = path.resolve('./internals/mhub/bin/mhub-server')
 const MHUB_FILE_TEMPLATE = path.join(__static, 'mhub-config.ejs')
 const MHUB_FILE_PATH = path.resolve('./tmp/$mhub.config.json')
 
+const MAX_RETRIES = 5
+
 function generateConfigFileContent (configFile, options) {
   return mkdirpAsync(path.dirname(configFile))
     .then(() => ejs.renderFileAsync(MHUB_FILE_TEMPLATE, options))
@@ -60,8 +62,16 @@ class Mhub {
       .then(() => this.connect())
   }
 
-  connect () {
+  connect (retry = 0) {
     return Promise.resolve(this.client.connect())
+      .catch(err => {
+        if (err.code === 'ECONNREFUSED' && retry < MAX_RETRIES) {
+          return Promise.delay(500 * 2 ** retry)
+            .then(() => this.connect(retry + 1))
+        } else {
+          throw err
+        }
+      })
       .then(() => this.client.login('launcher', this.options.launcherPassword))
   }
 
