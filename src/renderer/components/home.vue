@@ -4,7 +4,6 @@
             <img class="float-left" src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png">
             <img class="float-right" src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_wide.png">
         </div>
-
         <h1>Tournament Management System</h1>
 
         <table>
@@ -12,7 +11,7 @@
             <tr v-for="module in modules">
                 <td>{{module.name}}</td>
                 <td><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
-                <td><button class="button" @click="() => saveInClipboard(module.site)">Copy</button></td>
+                <td><button class="button" @click="() => saveInClipboard(module.site)">click</button></td>
             </tr>
             </tbody>
         </table>

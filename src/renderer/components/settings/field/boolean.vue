@@ -23,8 +23,8 @@
 
 <script>
     export default {
-        name: 'boolean-field',
-        props: ['field', 'value']
+      name: 'boolean-field',
+      props: ['field', 'value']
     }
 </script>
 

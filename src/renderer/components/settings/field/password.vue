@@ -20,26 +20,26 @@
 
 <script>
     export default {
-        name: 'password-field',
-        props: ['field'],
-        data: function () {
-            return {
-                isShowingPassword: false,
-                inputType: 'password',
-                editing: false,
-                value: ''
-            }
-        },
-        methods: {
-            toggleEditing () {
-                this.value = ''
-                this.editing = !this.editing
-            },
-            toggleShow () {
-                this.isShowingPassword = !this.isShowingPassword
-                this.inputType = (this.inputType === 'password') ? 'text' : 'password'
-            }
+      name: 'password-field',
+      props: ['field'],
+      data: function () {
+        return {
+          isShowingPassword: false,
+          inputType: 'password',
+          editing: false,
+          value: ''
         }
+      },
+      methods: {
+        toggleEditing () {
+          this.value = ''
+          this.editing = !this.editing
+        },
+        toggleShow () {
+          this.isShowingPassword = !this.isShowingPassword
+          this.inputType = (this.inputType === 'password') ? 'text' : 'password'
+        }
+      }
     }
 </script>
 

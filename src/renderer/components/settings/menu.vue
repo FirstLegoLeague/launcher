@@ -13,8 +13,8 @@
 
 <script>
     export default {
-        name: 'settings-menu',
-        props: ['modules']
+      name: 'settings-menu',
+      props: ['modules']
     }
 </script>
 

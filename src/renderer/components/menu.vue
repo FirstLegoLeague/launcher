@@ -1,10 +1,10 @@
 <template>
     <div class="top-bar">
-        <div class="top-bar-left">
+        <div class="top-bar-left top-par-page">
             <ul class="menu">
                 <li><router-link active-class="is-active" :to="{ name: 'home-page' }">Home</router-link></li>
                 <li><router-link active-class="is-active" :to="{ name: 'settings' }">Settings</router-link></li>
-                <li><router-link active-class="is-active" to="{ name: 'credits-page' }">Credits</router-link></li>
+                <li><router-link active-class="is-active" :to="{ name: 'credits-page' }">Credits</router-link></li>
             </ul>
         </div>
     </div>
