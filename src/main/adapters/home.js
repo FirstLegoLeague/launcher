@@ -11,7 +11,14 @@ exports.HomeAdapter = class {
   }
 
   getPortsAllocation (callback) {
-    this.server.getPortsAllocation().asCallback(callback)
+    Promise.all([
+      this.server.getPortsAllocation(),
+      this.server.modulesPromise
+    ])
+      .then(([portsAllocation, modules]) => {
+
+      })
+      .asCallback(callback)
   }
 
   getIp (callback) {

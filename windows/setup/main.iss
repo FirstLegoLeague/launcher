@@ -5,14 +5,11 @@
 
 [Setup]
 AppName=FIRST LEGO League TMS
-AppVersion=2018.0
+AppVersion=2.0-alpha
 DefaultDirName=C:\FIRST_Lego_League_TMS
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 DisableProgramGroupPage=yes
-
-[Components]
-Name: "Basic"; Description: "Basic installation" ; Types: full custom; Flags: fixed
 
 [Dirs]
 Name: "{app}\data"
@@ -20,9 +17,9 @@ Name: "{app}\logs"
 Name: "{app}\tmp"
 
 [Files]
-Source: "{#app}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; Components: "Basic";
-Source: "{#modules}\*"; DestDir: "{app}\modules"; Flags: ignoreversion recursesubdirs; Components: "Basic";
-Source: "{#internals}\*"; DestDir: "{app}\internals"; Flags: ignoreversion recursesubdirs; Components: "Basic";
+Source: "{#app}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs;
+Source: "{#modules}\*"; DestDir: "{app}\modules"; Flags: ignoreversion recursesubdirs;
+Source: "{#internals}\*"; DestDir: "{app}\internals"; Flags: ignoreversion recursesubdirs;
 
 [Icons]
 Name: "{commondesktop}\FIRST LEGO League TMS"; Filename: "{app}\FIRST LEGO League TMS.exe"
@@ -30,3 +27,5 @@ Name: "{commonprograms}\FIRST LEGO League TMS"; Filename: "{app}\FIRST LEGO Leag
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\data"
+Type: filesandordirs; Name: "{app}\logs"
+Type: filesandordirs; Name: "{app}\tmp"
