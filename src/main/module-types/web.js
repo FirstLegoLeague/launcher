@@ -1,16 +1,8 @@
 'use strict'
 
-const os = require('os')
 const camelCase = require('camelcase')
 
-const { immutableObject } = require('./helpers')
-
-function getIp (netConnection) {
-  const networkInterfaces = os.networkInterfaces()
-
-  return os.networkInterfaces()[netConnection || Object.keys(networkInterfaces)[0]]
-    .find(i => i.family === 'IPv4').address
-}
+const { immutableObject, getIp } = require('./helpers')
 
 function createEnvironment (portsAllocations, globalConfig) {
   const ip = getIp(globalConfig.netConnection)
