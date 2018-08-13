@@ -1,6 +1,7 @@
 branches:
   only:
   - master
+  - adding_firewalls_rules
 skip_branch_with_pr: true
 
 cache:
