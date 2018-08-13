@@ -22,6 +22,8 @@ exports.WebModule = class {
     this.path = modulePath
     this.index = description.index
 
+    this.hidden = description.hidden
+
     this.config = immutableObject(description.config || [])
 
     Object.freeze(this)
