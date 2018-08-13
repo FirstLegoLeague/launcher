@@ -1,5 +1,8 @@
 'use strict'
 
+// eslint-disable-next-line node/no-deprecated-api
+const Domain = require('domain')
+
 const fs = require('fs')
 const ejs = require('ejs')
 const path = require('path')
@@ -58,20 +61,36 @@ class Mhub {
       .then(serviceId => {
         this.serviceId = serviceId
       })
-      .delay(2000)
       .then(() => this.connect())
   }
 
-  connect (retry = 0) {
-    return Promise.resolve(this.client.connect())
-      .catch(err => {
-        if (err.code === 'ECONNREFUSED' && retry < MAX_RETRIES) {
-          return Promise.delay(500 * 2 ** retry)
-            .then(() => this.connect(retry + 1))
-        } else {
-          throw err
-        }
-      })
+  connect () {
+    const client = this.client
+
+    function _connect (retry = 0) {
+      return Promise.resolve(client.connect())
+        .catch(err => {
+          if (err.code === 'ECONNREFUSED' && retry < MAX_RETRIES) {
+            return Promise.delay(500 * 2 ** retry)
+              .then(() => _connect(retry + 1))
+          } else {
+            throw err
+          }
+        })
+    }
+
+    const domain = Domain.create()
+
+    domain.add(client)
+
+    domain.on('error', err => {
+      if (err.code !== 'ECONNREFUSED') {
+        domain.exit()
+        throw err
+      }
+    })
+
+    return domain.run(() => _connect())
       .then(() => this.client.login('launcher', this.options.launcherPassword))
   }
 
