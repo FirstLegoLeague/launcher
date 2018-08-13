@@ -3,7 +3,7 @@
 #define modules "..\..\modules"
 #define internals "..\..\internals"
 #define executable "FIRST LEGO League TMS.exe"
-#define add_firewall_rule "advfirewall firewall add rule name=""FIRST LEGO League TMS"" protocol=tcp dir=in enable=yes action=allow profile=private"
+#define add_firewall_rule "advfirewall firewall add rule protocol=tcp dir=in enable=yes action=allow profile=private"
 
 [Setup]
 AppName=FIRST LEGO League TMS
@@ -24,9 +24,9 @@ Source: "{#modules}\*"; DestDir: "{app}\modules"; Flags: ignoreversion recursesu
 Source: "{#internals}\*"; DestDir: "{app}\internals"; Flags: ignoreversion recursesubdirs;
 
 [Run]
-Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} program=""{app}\{#executable}"""
-Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} program=""{app}\internals\caddy\caddy.exe"""
-Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} program=""{app}\internals\mongo\bin\mongod.exe"""
+Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} name=""FIRST LEGO League TMS"" program=""{app}\{#executable}"""
+Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} name=""FIRST LEGO League TMS"" program=""{app}\internals\caddy\caddy.exe"""
+Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} name=""FIRST LEGO League TMS"" program=""{app}\internals\mongo\bin\mongod.exe"""
 
 [Icons]
 Name: "{commondesktop}\FIRST LEGO League TMS"; Filename: "{app}\{#executable}"
