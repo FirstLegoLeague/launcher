@@ -10,8 +10,8 @@
             <tbody>
             <tr v-for="module in modules">
                 <td>{{module.name}}</td>
-                <td><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
-                <td><button class="button" @click="() => saveInClipboard(module.site)">copy</button></td>
+                <td class="text-left"><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
+                <td class="align-left"><button class="button" @click="() => saveInClipboard(module.site)">copy</button></td>
             </tr>
             </tbody>
         </table>
