@@ -24,13 +24,13 @@ Source: "{#modules}\*"; DestDir: "{app}\modules"; Flags: ignoreversion recursesu
 Source: "{#internals}\*"; DestDir: "{app}\internals"; Flags: ignoreversion recursesubdirs;
 
 [Run]
-Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{add_firewall_rule} program=""{app}\{executable}"""
-Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{add_firewall_rule} program=""{app}\internals\caddy\caddy.exe"""
-Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{add_firewall_rule} program=""{app}\internals\mongo\bin\mongod.exe"""
+Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} program=""{app}\{executable}"""
+Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} program=""{app}\internals\caddy\caddy.exe"""
+Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} program=""{app}\internals\mongo\bin\mongod.exe"""
 
 [Icons]
-Name: "{commondesktop}\FIRST LEGO League TMS"; Filename: "{app}\{executable}"
-Name: "{commonprograms}\FIRST LEGO League TMS"; Filename: "{app}\{executable}"
+Name: "{commondesktop}\FIRST LEGO League TMS"; Filename: "{app}\{#executable}"
+Name: "{commonprograms}\FIRST LEGO League TMS"; Filename: "{app}\{#executable}"
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\data"
