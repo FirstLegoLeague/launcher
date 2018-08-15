@@ -14,6 +14,8 @@ exports.NodeModule = class {
 
     this.script = path.join(this.path, description.script)
 
+    this.hidden = description.hidden
+
     this.scriptArguments = immutableArray(description.arguments)
     this.requirements = immutableArray(description.require)
     this.config = immutableObject(description.config || [])
