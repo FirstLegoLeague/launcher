@@ -13,12 +13,12 @@
             </div>
         </div>
 
-        <table style="padding: 2px;">
+        <table style="margin-top: 2em; margin-bottom: 2em;" class="small-8">
             <tbody>
             <tr v-for="module in modules">
-                <td>{{module.name}}</td>
-                <td class="text-left"><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
-                <td class="align-left text-left"><button class="button" @click="() => saveInClipboard(module.site)">copy</button></td>
+                <td style="padding: 0.5em;">{{module.name}}</td>
+                <td style="padding: 0.5em;"><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
+                <td style="padding: 0.5em;"><button class="button tiny" @click="() => saveInClipboard(module.site)">copy</button></td>
             </tr>
             </tbody>
         </table>
