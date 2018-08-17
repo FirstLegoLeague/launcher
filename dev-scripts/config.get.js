@@ -28,27 +28,27 @@ module.exports = {
     'identity-provider': {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/identity-provider#68b3f616a631a907b2f7fa0443788366d14c9ad5'
+        version: 'FirstLegoLeague/identity-provider#99f0005211f25600eff0acce7c893eab4f48f631'
       }
     },
     display: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.0.3'
+        version: '2.0.5'
       }
     },
     tournament: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '0.6.0'
+        version: '0.7.0'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/scoring#f8fcd30dcc0a92b4c20723ad79bad14952bcb49f'
+        version: 'FirstLegoLeague/scoring#a89d6bcda539d34557cb06e5c772f30f0fd5c769'
       }
     },
     rankings: {
