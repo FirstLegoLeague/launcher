@@ -1,12 +1,19 @@
 <template>
     <div class="text-center">
-        <div class="clearfix">
-            <img class="float-left" src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png">
-            <img class="float-right" src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_wide.png">
+        <div class="grid-x">
+            <div class="cell small-2">
+                <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png">
+            </div>
+            <div class="cell small-8">
+                <h2>Tournament Management System</h2>
+                <h4>v2018.1-alpha-2</h4>
+            </div>
+            <div class="cell small-2">
+                <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png">
+            </div>
         </div>
-        <h1>Tournament Management System</h1>
 
-        <table>
+        <table style="padding: 2px;">
             <tbody>
             <tr v-for="module in modules">
                 <td>{{module.name}}</td>
