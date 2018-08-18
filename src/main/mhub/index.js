@@ -22,7 +22,7 @@ const MHUB_EXECUTABLE_PATH = path.resolve('./internals/mhub/bin/mhub-server')
 const MHUB_FILE_TEMPLATE = path.join(__static, 'mhub-config.ejs')
 const MHUB_FILE_PATH = path.resolve('./tmp/$mhub.config.json')
 
-const MAX_RETRIES = 15
+const MAX_RETRIES = 5
 
 function generateConfigFileContent (configFile, options) {
   return mkdirpAsync(path.dirname(configFile))
