@@ -14,6 +14,8 @@ exports.NodeModule = class {
 
     this.script = path.join(this.path, description.script)
 
+    this.hidden = description.hidden
+
     this.scriptArguments = immutableArray(description.arguments)
     this.requirements = immutableArray(description.require)
     this.config = immutableObject(description.config || [])
@@ -27,7 +29,7 @@ exports.NodeModule = class {
       requirements: this.requirements,
       executable: process.execPath,
       path: this.path,
-      arguments: [this.script].concat(this.arguments),
+      arguments: [this.script].concat(this.arguments || []),
       env: {
         'ELECTRON_RUN_AS_NODE': '1'
       }

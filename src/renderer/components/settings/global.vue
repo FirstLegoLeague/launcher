@@ -12,7 +12,7 @@
                          :key="group.name"
                          @value-change="updateValue"
           />
-          <button @click="save">Save</button>
+          <button class="button" @click="save">Save</button>
       </div>
   </div>
 </template>

@@ -11,7 +11,25 @@ exports.HomeAdapter = class {
   }
 
   getPortsAllocation (callback) {
-    this.server.getPortsAllocation().asCallback(callback)
+    Promise.all([
+      this.server.getPortsAllocation(),
+      this.server.modulesPromise
+    ])
+      .then(([portsAllocation, modules]) => {
+        const pickedAllocation = {}
+
+        const modulesHiddenMap = modules
+          .reduce((obj, module) => Object.assign(obj, { [module.name]: Boolean(module.hidden) }), {})
+
+        Object.entries(portsAllocation).forEach(([moduleName, port]) => {
+          if (!modulesHiddenMap[moduleName]) {
+            pickedAllocation[moduleName] = port
+          }
+        })
+
+        return pickedAllocation
+      })
+      .asCallback(callback)
   }
 
   getIp (callback) {

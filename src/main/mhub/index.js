@@ -1,5 +1,8 @@
 'use strict'
 
+// eslint-disable-next-line node/no-deprecated-api
+const Domain = require('domain')
+
 const fs = require('fs')
 const ejs = require('ejs')
 const path = require('path')
@@ -18,6 +21,8 @@ const MHUB_CONNECTION_STRING = 'ws://localhost:13900'
 const MHUB_EXECUTABLE_PATH = path.resolve('./internals/mhub/bin/mhub-server')
 const MHUB_FILE_TEMPLATE = path.join(__static, 'mhub-config.ejs')
 const MHUB_FILE_PATH = path.resolve('./tmp/$mhub.config.json')
+
+const MAX_RETRIES = 5
 
 function generateConfigFileContent (configFile, options) {
   return mkdirpAsync(path.dirname(configFile))
@@ -56,12 +61,36 @@ class Mhub {
       .then(serviceId => {
         this.serviceId = serviceId
       })
-      .delay(1000)
       .then(() => this.connect())
   }
 
   connect () {
-    return Promise.resolve(this.client.connect())
+    const client = this.client
+
+    function _connect (retry = 0) {
+      return Promise.resolve(client.connect())
+        .catch(err => {
+          if (err.code === 'ECONNREFUSED' && retry < MAX_RETRIES) {
+            return Promise.delay(500 * 2 ** retry)
+              .then(() => _connect(retry + 1))
+          } else {
+            throw err
+          }
+        })
+    }
+
+    const domain = Domain.create()
+
+    domain.add(client)
+
+    domain.on('error', err => {
+      if (err.code !== 'ECONNREFUSED') {
+        domain.exit()
+        throw err
+      }
+    })
+
+    return domain.run(() => _connect())
       .then(() => this.client.login('launcher', this.options.launcherPassword))
   }
 

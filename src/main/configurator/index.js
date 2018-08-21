@@ -53,6 +53,10 @@ exports.Configurator = class extends EventEmitter {
       throw new Error('Can\'t add module to a sealed moduleConfigurator')
     }
 
+    if (!module.config) {
+      return Promise.resolve()
+    }
+
     this.configMetadata[module.name] = module.config
     return this.storagePromise.then(storage => {
       return Promise.resolve(Object.values(module.config))

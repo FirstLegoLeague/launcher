@@ -69,6 +69,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "babili-webpack-plugin": "^0.1.2",
+    "@first-lego-league/user-interface": "^1.2.10",
     "caporal": "^0.10.0",
     "cfonts": "^2.0.1",
     "chalk": "^2.4.0",
