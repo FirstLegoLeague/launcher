@@ -4,7 +4,7 @@ branches:
 skip_branch_with_pr: true
 
 cache:
- - "%LOCALAPPDATA%\\Yarn"
+- "%LOCALAPPDATA%\\Yarn"
 
 platform: x64
 
@@ -13,16 +13,15 @@ environment:
 
 # Install scripts. (runs after repo cloning)
 install:
-  - ps: Install-Product node $env:nodejs_version x64
-  - yarn install --frozen-lockfile
-  - yarn run get all -p win32 --arch x64 -c 5 -i ./internals -m ./modules
+- ps: Install-Product node $env:nodejs_version x64
+- yarn install --frozen-lockfile
+- yarn run get all -p win32 --arch x64 -c 5 -i ./internals -m ./modules
 
 build_script:
-  - yarn run build:win --c.directories.output=./dist/
-  - >-
-    "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
-    /FFIRST_LEGO_League_Tournament_Management_System_Setup_%APPVEYOR_BUILD_VERSION% .\\windows\\setup\\main.iss
-
+- yarn run build:win --c.directories.output=./dist/
+- >-
+  "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
+  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%APPVEYOR_BUILD_VERSION% .\\windows\\setup\\main.iss
 artifacts:
-  - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
-    name: Installer
+- path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
+  name: Installer
