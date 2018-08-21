@@ -6,7 +6,7 @@
             </div>
             <div class="cell small-8">
                 <h2>Tournament Management System</h2>
-                <h4>v2018.1-alpha-4</h4>
+                <h4>v2018.1-alpha-4.1</h4>
             </div>
             <div class="cell small-2">
                 <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png">
