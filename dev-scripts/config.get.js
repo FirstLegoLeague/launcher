@@ -35,20 +35,20 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.0.9'
+        version: '2.0.10'
       }
     },
     tournament: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '1.1.1'
+        version: '1.2.0'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/scoring#18340f1cdd7127bceeb7be3300cecb18d9e208d9'
+        version: 'FirstLegoLeague/scoring#01c4d77aadbce3e9c7529e873864d8eb5b11975d'
       }
     },
     rankings: {
