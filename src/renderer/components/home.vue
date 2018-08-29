@@ -1,27 +1,26 @@
 <template>
-    <div class="text-center">
-        <div class="grid-x">
-            <div class="cell small-2">
-                <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png">
-            </div>
-            <div class="cell small-8">
-                <h2>Tournament Management System</h2>
-                <h4>v2018.1-alpha-6</h4>
-            </div>
-            <div class="cell small-2">
-                <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png">
-            </div>
+    <div class="grid-container fluid text-center">
+        <div class="grid-x grid-padding-y">
+          <div class="cell small-2">
+              <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png">
+          </div>
+          <div class="cell small-8">
+              <h2>Tournament Management System</h2>
+              <h4>v2018.1-alpha-6</h4>
+          </div>
+          <div class="cell small-2">
+              <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png">
+          </div>
         </div>
-
-        <table style="margin-top: 2em; margin-bottom: 2em;" class="small-8">
-            <tbody>
-            <tr v-for="module in modules">
-                <td style="padding: 0.5em;">{{module.name}}</td>
-                <td style="padding: 0.5em;"><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
-                <td style="padding: 0.5em;"><button class="button tiny" @click="() => saveInClipboard(module.site)">copy</button></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="grid-x grid-padding-y">
+          <div class="cell grid-y grid-padding-x">
+            <div v-for="module in modules" class="cell grid-x">
+                <td class="small-4 text-left">{{module.name}}</td>
+                <td class="small-4"><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
+                <td class="small-4 text-right"><button class="button small" @click="() => saveInClipboard(module.site)">copy</button></td>
+            </div>
+          </div>
+        </div>
 
         <button class="button" @click="saveLogs">Save Logs</button>
     </div>
