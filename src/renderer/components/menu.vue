@@ -2,9 +2,9 @@
     <div class="top-bar">
         <div class="top-bar-left top-par-page">
             <ul class="menu">
-                <li><router-link active-class="is-active" :to="{ name: 'home-page' }">Home</router-link></li>
-                <li><router-link active-class="is-active" :to="{ name: 'settings' }">Settings</router-link></li>
-                <li><router-link active-class="is-active" :to="{ name: 'credits-page' }">Credits</router-link></li>
+                <router-link tag="li" active-class="is-active" :to="{ name: 'home-page' }"><a>Home</a></router-link>
+                <router-link tag="li" active-class="is-active" :to="{ name: 'settings' }"><a>Settings</a></router-link>
+                <router-link tag="li" active-class="is-active" :to="{ name: 'credits-page' }"><a>Credits</a></router-link>
             </ul>
         </div>
     </div>
