@@ -1,12 +1,15 @@
 <template>
     <div>
-        <h1>Settings</h1>
         <SettingsMenu :modules="modules" />
-        <router-view></router-view>
+        <div class="top-bar-page">
+          <router-view></router-view>
+        </div>
     </div>
 </template>
 
 <script>
+  import Promise from 'bluebird'
+
   import SettingsMenu from './menu'
 
   export default {
@@ -25,6 +28,11 @@
           console.error(err)
           return
         }
+
+        Promise.all(modulesNames.map(moudleName => Promise.fromCallback(cb => adapter.getModuleConfig(moudleName, cb))))
+          .then(configs => {
+            this.modules = modulesNames.filter((module, index) => configs[index].length !== 0)
+          })
 
         this.modules = modulesNames
       })
