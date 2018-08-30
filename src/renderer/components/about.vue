@@ -2,7 +2,6 @@
     <div id="about" class="grid-container">
         <div class="grid-x">
             <div class="cell">
-                <h1>About</h1>
                 <h4>Contact us</h4>
                 <pre>This program was an effort of several years of devlopment, testing, doing and redoing.
 It was made with a lot of thought in order to make it the best it could be.
