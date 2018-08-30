@@ -14,47 +14,29 @@
         </div>
         <div class="grid-x grid-padding-y">
           <div class="cell grid-y grid-padding-x">
-            <div v-for="module in modules" class="cell grid-x">
-                <td class="small-4 text-left">{{module.name}}</td>
-                <td class="small-4"><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
-                <td class="small-4 text-right"><button class="button small" @click="() => saveInClipboard(module.site)">copy</button></td>
+            <div class="cell grid-x grid-margin-x">
+              <div v-for="module in modules" class="cell small-3 grid-y card">
+                  <div class="cell card-section text-left">{{module.name}}</div>
+                  <div class="cell"><qrcode :value="module.site"></qrcode></div>
+                  <div class="cell card-section">
+                    <a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a>
+                    <button class="button small" @click="() => saveInClipboard(module.site)"><i class="fas fa-copy"></i></button>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <button class="button" @click="saveLogs">Save Logs</button>
     </div>
 </template>
 
 <script>
   import Promise from 'bluebird'
-
+  import VueQrcode from '@xkeshi/vue-qrcode';
+  
   export default {
     name: 'HomePage',
-    methods: {
-      saveLogs () {
-        this.dialog.showSaveDialog({
-          title: 'Save logs',
-          defaultPath: 'logs.zip',
-          filter: [{ name: 'zip', extensions: ['zip'] }]
-        }, filePath => {
-          Promise.fromCallback(cb => this.adapter.saveLogs(filePath, cb))
-            .then(() => this.dialog.showMessageBox({
-              type: 'info',
-              buttons: ['Ok'],
-              message: 'Logs saved'
-            }))
-            .catch(err => {
-              this.dialog.showMessageBox({
-                type: 'error',
-                buttons: ['Ok'],
-                message: 'Error in saving logs'
-              })
-              console.error(err)
-            })
-        })
-      },
-      openSite (event, site) {
+    components: { VueQrcode },
+    methods: {      openSite (event, site) {
         event.preventDefault()
 
         Promise.fromCallback(cb => this.adapter.openSite(site, cb))
@@ -72,7 +54,6 @@
       }
     },
     mounted () {
-      this.dialog = this.$electron.remote.dialog
       this.clipboard = this.$electron.remote.clipboard
       this.adapter = this.$electron.remote.require('./main').homeAdapter
 

@@ -29,9 +29,9 @@ export default new Router({
       ]
     },
     {
-      path: '/credits',
-      name: 'credits-page',
-      component: require('@/components/credits').default
+      path: '/about',
+      name: 'about-page',
+      component: require('@/components/about').default
     },
     {
       path: '*',
