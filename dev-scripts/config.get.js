@@ -48,13 +48,13 @@ module.exports = {
     scoring: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/scoring#08e90a22a93e814acfc23fefe3785c67fd3f3877'
+        version: 'FirstLegoLeague/scoring#ac6c3d000f0623a3a9a7a41d52384204550f7f09'
       }
     },
     rankings: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#9b50369338f702208ff0e0ca555a23f469357438'
+        version: 'FirstLegoLeague/rankings#7baaebdf699ecda9013118b5ea1f80e8fca67372'
       }
     },
     clock: {
