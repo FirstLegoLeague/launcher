@@ -6,13 +6,14 @@ This guide is intended to give a brief overview of how to use the Tournament Man
 
 Even though this is called a Tournament Management System, currently it only provides scoring functionality. Additional features are planned for the future.
 
-The system is made up of modules. Each module  implements a particular functionality. All modules except the launcher are displayed through your computer's default browser.  
+The system is made up of modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
 
 Note: Currently we only support the Chrome browser.
+
 1. **Launcher:** provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
 1. **Tournament:** loads tournament Schedule files or Team Lists and provides tournament-wide configuration options.
-1. **Scoring:** provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team. After the score has been submitted it can be viewed in searchable list together with all other scores. Score details can also be edited.
-1. **Results Display:** shows the match results of all the teams.
+1. **Scoring:** provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
+1. **Results Display:** shows the team's match results.
 1. **Timer:** starts and displays the match timer.
 1. **Tournament Status Display:** shows whether the tournament is running ahead or behind schedule, and also shows the "next up" teams (not completed yet).
 
@@ -20,48 +21,40 @@ Note: Currently we only support the Chrome browser.
 
 <img src="launcher.png" style="width:75%"> 
 
-Launcher Home Screen
-
 ### Home
-The `Home` screen is used to launch the various modules in the browser.  
-For example, click the `Clock` (timer) link to open the `Timer`. You can also press the `copy` button to copy the link address, and then paste it into the browser address bar. Do this if your default browser is not Chrome.
+The `Home` screen is used to open the modules in the browser.  
+For example, click the `Clock` (timer) link to open the `Timer`. You can also press the `copy` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
 ### Settings
 Module configuration is accessed through the `Settings` screen.
 
 <img src="settings.png" style="width:75%">  
 
-Settings Screen
-
 **clock**  
 Timer settings
 
 **display**  
-Results Display - currently no settings
+Results Display - No settings
 
 **identity-provider**  
 
 Note: this will be renamed  
 
 Set `passwords` for the four predefined `roles`.
-- `admin` - tournament administrator or head referee
-- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far.
-- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets.
-- `MC` - tbd
 
 Press `Change` to set a new password. Press `Save` to make the change  permanent.
 
 **rankings**  
-Configure whether negative scores are shown as 0 on the Results Display. Default is YES. 
+Configure whether negative scores are shown as 0 on the `Results Display`. Default is YES. 
 
 Note: The Scoring screen (intended for the Head Referee) shows negative scores when present.
 
 **scoring**  
-Configure various settings of the `Scoring` module.
+Configure the `Scoring` module settings.
 - Select the scoresheet `Challenge` and language.
 - `Require a referee` selects whether a referee name is required on a scoresheet. Default: YES
 - `Auto-publish` - When configured to YES scores will be send to the `Results Display` as soon as the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be published, usually by the scorekeeper. Default: YES. See [link]
-- `Require a Table` selects whether a Table name is required on a scoresheet. Default: YES
-- `Require a Signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee the team technician will be required to sign the scoresheet, but when a scorekeeper enters the mission information a signature is not required. Default: YES.
+- `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
+- `Require a Signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
 - `Display zero mission results` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
 
 **tournament**  
@@ -69,6 +62,10 @@ Configure various settings of the `Scoring` module.
 
 ## Login
 Access to the module screens are password protected. There are 4 predefined roles: admin, scorekeeper, referee and MC.
+- `admin` - tournament administrator or head referee
+- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far.
+- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets.
+- `MC` - tbd
 
 <img src="login.png" style="width:75%">
 
