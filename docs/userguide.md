@@ -6,12 +6,22 @@ This guide is intended to give a brief overview of how to use the Tournament Man
 
 Even though this is called a Tournament Management System, currently it only provides scoring functionality. Additional features are planned for the future.
 
-The system is made up of modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
+The system is made up of components or modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
 
 Note: Currently we only support the Chrome browser.
 
+### Configuration
+
+The software can be run entirely on one laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Network Configuration](#Network-Configuration)
+
+### Hardware requirements
+
+The computer on which the software is installed should be an Intel I5 with 8GB of memory, or better. Approximately 1.5 GB of disk space is required. The other computers (scorekeepers, timer, results display) only need to run a browser and therefore have mimimal hardware needs.
+
+### Modules
+
 1. **Launcher:** provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
-1. **Tournament:** loads tournament Schedule files or Team Lists and provides tournament-wide configuration options.
+1. **Tournament:** loads tournament Schedule file or Team List and provides tournament-wide configuration options.
 1. **Scoring:** provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
 1. **Results Display:** shows the team's match results.
 1. **Timer:** starts and displays the match timer.
@@ -72,13 +82,13 @@ Access to the module screens are password protected. There are 4 predefined role
 When you login with a role (username) and password, that role is valid for all tabs opened in the browser. If you open an Incognito tab or a different browser, you can login again using a different role.
 
 ## Timer
-The `Timer` (clock) is used to start matches and provide a 2:30 minute countdown timer.
+The `Timer` (clock) is used to start matches and provides a 2:30 minute countdown timer.
 
 <img src="timer.png" style="width:75%">
 
 There are 3 options
 - Start the timer
-- Reload the timer - return the timer to 2:30 minutes
+- Reload the timer - resets the timer to 2:30 minutes
 - Stop the timer - does an automatic reload
 
 The musical note in the top left hand corner of the screen is used to test the four sounds.
@@ -99,7 +109,7 @@ Drag and drop a schedule file or team list onto the popup.
 
 <img src="tournament-import-schedule.png" style="width:75%">
 
-Verify that the information looks correct and press `Upload`.
+Verify that the information looks correct and then press `Upload`.
 
 Once you have imported the file you can see all the imported information by pressing the `Teams` and `Matches` buttons. 
 
@@ -197,4 +207,11 @@ The `Show only duplicates` button is shown when more than one score is submitted
 
 `Show only bad scores` button - TBD
 
-## Network
+## Network Configuration
+
+At a larger tournament you might have four computers connected to each other using a router. We recommend that the connections to the router be wired connections rather than WiFi, especially in school environments where there could very well be other WiFi networks. 
+
+### Use of iPads and tablets
+
+We have done limited testing of score input using iPads and WiFi. No problems were encoutered. If there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
+**Note:** Additional functionality has been added since the above testing. Therefore tournaments that intend using iPads should coordinate this with the development team.
