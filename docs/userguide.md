@@ -6,41 +6,44 @@ This guide is intended to give a brief overview of how to use the Tournament Man
 
 Even though this is called a Tournament Management System, currently it only provides scoring functionality. Additional features are planned for the future.
 
-The system is made up of components or modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
+The system is made up of a number of components that we call modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
 
 Note: Currently we only support the Chrome browser.
 
-### Configuration
+### Hardware required
 
-The software can be run entirely on one laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Network Configuration](#Network-Configuration)
+The software can be run entirely on one laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Network Configuration](#Network-Configuration)
 
-### Hardware requirements
+### Computer requirements
 
 The computer on which the software is installed should be an Intel I5 with 8GB of memory, or better. Approximately 1.5 GB of disk space is required. The other computers (scorekeepers, timer, results display) only need to run a browser and therefore have mimimal hardware needs.
 
 ### Modules
 
-1. **Launcher:** provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
-1. **Tournament:** loads tournament Schedule file or Team List and provides tournament-wide configuration options.
-1. **Scoring:** provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
-1. **Results Display:** shows the team's match results.
-1. **Timer:** starts and displays the match timer.
-1. **Tournament Status Display:** shows whether the tournament is running ahead or behind schedule, and also shows the "next up" teams (not completed yet).
+1. [**Launcher:**](#Launcher) provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
+1. [**Tournament:**](#Tournament) loads tournament Schedule file or Team List and provides tournament-wide configuration options.
+1. [**Scoring:**](#Scoring) provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
+1. [**Results Display:**](#results-display) shows the team's match results.
+1. [**Timer:**](#Timer) starts and displays the match timer.
+1. [**Tournament Status Display:**](#) (not completed yet) shows whether the tournament is running ahead or behind schedule, and also shows the "next up" teams.
 
 ## Launcher
 
 <img src="launcher.png" style="width:75%"> 
 
 ### Home
+
 The `Home` screen is used to open the modules in the browser.  
 For example, click the `Clock` (timer) link to open the `Timer`. You can also press the `copy` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
+
 ### Settings
+
 Module configuration is accessed through the `Settings` screen.
 
 <img src="settings.png" style="width:75%">  
 
 **clock**  
-Timer settings
+Timer settings - display countdown in minutes:seconds from 2:30 or in seconds from 150. 
 
 **display**  
 Results Display - No settings
@@ -80,20 +83,6 @@ Access to the module screens are password protected. There are 4 predefined role
 <img src="login.png" style="width:75%">
 
 When you login with a role (username) and password, that role is valid for all tabs opened in the browser. If you open an Incognito tab or a different browser, you can login again using a different role.
-
-## Timer
-The `Timer` (clock) is used to start matches and provides a 2:30 minute countdown timer.
-
-<img src="timer.png" style="width:75%">
-
-There are 3 options
-- Start the timer
-- Reload the timer - resets the timer to 2:30 minutes
-- Stop the timer - does an automatic reload
-
-The musical note in the top left hand corner of the screen is used to test the four sounds.
-
-<img src="test-sounds.png" style="width:75%">
 
 ## Tournament
 The `Tournament` screen is the place where the tournament organizer or head referee configures the tournament.
@@ -136,7 +125,7 @@ The four *FIRST* LEGO League global sponsors are preloaded. You can add addition
 
 A later version will support hiding logos that you do not want to be displayed but that you wish to keep.
 
-Further configuration options are available in the `Tournament Settings` screen. 
+Further configuration options are available in the `Tournament Settings` screen.
 
 <img src="tournament-settings.png" style="width:75%">
 
@@ -171,7 +160,7 @@ Click the notification to jump to the first incomplete mission. You will also be
 
 The team signs the scoresheet in the space provided, and then press `Submit`. You will see a `Score saved successfully` message.
 
-## Score management screen
+### Score management screen
 
 Press the menu icon to open the `Score management` screen.  
 
@@ -207,11 +196,45 @@ The `Show only duplicates` button is shown when more than one score is submitted
 
 `Show only bad scores` button - TBD
 
+## Results display
+
+TBD
+
+## Timer
+
+The `Timer` (clock) is used to start matches and provides a 2:30 minute countdown timer.
+
+<img src="timer.png" style="width:75%">
+
+There are 3 options
+- Start the timer
+- Reload the timer - resets the timer to 2:30 minutes
+- Stop the timer - does an automatic reload
+
+The musical note in the top left hand corner of the screen is used to test the four sounds.
+
+<img src="test-sounds.png" style="width:75%">
+
+## Tournament Status Display
+
+TBD
+
 ## Network Configuration
 
-At a larger tournament you might have four computers connected to each other using a router. We recommend that the connections to the router be wired connections rather than WiFi, especially in school environments where there could very well be other WiFi networks. 
+At a larger tournament you might have four computers connected to each other using a router. We recommend that the connections to the router be wired connections rather than WiFi, especially in school environments where there could very well be other WiFi networks.
 
 ### Use of iPads and tablets
 
 We have done limited testing of score input using iPads and WiFi. No problems were encoutered. If there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
 **Note:** Additional functionality has been added since the above testing. Therefore tournaments that intend using iPads should coordinate this with the development team.
+
+## Todos
+
+1. Add internal links in document
+1. Diagram of configuration
+1. Show only bad scores
+1. Results Display
+1. Tournamet Status Display
+1. email address for comments
+1. logs and debugging
+1. Network cards
