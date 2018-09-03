@@ -6,13 +6,13 @@ This guide is intended to give a brief overview of how to use the Tournament Man
 
 Even though this is called a Tournament Management System, currently it only provides scoring functionality. Additional features are planned for the future.
 
-The system is made up of a number of components that we call modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
+The system is made up of a number of components which we call modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
 
 Note: Currently we only support the Chrome browser.
 
 ### Hardware required
 
-The software can be run entirely on one laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Network Configuration](#Network-Configuration)
+The software can be run entirely on one laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Network Configuration](#network-configuration)
 
 ### Computer requirements
 
@@ -20,12 +20,12 @@ The computer on which the software is installed should be an Intel I5 with 8GB o
 
 ### Modules
 
-1. [**Launcher:**](#Launcher) provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
-1. [**Tournament:**](#Tournament) loads tournament Schedule file or Team List and provides tournament-wide configuration options.
-1. [**Scoring:**](#Scoring) provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
+1. [**Launcher:**](#launcher) provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
+1. [**Tournament:**](#tournament) loads tournament Schedule file or Team List and provides tournament-wide configuration options.
+1. [**Scoring:**](#scoring) provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
 1. [**Results Display:**](#results-display) shows the team's match results.
-1. [**Timer:**](#Timer) starts and displays the match timer.
-1. [**Tournament Status Display:**](#) (not completed yet) shows whether the tournament is running ahead or behind schedule, and also shows the "next up" teams.
+1. [**Timer:**](#timer) starts and displays the match timer.
+1. [**Tournament Status Display:**](#tournament-status-display) (not completed yet) shows whether the tournament is running ahead or behind schedule, and also shows the "next up" teams.
 
 ## Launcher
 
@@ -63,10 +63,10 @@ Note: The Scoring screen (intended for the Head Referee) will shows negative sco
 
 **scoring**  
 
-Configure the [Scoring module](#Scoring) settings.
+Configure the [Scoring module](#scoring) settings.
 - Select the scoresheet `Challenge` and language.
 - `Require a referee` selects whether a referee name is required on a scoresheet. Default: YES
-- `Auto-publish` - When configured to YES scores will be sent to the `Results Display` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#Scoring-tile), usually by the scorekeeper. Default: YES. See [link]
+- `Auto-publish` - When configured to YES scores will be sent to the `Results Display` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
 - `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
 - `Require a Signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
 - `Display zero mission results` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
@@ -232,7 +232,7 @@ The `Results Display` continuously scrolls through all the teams.
 
 The tournament title is configured in the [Tournament Settings](#tournament-settings) screen.
 
-The sponsor logos ribbon is configured in the [Tournament Images](#Images) screen.
+The sponsor logos ribbon is configured in the [Tournament Images](#images) screen.
 
 ## Timer
 
@@ -253,7 +253,7 @@ The timer can be activated on any computer or tablet on the network. The sound f
 
 ## Tournament Status Display
 
-TBD
+This display shows whether the tournament is running ahead of time or behind time. It also shows the teams that will play in the following two matches.
 
 ## Network Configuration
 
