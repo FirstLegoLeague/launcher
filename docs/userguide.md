@@ -52,89 +52,102 @@ Results Display - No settings
 
 Note: this will be renamed  
 
-Set `passwords` for the four predefined `roles`.
+Set `passwords` for the four predefined `roles`. See [Login](#login)
 
-Press `Change` to set a new password. Press `Save` to make the change  permanent.
+Press `Change` to set a new password. Press `Save` to make the change permanent.
 
 **rankings**  
 Configure whether negative scores are shown as 0 on the `Results Display`. Default is YES. 
 
-Note: The Scoring screen (intended for the Head Referee) shows negative scores when present.
+Note: The Scoring screen (intended for the Head Referee) will shows negative scores.
 
 **scoring**  
-Configure the `Scoring` module settings.
+
+Configure the [Scoring module](#Scoring) settings.
 - Select the scoresheet `Challenge` and language.
 - `Require a referee` selects whether a referee name is required on a scoresheet. Default: YES
-- `Auto-publish` - When configured to YES scores will be send to the `Results Display` as soon as the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be published, usually by the scorekeeper. Default: YES. See [link]
+- `Auto-publish` - When configured to YES scores will be sent to the `Results Display` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#Scoring-tile), usually by the scorekeeper. Default: YES. See [link]
 - `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
 - `Require a Signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
 - `Display zero mission results` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
 
-**tournament**  
+**tournament** 
+
 `Tournament module` - No settings
 
 ## Login
-Access to the module screens are password protected. There are 4 predefined roles: admin, scorekeeper, referee and MC.
+
+Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and MC) has it's own password.
 - `admin` - tournament administrator or head referee
 - `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far.
 - `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets.
 - `MC` - tbd
+
+The default password is the same as the role (i.e. role: admin password:admin).
 
 <img src="login.png" style="width:75%">
 
 When you login with a role (username) and password, that role is valid for all tabs opened in the browser. If you open an Incognito tab or a different browser, you can login again using a different role.
 
 ## Tournament
+
 The `Tournament` screen is the place where the tournament organizer or head referee configures the tournament.
 
-The first step is to import a schedule file or team list. Click `Import` on the right and select to import a `Schedule File` or `Team List`
+The first step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List`
 
 <img src="tournament-import.png" style="width:75%">
 
 - `Schedule file` - Import a CSV schedule file that follows the format used by Brian Lee's Scheduler excel file. This file contains team numbers and names as well as the tournament matches time schedule. 
-- `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information in the first 3 columns. As this file does not contain match information, system features that require this data will be unavailable when a `Team List` is imported.    
+- `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information in the first 3 columns. As this file does not contain match information, system features requiring this data will be unavailable.
 
 Drag and drop a schedule file or team list onto the popup.
 
 <img src="tournament-import-schedule.png" style="width:75%">
 
-Verify that the information looks correct and then press `Upload`.
+Verify that the information looks correct and then press `Import`.
 
 Once you have imported the file you can see all the imported information by pressing the `Teams` and `Matches` buttons. 
 
-(current bug: you might have to refresh the screen by pressing the F5 button to see the teams or matches).
-
 ### Teams
-The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to give a team number that is already used.
+
+The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken.
 
 ### Matches
+
 The `Matches` screen shows all the match information.
 
 <img src="tournament-matches.png" style="width:75%">
 
 You can edit match information or delete a match. You can also add a match or add, delete or rename the tables. Be careful not to enter conflicting data.
 
-In a later version there will be support for searching the Teams and Matches screens.
+Note: A later version of this software will provide support for searching the Teams and Matches screens.
 
 ### Images
+
 The sponsor logos shown on the `Results Display` ribbon are configured here.
 
 <img src="tournament-images.png" style="width:75%">
 
-The four *FIRST* LEGO League global sponsors are preloaded. You can add additional images files by pressing the `Add Image` button. Press the `Delete` button on an image file to remove it.
+The four *FIRST* LEGO League global sponsors are preloaded. You can add additional images files by pressing the `Add Image` button. Press the `Delete` button on an image tile to remove it.
 
-A later version will support hiding logos that you do not want to be displayed but that you wish to keep.
+Note: A later version of this software will support hiding logos that you do not want to be displayed but that you wish to keep.
+
+### Tournament Settings
 
 Further configuration options are available in the `Tournament Settings` screen.
 
 <img src="tournament-settings.png" style="width:75%">
 
-- Use the `Stage` dropdown to set the current stage of the tournament. Most tournaments have `practice` and `ranking` stages. When you import a `Schedule File` the stage names are take from the file. Default stage names are used if you import a `Team List`. Press the `Save` button after changing the stage. If scores have already been entered for the new `Stage` they will appear on the `Results Display`.
-- Use the `Delete` button to delete the Teams and Matches. The system will verify that there are no team scores before deleting teams or matches. You delete scores in the `Scoring` module.
+- Use the `Stage` dropdown to set the current stage of the tournament. Most tournaments have `practice` and `ranking` stages. When you import a `Schedule File` the stage names in the file are used. Default stage names are used if you import a `Team List`. Press the `Save` button after changing the stage. If scores have already been entered for the new `Stage` they will appear on the `Results Display`.
+- Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note is permanent and deleted scores cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches. You delete scores in the `Scoring` module.
 - The `Tournament Title` shown on the `Results Display` is configured here.
+
 ## Scoring
+
 The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a scoresheet and by the `Head Referee` or `Scorekeeper` to manage the scores already entered into the system.
+
 ### Scoresheet
+
 The scoresheet text follows the official scoresheet exactly.
 
 <img src="scoring.png" style="width:75%">
@@ -142,7 +155,7 @@ The scoresheet text follows the official scoresheet exactly.
 - `Select Team` - Choose the team to score. Once you have selected a team you select the `Round`.
 - `Select Round` - Select the `Round` to score. If you imported a Schedule CSV file in `Tournament` then the matches and rounds are taken from there. Rounds for which a score has already been entered are indicated by a tick mark.
 - `Points` shows the accumulated points of missions scored so far.
-- `Default` sets all the unscored missions to their default (usually unscored) value. This shortcut can be used when a team has succeeded in only a few missions - score those missions and then press `Default` to rapidly complete the rest. This option is not available when the referee role is logged in since the referee is required to go over all the missions with the team technicians.
+- `Default` sets all the unscored missions to their default (usually unscored) value. This shortcut can be used when a team has succeeded in only a few missions - score those missions and then press `Default` to rapidly complete the other missions. This option is not available when the referee role is logged in since the referee is required to go over all the missions with the team technicians.
 - `Reset` - reset the scoresheet to it's unscored state.
 - `?` - Show the mission text.
 
@@ -158,7 +171,8 @@ If you get to the end of the scoresheet without having marked all the missions y
 
 Click the notification to jump to the first incomplete mission. You will also be notified if the `Team` or `Round` has not been selected.
 
-The team signs the scoresheet in the space provided, and then press `Submit`. You will see a `Score saved successfully` message.
+The team signs the scoresheet in the space provided, and then press `Submit`. You will see a `Score saved successfully` message.  
+Note: [Require a Signature](#settings) is configurable in the Settings.
 
 ### Score management screen
 
@@ -166,26 +180,30 @@ Press the menu icon to open the `Score management` screen.
 
 <img src="scoring-management.png" style="width:75%">
 
-- **Search scores** - enter text to filter scores shown. Examples:  
+- **Search scores** - enter text to filter which scores are shown. Examples:  
   - `practice` - show all practice scores
   - `ranking #2` - show all scores in round `ranking 2`
   - `#62` - show all scores of team 62
   - `#7` - show all scores of teams with team numbers that start with 7. Add a space after the number 7 to show only scores for team 7
   - `Table 3` - show all scores on `Table 3`
-- `Delete all scores` deletes all scores on the system. You will be asked to confirm. **Note that is permanent and deleted scores cannot be recovered**.
-- `Download rankings` downloads all the ranking scores to a CSV file that can be used by Judging-Lite. Note that currently we only support export of `ranking` scores and not `practice` scores.
+- `Delete all scores` deletes all scores on the system. You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**.
+- `Download rankings` downloads all the ranking scores to a CSV file that can be used by Judging-Lite.  
+Note: Currently we only support export of `ranking` scores. `practice` scores cannot be exported.
 
-### Scoring tiles
-All the information relating to a particular score is shown in scoring tile.  
+### Scoring tiles 
+
+All the information relating to a particular score is shown in a scoring tile.  
+
 #### Scoring tile  
+
 <img src="scoring-tile.png" style="width:75%">
 
 - `Team number and name` - change the team to which this score is assigned
 - `Round` - change the `round` to which this score is assigned
-- `Score` - change the `score` for this match. Note that if you do this the score will not be alligned with the scoresheet.
+- `Score` - change the `score` for this match. Note that if you do this the score will no longer be aligned with the scoresheet.
 - `referee` and `table` - change the `referee` and `table`. Currently only the referee role sets this information.
-- `Edit scoresheet` - open the scoresheet for editing. `Scorekeepers` use this to verify that scores entered by the `referee`.
-- `Publish / Unpublish` - publishing (`+`) a score causes it to appear in the `Results Display`. Unpublishing (`-`) causes the score not to appear in the `Results Display`. Note: when you see the `-` symbol that means the score is published.
+- `Edit scoresheet` - open the scoresheet for editing. `Scorekeepers` may use this to verify the scores entered by the `referee`.
+- `Publish / Unpublish` - publishing (`+`) a score causes it to appear in the `Results Display`. Unpublishing (`-`) causes the score not to appear in the `Results Display`. Note: The `-` symbol that means the score is published.
 - `Delete` - delete a score. You will be asked to confirm. **Note this is permanent and a deleted score cannot be recovered**.
 
 #### Duplicate scores
@@ -194,11 +212,27 @@ All the information relating to a particular score is shown in scoring tile.
 
 The `Show only duplicates` button is shown when more than one score is submitted for the same team and round. Clicking the button filters out all scores that are not duplicate. This gives the head referee or scorekeeper the opportunity to check for duplicates from time to time, and to correct the error.
 
-`Show only bad scores` button - TBD
+The `Show only bad scores` button is shown when scores cannot be sent to the `Results Display` for any reason. (Details TBD)
 
 ## Results display
 
-TBD
+The `Results Display` shows the team scores for the current stage.
+
+<img src="results-display.png" style="width:75%">
+
+Before there are scores teams are ordered by team number. (currenly there is a bug on this).
+
+When there are only scores for a single round, they are shown in a `Scores` column.
+
+When there are scores for multiple rounds, there will be a `High` column containing the team's best score, followed by a column for each round.
+
+The left-most column shows the team's rank. The rank is taken from the `High` score. Ties are broken using 2nd, then 3rd best scores.
+
+The `Results Display` continuously scrolls through all the teams.
+
+The tournament title is configured in the [Tournament Settings](#tournament-settings) screen.
+
+The sponsor logos ribbon is configured in the [Tournament Images](#Images) screen.
 
 ## Timer
 
@@ -206,7 +240,7 @@ The `Timer` (clock) is used to start matches and provides a 2:30 minute countdow
 
 <img src="timer.png" style="width:75%">
 
-There are 3 options
+There are 3 action buttons
 - Start the timer
 - Reload the timer - resets the timer to 2:30 minutes
 - Stop the timer - does an automatic reload
@@ -215,26 +249,39 @@ The musical note in the top left hand corner of the screen is used to test the f
 
 <img src="test-sounds.png" style="width:75%">
 
+The timer can be activated on any computer or tablet on the network. The sound files are played only on the computer where the TMS is installed and this computer will be connected to to a loudspeaker system if required.
+
 ## Tournament Status Display
 
 TBD
 
 ## Network Configuration
 
-At a larger tournament you might have four computers connected to each other using a router. We recommend that the connections to the router be wired connections rather than WiFi, especially in school environments where there could very well be other WiFi networks.
+At a larger tournament you might have a number of computers connected to each other using a router. We recommend that the connections to the router be wired connections rather than WiFi, especially in school environments where there might be other WiFi networks.
 
 ### Use of iPads and tablets
 
-We have done limited testing of score input using iPads and WiFi. No problems were encoutered. If there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
+We have done limited testing of referee score input using iPads and WiFi. No problems were encoutered. If when the scoresheet is submitted, there is a temporary loss of connectivity, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
 **Note:** Additional functionality has been added since the above testing. Therefore tournaments that intend using iPads should coordinate this with the development team.
+
+# Network adapters
+
+Many laptop PCs have more than one `Network adapter`. For instance, there might be a wired RJ45 adapter and a WiFi adapter. If you have multiple computers in a network you must ensure the TMS is configured to use the correct adapter. This is done in the `Launcher Settings Network Connections` screen.
+
+<img src="launcher-network-connections.png" style="width:75%">
+
+# Log files
+The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Logs` button at the bottom of the `Launcher Home` screen.
+
+Logging should be set to DEBUG.
+
+<img src="launcher-loglevel.png" style="width:75%">
+
+# Feedback
+Please send comments/suggestions/questions about this document to Alan Green at agreen@firstinspires.org
 
 ## Todos
 
-1. Add internal links in document
 1. Diagram of configuration
 1. Show only bad scores
-1. Results Display
 1. Tournamet Status Display
-1. email address for comments
-1. logs and debugging
-1. Network cards
