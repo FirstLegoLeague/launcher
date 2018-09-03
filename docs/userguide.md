@@ -29,7 +29,7 @@ The computer on which the software is installed should be an Intel I5 with 8GB o
 
 ## Launcher
 
-<img src="launcher.png" style="width:75%"> 
+<img src="./images/launcher.png" style="width:75%"> 
 
 ### Home
 
@@ -40,7 +40,7 @@ For example, click the `Clock` (timer) link to open the `Timer`. You can also pr
 
 Module configuration is accessed through the `Settings` screen.
 
-<img src="settings.png" style="width:75%">  
+<img src="./images/settings.png" style="width:75%">  
 
 **clock**  
 Timer settings - display countdown in minutes:seconds from 2:30 or in seconds from 150. 
@@ -85,7 +85,7 @@ Access to the module screens are password protected. Each of the 4 predefined ro
 
 The default password is the same as the role (i.e. role: admin password:admin).
 
-<img src="login.png" style="width:75%">
+<img src="./images/login.png" style="width:75%">
 
 When you login with a role (username) and password, that role is valid for all tabs opened in the browser. If you open an Incognito tab or a different browser, you can login again using a different role.
 
@@ -95,14 +95,14 @@ The `Tournament` screen is the place where the tournament organizer or head refe
 
 The first step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List`
 
-<img src="tournament-import.png" style="width:75%">
+<img src="./images/tournament-import.png" style="width:75%">
 
 - `Schedule file` - Import a CSV schedule file that follows the format created by Brian Lee's Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule. 
 - `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information in the first 3 columns. As this file does not contain match information, system features requiring this data will be unavailable.
 
 Drag and drop a schedule file or team list onto the popup.
 
-<img src="tournament-import-schedule.png" style="width:75%">
+<img src="./images/tournament-import-schedule.png" style="width:75%">
 
 Verify that the data looks correct and then press `Import`.
 
@@ -116,7 +116,7 @@ The `Teams` screen enables you to edit the team name and affiliation, and to del
 
 The `Matches` screen shows all the match information.
 
-<img src="tournament-matches.png" style="width:75%">
+<img src="./images/tournament-matches.png" style="width:75%">
 
 You can edit match information or delete a match. You can also add a match or add, delete or rename the tables. Be careful not to enter conflicting data.
 
@@ -126,7 +126,7 @@ Note: A later version of this software will provide support for searching the Te
 
 The sponsor logos shown on the [Results Display](#results-display) ribbon are configured here.
 
-<img src="tournament-images.png" style="width:75%">
+<img src="./images/tournament-images.png" style="width:75%">
 
 The four *FIRST* LEGO League global sponsors are preloaded. You can add additional images files by pressing the `Add Image` button. Press the `Delete` button on an image tile to remove it.
 
@@ -136,7 +136,7 @@ Note: A later version of this software will support hiding logos that you do not
 
 Further configuration options are available in the `Tournament Settings` screen.
 
-<img src="tournament-settings.png" style="width:75%">
+<img src="./images/tournament-settings.png" style="width:75%">
 
 - Use the `Stage` dropdown to set the current stage of the tournament. Most tournaments have `practice` and `ranking` stages. When you import a `Schedule File` the stage names in the file are used. Default stage names are used if you import a `Team List`. Press the `Save` button after changing the stage. If scores have already been entered for the new `Stage` they will appear on the `Results Display`.
 - Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note is permanent and deleted scores cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches. You delete scores in the `Scoring` module.
@@ -150,7 +150,7 @@ The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a sco
 
 The scoresheet text follows the official scoresheet exactly.
 
-<img src="scoring.png" style="width:75%">
+<img src="./images/scoring.png" style="width:75%">
 
 - `Select Team` - Choose the team to score. Once you have selected a team you select the `Round`.
 - `Select Round` - Select the `Round` to score. Rounds for which a score has already been entered are indicated by a tick mark.
@@ -161,13 +161,13 @@ The scoresheet text follows the official scoresheet exactly.
 
 As you click each mission condition, the system checks for consistency. For instance, in the 2018 challenge `INTO ORBIT - M05 Extraction` mission, the `Gas Core Sample` cannot be both in the `Lander's Target Circle` and in `Base`. 
 
-<img src="scoring-mission.png" style="width:75%">
+<img src="./images/scoring-mission.png" style="width:75%">
 
 Once all the scoring requirements of a mission have been marked, the mission score value is shown, and the accumulated points are updated. The page automatically scrolls to the next mission.
 
 If you get to the end of the scoresheet without having scored all the missions, you will see a red `Some missions are incomplete` notification.
 
-<img src="scoring-mission-incomplete.png" style="width:75%">
+<img src="./images/scoring-mission-incomplete.png" style="width:75%">
 
 Click the notification to jump to the first incomplete mission. You will also be notified if the `Team` or `Round` has not been selected.
 
@@ -178,7 +178,7 @@ Note: [Require a Signature](#settings) is configurable in the Settings.
 
 Press the menu icon on the top left of the `Scoresheet` to open the `Score management` screen.  
 
-<img src="scoring-management.png" style="width:75%">
+<img src="./images/scoring-management.png" style="width:75%">
 
 - **Search scores** - enter text to filter which scores are shown. Examples:  
   - `practice` - show all practice scores
@@ -196,7 +196,7 @@ All the information relating to a particular score is shown in a scoring tile.
 
 #### Scoring tile  
 
-<img src="scoring-tile.png" style="width:75%">
+<img src="./images/scoring-tile.png" style="width:75%">
 
 - `Team number and name` - change the team to which this score is assigned
 - `Round` - change the `round` to which this score is assigned
@@ -208,7 +208,7 @@ All the information relating to a particular score is shown in a scoring tile.
 
 #### Duplicate scores
 
-<img src="scoring-duplicate.png" style="width:75%">
+<img src="./images/scoring-duplicate.png" style="width:75%">
 
 The `Show only duplicates` button is shown when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper the opportunity to check for duplicates from time to time, and to correct the error.
 
@@ -218,7 +218,7 @@ The `Show only bad scores` button is shown when scores cannot be sent to the `Re
 
 The `Results Display` shows the team scores for the current stage.
 
-<img src="results-display.png" style="width:75%">
+<img src="./images/results-display.png" style="width:75%">
 
 Before any scores have been entered, teams are ordered by team number. (currenly there is a bug on this).
 
@@ -238,7 +238,7 @@ The sponsor logos ribbon is configured in the [Tournament Images](#images) scree
 
 The `Timer` (clock) is used to start matches and provides a 2:30 minute countdown timer.
 
-<img src="timer.png" style="width:75%">
+<img src="./images/timer.png" style="width:75%">
 
 There are 3 action buttons
 - Start the timer
@@ -247,7 +247,7 @@ There are 3 action buttons
 
 The musical note in the top left hand corner of the screen is used to test the four sounds.
 
-<img src="test-sounds.png" style="width:75%">
+<img src="./images/test-sounds.png" style="width:75%">
 
 The timer can be activated on any computer or tablet on the network. The sound files are played only on the computer where the TMS is installed and this computer must be connected to to a loudspeaker system if required.
 
@@ -270,7 +270,7 @@ We have done limited testing of referee score input using iPads and WiFi. No pro
 
 Many laptop PCs have more than one `Network adapter`. For instance, there might be a wired RJ45 adapter and a WiFi adapter. If you have multiple computers in a network you must ensure the TMS is configured to use the correct adapter. This is done in the `Launcher Settings Network Connections` screen.
 
-<img src="launcher-network-connections.png" style="width:75%">
+<img src="./images/launcher-network-connections.png" style="width:75%">
 
 # Log files
 
@@ -278,7 +278,7 @@ The software records activities in logfiles. When reporting a bug please attach 
 
 Logging should be set to DEBUG.
 
-<img src="launcher-loglevel.png" style="width:75%">
+<img src="./images/launcher-loglevel.png" style="width:75%">
 
 Note: When reporting a bug please include the software version which can be seen in the Home screen of the [Launcher](#launcher).
 
