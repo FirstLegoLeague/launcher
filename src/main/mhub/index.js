@@ -46,7 +46,7 @@ class Mhub {
     })
 
     this.client.on('close', () => {
-      this.start()
+      this.stop().then(() => this.start())
     })
   }
 
