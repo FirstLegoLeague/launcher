@@ -16,7 +16,7 @@ environment:
 install:
 - ps: Install-Product node $env:nodejs_version
 - yarn install --frozen-lockfile
-- yarn run get all -c 5 -i ./internals -m ./modules
+- yarn run get all --platform win32 --arch x86 -c 5 -i ./internals -m ./modules
 
 build_script:
 - yarn run build:win --c.directories.output=./dist/
