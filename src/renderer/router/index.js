@@ -15,8 +15,8 @@ export default new Router({
       component: require('@/components/settings').default,
       children: [
         {
-          path: '',
-          name: 'settings',
+          path: '/global',
+          name: 'settings-global',
           component: require('@/components/settings/global').default,
           props: false
         },

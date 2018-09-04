@@ -33,8 +33,6 @@
           .then(configs => {
             this.modules = modulesNames.filter((module, index) => configs[index].length !== 0)
           })
-
-        this.modules = modulesNames
       })
     }
   }
