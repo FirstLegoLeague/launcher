@@ -46,7 +46,13 @@ class Mhub {
     })
 
     this.client.on('close', () => {
-      this.stop().then(() => this.start())
+      function _tryStart () {
+        return this.stop()
+          .then(() => this.start())
+          .catch(() => Promise.delay(5000))
+          .then(() => _tryStart())
+      }
+      _tryStart()
     })
   }
 
