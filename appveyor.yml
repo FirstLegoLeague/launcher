@@ -14,7 +14,7 @@ environment:
 
 # Install scripts. (runs after repo cloning)
 install:
-- ps: Install-Product node $env:nodejs_version %PLATFORM%
+- ps: Install-Product node $env:nodejs_version
 - yarn install --frozen-lockfile
 - yarn run get all -c 5 -i ./internals -m ./modules
 
