@@ -108,6 +108,8 @@ Verify that the data looks correct and then press `Import`.
 
 Once you have imported the file you can see all the imported data by pressing the `Teams` and `Matches` buttons. 
 
+If you need to replace the imported data with a different CSV file, you can delete all the teams and matches, and import again. See [Tournament Settings](#tournament-settings) - `Delete Tournament Data`.
+
 ### Teams
 
 The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken.
@@ -187,8 +189,7 @@ Press the menu icon on the top left of the `Scoresheet` to open the `Score manag
   - `#7` - show all scores of teams with team numbers that start with 7. Add a space after the number 7 to show only scores for team 7
   - `Table 3` - show all scores on `Table 3`
 - `Delete all scores` deletes all scores on the system. You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**.
-- `Download rankings` downloads all the ranking scores to a CSV file that can be used by Judging-Lite.  
-Note: Currently we only support export of `ranking` scores. `practice` scores cannot be exported.
+- `Download rankings` downloads the  scores to a CSV file that can be used by Judging-Lite. Note: When the `Stage` in `Tournament Settings` is set to `practice`, those scores are exported. When it is set to `ranking`, ranking scores are exported.
 
 ### Scoring tiles 
 
