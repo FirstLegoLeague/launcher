@@ -3,9 +3,9 @@
 require('./static') // Must run before everything
 
 const path = require('path')
+const fs = require('fs')
 const Promise = require('bluebird')
-// const { Tray } = require('electron')
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, protocol, dialog } = require('electron')
 
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
@@ -37,17 +37,27 @@ function createWindow () {
     mainWindow = null
   })
 
-  mainWindow.on('close', () => {
-    const serverClosePromise = server ? server.close() : Promise.resolve()
+  mainWindow.on('close', e => {
+    const choice = dialog.showMessageBox(mainWindow, {
+      type: 'question',
+      buttons: ['Yes', 'Cancel'],
+      title: 'Quit?',
+      message: 'Are you sure you want to close the FIRST LEGO League TMS?\nNote: All data will be available next time you open the app.'
+    })
 
-    serverClosePromise
-      .finally(app.quit())
-      .catch(err => console.error(err))
+    if (choice === 1) {
+      e.preventDefault()
+    } else {
+      const serverClosePromise = server ? server.close() : Promise.resolve()
+      serverClosePromise
+        .finally(app.quit())
+        .catch(err => console.error(err))
+    }
   })
 }
 
 // function getIcon () {
-//   return path.join(__dirname, 'images', 'icon.png')
+//   return path.join(__static, 'img', 'first-favicon.ico')
 // }
 
 // let tray = null
@@ -68,6 +78,15 @@ if (isSecondInstance) {
   app.quit()
 } else {
   app.on('ready', () => {
+    protocol.interceptFileProtocol('file', (request, callback) => {
+      if (request.url.includes('webfonts')) {
+        callback(fs.createReadStream(decodeURIComponent(request.url.replace(/.+webfonts/, path.join(__static, '/webfonts')))))
+      } else {
+        callback(fs.createReadStream(decodeURIComponent(request.url.substr(8)).replace(/#.+/, '')))
+      }
+    }, err => {
+      if (err) console.error('Failed to register protocol')
+    })
     // Commented out, because of current bug in electron logging.
     // TODO solve this.
     // For reference: https://github.com/electron/electron/issues/683
@@ -80,9 +99,9 @@ if (isSecondInstance) {
     exports.homeAdapter = new HomeAdapter(server)
 
     server.start()
-      // .then(() => buildAppMenu(server.getModules()))
+      .then(() => buildAppMenu(server.getModules()))
       // .then(appMenu => {
-      //   tray = new Tray(getIcon())
+      //   const tray = new Tray(getIcon())
       //   const contextMenu = appMenu
       //   tray.setToolTip('FIRST LEGO League Scoring')
       //   tray.setContextMenu(contextMenu)
