@@ -7,22 +7,22 @@ skip_branch_with_pr: true
 cache:
 - "%LOCALAPPDATA%\\Yarn"
 
-platform: x32
+platform: x86
 
 environment:
   nodejs_version: "8.11.3"
 
 # Install scripts. (runs after repo cloning)
 install:
-- ps: Install-Product node $env:nodejs_version x64
+- ps: Install-Product node $env:nodejs_version $PLATFORM$
 - yarn install --frozen-lockfile
-- yarn run get all -p win32 --arch x64 -c 5 -i ./internals -m ./modules
+- yarn run get all -c 5 -i ./internals -m ./modules
 
 build_script:
 - yarn run build:win --c.directories.output=./dist/
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
-  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%APPVEYOR_BUILD_VERSION%_%PALTFORM% .\\windows\\setup\\main.iss
+  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%APPVEYOR_BUILD_VERSION%_%PALTFORM% .\\windows\\setup\\main-x32.iss
 artifacts:
 - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
   name: Installer
