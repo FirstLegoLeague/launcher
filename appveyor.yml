@@ -1,12 +1,13 @@
 branches:
   only:
   - master
+  - x32
 skip_branch_with_pr: true
 
 cache:
 - "%LOCALAPPDATA%\\Yarn"
 
-platform: x64
+platform: x32
 
 environment:
   nodejs_version: "8.11.3"
@@ -21,7 +22,7 @@ build_script:
 - yarn run build:win --c.directories.output=./dist/
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
-  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%APPVEYOR_BUILD_VERSION% .\\windows\\setup\\main.iss
+  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%APPVEYOR_BUILD_VERSION%_%PALTFORM% .\\windows\\setup\\main.iss
 artifacts:
 - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
   name: Installer
