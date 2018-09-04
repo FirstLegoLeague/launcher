@@ -44,6 +44,10 @@ class Mhub {
       noImplicitConnect: true,
       timeout: 500
     })
+
+    this.client.on('close', () => {
+      this.start()
+    })
   }
 
   start () {
