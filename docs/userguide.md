@@ -161,7 +161,7 @@ The scoresheet text follows the official scoresheet exactly.
 - `Reset` - reset the scoresheet to it's unscored state.
 - `?` - Show the mission text.
 
-As you click each mission condition, the system checks for consistency. For instance, in the 2018 challenge `INTO ORBIT - M05 Extraction` mission, the `Gas Core Sample` cannot be both in the `Lander's Target Circle` and in `Base`. 
+As you click each mission condition, the system checks for consistency. For instance, in the 2018 challenge `INTO ORBIT - M05 Extraction` mission, the `Gas Core Sample` cannot be both in the `Lander's Target Circle` and in `Base`.
 
 <img src="./images/scoring-mission.png" style="width:75%">
 
@@ -189,7 +189,7 @@ Press the menu icon on the top left of the `Scoresheet` to open the `Score manag
   - `#7` - show all scores of teams with team numbers that start with 7. Add a space after the number 7 to show only scores for team 7
   - `Table 3` - show all scores on `Table 3`
 - `Delete all scores` deletes all scores on the system. You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**.
-- `Download rankings` downloads the  scores to a CSV file that can be used by Judging-Lite. Note: When the `Stage` in `Tournament Settings` is set to `practice`, those scores are exported. When it is set to `ranking`, ranking scores are exported.
+- [Download rankings](#tournament-settings) downloads the  scores to a CSV file that can be used by Judging-Lite. Note: When the `Stage` in `Tournament Settings` is set to `practice`, those scores are exported. When it is set to `ranking`, ranking scores are exported.
 
 ### Scoring tiles 
 
