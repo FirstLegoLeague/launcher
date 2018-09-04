@@ -1,5 +1,5 @@
 
-#define app "..\..\dist\win-unpacked"
+#define app "..\..\dist\win-ia32-unpacked"
 #define modules "..\..\modules"
 #define internals "..\..\internals"
 #define executable "FIRST LEGO League TMS.exe"
