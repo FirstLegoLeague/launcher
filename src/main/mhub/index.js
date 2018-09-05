@@ -39,21 +39,6 @@ class Mhub {
     this.options = Object.assign(options, {
       launcherPassword: randomatic('Aa', 12)
     })
-
-    this.client = new MClient(MHUB_CONNECTION_STRING, {
-      noImplicitConnect: true,
-      timeout: 500
-    })
-
-    this.client.on('close', () => {
-      function _tryStart () {
-        return this.stop()
-          .then(() => this.start())
-          .catch(() => Promise.delay(5000))
-          .then(() => _tryStart())
-      }
-      _tryStart()
-    })
   }
 
   start () {
@@ -75,7 +60,21 @@ class Mhub {
   }
 
   connect () {
-    const client = this.client
+    const client = new MClient(MHUB_CONNECTION_STRING, {
+      noImplicitConnect: true,
+      timeout: 500
+    })
+
+    client.on('close', () => {
+      const _tryStart = () => {
+        return this.stop()
+          .then(() => this.start())
+          .catch(() => Promise.delay(5000).then(() => _tryStart()))
+      }
+      _tryStart()
+    })
+
+    this.client = client
 
     function _connect (retry = 0) {
       return Promise.resolve(client.connect())
