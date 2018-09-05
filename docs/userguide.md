@@ -12,11 +12,13 @@ Note: Currently we only support the Chrome browser.
 
 ### Hardware required
 
-The software can be run entirely on one laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers)
+The software can be run entirely on a single laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers)
 
 ### Computer requirements
 
-The computer on which the software is installed should be an Intel I5 with 8GB of memory, or better. Approximately 1.5 GB of disk space is required. The other computers (scorekeepers, timer, results display) only need to run a browser and therefore have mimimal hardware needs.
+The computer on which the software is installed should be a Windows Intel I5 with 8GB of memory, or better. Approximately 1.5 GB of disk space is required. The other computers (scorekeepers, timer, results display) only need to run a browser and therefore have mimimal hardware needs.
+
+Note: Currently we only support 64-bit computers. We are working to extend support to older 32-bit computers.
 
 ### Modules
 
@@ -188,10 +190,10 @@ Press the menu icon on the top left of the `Scoresheet` to open the `Score manag
   - `#62` - show all scores of team 62
   - `#7` - show all scores of teams with team numbers that start with 7. Add a space after the number 7 to show only scores for team 7
   - `Table 3` - show all scores on `Table 3`
-- `Delete all scores` deletes all scores on the system. You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**.
-- [Download rankings](#tournament-settings) downloads the  scores to a CSV file that can be used by Judging-Lite. Note: When the `Stage` in `Tournament Settings` is set to `practice`, those scores are exported. When it is set to `ranking`, ranking scores are exported.
+- **Delete all scores** deletes all scores on the system. You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**.
+- [**Download rankings**](#tournament-settings) downloads the  scores to a CSV file that can be used by Judging-Lite. Note: When the `Stage` in `Tournament Settings` is set to `practice`, those scores are exported. When it is set to `ranking`, ranking scores are exported.
 
-### Scoring tiles 
+### Scoring tiles
 
 All the information relating to a particular score is shown in a scoring tile.  
 
@@ -201,17 +203,17 @@ All the information relating to a particular score is shown in a scoring tile.
 
 - `Team number and name` - change the team to which this score is assigned
 - `Round` - change the `round` to which this score is assigned
-- `Score` - change the `score` for this match. Note that if you do this the score will no longer be aligned with the scoresheet.
+- `Score` - change the `score` for this match. Note: if you do this, the score will no longer be the same as the accumulated score on the scoresheet.
 - `referee` and `table` - change the `referee` and `table`. Note: Currently only the referee role sets this information.
 - `Edit scoresheet` - open the scoresheet for editing. `Scorekeepers` may use this to verify the scores entered by the `referee`.
-- `Publish / Unpublish` - publishing (`+`) a score causes it to appear in the `Results Display`. Unpublishing (`-`) causes the score not to appear in the `Results Display`. Note: The `-` symbol that means the score is published.
+- `Publish / Unpublish` - publishing (`+`) a score causes it to appear in the `Results Display`. Unpublishing (`-`) causes the score not to appear in the `Results Display`. Note: The `-` symbol that means the score is published, `+` means it is unpublished.
 - `Delete` - delete a score. You will be asked to confirm. **Note this is permanent and a deleted score cannot be recovered**.
 
 #### Duplicate scores
 
 <img src="./images/scoring-duplicate.png" style="width:75%">
 
-The `Show only duplicates` button is shown when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper the opportunity to check for duplicates from time to time, and to correct the error.
+The `Show only duplicates` button is shown when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper a way to easily check for duplicate scores, and to correct the error.
 
 The `Show only bad scores` button is shown when scores cannot be sent to the `Results Display` for any reason. (Details TBD)
 
