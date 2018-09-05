@@ -45,27 +45,26 @@ Module configuration is accessed through the `Settings` screen.
 <img src="./images/settings.png" style="width:75%">  
 
 **clock**  
-Timer settings - display countdown in minutes:seconds from 2:30 or in seconds from 150. 
+Timer settings - display countdown in minutes:seconds from 2:30 or in seconds from 150.
 
 **display**  
 Results Display - No settings
 
-**identity-provider**
-
+**identity-provider**  
 Note: this will be renamed  
 
-Set `passwords` for the four predefined `roles`. See [Login](#login) for a description of the roles.
-
+Set `passwords` for the four predefined `roles`. See [Login](#login) for a description of the roles.  
 Press `Change` to set a new password. Press `Save` to make the change permanent.
 
 **rankings**  
-Configure whether negative scores are shown as 0 on the `Results Display`. Default is YES. 
+Configure whether negative scores are shown as 0 on the `Results Display`. Default is YES.
 
 Note: The Scoring screen (intended for the Head Referee) will shows negative scores.
 
 **scoring**  
 
 Configure the [Scoring](#scoring) module settings.
+
 - Select the scoresheet `Challenge` and language.
 - `Require a referee` selects whether a referee name is required on a scoresheet. Default: YES
 - `Auto-publish` - When configured to YES scores will be sent to the `Results Display` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
@@ -80,6 +79,7 @@ Configure the [Scoring](#scoring) module settings.
 ## Login
 
 Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and MC) has it's own password.
+
 - `admin` - tournament administrator or head referee
 - `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far.
 - `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets.
@@ -244,6 +244,7 @@ The `Timer` (clock) is used to start matches and provides a 2:30 minute countdow
 <img src="./images/timer.png" style="width:75%">
 
 There are 3 action buttons
+
 - Start the timer
 - Reload the timer - resets the timer to 2:30 minutes
 - Stop the timer - does an automatic reload
@@ -269,13 +270,13 @@ At a larger tournament you might have a number of computers connected to each ot
 We have done limited testing of referee score input using iPads and WiFi. No problems were encoutered. If  there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
 **Note:** Additional functionality has been added since these tests. Tournament organizers that intend using iPads should coordinate this with the development team.
 
-# Network adapters
+## Network adapters
 
 Many laptop PCs have more than one `Network adapter`. For instance, there might be a wired RJ45 adapter and a WiFi adapter. If you have multiple computers in a network you must ensure the TMS is configured to use the correct adapter. This is done in the `Launcher Settings Network Connections` screen.
 
 <img src="./images/launcher-network-connections.png" style="width:75%">
 
-# Log files
+## Log files
 
 The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Logs` button at the bottom of the `Launcher Home` screen.
 
@@ -285,7 +286,8 @@ Logging should be set to DEBUG.
 
 Note: When reporting a bug please include the software version which can be seen in the Home screen of the [Launcher](#launcher).
 
-# Feedback
+## Feedback
+
 Please send comments/suggestions/questions about this document to Alan Green at agreen@firstinspires.org
 
 ## Todos
