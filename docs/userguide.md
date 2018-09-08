@@ -1,14 +1,16 @@
 # *FIRST* LEGO League TMS User Guide
 
-This guide is intended to give a brief overview of how to use the Tournament Management System.
+This guide is intended to give a brief overview of how to use the Tournament Management System (TMS).
 
 ## Overview
 
-Even though this is called a Tournament Management System, currently it only provides scoring functionality. Additional features are planned for the future.
+The Tournament Management System is an application that enables *FIRST* LEGO League tournament organizers to record robot game mission results on an digital scoresheet and to display the match results to participants at the event.
 
-The system is made up of a number of components which we call modules. Each module implements a specific function. All modules except the launcher are displayed through your computer's default browser.  
+The system is made up of a number of components which we call modules. Each module implements a specific function. All modules, except the launcher, are displayed through your computer's default browser.  
 
 Note: Currently we only support the Chrome browser.
+
+This software is the result of volunteer efforts by groups in The Netherlands, Israel and the USA.
 
 ### Hardware required
 
@@ -31,11 +33,13 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 
 ## Launcher
 
+The `launcher` is used to open and configure the TMS modules.   
+
 <img src="./images/launcher.png" style="width:75%"> 
 
 ### Home
 
-The `Home` screen is used to open the modules in the browser.  
+The `Home` screen provides clickable links to open the modules in the browser.  
 For example, click the `Clock` (timer) link to open the `Timer`. You can also press the `copy` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
 
 ### Settings
