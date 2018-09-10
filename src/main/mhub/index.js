@@ -71,7 +71,7 @@ class Mhub {
           .then(() => this.start())
           .catch(() => Promise.delay(5000).then(() => _tryStart()))
       }
-      _tryStart()
+      return _tryStart()
     })
 
     this.client = client
