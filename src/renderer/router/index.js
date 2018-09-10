@@ -12,19 +12,20 @@ export default new Router({
     },
     {
       path: '/settings',
+      name: 'settings',
       component: require('@/components/settings').default,
       children: [
-        {
-          path: '/global',
-          name: 'settings-global',
-          component: require('@/components/settings/global').default,
-          props: false
-        },
         {
           path: ':module',
           name: 'settings-module',
           component: require('@/components/settings/module').default,
           props: true
+        },
+        {
+          path: 'advanced',
+          name: 'settings-advanced',
+          component: require('@/components/settings/advanced').default,
+          props: false
         }
       ]
     },

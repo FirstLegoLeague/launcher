@@ -1,11 +1,11 @@
 <template>
     <div id="settings-menu" class="top-bar secondary">
         <ul class="menu">
-            <router-link v-for="module in modules" tag="li" active-class="is-active" :to="{ name: 'settings-module', params: { module } }"
+            <router-link v-for="module in Object.keys(modules)" tag="li" active-class="is-active" :to="{ name: 'settings-module', params: { module } }"
                 :key="module">
-                <a>{{ module }}</a>
+                <a>{{ modules[module] }}</a>
             </router-link>
-            <router-link tag="li" active-class="is-active" :to="{ name: 'settings-global' }"
+            <router-link tag="li" active-class="is-active" :to="{ name: 'settings-advanced' }"
                 key="settings">
                 <a>advanced</a>
             </router-link>

@@ -10,7 +10,7 @@ exports.globalModuleConfig = {
         name: 'logLevel',
         display: 'Log Level',
         type: 'values',
-        default: 'info',
+        default: 'INFO',
         values: ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
       },
       {

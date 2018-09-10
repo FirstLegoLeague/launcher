@@ -28,6 +28,8 @@ Dafner Dafner, Alan Green, Itamar Green, Yosi Karl, Barak Ohana, Roy Shmueli, Id
 </template>
 
 <script>
+  import Promise from 'bluebird'
+  
   export default {
     name: 'AboutPage',
     methods: {

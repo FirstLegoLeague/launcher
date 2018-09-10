@@ -1,10 +1,10 @@
 import Vue from 'vue'
 
+import VueQrcode from '@xkeshi/vue-qrcode'
+import '@first-lego-league/user-interface/current/assets/css/app.css'
+
 import App from './app'
 import router from './router'
-import VueQrcode from '@xkeshi/vue-qrcode'
-
-import '@first-lego-league/user-interface/current/assets/css/app.css'
 
 if (!process.env.IS_WEB) {
   Vue.use(require('vue-electron'))

@@ -6,8 +6,9 @@ const Promise = require('bluebird')
 const { saveLogs } = require('../logs')
 
 exports.HomeAdapter = class {
-  constructor (server) {
+  constructor (server, modulesDisplayNamesCallback) {
     this.server = server
+    this.modulesDisplayNamesCallback = modulesDisplayNamesCallback
   }
 
   getPortsAllocation (callback) {
@@ -29,6 +30,13 @@ exports.HomeAdapter = class {
 
         return pickedAllocation
       })
+      .asCallback(callback)
+  }
+
+  getModulesDisplayNames (callback) {
+    return this.server.modulesPromise
+      .then(modules => modules.map(({ name, displayName }) => ({ [name]: displayName || name }))
+        .reduce((object, keyValue) => Object.assign(object, keyValue), {}))
       .asCallback(callback)
   }
 

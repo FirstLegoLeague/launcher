@@ -14,6 +14,7 @@ exports.GenericModule = class {
     }
 
     this.hidden = description.hidden
+    this.displayName = description.display
 
     this.arguments = (description.arguments || []).slice()
     Object.freeze(this.arguments)

@@ -27,7 +27,7 @@
   import SettingsGroup from './group'
 
   export default {
-    name: 'settings-global',
+    name: 'settings-advanced',
     props: [],
     components: { SettingsGroup },
     data () {

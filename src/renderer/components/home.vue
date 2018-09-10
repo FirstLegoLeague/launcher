@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <div class="grid-container fluid text-center">
         <div class="grid-x grid-padding-y">
           <div id="challenge" class="cell small-2"></div>
@@ -55,12 +54,13 @@
 
       Promise.all([
         Promise.fromCallback(cb => this.adapter.getPortsAllocation(cb)),
-        Promise.fromCallback(cb => this.adapter.getIp(cb))
+        Promise.fromCallback(cb => this.adapter.getIp(cb)),
+        Promise.fromCallback(cb => this.adapter.getModulesDisplayNames(cb))
       ])
-        .then(([portsAllocation, ip]) => {
+        .then(([portsAllocation, ip, dispalyNames]) => {
           this.modules = Object.entries(portsAllocation)
             .map(([module, port]) => ({
-              name: module,
+              name: dispalyNames[module],
               site: `http://${ip}:${port}/`
             }))
         })

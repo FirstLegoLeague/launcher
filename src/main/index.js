@@ -95,11 +95,11 @@ if (isSecondInstance) {
     server = new Server(path.join(process.cwd(), 'modules.yml'))
     exports.server = server
 
-    exports.settingsAdapter = new SettingsAdapter(server.moduleConfigurator, server.globalConfigurator)
+    exports.settingsAdapter = new SettingsAdapter(server, server.moduleConfigurator, server.globalConfigurator)
     exports.homeAdapter = new HomeAdapter(server)
 
     server.start()
-      .then(() => buildAppMenu(server.getModules()))
+      // .then(() => buildAppMenu(server.getModules()))
       // .then(appMenu => {
       //   const tray = new Tray(getIcon())
       //   const contextMenu = appMenu

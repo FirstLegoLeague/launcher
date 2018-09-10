@@ -23,17 +23,19 @@
     mounted () {
       const adapter = this.$electron.remote.require('./main').settingsAdapter
 
-      adapter.getModulesNames((err, modulesNames) => {
-        if (err) {
+      Promise.fromCallback(cb => adapter.getModulesDisplayNames(cb))
+        .then(dispalyNames => {
+          return Promise.all(Object.keys(dispalyNames))
+            .filter(moudleName => Promise.fromCallback(cb => adapter.getModuleConfig(moudleName, cb))
+              .then(config => config.length !== 0))
+            .then(modulesNames => {
+              this.modules = modulesNames
+                .map(moduleName => ({ [moduleName]: dispalyNames[moduleName] }))
+                .reduce((object, keyValue) => Object.assign(object, keyValue), {})
+            })
+        }).catch(err => {
           console.error(err)
-          return
-        }
-
-        Promise.all(modulesNames.map(moudleName => Promise.fromCallback(cb => adapter.getModuleConfig(moudleName, cb))))
-          .then(configs => {
-            this.modules = modulesNames.filter((module, index) => configs[index].length !== 0)
-          })
-      })
+        })
     }
   }
 </script>
