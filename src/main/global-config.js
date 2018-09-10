@@ -17,7 +17,8 @@ exports.globalModuleConfig = {
         name: 'netConnection',
         display: 'Network Connection',
         type: 'values',
-        values: Object.keys(os.networkInterfaces())
+        values: Object.keys(os.networkInterfaces()),
+        descriptions: Object.values(os.networkInterfaces())
       }
     ]
   }]

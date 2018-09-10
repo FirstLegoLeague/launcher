@@ -9,7 +9,7 @@
                     :value="v"
                     :checked="value === v"
                     @change="$event.target.checked && $emit('value-change', $event.target.value)"
-                /> {{ v }}
+                /> {{ field.descriptions ? field.descriptions[v] : v }}
             </label>
         </fieldset>
     </div>
