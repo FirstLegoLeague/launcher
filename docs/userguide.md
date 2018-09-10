@@ -100,7 +100,7 @@ Access to the module screens are password protected. Each of the 4 predefined ro
 - `admin` - tournament administrator or head referee
 - `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far.
 - `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets.
-- `MC` - tbd
+- `M.C.` - (default password is MC)
 
 The default password is the same as the role (i.e. role: admin password:admin).
 
