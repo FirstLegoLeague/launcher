@@ -6,9 +6,8 @@ const Promise = require('bluebird')
 const { saveLogs } = require('../logs')
 
 exports.HomeAdapter = class {
-  constructor (server, modulesDisplayNamesCallback) {
+  constructor (server) {
     this.server = server
-    this.modulesDisplayNamesCallback = modulesDisplayNamesCallback
   }
 
   getPortsAllocation (callback) {
