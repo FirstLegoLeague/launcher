@@ -1,6 +1,7 @@
 import Vue from 'vue'
 
 import VueQrcode from '@xkeshi/vue-qrcode'
+import '@first-lego-league/user-interface/current/assets/js/app.js'
 import '@first-lego-league/user-interface/current/assets/css/app.css'
 
 import App from './app'
@@ -12,6 +13,8 @@ if (!process.env.IS_WEB) {
 Vue.config.productionTip = false
 
 Vue.component(VueQrcode.name, VueQrcode)
+
+Object.defineProperty(Vue.prototype, 'Foundation', { value: global['Foundation'] })
 
 /* eslint-disable no-new */
 new Vue({

@@ -55,8 +55,11 @@
         this.changedValues = {}
 
         Promise.fromCallback(cb => this.adapter.saveGlobalValues(changedValues, cb))
-          .then(() => window.alert('Settings Saved!'))
-          .catch(console.error)
+          .then(() => new this.Foundation.Notification('Settings saved', 'success'))
+          .catch(err => {
+            console.error(err)
+            return new this.Foundation.Notification('Settings failed saving', 'error')
+          })
       }
     },
     mounted () {
