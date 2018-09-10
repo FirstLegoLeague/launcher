@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-This guide is intended to give a brief overview of how to use the Tournament Management System (TMS).
+This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
 ## Overview
 
@@ -30,6 +30,19 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 1. [**Results Display:**](#results-display) shows the team's match results.
 1. [**Timer:**](#timer) starts and displays the match timer.
 1. [**Tournament Status Display:**](#tournament-status-display) (not completed yet) shows whether the tournament is running ahead or behind schedule, and also shows the "next up" teams.
+
+## Quick Start
+
+If you don't have time to read this whole guide or you need just to know the steps to get going, this paragraph is for you.
+
+1. Start the `Launcher`
+1. Open the Tournament page (click link to right of `tournament`)
+    1. Set your Tournament name (Tournament Settings / Tournament Title / Save)
+    1. Add your sponsor logos (Images / Add Image)
+    1. Load the schedule file or team list (Tournament / Import / Import Schedule file)
+1. Open the scoreboard and timer page (click `display`)
+1. Open the timer Start/Stop page (click `clock`)
+1. Open the scoresheet (click `scoring`)
 
 ## Launcher
 
