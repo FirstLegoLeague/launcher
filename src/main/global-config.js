@@ -18,7 +18,9 @@ exports.globalModuleConfig = {
         display: 'Network Connection',
         type: 'values',
         values: Object.keys(os.networkInterfaces()),
-        descriptions: Object.values(os.networkInterfaces())
+        texts: Object.entries(os.networkInterfaces())
+          .map(([name, entries]) => ({ name, address: entries.find(networkInterfaceEntry => networkInterfaceEntry.family === 'IPv4').address }))
+          .reduce((obj, { name, address }) => Object.assign(obj, { [name]: `${name} (${address})` }), {})
       }
     ]
   }]
