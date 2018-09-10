@@ -1,10 +1,11 @@
 <template>
+<<<<<<< HEAD
     <div class="grid-container fluid text-center">
         <div class="grid-x grid-padding-y">
           <div id="challenge" class="cell small-2"></div>
           <div class="cell small-8">
               <h2>Tournament Management System</h2>
-              <h4>v2018.1-alpha-7.2</h4>
+              <h4>v2018.1-alpha-8.2</h4>
           </div>
           <div id="fll" class="cell small-2"></div>
         </div>
