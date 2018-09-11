@@ -28,14 +28,14 @@ module.exports = {
     'identity-provider': {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/identity-provider#a707e3e07fe61560f6bf73cad2fbf5c3ff79dac8'
+        version: 'FirstLegoLeague/identity-provider#5d3ede9c12c216607a2d6c2801ad39ef7c585042'
       }
     },
     display: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.0.12'
+        version: '2.0.13'
       }
     },
     tournament: {
@@ -48,13 +48,13 @@ module.exports = {
     scoring: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/scoring#ac6c3d000f0623a3a9a7a41d52384204550f7f09'
+        version: 'FirstLegoLeague/scoring#17363c8580627f0743ad005867793ee745ef9687'
       }
     },
     rankings: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#7baaebdf699ecda9013118b5ea1f80e8fca67372'
+        version: 'FirstLegoLeague/rankings#0b120feca7b80240f93ab5b19229474a367f820b'
       }
     },
     clock: {
