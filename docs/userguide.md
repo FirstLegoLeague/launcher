@@ -4,7 +4,7 @@ This guide is intended to help *FIRST* LEGO League tournament orgnizers use the 
 
 ## Overview
 
-The Tournament Management System is an application that enables *FIRST* LEGO League tournament organizers to record robot game mission results on an digital scoresheet and to display the match results to participants at the event.
+The Tournament Management System is an application that enables *FIRST* LEGO League tournament organizers to record robot game mission results on an digital scoresheet and to display the match results on a scoreboard.
 
 The system is made up of a number of components which we call modules. Each module implements a specific function. All modules, except the launcher, are displayed through your computer's default browser.  
 
@@ -242,7 +242,7 @@ The `Results Display` shows the team scores for the current stage.
 
 Before any scores have been entered, teams are ordered by team number. (currenly there is a bug on this).
 
-When there are only scores for a single round, they are shown in a `Score` column.
+When there are scores for a single round only, they are shown in a `Score` column. For example, during the Practice round and also during the 1st Ranking round, only one column is shown.
 
 When there are scores for multiple rounds, there will be a `High` column containing the team's best score, followed by a column for each round.
 
