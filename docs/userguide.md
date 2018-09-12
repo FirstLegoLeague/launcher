@@ -112,7 +112,7 @@ When you login with a role (username) and password, that role is valid for all t
 
 The `Tournament` screen is the place where the tournament organizer or head referee configures the tournament.
 
-The first step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List`
+The first step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List` (note that `Import` is only available if the teams list is empty)
 
 <img src="./images/tournament-import.png" style="width:75%">
 
@@ -131,7 +131,7 @@ If you need to replace the imported data with a different CSV file, you can dele
 
 ### Teams
 
-The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken.
+The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken. Note that a newly added team does not immeditaly apear - you must refreshthe browser or switch to a differet screen (such as 'Matches') and then back here to see a newly added team.
 
 ### Matches
 
