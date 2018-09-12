@@ -307,6 +307,13 @@ Note: When reporting a bug please include the software version which can be seen
 
 Please send comments/suggestions/questions about this document to Alan Green at agreen@firstinspires.org
 
+## Known Issues
+
+1. Changing passwords doesn't work. Please don't try.
+1. 32-bit computers not supported
+1. Scoreboard does not sort teams that don't yet have scores, by team number
+1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
+
 ## Todos
 
 1. Diagram of configuration
