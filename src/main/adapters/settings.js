@@ -14,8 +14,8 @@ exports.SettingsAdapter = class {
 
   getModulesDisplayNames (callback) {
     return this.server.modulesPromise
-      .then(modules => modules.map(({ name, displayName }) => ({ [name]: displayName || name }))
-        .reduce((object, keyValue) => Object.assign(object, keyValue), {}))
+      .map(({ name, displayName }) => ({ [name]: displayName || name }))
+      .reduce((object, keyValue) => Object.assign(object, keyValue), {})
       .asCallback(callback)
   }
 
