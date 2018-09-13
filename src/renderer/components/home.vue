@@ -11,7 +11,9 @@
         <div class="grid-y">
           <div class="cell grid-x grid-margin-x">
             <fieldset v-for="module in modules" class="cell small-3 fieldset">
-              <legend class="text-left">{{module.name}}</legend>
+              <legend class="text-left">
+                <a @click="event => openSite(event, module.site)" :href="module.site">{{module.name}}</a>
+              </legend>
               <label>
                 <div><qrcode :value="module.site"></qrcode></div>
                 <a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a>
