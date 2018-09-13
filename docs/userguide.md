@@ -112,11 +112,14 @@ When you login with a role (username) and password, that role is valid for all t
 
 The `Tournament` screen is the place where the tournament organizer or head referee configures the tournament.
 
-The first step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List` (note that `Import` is only available if the teams list is empty)
+The first step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List`
+
+Note: `Import` is only available when the team list is empty.
 
 <img src="./images/tournament-import.png" style="width:75%">
 
-- `Schedule file` - Import a CSV schedule file that follows the format created by Brian Lee's Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule. 
+- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule.
+- `Schedule file - shortened` - Import a CSV schedule file exported from one of the Excel-based `Team Tournament Schedule Templates` in the [Tournament Manual](#https://firstlegoleague-eventmanuals.pbworks.com/w/page/85093483/Chapter%209%20Home%20Page). The templates can be downloaded from the [Wiki](#https://firstlegoleague-eventmanuals.pbworks.com/w/browse#view=ViewFolderNewGui&param=2017%20Schedule%20Templates). Since the CSV Export files do not contain match information, system features requiring this data will be unavailable.
 - `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information in the first 3 columns. As this file does not contain match information, system features requiring this data will be unavailable.
 
 Drag and drop a schedule file or team list onto the popup.
