@@ -10,10 +10,9 @@
             :id="field.name+'-id'"
             :minLength="field.minLength"
             :maxLength="field.maxLength"
-            v-model="value"
+            @change="$emit('value-change', $event.target.value)"
         />
         <button class="secondary small button" @click="toggleShow"><i class="fas" v-bind:class="{ 'fa-eye-slash': isShowingPassword, 'fa-eye': !isShowingPassword }"></i></button>
-        <button class="small button" @click="$emit('value-change', value)"><i class="fas fa-check"></i></button>
       </div>
     </div>
 </template>
@@ -21,18 +20,16 @@
 <script>
     export default {
       name: 'password-field',
-      props: ['field'],
+      props: ['field', 'value'],
       data: function () {
         return {
           isShowingPassword: false,
           inputType: 'password',
-          editing: false,
-          value: ''
+          editing: false
         }
       },
       methods: {
         toggleEditing () {
-          this.value = ''
           this.editing = !this.editing
         },
         toggleShow () {
