@@ -1,38 +1,35 @@
 <template>
-    <div>
+    <div class="grid-x grid-padding-x">
+      <label class="cell" :for="field.name+'-id'">
         {{ field.display || field.name }}
-        <button id="edit-btn" class="button tiny" @click="toggleEditing">Edit</button>
-        <div v-if="editing">
-            <label>
-                <input
-                    :type="inputType"
-                    :name="field.name"
-                    :minLength="field.minLength"
-                    :maxLength="field.maxLength"
-                    v-model="value"
-                />
-            </label>
-            <button class="button small" @click="toggleShow">{{ isShowingPassword ? 'hide' : 'show' }}</button>
-            <button class="button small" @click="$emit('value-change', value)">Change</button>
-        </div>
+      </label>
+      <div class="cell small-4 flex-container">
+        <input
+            :type="inputType"
+            :name="field.name"
+            :id="field.name+'-id'"
+            :minLength="field.minLength"
+            :maxLength="field.maxLength"
+            @change="$emit('value-change', $event.target.value)"
+        />
+        <button class="secondary small button" @click="toggleShow"><i class="fas" v-bind:class="{ 'fa-eye-slash': isShowingPassword, 'fa-eye': !isShowingPassword }"></i></button>
+      </div>
     </div>
 </template>
 
 <script>
     export default {
       name: 'password-field',
-      props: ['field'],
+      props: ['field', 'value'],
       data: function () {
         return {
           isShowingPassword: false,
           inputType: 'password',
-          editing: false,
-          value: ''
+          editing: false
         }
       },
       methods: {
         toggleEditing () {
-          this.value = ''
           this.editing = !this.editing
         },
         toggleShow () {

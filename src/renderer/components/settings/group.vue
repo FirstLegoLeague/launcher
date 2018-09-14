@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 v-if="group.name">{{ group.name }}</h2>
+        <h4 v-if="group.name">{{ group.name }}</h4>
         <Field v-for="field in group.fields"
                :field="field"
                :value="values[field.name]"

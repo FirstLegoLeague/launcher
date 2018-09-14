@@ -12,26 +12,27 @@ export default new Router({
     },
     {
       path: '/settings',
+      name: 'settings',
       component: require('@/components/settings').default,
       children: [
-        {
-          path: '',
-          name: 'settings',
-          component: require('@/components/settings/global').default,
-          props: false
-        },
         {
           path: ':module',
           name: 'settings-module',
           component: require('@/components/settings/module').default,
           props: true
+        },
+        {
+          path: 'advanced',
+          name: 'settings-advanced',
+          component: require('@/components/settings/advanced').default,
+          props: false
         }
       ]
     },
     {
-      path: '/credits',
-      name: 'credits-page',
-      component: require('@/components/credits').default
+      path: '/about',
+      name: 'about-page',
+      component: require('@/components/about').default
     },
     {
       path: '*',

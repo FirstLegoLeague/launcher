@@ -1,12 +1,14 @@
 <template>
-    <div>
+    <div id="settings-menu" class="top-bar secondary">
         <ul class="menu">
-            <li v-for="module in modules">
-                <router-link active-class="is-active" :to="{ name: 'settings-module', params: { module } }"
-                             :key="module">
-                    {{ module }}
-                </router-link>
-            </li>
+            <router-link v-for="module in Object.keys(modules)" tag="li" active-class="is-active" :to="{ name: 'settings-module', params: { module } }"
+                :key="module">
+                <a>{{ modules[module] }}</a>
+            </router-link>
+            <router-link tag="li" active-class="is-active" :to="{ name: 'settings-advanced' }"
+                key="settings">
+                <a>advanced</a>
+            </router-link>
         </ul>
     </div>
 </template>
@@ -19,7 +21,7 @@
 </script>
 
 <style scoped>
-    .router-link-active {
-        font-weight: bold
-    }
+#settings-menu {
+    border-bottom: 2px solid lightgray;
+}
 </style>
