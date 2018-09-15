@@ -3,22 +3,19 @@
         <div class="grid-x">
             <div class="cell">
                 <h4>Contact us</h4>
-                <pre>This program was an effort of several years of devlopment, testing, doing and redoing.
-It was made with a lot of thought in order to make it the best it could be.
-However, if this program has any problems for you in your competition,
+                <pre>This software is the result of several years of development, testing, doing and redoing.
+A lot of thought and effort went into making it work well.
+However, if you encounter any problems at your competition,
 or you have any suggestions or questions, please contact us by:
 </pre>
                 <div class="grid-x text-center grid-padding-y">
-                    <div class="cell small-4">Emailing global head ref Alan Green: <a>alanggreen@gmail.com</a></div>
-                    <div class="cell small-4"><a href="http://flltools.com">Visiting our website</a></div>
-                    <div class="cell small-4"><a>Openning a Trello card</a><br/>(Trello is an app for task-managing forums)</div>
+                    <div class="cell small-4">Emailing Alan Green: agreen@firstinspires.org</div>
+                    <div class="cell small-4"><a href="http://flltools.com/support/">Visiting our website</a></div>
                 </div>
-                <pre>If you wish to report a bug, please click <a @click="saveLogs">here</a> to export the programs logs and send it with the email.
+                <pre>When reporting a bug, please click <a @click="saveLogs">here</a> to export the software logs and attach the zip file.
 </pre>
                 <h4>Credits</h4>
-                <pre>A lot of people worked very hard to make sure this program will perform in the best manner.
-Those people deserve our credit and deepest thanks.
-The people which we're involved in the development of the program:
+                <pre>Many people took part in the development of this software. We appreciate the help of:
 
 Jeroen Bosch, Rikkert Koppes, Sander Leemans, Kenny Meesters, Martin Poelstra, Rob van Wijk,
 Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana, Roy Shmueli, Idan Stark, Tal Taub</pre>
@@ -49,7 +46,7 @@ Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana
               this.dialog.showMessageBox({
                 type: 'error',
                 buttons: ['Ok'],
-                message: 'Error in saving logs'
+                message: 'Error saving logs'
               })
               console.error(err)
             })
