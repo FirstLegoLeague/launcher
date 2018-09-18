@@ -16,13 +16,12 @@ environment:
 
 # Install scripts. (runs after repo cloning)
 install:
-- ps: Install-Product node $env:nodejs_version
+- ps: Install-Product node $env:nodejs_version %PLATFORM%
 - yarn install --frozen-lockfile
 - yarn run get all --platform win32 --arch %PLATFORM:x86=x32% -c 5 -i ./internals -m ./modules
 
 build_script:
 - yarn run build:win --c.directories.output=./dist/
-- dir dist
 - SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
