@@ -95,6 +95,14 @@ Note: After making a change to one of the above settings you need to refresh the
 
 Configure the software logging level and Network Adaptor.
 
+**About**
+
+Information about this software, including how to contact the developers.
+
+**Help**
+
+Show this document
+
 ## Login
 
 Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and mc) has it's own password.
