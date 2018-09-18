@@ -22,9 +22,10 @@ install:
 
 build_script:
 - yarn run build:win --c.directories.output=./dist/
+- SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
-  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%APPVEYOR_BUILD_VERSION%_%PALTFORM% .\\windows\\setup\\main-x32.iss
+  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%BUILD_VERSION%_%PALTFORM% .\\windows\\setup\\main.iss
 artifacts:
 - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
   name: Installer
