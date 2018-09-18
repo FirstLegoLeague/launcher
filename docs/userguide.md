@@ -54,7 +54,7 @@ The `launcher` is used to open and configure the TMS modules.
 
 ### Home
 
-The `Home` screen provides clickable links to open the modules each in it's own browser tab.
+The `Home` screen provides clickable links to open the modules, each in it's own browser tab.
 For example, click the `Timer` or it's ip address to open the `Timer`. You can also press the `Copy link` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
 
 ### Settings
@@ -82,7 +82,7 @@ Configure the [Scoring](#scoring) module settings.
 
 - Select the scoresheet `Challenge` and language.
 - `Require a referee name` selects whether a referee name is required on a scoresheet. Default: YES
-- `Auto-publish team scores` - When configured to YES scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
+- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
 - `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
 - `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
 - `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
@@ -93,11 +93,11 @@ Note: After making a change to one of the above settings you need to refresh the
 
 **Advanced**
 
-Configure the software logging level and Network Adaptor here.
+Configure the software logging level and Network Adaptor.
 
 ## Login
 
-Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and MC) has it's own password.
+Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and mc) has it's own password.
 
 - `admin` - tournament administrator or head referee. Default password: admin
 - `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far. Default password: scorekeeper
@@ -105,6 +105,8 @@ Access to the module screens are password protected. Each of the 4 predefined ro
 - `mc` - Default password: mc
 
 <img src="./images/login.png" style="width:75%">
+
+A password cannot be recovered after it has been saved.
 
 When you login with a role (username) and password, that role is valid for all tabs opened in the browser. If you open an Incognito tab or a different browser, you can login again using a different role.
 
@@ -119,7 +121,7 @@ The `Tournament Settings` screen is where you configure general settings for the
 <img src="./images/tournament-settings.png" style="width:75%">
 
 - Use the `Stage` dropdown to set the current stage of the tournament. Most tournaments have `practice` and `ranking` stages. When you import a `Schedule File` the stage names in the file are used. Default stage names are used if you import a `Team List`. Press the `Save` button after changing the stage. If scores have already been entered for the new `Stage` they will appear on the `Scoreboard`.
-- Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches. You delete scores in the `Scoring` module.
+- `Delete Tournament Data` - Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches. You delete scores in the `Scoring` module.
 - The `Tournament Title` shown on the `Scoreboard` is configured here.
 
 ### Images
@@ -132,7 +134,7 @@ The four *FIRST* LEGO League global sponsors are preloaded. You can add addition
 
 Note: A later version of this software will support hiding logos that you do not want to be displayed but that you wish to keep.
 
-### Import Team data
+### Import team data
 
 The next step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List`
 
@@ -178,8 +180,8 @@ The scoresheet text follows the official scoresheet exactly.
 
 <img src="./images/scoring.png" style="width:75%">
 
-- `Select Team` - Choose the team to score. Once you have selected a team you select the `Round`.
-- `Select Round` - Select the `Round` to score. Rounds for which a score has already been entered are indicated by a tick mark.
+- `Select Team` - Choose the team to score. After selecting a team, you select the `Round`.
+- `Select Round` - Select the `Round` to score. Rounds for which a score have already been entered are indicated by a tick mark.
 - `Points` shows the accumulated points of missions scored so far.
 - `Default` sets all the unscored missions to their default (usually unscored) value. This shortcut may be used when a team has successfully done only a few missions - score those missions and then press `Default` to rapidly complete the other missions. This option is not available when the referee role is logged in since the referee is required to go over all the missions with the team technicians.
 - `Reset` - reset the scoresheet to it's unscored state.
@@ -235,7 +237,7 @@ All the information relating to a particular score is shown in a scoring tile.
 
 <img src="./images/scoring-duplicate.png" style="width:75%">
 
-The `Show only duplicates` button is shown when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper a way to easily check for duplicate scores, and to correct the error.
+The `Show only duplicates` button is enabled when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper a way to easily check for duplicate scores, and to correct the error.
 
 The `Show only bad scores` button is shown when scores cannot be sent to the `Scoreboard` for any reason. (Details TBD)
 
@@ -314,7 +316,6 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 
 ## Known Issues
 
-1. Changing passwords doesn't work. Please don't try.
 1. 32-bit computers not supported
 1. Scoreboard does not sort teams that don't yet have scores, by team number
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
