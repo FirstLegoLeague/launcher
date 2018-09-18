@@ -22,7 +22,7 @@ install:
 
 build_script:
 - yarn run build:win --c.directories.output=./dist/
-- dir ./dist/
+- dir dist
 - SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
