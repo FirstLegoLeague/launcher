@@ -42,7 +42,7 @@ If you don't have time to read this whole guide or you need just to know the ste
     1. Set your Tournament name (Tournament Settings / Tournament Title / Save)
     1. Add your sponsor logos (Images / Add Image)
     1. Load the schedule file or team list (Import / Import Schedule file)
-1. Open the Scoreboard and timer page
+1. Open the Scoreboard page
 1. Open the Timer page
 1. Open the Scoresheet (click `Scoring`)
 
@@ -54,8 +54,8 @@ The `launcher` is used to open and configure the TMS modules.
 
 ### Home
 
-The `Home` screen provides clickable links to open the modules in the browser.  
-For example, click the `Clock` (timer) link to open the `Timer`. You can also press the `copy` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
+The `Home` screen provides clickable links to open the modules each in it's own browser tab.
+For example, click the `Timer` or it's ip address to open the `Timer`. You can also press the `Copy link` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
 
 ### Settings
 
@@ -63,39 +63,37 @@ Module configuration is accessed through the `Settings` screen.
 
 <img src="./images/settings.png" style="width:75%">  
 
-**clock**  
+**Timer**  
 Timer settings - display countdown in minutes:seconds from 2:30 or in seconds from 150.
 
-**display**  
-Scoreboard - No settings
+**Passwords**
 
-**identity-provider**  
-Note: this will be renamed  
+Set `Passwords` for the four predefined `roles`. See [Login](#login) for a description of the roles.  
+Press `Save` to make the change permanent.
 
-Set `passwords` for the four predefined `roles`. See [Login](#login) for a description of the roles.  
-Press `Change` to set a new password. Press `Save` to make the change permanent.
-
-**rankings**  
+**Scoreboard**  
 Configure whether negative scores are shown as 0 on the `Scoreboard`. Default is YES.
 
-Note: The Scoring screen (intended for the Head Referee) will shows negative scores.
+Note: The Scoring screen (intended for the Head Referee) will still show negative scores.
 
-**scoring**  
+**Scoring**
 
 Configure the [Scoring](#scoring) module settings.
 
 - Select the scoresheet `Challenge` and language.
-- `Require a referee` selects whether a referee name is required on a scoresheet. Default: YES
-- `Auto-publish` - When configured to YES scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
+- `Require a referee name` selects whether a referee name is required on a scoresheet. Default: YES
+- `Auto-publish team scores` - When configured to YES scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
 - `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
-- `Require a Signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
-- `Display zero mission results` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
+- `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
+- `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
+
+Press `Save` to make the change permanent.
 
 Note: After making a change to one of the above settings you need to refresh the browser `Scoring` tab.
 
-**tournament** 
+**Advanced**
 
-`Tournament module` - No settings
+Configure the software logging level and Network Adaptor here.
 
 ## Login
 
@@ -104,7 +102,7 @@ Access to the module screens are password protected. Each of the 4 predefined ro
 - `admin` - tournament administrator or head referee. Default password: admin
 - `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far. Default password: scorekeeper
 - `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets. Default password: referee
-- `M.C.` - Default password: MC
+- `mc` - Default password: mc
 
 <img src="./images/login.png" style="width:75%">
 
@@ -112,7 +110,7 @@ When you login with a role (username) and password, that role is valid for all t
 
 ## Tournament
 
-The `Tournament` screen is the place where the tournament organizer or head referee configures the tournament.
+The `Tournament` screen is the place where the tournament organizer or head referee sets up the tournament.
 
 ### Tournament Settings
 
@@ -121,7 +119,7 @@ The `Tournament Settings` screen is where you configure general settings for the
 <img src="./images/tournament-settings.png" style="width:75%">
 
 - Use the `Stage` dropdown to set the current stage of the tournament. Most tournaments have `practice` and `ranking` stages. When you import a `Schedule File` the stage names in the file are used. Default stage names are used if you import a `Team List`. Press the `Save` button after changing the stage. If scores have already been entered for the new `Stage` they will appear on the `Scoreboard`.
-- Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note is permanent and deleted scores cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches. You delete scores in the `Scoring` module.
+- Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches. You delete scores in the `Scoring` module.
 - The `Tournament Title` shown on the `Scoreboard` is configured here.
 
 ### Images
