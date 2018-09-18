@@ -1,5 +1,7 @@
 # *FIRST* LEGO League TMS User Guide
 
+Last modification: {{ file.mtime }}
+
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
 ## Overview
@@ -25,7 +27,7 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 ### Modules
 
 1. [**Launcher:**](#launcher) provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
-1. [**Tournament:**](#tournament) loads tournament Schedule file or Team List and provides tournament-wide configuration options.
+1. [**Tournament Setup:**](#tournament) loads tournament Schedule file or Team List and provides tournament-wide configuration options.
 1. [**Scoring:**](#scoring) provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
 1. [**Scoreboard:**](#scoreboard) shows the team's match results.
 1. [**Timer:**](#timer) starts and displays the match timer.
@@ -36,17 +38,17 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 If you don't have time to read this whole guide or you need just to know the steps to get going, this paragraph is for you.
 
 1. Start the `Launcher`
-1. Open the Tournament page (click link to right of `tournament`)
+1. Open the Tournament Setup page
     1. Set your Tournament name (Tournament Settings / Tournament Title / Save)
     1. Add your sponsor logos (Images / Add Image)
-    1. Load the schedule file or team list (Tournament / Import / Import Schedule file)
-1. Open the scoreboard and timer page (click `display`)
-1. Open the timer Start/Stop page (click `clock`)
-1. Open the scoresheet (click `scoring`)
+    1. Load the schedule file or team list (Import / Import Schedule file)
+1. Open the Scoreboard and timer page
+1. Open the Timer page
+1. Open the Scoresheet (click `Scoring`)
 
 ## Launcher
 
-The `launcher` is used to open and configure the TMS modules.   
+The `launcher` is used to open and configure the TMS modules.
 
 <img src="./images/launcher.png" style="width:75%"> 
 
