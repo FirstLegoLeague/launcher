@@ -6,7 +6,7 @@ This guide is intended to help *FIRST* LEGO League tournament orgnizers use the 
 
 ## Overview
 
-The Tournament Management System is an application that enables *FIRST* LEGO League tournament organizers to record robot game mission results on an digital scoresheet and to display the match results on a scoreboard.
+The Tournament Management System is an application that enables *FIRST* LEGO League tournament organizers to record robot game mission results on a digital scoresheet and to display the match results on a scoreboard.
 
 The system is made up of a number of components which we call modules. Each module implements a specific function. All modules, except the launcher, are displayed through your computer's default browser.  
 
@@ -16,7 +16,7 @@ This software is the result of volunteer efforts by groups in The Netherlands, I
 
 ### Hardware required
 
-The software can be run entirely on a single laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate scoreboard display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers)
+The software can be run entirely on a single laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate scoreboard display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. Do not use school network - only a private network for the event! See [Networked Computers](#networked-computers)
 
 ### Computer requirements
 
@@ -37,14 +37,15 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 
 If you don't have time to read this whole guide or you need just to know the steps to get going, this paragraph is for you.
 
-1. Start the `Launcher`
-1. Open the Tournament Setup page
-    1. Set your Tournament name (Tournament Settings / Tournament Title / Save)
+1. Start FIRST LEGO League TMS (the `Launcher`)
+1. Open the Tournament Setup page (by clicking the link, will open in browser).
+   Login as 'admin' user (the default password is 'admin')
+    1. Set your Tournament name (Tournament Settings / Display / Tournament Title / Save)
     1. Add your sponsor logos (Images / Add Image)
     1. Load the schedule file or team list (Import / Import Schedule file)
-1. Open the Scoreboard page
-1. Open the Timer page
-1. Open the Scoresheet (click `Scoring`)
+1. Open the Scoreboard page (by clicking the link in the 'Launcher', will open in browser)
+1. Open the Timer page (by clicking the link in the 'Launcher', will open in browser)
+1. Open the Scoresheet (click `Scoring` link in the 'Launcher', will open in browser)
 
 ## Launcher
 
@@ -55,7 +56,7 @@ The `launcher` is used to open and configure the TMS modules.
 ### Home
 
 The `Home` screen provides clickable links to open the modules, each in it's own browser tab.
-For example, click the `Timer` or it's ip address to open the `Timer`. You can also press the `Copy link` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
+For example, click the `Timer` or it's ip address to open the `Timer`. You can also press the `Copy link` button to copy the module address, and then paste it into the Chrome address bar. Do this when your default browser is not Chrome.
 
 ### Settings
 
@@ -81,13 +82,13 @@ Note: The Scoring screen (intended for the Head Referee) will still show negativ
 Configure the [Scoring](#scoring) module settings.
 
 - Select the scoresheet `Challenge` and language.
-- `Require a referee name` selects whether a referee name is required on a scoresheet. Default: YES
+- `Require a referee name` selects whether a referee name is required on a scoresheet. Default: YES (note this is enforced only when loggin in as referee)
 - `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
-- `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
+- `Require a Table` selects whether a table name is required on a scoresheet. Default: YES (note this is enforced only when loggin in as referee; Also, this has effectif only if table names are defined in [Tournament Settings](#tournament-settings) - `Delete Tournament Data`.)
 - `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
 - `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
 
-Press `Save` to make the change permanent.
+Press `Save` to make the changes permanent.
 
 Note: After making a change to one of the above settings you need to refresh the browser `Scoring` tab.
 
@@ -296,6 +297,7 @@ Note: Not implemented yet.
 ## Networked Computers
 
 At a larger tournament you might have a number of computers connected to each other using a router. We recommend that the connections to the router be wired connections rather than WiFi, especially in school environments where there might be other WiFi networks.
+To ensure that only tournament staff has access to, or can edit score and other entries, do not use school network. Use a private netwrk with a router. If using a (private) wifi network, make sure to set a hard-to-guess password.
 
 ### Use of iPads and tablets
 
