@@ -1,7 +1,6 @@
 'use strict'
 
 const fs = require('fs')
-const os = require('os')
 const path = require('path')
 const Promise = require('bluebird')
 const randomatic = require('randomatic')
@@ -9,6 +8,7 @@ const randomatic = require('randomatic')
 const { Mhub } = require('./mhub')
 const { Caddy } = require('./caddy')
 const { Mongo } = require('./mongo')
+const { getIp } = require('./helpers')
 const { loadModules } = require('./module-loader')
 const { loadLogsOptions, createLogStream } = require('./logs')
 const { ServiceManager } = require('./services')
@@ -115,12 +115,7 @@ exports.Server = class {
   getIp () {
     return this.globalConfigurator.getFields(globalModuleConfig.name)
       .get('netConnection')
-      .then(netConnection => {
-        const networkInterfaces = os.networkInterfaces()
-
-        return os.networkInterfaces()[netConnection || Object.keys(networkInterfaces)[0]]
-          .find(i => i.family === 'IPv4').address
-      })
+      .then(getIp)
   }
 
   getPortsAllocation () {

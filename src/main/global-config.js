@@ -2,6 +2,8 @@
 
 const os = require('os')
 
+const { getIp } = require('./helpers')
+
 exports.globalModuleConfig = {
   name: '$global',
   config: [{
@@ -19,8 +21,8 @@ exports.globalModuleConfig = {
         type: 'values',
         values: Object.keys(os.networkInterfaces()),
         texts: Object.entries(os.networkInterfaces())
-          .map(([name, entries]) => ({ name, address: entries.find(networkInterfaceEntry => networkInterfaceEntry.family === 'IPv4').address }))
-          .reduce((obj, { name, address }) => Object.assign(obj, { [name]: `${name} (${address})` }), {})
+          .map(([name, entries]) => ({ [name]: `${name} (${getIp(name)})` }))
+          .reduce((obj, entry) => Object.assign(obj, entry), {})
       }
     ]
   }]

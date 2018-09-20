@@ -2,7 +2,9 @@
 
 const camelCase = require('camelcase')
 
-const { immutableObject, getIp } = require('./helpers')
+const { immutableObject } = require('./helpers')
+
+const { getIp } = require('../helpers')
 
 function createEnvironment (portsAllocations, globalConfig) {
   const ip = getIp(globalConfig.netConnection)
