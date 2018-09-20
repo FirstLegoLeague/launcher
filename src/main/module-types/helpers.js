@@ -1,14 +1,8 @@
 'use strict'
 
-const os = require('os')
 const Promise = require('bluebird')
 
-const getIp = exports.getIp = netConnection => {
-  const networkInterfaces = os.networkInterfaces()
-
-  return os.networkInterfaces()[netConnection || Object.keys(networkInterfaces)[0]]
-    .find(i => i.family === 'IPv4').address
-}
+const { getIp } = require('../helpers')
 
 exports.immutableObject = function immutableObject (element) {
   if (['string', 'number', 'boolean'].includes(typeof element)) {
