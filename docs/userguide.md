@@ -30,6 +30,8 @@ As said, the software currently supports 64-bit computers only. When we extend s
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
 
+Note that when installing a new version (for example one with new features or bug fixes), the tournamnet data and scores are preserved. There is a `Delete Tournament Data` button in [Tournament Settings](#tournament) 
+
 ### Modules
 
 1. [**Launcher:**](#launcher) provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
