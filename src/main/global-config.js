@@ -1,8 +1,6 @@
 'use strict'
 
-const os = require('os')
-
-const { getIp } = require('./helpers')
+const { getIp, networkInterfaces } = require('./network')
 
 exports.globalModuleConfig = {
   name: '$global',
@@ -19,8 +17,8 @@ exports.globalModuleConfig = {
         name: 'netConnection',
         display: 'Network Connection',
         type: 'values',
-        values: Object.keys(os.networkInterfaces()),
-        texts: Object.entries(os.networkInterfaces())
+        values: Object.keys(networkInterfaces()),
+        texts: Object.entries(networkInterfaces())
           .map(([name, entries]) => ({ [name]: `${name} (${getIp(name)})` }))
           .reduce((obj, entry) => Object.assign(obj, entry), {})
       }

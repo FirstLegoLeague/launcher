@@ -2,7 +2,7 @@
 
 const Promise = require('bluebird')
 
-const { getIp } = require('../helpers')
+const { getIp } = require('../network')
 
 exports.immutableObject = function immutableObject (element) {
   if (['string', 'number', 'boolean'].includes(typeof element)) {
