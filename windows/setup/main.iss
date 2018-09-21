@@ -7,7 +7,7 @@
 
 [Setup]
 AppName=FIRST LEGO League TMS
-AppVersion=2018.1-beta-1.3
+AppVersion=2018.1-beta-1.4
 DefaultDirName=C:\FIRST_Lego_League_TMS
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
