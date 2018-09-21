@@ -11,6 +11,8 @@ const mkdirpAsync = Promise.promisify(mkdirp)
 
 const FILE_EXTENSION = (process.platform === 'win32') ? '.exe' : ''
 const MONGO_EXECUTABLE_PATH = path.resolve(`./internals/mongo/bin/mongod${FILE_EXTENSION}`)
+const MONGO_ARGUMENTS = ['--dbpath', './data/$mongo']
+  .concat((process.arch === 'x32') ? ['--storageEngine=mmapv1'] : [])
 
 function createMongoUri (options) {
   const parts = ['mongodb://']
@@ -44,7 +46,7 @@ class Mongo {
         serviceId: this.serviceId,
         logStream: this.logStream,
         executable: this.executable,
-        arguments: ['--dbpath', './data/$mongo']
+        arguments: MONGO_ARGUMENTS
       }))
       .then(serviceId => {
         this.serviceId = serviceId

@@ -1,11 +1,5 @@
 
-#if GetEnv("PLATFORM") == "x64"
-    #define app "..\..\dist\win-unpacked"
-#else
-    #define app "..\..\dist\win-ia32-unpacked"
-#endif
-
-#define platform GetEnv("PLATFORM")
+#define app "..\..\dist\win-ia32-unpacked"
 #define modules "..\..\modules"
 #define internals "..\..\internals"
 #define executable "FIRST LEGO League TMS.exe"
@@ -13,14 +7,10 @@
 
 [Setup]
 AppName=FIRST LEGO League TMS
-AppVersion={%BUILD_VERSION}
+AppVersion=2018.1-alpha-8.2
 DefaultDirName=C:\FIRST_Lego_League_TMS
-ArchitecturesAllowed={#platform}
+ArchitecturesAllowed=x86
 DisableProgramGroupPage=yes
-
-#if GetEnv("PLATFORM") == "x64"
-    ArchitecturesInstallIn64BitMode=x64
-#endif
 
 [Dirs]
 Name: "{app}\data"
