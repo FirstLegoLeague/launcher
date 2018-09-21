@@ -1,7 +1,5 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last modification: {{ file.mtime }}
-
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
 ## Overview
@@ -26,9 +24,11 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 
 ### Installation
 
-As said, the software currently supports 64-bit computers only. When we extend support to 32-bit computers, there will be two separate Setup files.
+To upgrade this software with a new version, run the setup file without uninstalling the previous version first. Existing configurations and team scores will be preserved.
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
+
+The software currently supports 64-bit computers only. When we extend support to 32-bit computers, there will be two separate Setup files.
 
 ### Modules
 
@@ -331,12 +331,10 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 ## Known Issues
 
 1. 32-bit computers not supported
-1. Scoreboard does not sort teams that don't yet have scores, by team number
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
 
 ## Todos
 
 1. Diagram of configuration
-1. Show only bad scores
 1. Tournamet Status Display
 1. Define MC role
