@@ -32,6 +32,13 @@ exports.HomeAdapter = class {
       .asCallback(callback)
   }
 
+  getModulesDisplayNames (callback) {
+    return this.server.modulesPromise
+      .map(({ name, displayName }) => ({ [name]: displayName || name }))
+      .reduce((object, keyValue) => Object.assign(object, keyValue), {})
+      .asCallback(callback)
+  }
+
   getIp (callback) {
     this.server.getIp().asCallback(callback)
   }

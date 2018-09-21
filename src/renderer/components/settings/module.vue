@@ -1,19 +1,23 @@
 <template>
-  <div>
-      <h3 v-if="loading">Loading...</h3>
-      <div v-else>
-          <SettingsGroup :group="mainGroup"
-                         :values="values"
-                         @value-change="updateValue"
-          />
-          <SettingsGroup v-for="group in titledGroups"
-                         :group="group"
-                         :values="values"
-                         :key="group.name"
-                         @value-change="updateValue"
-          />
-          <button class="button" @click="save">Save</button>
+  <div class="module" v-bind:class="{ loading: loading }">
+    <div class="dimmer">
+      <div class="large slow loader"></div>
+    </div>
+    <div class="grid-container" v-if="!loading">
+      <SettingsGroup :group="mainGroup"
+                     :values="values"
+                     @value-change="updateValue"
+      />
+      <SettingsGroup v-for="group in titledGroups"
+                     :group="group"
+                     :values="values"
+                     :key="group.name"
+                     @value-change="updateValue"
+      />
+      <div class="text-center">
+        <button class="button" @click="save"><i class="fas fa-save"></i>&nbsp;Save</button>
       </div>
+    </div>
   </div>
 </template>
 
@@ -51,8 +55,11 @@
         this.changedValues = {}
 
         Promise.fromCallback(cb => this.adapter.saveValues(this.module, changedValues, cb))
-          .then(() => window.alert('Settings Saved!'))
-          .catch(console.error)
+          .then(() => new this.Foundation.Notification('Settings saved', 'success'))
+          .catch(err => {
+            console.error(err)
+            return new this.Foundation.Notification('Settings failed saving', 'error')
+          })
       },
       fetchConfig (moudleName) {
         return Promise.all([
@@ -87,4 +94,7 @@
 </script>
 
 <style scoped>
+.module {
+  height: 100%;
+}
 </style>

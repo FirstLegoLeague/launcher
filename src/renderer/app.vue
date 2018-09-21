@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <MainMenu></MainMenu>
-    <router-view style="padding: 1em;"></router-view>
+    <router-view class="top-bar-page"></router-view>
   </div>
 </template>
 
@@ -16,5 +16,7 @@
 
 
 <style>
-  /* CSS */
+  #app {
+    height: 100vh;
+  }
 </style>

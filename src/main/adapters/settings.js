@@ -3,7 +3,8 @@
 const Promise = require('bluebird')
 
 exports.SettingsAdapter = class {
-  constructor (moduleConfigurator, globalConfigurator) {
+  constructor (server, moduleConfigurator, globalConfigurator) {
+    this.server = server
     this.configurator = moduleConfigurator
     this.globalConfigurator = globalConfigurator
 
@@ -11,9 +12,10 @@ exports.SettingsAdapter = class {
       globalConfigurator.getConfigMetadata().then(Object.keys).get(0)
   }
 
-  getModulesNames (callback) {
-    return this.configurator.getConfigMetadata()
-      .then(Object.keys)
+  getModulesDisplayNames (callback) {
+    return this.server.modulesPromise
+      .map(({ name, displayName }) => ({ [name]: displayName || name }))
+      .reduce((object, keyValue) => Object.assign(object, keyValue), {})
       .asCallback(callback)
   }
 

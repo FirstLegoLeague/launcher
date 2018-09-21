@@ -1,60 +1,38 @@
 <template>
-    <div class="text-center">
-        <div class="grid-x">
-            <div class="cell small-2">
-                <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png">
-            </div>
-            <div class="cell small-8">
-                <h2>Tournament Management System</h2>
-                <h4>v2018.1-alpha-8.2</h4>
-            </div>
-            <div class="cell small-2">
-                <img src="../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png">
-            </div>
+    <div class="grid-container fluid text-center">
+        <div class="grid-x grid-padding-y">
+          <div id="challenge" class="cell small-2"></div>
+          <div class="cell small-8">
+              <h2>Tournament Management System</h2>
+              <h4>v2018.1-beta-1.4</h4>
+          </div>
+          <div id="fll" class="cell small-2"></div>
         </div>
-
-        <table style="margin-top: 2em; margin-bottom: 2em;" class="small-8">
-            <tbody>
-            <tr v-for="module in modules">
-                <td style="padding: 0.5em;">{{module.name}}</td>
-                <td style="padding: 0.5em;"><a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a></td>
-                <td style="padding: 0.5em;"><button class="button tiny" @click="() => saveInClipboard(module.site)">copy</button></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <button class="button" @click="saveLogs">Save Logs</button>
+        <div class="grid-y">
+          <div class="cell grid-x grid-margin-x">
+            <fieldset v-for="module in modules" class="cell small-3 fieldset">
+              <legend class="text-left">
+                <a @click="event => openSite(event, module.site)" :href="module.site">{{module.name}}</a>
+              </legend>
+              <label>
+                <div><qrcode :value="module.site"></qrcode></div>
+                <a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a>
+                <button class="button" @click="() => saveInClipboard(module.site)"><i class="fas fa-copy"></i>&nbsp;Copy link</button>
+              </label>
+            </fieldset>
+          </div>
+        </div>
     </div>
 </template>
 
 <script>
   import Promise from 'bluebird'
+  import VueQrcode from '@xkeshi/vue-qrcode'
 
   export default {
     name: 'HomePage',
+    components: { VueQrcode },
     methods: {
-      saveLogs () {
-        this.dialog.showSaveDialog({
-          title: 'Save logs',
-          defaultPath: 'logs.zip',
-          filter: [{ name: 'zip', extensions: ['zip'] }]
-        }, filePath => {
-          Promise.fromCallback(cb => this.adapter.saveLogs(filePath, cb))
-            .then(() => this.dialog.showMessageBox({
-              type: 'info',
-              buttons: ['Ok'],
-              message: 'Logs saved'
-            }))
-            .catch(err => {
-              this.dialog.showMessageBox({
-                type: 'error',
-                buttons: ['Ok'],
-                message: 'Error in saving logs'
-              })
-              console.error(err)
-            })
-        })
-      },
       openSite (event, site) {
         event.preventDefault()
 
@@ -73,18 +51,18 @@
       }
     },
     mounted () {
-      this.dialog = this.$electron.remote.dialog
       this.clipboard = this.$electron.remote.clipboard
       this.adapter = this.$electron.remote.require('./main').homeAdapter
 
       Promise.all([
         Promise.fromCallback(cb => this.adapter.getPortsAllocation(cb)),
-        Promise.fromCallback(cb => this.adapter.getIp(cb))
+        Promise.fromCallback(cb => this.adapter.getIp(cb)),
+        Promise.fromCallback(cb => this.adapter.getModulesDisplayNames(cb))
       ])
-        .then(([portsAllocation, ip]) => {
+        .then(([portsAllocation, ip, dispalyNames]) => {
           this.modules = Object.entries(portsAllocation)
             .map(([module, port]) => ({
-              name: module,
+              name: dispalyNames[module],
               site: `http://${ip}:${port}/`
             }))
         })
@@ -96,5 +74,16 @@
 </script>
 
 <style scoped>
-
+#challenge {
+  background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png');
+  background-size: auto 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#fll {
+  background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png');
+  background-size: auto 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 </style>

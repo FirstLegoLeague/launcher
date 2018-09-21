@@ -26,9 +26,7 @@ exports.Configurator = class extends EventEmitter {
   _publishConfiguration (moduleName) {
     return this.getFields(moduleName)
       .then(Object.entries)
-      .map(([name, value]) => {
-        return { name, value }
-      })
+      .map(([name, value]) => ({ name, value }))
       .then(fields => this.emit('new', { moduleName, fields }))
   }
 
@@ -95,7 +93,7 @@ exports.Configurator = class extends EventEmitter {
         .map(([name, value]) => {
           const field = Object.values(this.configMetadata[moduleName])
             .reduce((fields, group) => fields.concat(group.fields), [])
-            .filter(f => f.name === name)
+            .find(f => f.name === name)
           storage.set(`${moduleName}/${name}`, getUpdatedValue(field, value))
         })
         .then(() => this._publishConfiguration(moduleName))

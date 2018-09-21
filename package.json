@@ -3,7 +3,7 @@
   "version": "1.3.10",
   "description": "A Launcher to the FIRST LEGO League scoring system",
   "main": "./dist/electron/main.js",
-  "author": "Roy Shmueli",
+  "author": "FIRST",
   "license": "MIT",
   "engines": {
     "node": ">=8.2.1"
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@keyv/sqlite": "^1.2.12",
+    "@xkeshi/vue-qrcode": "^1.0.0",
     "adm-zip": "^0.4.11",
     "bluebird": "^3.5.0",
     "camelcase": "^5.0.0",

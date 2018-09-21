@@ -2,7 +2,9 @@
 
 const camelCase = require('camelcase')
 
-const { immutableObject, getIp } = require('./helpers')
+const { immutableObject } = require('./helpers')
+
+const { getIp } = require('../network')
 
 function createEnvironment (portsAllocations, globalConfig) {
   const ip = getIp(globalConfig.netConnection)
@@ -23,6 +25,7 @@ exports.WebModule = class {
     this.index = description.index
 
     this.hidden = description.hidden
+    this.displayName = description.display
 
     this.config = immutableObject(description.config || [])
 
@@ -36,8 +39,6 @@ exports.WebModule = class {
       root: this.path,
       env: createEnvironment(portsAllocations, options.globalConfig)
     })
-      .return(() => {
-        return () => caddy.removeSite(this.name)
-      })
+      .return(() => caddy.removeSite(this.name))
   }
 }
