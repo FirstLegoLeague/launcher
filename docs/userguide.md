@@ -24,7 +24,7 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 
 ### Installation
 
-To upgrade this software with a new version, run the setup file without uninstalling the previous version first. Existing configurations and team scores will be preserved.
+To upgrade this software with a new version, run the setup file without uninstalling the previous version first. The existing tournament configuration (schedule or team list) and team scores will be preserved.
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
 
