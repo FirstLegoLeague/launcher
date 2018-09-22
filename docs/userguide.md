@@ -46,7 +46,7 @@ The software currently supports 64-bit computers only. When we extend support to
 If you don't have time to read this whole guide or you need just to know the steps to get going, this paragraph is for you.
 
 1. Start the `Launcher`
-1. Open the Tournament Setup page
+1. Open the Tournament Setup page (role: admin, password:admin-pass)
     1. Set your Tournament name (Tournament Settings / Tournament Title / Save)
     1. Add your sponsor logos (Images / Add Image)
     1. Load the schedule file or team list (Import / Import Schedule file)
