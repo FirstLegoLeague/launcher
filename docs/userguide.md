@@ -159,7 +159,10 @@ Note: `Import` is only available when the team list is empty.
 
 <img src="./images/tournament-import.png" style="width:75%">
 
-- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule.
+- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule.  
+Our recommendations:
+  - Asign each field a table name. If you have two adjacent fields called 'Red', Name the individua fields (tables) 'Red 1' and 'Red 2'. This allows the system keep track of exactly which field does a score come from. If you follow this recommendation, then `Number of Teams Per Table` in your file will be 1.
+  - Define `Table Names` in your schedule file - number of table names defined should be the same as `Number of Tables`.
 - `Schedule file - shortened` - Import a CSV schedule file exported from one of the Excel-based `Team Tournament Schedule Templates` in the [Tournament Manual](https://firstlegoleague-eventmanuals.pbworks.com/w/page/85093483/Chapter%209%20Home%20Page). The templates can be downloaded from the [Wiki](https://firstlegoleague-eventmanuals.pbworks.com/w/browse#view=ViewFolderNewGui&param=2017%20Schedule%20Templates). Since these CSV Export files do not contain match information, system features requiring this data will be unavailable.
 - `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information in the first 3 columns. As this file does not contain match information, system features requiring this data will be unavailable.
 
