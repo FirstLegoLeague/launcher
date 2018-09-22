@@ -91,7 +91,8 @@ Configure the [Scoring](#scoring) module settings.
 - Select the scoresheet `Challenge` and language.
 - `Require a referee name` selects whether a referee name is required on a scoresheet. Default: YES
 - `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
-- `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
+- `Require a Table` selects whether a table name is required on a scoresheet. Default: YES.
+Note that this only has effect if table names are defined in [Tournament Settings](#tournament-settings) - Matches.
 - `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
 - `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
 
