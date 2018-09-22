@@ -115,14 +115,16 @@ Show this document
 
 Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and mc) has it's own password.
 
-- `admin` - tournament administrator or head referee. Default password: admin
-- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far. Default password: scorekeeper
-- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets. Default password: referee
-- `mc` - Default password: mc
+- `admin` - tournament administrator or head referee. Default password: admin-pass
+- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far. Default password: sk-pass
+- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets. Default password: ref-pass
+- `mc` - Default password: mc-pass
+
+We strongly recommend that you change the default passwords.
 
 <img src="./images/login.png" style="width:75%">
 
-A password cannot be recovered after it has been saved.
+Since the password is encrypted before saving, a saved password cannot be recovered. You can press the "eye" icon to see the password as you type it, but once you leave the passwords screen, you cannot view it again.
 
 When you login with a role (username) and password, that role is valid for all tabs opened in the browser. If you open an Incognito tab or a different browser, you can login again using a different role.
 
