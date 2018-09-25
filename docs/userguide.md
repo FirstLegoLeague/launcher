@@ -24,7 +24,7 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 
 ### Installation
 
-Download (from fll-tools.com/software) and run the setup file. The default installation drive is C: but you can choose a different drive if required.
+Download (from fll-tools.com/software, scroll down to Bundled Installer) and run the setup file. The default installation drive is C: but you can choose a different drive if required.
 
 To upgrade this software with a new version, run the setup file without uninstalling the previous version first. The existing tournament configuration (schedule or team list) and team scores will be preserved.
 
