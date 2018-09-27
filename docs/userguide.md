@@ -128,7 +128,7 @@ Since the password is encrypted before saving, a saved password cannot be recove
 
 When you login with a role (username) and password, that role is valid for all tabs opened in the browser. If you open an Incognito tab or a different browser, you can login again using a different role.
 
-You must allow cookies to be saved, as we used them to save passwords (to avoid having to login to each modoule individually).
+You must allow cookies to be saved, as we used them to save passwords (to avoid having to login to each module individually). Login will fail is cookies are blocked. Note: Cookies are not used by TMS for any other purpose.
 
 ## Tournament
 
