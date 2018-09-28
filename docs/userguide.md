@@ -14,7 +14,7 @@ This software is the result of volunteer efforts by groups in The Netherlands, I
 
 ### Hardware required
 
-The software can be run entirely on a single laptop (for small, low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers)
+The software can be run entirely on a single laptop (for small or low resourse competitions) through to larger installations with multiple scorekeeper computers, a separate results display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers)
 
 ### Computer requirements
 
@@ -26,7 +26,7 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 
 1. [**Launcher:**](#launcher) provides a panel through which the user opens the other modules. Module configuration is done from the launcher.
 1. [**Tournament:**](#tournament) loads tournament Schedule file or Team List and provides tournament-wide configuration options.
-1. [**Scoring:**](#scoring) provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list containing all the scores.
+1. [**Scoring:**](#scoring) provides score entry and management. The referee or scorekeeper selects a team (loaded in `Tournament`) and round, and records missions completed by the team's robot. After the score has been submitted it can be viewed in a searchable list of all the scores.
 1. [**Results Display:**](#results-display) shows the team's match results.
 1. [**Timer:**](#timer) starts and displays the match timer.
 1. [**Tournament Status Display:**](#tournament-status-display) (not completed yet) shows whether the tournament is running ahead or behind schedule, and also shows the "next up" teams.
