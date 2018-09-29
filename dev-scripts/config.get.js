@@ -28,7 +28,7 @@ module.exports = {
     'identity-provider': {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/identity-provider#3d7995dbf72d53f5d8465b29e379369a5d7ec140'
+        version: 'FirstLegoLeague/identity-provider#ecdc3e9f58d504dd7d7dedc015235f2575810228'
       }
     },
     display: {
@@ -42,26 +42,26 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '1.7.7'
+        version: '1.7.8'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/scoring#beb440205095e3776c4cc9776bfac82499969fcc'
+        version: 'FirstLegoLeague/scoring#bd131290b3913e323a28e8aa1621a9058be93abc'
       }
     },
     rankings: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#ad4877e6d13efeb830b38951c84928fd5c623dc6'
+        version: 'FirstLegoLeague/rankings#c17488939bc92c603d6dd63666b1fefac96c56c2'
       }
     },
     clock: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.1.1'
+        version: '2.1.2'
       }
     }
   },
