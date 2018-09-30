@@ -20,7 +20,8 @@ exports.globalModuleConfig = {
         values: Object.keys(networkInterfaces()),
         texts: Object.entries(networkInterfaces())
           .map(([name, entries]) => ({ [name]: `${name} (${getIp(name)})` }))
-          .reduce((obj, entry) => Object.assign(obj, entry), {})
+          .reduce((obj, entry) => Object.assign(obj, entry), {}),
+        default: Object.keys(networkInterfaces())[0]
       }
     ]
   }]
