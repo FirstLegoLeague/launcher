@@ -48,7 +48,7 @@ module.exports = {
     scoring: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/scoring#395168628498479d7bc92085d8d254a57e39fa87'
+        version: 'FirstLegoLeague/scoring#d00e2e9e9a02f82303b35f50ccb3e88277d60e37'
       }
     },
     rankings: {
