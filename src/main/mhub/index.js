@@ -109,7 +109,7 @@ class Mhub {
   }
 
   stop () {
-    return Promise.resolve(this.client.close())
+    return Promise.resolve(this.client && this.client.close())
       .then(() => this.serviceManager.stopService(this.serviceId))
   }
 
