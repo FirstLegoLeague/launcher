@@ -45,12 +45,12 @@ function removeWebEnvironment (caddyEnvDir, environmentName) {
 }
 
 class Caddy {
-  constructor (serviceManager, logPath) {
+  constructor (serviceManager, logStream) {
     this.executable = CADDY_EXECUTABLE_PATH
     this.caddyFile = CADDY_FILE_PATH
     this.caddyEnvDir = CADDY_ENV_DIR
     this.serviceManager = serviceManager
-    this.logPath = logPath
+    this.logStream = logStream
 
     this.sites = []
   }
@@ -67,7 +67,7 @@ class Caddy {
       },
       serviceName: 'caddy',
       serviceId: this.serviceId,
-      logPath: this.logPath,
+      logStream: this.logStream,
       executable: this.executable,
       arguments: ['-conf', this.caddyFile]
     })

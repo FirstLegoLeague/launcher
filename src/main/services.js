@@ -1,68 +1,116 @@
 'use strict'
 
-const pm2 = require('pm2')
+const randomatic = require('randomatic')
+const { execFile } = require('child_process')
 const Promise = require('bluebird')
 
-Promise.promisifyAll(pm2)
+const TERMINATION_TIMEOUT = 30 * 1000
 
-function waitForTermination (serviceId) {
+function createServiceId (serviceName) {
+  return `${serviceName || 'unknown'}-${randomatic('a0', 5)}`
+}
+
+const SIGNAL = 0
+const SIGINT = 2
+const SIGKILL = 9
+
+function waitForTermination (childProcess) {
   return new Promise((resolve, reject) => {
-    function check () {
-      pm2.describeAsync(serviceId)
-        .then(([description]) => {
-          if (description.pm2_env.status === 'stopped') {
-            resolve()
-          } else {
-            setTimeout(check, 100)
-          }
+    try {
+      if (!childProcess.kill(SIGNAL)) {
+        resolve()
+      } else {
+        childProcess.once('exit', () => {
+          resolve()
         })
-        .catch(reject)
+      }
+    } catch (err) {
+      if (err.code !== 'ESRCH') {
+        throw err
+      }
+      resolve()
     }
-
-    check()
   })
+}
+
+function terminateGracefully (childProcess) {
+  return Promise.try(() => {
+    console.log(`Starting termination of process ${childProcess.pid}`)
+    childProcess.kill(SIGINT)
+  })
+    .catch(err => {
+      if (err.code !== 'ESRCH') {
+        throw err
+      }
+    })
+    .then(() => {
+      return waitForTermination(childProcess)
+        .timeout(TERMINATION_TIMEOUT)
+    })
+    .catch(Promise.TimeoutError, () => {
+      console.error(`Process ${childProcess.pid} is not terminating, stating force shutdown`)
+      childProcess.kill(SIGKILL)
+      return waitForTermination()
+        .timeout(TERMINATION_TIMEOUT)
+    })
+    .tap(() => console.log(`Process ${childProcess.pid} is terminated`))
+    .catch(err => {
+      if (err.code !== 'ESRCH') {
+        throw err
+      }
+    })
 }
 
 exports.ServiceManager = class {
   constructor () {
     this.services = {}
-    this.pm2ConnectionPromise = null
-  }
-
-  _pm2Connect () {
-    if (!this.pm2ConnectionPromise) {
-      this.pm2ConnectionPromise = pm2.connectAsync(true)
-    }
-
-    return this.pm2ConnectionPromise
   }
 
   startService (options) {
-    const serviceId = options.serviceId || options.serviceName
+    const serviceId = options.serviceId || createServiceId(options.serviceName)
     const init = options.init || (() => {})
 
-    return Promise.try(init)
-      .then(() => this._pm2Connect())
-      .then(() => pm2.startAsync({
-        name: serviceId,
-        script: options.executable,
-        args: options.arguments || [],
-        env: options.env || {},
-        cwd: options.cwd,
-        output: options.logPath
-      }))
+    return this.checkService(serviceId)
+      .then(isRunning => {
+        if (!isRunning) {
+          return Promise.try(init)
+            .then(() => {
+              const child = execFile(options.executable, options.arguments || [], {
+                stdio: ['pipe', 'pipe', 'pipe'],
+                env: options.env || {},
+                cwd: options.cwd || '.'
+              })
+              child.stdout.pipe(options.logStream, { end: false })
+              child.stderr.pipe(options.logStream, { end: false })
+
+              console.log(`Service ${serviceId} start running with PID: ${child.pid}`)
+
+              this.services[serviceId] = { child }
+            })
+        }
+      })
       .return(serviceId)
   }
 
   checkService (serviceId) {
-    return this._pm2Connect()
-      .then(() => pm2.describeAsync(serviceId))
-      .then(([description]) => description.pm2_env.status === 'online')
+    if (serviceId && this.services[serviceId] && this.services[serviceId].child) {
+      return Promise.try(() => this.services[serviceId].child.kill(SIGNAL))
+        .catch(err => {
+          if (err.code !== 'ESRCH') {
+            throw err
+          }
+          return false
+        })
+    } else {
+      return Promise.resolve(false)
+    }
   }
 
   stopService (serviceId) {
-    return this._pm2Connect()
-      .then(() => pm2.stopAsync(serviceId))
-      .then(() => waitForTermination(serviceId))
+    if (this.services[serviceId] && this.services[serviceId].child) {
+      return terminateGracefully(this.services[serviceId].child)
+    } else {
+      return Promise.resolve(false)
+    }
   }
 }

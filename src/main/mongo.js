@@ -31,9 +31,9 @@ function createMongoUri (options) {
 }
 
 class Mongo {
-  constructor (serviceManager, logPath) {
+  constructor (serviceManager, logStream) {
     this.executable = MONGO_EXECUTABLE_PATH
-    this.logPath = logPath
+    this.logStream = logStream
     this.serviceManager = serviceManager
 
     this.databases = []
@@ -44,7 +44,7 @@ class Mongo {
       .then(() => this.serviceManager.startService({
         serviceName: 'mongo',
         serviceId: this.serviceId,
-        logPath: this.logPath,
+        logStream: this.logStream,
         executable: this.executable,
         arguments: MONGO_ARGUMENTS
       }))

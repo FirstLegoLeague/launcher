@@ -47,7 +47,7 @@ exports.startModuleProcess = (options, { mhub, mongo, serviceManager, portsAlloc
 
       return serviceManager.startService({
         serviceName: moduleOptions.name,
-        logPath: options.logPath,
+        logStream: options.logStream,
         executable: moduleOptions.executable,
         arguments: moduleOptions.arguments,
         cwd: moduleOptions.path,

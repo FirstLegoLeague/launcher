@@ -10,7 +10,7 @@ const { Caddy } = require('./caddy')
 const { Mongo } = require('./mongo')
 const { getIp } = require('./network')
 const { loadModules } = require('./module-loader')
-const { loadLogsOptions } = require('./logs')
+const { loadLogsOptions, createLogStream } = require('./logs')
 const { ServiceManager } = require('./services')
 const { Configurator } = require('./configurator')
 const { globalModuleConfig } = require('./global-config')
@@ -24,15 +24,15 @@ const DATA_DIR = path.resolve('./data/')
 exports.Server = class {
   constructor (modulesFile) {
     this.modulesPromise = loadModules()
-    this.mainLogPath = path.resolve('./logs/main.log')
+    this.mainLogStream = createLogStream('main')
     this.serviceManager = new ServiceManager()
 
     this.secret = randomatic('Aa', SECRET_LENGTH)
     this.protectedMhubPassword = randomatic('Aa', SECRET_LENGTH)
     const mhubOptions = { protectedPassword: this.protectedMhubPassword, configurationPassword: this.secret }
-    this.mhub = new Mhub(this.serviceManager, path.resolve('./logs/mhub.log'), mhubOptions)
-    this.caddy = new Caddy(this.serviceManager, path.resolve('./logs/caddy.log'))
-    this.mongo = new Mongo(this.serviceManager, path.resolve('./logs/mongo.log'))
+    this.mhub = new Mhub(this.serviceManager, createLogStream('mhub'), mhubOptions)
+    this.caddy = new Caddy(this.serviceManager, createLogStream('caddy'))
+    this.mongo = new Mongo(this.serviceManager, createLogStream('mongo'))
 
     this.moduleConfigurator = new Configurator()
 
@@ -75,7 +75,7 @@ exports.Server = class {
           secret: this.secret,
           dataDir: DATA_DIR,
           protectedMhubPassword: this.protectedMhubPassword,
-          logPath: this.mainLogPath,
+          logStream: this.mainLogStream,
           globalConfig
         }, logsOptions), {
           mhub: this.mhub,
