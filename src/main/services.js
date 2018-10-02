@@ -2,12 +2,25 @@
 
 const pm2 = require('pm2')
 const Promise = require('bluebird')
-const randomatic = require('randomatic')
 
 Promise.promisifyAll(pm2)
 
-function createServiceId (serviceName) {
-  return `${serviceName || 'unknown'}-${randomatic('a0', 5)}`
+function waitForTermination (serviceId) {
+  return new Promise((resolve, reject) => {
+    function check () {
+      pm2.describeAsync(serviceId)
+        .then(([description]) => {
+          if (description.pm2_env.status === 'stopped') {
+            resolve()
+          } else {
+            setTimeout(check, 100)
+          }
+        })
+        .catch(reject)
+    }
+
+    check()
+  })
 }
 
 exports.ServiceManager = class {
@@ -18,14 +31,14 @@ exports.ServiceManager = class {
 
   _pm2Connect () {
     if (!this.pm2ConnectionPromise) {
-      this.pm2ConnectionPromise = pm2.connectAsync(false)
+      this.pm2ConnectionPromise = pm2.connectAsync(true)
     }
 
     return this.pm2ConnectionPromise
   }
 
   startService (options) {
-    const serviceId = options.serviceId || createServiceId(options.serviceName)
+    const serviceId = options.serviceId || options.serviceName
     const init = options.init || (() => {})
 
     return Promise.try(init)
@@ -36,21 +49,20 @@ exports.ServiceManager = class {
         args: options.arguments || [],
         env: options.env || {},
         cwd: options.cwd,
-        pid: `./tmp/$pids/${options.serviceName}.pid`,
-        output: `./logs/${options.serviceName}.log`
+        output: options.logPath
       }))
+      .return(serviceId)
   }
 
   checkService (serviceId) {
-    return pm2.connectAsync(false)
+    return this._pm2Connect()
       .then(() => pm2.describeAsync(serviceId))
-      .then(description => description.pm2_env.status === 'online')
-      .tap(() => pm2.disconnectAsync())
+      .then(([description]) => description.pm2_env.status === 'online')
   }
 
   stopService (serviceId) {
-    return pm2.connectAsync(false)
-      .then(() => pm2.delete(serviceId))
-      .tap(() => pm2.disconnectAsync())
+    return this._pm2Connect()
+      .then(() => pm2.stopAsync(serviceId))
+      .then(() => waitForTermination(serviceId))
   }
 }

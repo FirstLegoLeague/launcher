@@ -31,11 +31,11 @@ function generateConfigFileContent (configFile, options) {
 }
 
 class Mhub {
-  constructor (serviceManager, logStream, options) {
+  constructor (serviceManager, logPath, options) {
     this.mhubScript = MHUB_EXECUTABLE_PATH
     this.configFile = MHUB_FILE_PATH
     this.serviceManager = serviceManager
-    this.logStream = logStream
+    this.logPath = logPath
     this.options = Object.assign(options, {
       launcherPassword: randomatic('Aa', 12)
     })
@@ -46,7 +46,7 @@ class Mhub {
       init: () => generateConfigFileContent(this.configFile, this.options),
       serviceName: 'mhub',
       serviceId: this.serviceId,
-      logStream: this.logStream,
+      logPath: this.logPath,
       executable: process.execPath,
       arguments: [this.mhubScript, '-c', this.configFile],
       env: {
@@ -66,12 +66,8 @@ class Mhub {
     })
 
     client.on('close', () => {
-      const _tryStart = () => {
-        return this.stop()
-          .then(() => this.start())
-          .catch(() => Promise.delay(5000).then(() => _tryStart()))
-      }
-      return _tryStart()
+      this.connect()
+        .catch(err => console.error(err))
     })
 
     this.client = client
