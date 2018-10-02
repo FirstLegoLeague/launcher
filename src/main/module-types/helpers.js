@@ -57,7 +57,7 @@ exports.startModuleProcess = (options, { mhub, mongo, serviceManager, portsAlloc
           'SECRET': options.secret,
           'PROTECTED_MHUB_PASSWORD': options.protectedMhubPassword,
           'LOG_LEVEL': options.globalConfig.logLevel,
-          'MHUB_URI': mhub.url
+          'MHUB_URI': mhub.url(ip)
         }, createDiscoveryEnvironment(portsAllocations, ip), additionalEnv, moduleOptions.env)
       })
     })

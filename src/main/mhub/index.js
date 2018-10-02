@@ -113,7 +113,10 @@ class Mhub {
       .then(() => this.serviceManager.stopService(this.serviceId))
   }
 
-  get url () {
+  url (ip) {
+    if (ip) {
+      return `ws://${ip}:13900/`
+    }
     return MHUB_CONNECTION_STRING
   }
 }
