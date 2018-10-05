@@ -115,7 +115,7 @@ class Mhub {
 
   url (ip) {
     if (ip) {
-      return `ws://${ip}:13900/`
+      return `ws://${ip}:13900`
     }
     return MHUB_CONNECTION_STRING
   }
