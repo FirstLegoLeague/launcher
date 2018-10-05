@@ -1,6 +1,7 @@
 branches:
   only:
   - master
+  - mhub-bug-fix
 skip_branch_with_pr: true
 
 cache:
