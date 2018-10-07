@@ -10,9 +10,9 @@ or you have any suggestions or questions, please contact us by:
 </pre>
                 <div class="grid-x text-center grid-padding-y">
                     <div class="cell small-4">Emailing Alan Green: agreen@firstinspires.org</div>
-                    <div class="cell small-4"><a href="http://flltools.com/support/">Visiting our website</a></div>
+                    <div class="cell small-4"><a href="http://fll-tools.com/support/">Visiting our website Support Page</a></div>
                 </div>
-                <pre>When reporting a bug, please click <a @click="saveLogs">here</a> to export the software logs and attach the zip file.
+                <pre>When reporting a bug, please click "Save Logs" to export the software logs and attach them to the email or support ticket. <a @click="saveLogs">Save Logs</a>
 </pre>
                 <h4>Credits</h4>
                 <pre>Many people took part in the development of this software. We appreciate the help of:
