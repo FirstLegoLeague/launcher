@@ -2,6 +2,10 @@
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
+Click [here](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/userguide.md) for the latest version of this document.
+
+You can also watch a [recording of the Webinar](https://register.gotowebinar.com/register/8980264911390903809) that was held on Sep 24th, 2018 (the actual recording starts at 1’30”). After registering you will have immediate access to the Webinar.
+
 ## Overview
 
 The Tournament Management System is an application that enables *FIRST* LEGO League tournament organizers to record robot game mission results on an digital scoresheet and to display the match results on a scoreboard.
@@ -89,15 +93,25 @@ Note: The Scoring screen (intended for the Head Referee) will still show negativ
 Configure the [Scoring](#scoring) module settings.
 
 - Select the scoresheet `Challenge` and language.
-- `Require a referee name` selects whether a referee name is required on a scoresheet. Default: YES
-- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
-- `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
-- `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
-- `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
+- `Require a referee name` selects whether a referee name is required on a scoresheet.
+    - Applies to all roles.
+    - Default: YES
+- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper.
+    - Applies to all roles
+    - Default: YES.
+- `Require a Table` selects whether a table name is required on a scoresheet.
+    - Applies to all roles
+    - Default: YES
+- `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information.
+    - Applies to all roles
+    - Default: YES.
+- `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission.
+    - Applies to all roles
+    - Default: NO  
 
 Press `Save` to make the change permanent.
 
-Note: After making a change to one of the above settings you need to refresh the browser `Scoring` tab.
+Note: **After making a change to ANY of the above settings you need to refresh the browser `Scoring` tab**.
 
 **Advanced**
 
@@ -115,10 +129,20 @@ Show this document
 
 Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and mc) has it's own password.
 
-- `admin` - tournament administrator or head referee. Default password: admin-pass
-- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far. Default password: sk-pass
-- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets. Default password: ref-pass
-- `mc` - Default password: mc-pass
+- `admin` - tournament administrator or head referee. 
+    - Has access to all screens. 
+    - Default password: admin-pass
+- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far.
+    - Has access to scoresheet, scores and Timer screens.
+    - Can export rankings but cannot delete all scores.
+    - Can use the `Set default values` and `Reset scoresheet` buttons.
+    - Default password: sk-pass
+- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets.
+    - Only has access to the scoresheet.
+    - Does not have the `Set default values` or `Reset scoresheet` buttons.
+    - Default password: ref-pass
+- `mc` - Accesses the Timer screen. Can start and stop matches.
+    - Default password: mc-pass
 
 We strongly recommend that you change the default passwords.
 
