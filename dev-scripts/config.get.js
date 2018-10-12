@@ -42,7 +42,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '1.9.0'
+        version: '1.9.1'
       }
     },
     scoring: {
@@ -55,7 +55,7 @@ module.exports = {
     rankings: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#8014c2fec7fadba7fa1d8b95c6f92251e1cc2627'
+        version: 'FirstLegoLeague/rankings#f98f167da5accc8e0e95ec42881389d28e05f006'
       }
     },
     clock: {
