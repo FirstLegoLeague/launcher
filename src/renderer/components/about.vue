@@ -26,7 +26,7 @@ Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana
 
 <script>
   import Promise from 'bluebird'
-  
+
   export default {
     name: 'AboutPage',
     methods: {
@@ -55,6 +55,7 @@ Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana
     },
     mounted () {
       this.dialog = this.$electron.remote.dialog
+      this.adapter = this.$electron.remote.require('./main').homeAdapter
     }
   }
 </script>
