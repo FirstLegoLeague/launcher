@@ -10,7 +10,7 @@ const { Caddy } = require('./caddy')
 const { Mongo } = require('./mongo')
 const { getIp } = require('./network')
 const { loadModules } = require('./module-loader')
-const { loadLogsOptions, createLogStream } = require('./logs')
+const { loadLogsOptions, createLogStream, logger } = require('./logs')
 const { ServiceManager } = require('./services')
 const { Configurator } = require('./configurator')
 const { globalModuleConfig } = require('./global-config')
@@ -43,7 +43,7 @@ exports.Server = class {
     this.modulesPromise
       .map(module => this.moduleConfigurator.addModule(module))
       .then(() => this.moduleConfigurator.seal())
-      .catch(err => console.error(err))
+      .catch(err => logger.error(err))
 
     this.modulesStopFunctionsPromise = Promise.resolve([])
 
@@ -51,11 +51,11 @@ exports.Server = class {
 
     this.globalConfigurator.addModule(globalModuleConfig)
       .then(() => this.globalConfigurator.seal())
-      .catch(err => console.error(err))
+      .catch(err => logger.error(err))
 
     this.globalConfigurator.on('new', () => {
       this.restart()
-        .catch(err => console.error(err))
+        .catch(err => logger.error(err))
     })
   }
 
@@ -98,7 +98,7 @@ exports.Server = class {
     return this.modulesStopFunctionsPromise
       .map(stop => {
         return stop()
-          .catch(err => console.error(err))
+          .catch(err => logger.error(err))
       })
       .then(() => [
         this.caddy.stop(),

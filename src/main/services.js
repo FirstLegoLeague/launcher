@@ -4,6 +4,8 @@ const randomatic = require('randomatic')
 const { execFile } = require('child_process')
 const Promise = require('bluebird')
 
+const { logger } = require('./logs')
+
 const TERMINATION_TIMEOUT = 30 * 1000
 
 function createServiceId (serviceName) {
@@ -35,7 +37,7 @@ function waitForTermination (childProcess) {
 
 function terminateGracefully (childProcess) {
   return Promise.try(() => {
-    console.log(`Starting termination of process ${childProcess.pid}`)
+    logger.info(`Starting termination of process ${childProcess.pid}`)
     childProcess.kill(SIGINT)
   })
     .catch(err => {
@@ -48,12 +50,12 @@ function terminateGracefully (childProcess) {
         .timeout(TERMINATION_TIMEOUT)
     })
     .catch(Promise.TimeoutError, () => {
-      console.error(`Process ${childProcess.pid} is not terminating, stating force shutdown`)
+      logger.error(`Process ${childProcess.pid} is not terminating, stating force shutdown`)
       childProcess.kill(SIGKILL)
       return waitForTermination()
         .timeout(TERMINATION_TIMEOUT)
     })
-    .tap(() => console.log(`Process ${childProcess.pid} is terminated`))
+    .tap(() => logger.info(`Process ${childProcess.pid} is terminated`))
     .catch(err => {
       if (err.code !== 'ESRCH') {
         throw err
@@ -83,7 +85,7 @@ exports.ServiceManager = class {
               child.stdout.pipe(options.logStream, { end: false })
               child.stderr.pipe(options.logStream, { end: false })
 
-              console.log(`Service ${serviceId} start running with PID: ${child.pid}`)
+              logger.info(`Service ${serviceId} start running with PID: ${child.pid}`)
 
               this.services[serviceId] = { child }
             })

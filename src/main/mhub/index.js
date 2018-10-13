@@ -11,6 +11,8 @@ const Promise = require('bluebird')
 const randomatic = require('randomatic')
 const { MClient } = require('mhub')
 
+const { logger } = require('../logs')
+
 Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
 
@@ -105,7 +107,7 @@ class Mhub {
 
   publish (nodeName, topic, message, headers) {
     return Promise.resolve(this.client.publish(nodeName, topic, message, headers))
-      .tap(() => console.log(`Mhub message published on topic ${topic}`))
+      .tap(() => logger.info(`Mhub message published on topic ${topic}`))
   }
 
   stop () {
