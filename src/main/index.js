@@ -10,6 +10,7 @@ const { app, BrowserWindow, protocol, dialog } = require('electron')
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
 const { HomeAdapter } = require('./adapters/home')
+const { logger } = require('./logs')
 
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
@@ -51,7 +52,7 @@ function createWindow () {
       const serverClosePromise = server ? server.close() : Promise.resolve()
       serverClosePromise
         .finally(app.quit())
-        .catch(err => console.error(err))
+        .catch(err => logger.error(err))
     }
   })
 }
@@ -85,7 +86,7 @@ if (isSecondInstance) {
         callback(fs.createReadStream(decodeURIComponent(request.url.substr(8)).replace(/#.+/, '')))
       }
     }, err => {
-      if (err) console.error('Failed to register protocol')
+      if (err) logger.error('Failed to register protocol')
     })
     // Commented out, because of current bug in electron logging.
     // TODO solve this.
@@ -108,7 +109,7 @@ if (isSecondInstance) {
       // })
       .then(() => createWindow())
       .catch(err => {
-        console.error(err)
+        logger.error(err)
       })
   })
 
