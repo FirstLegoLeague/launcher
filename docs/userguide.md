@@ -196,7 +196,7 @@ Note: `Import` is only available when the team list is empty.
 
 <img src="./images/tournament-import.png" style="width:75%">
 
-- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule.
+- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule. [Format specification](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/Scoring_Schedule_Input_File_Format.doc)
 - `Schedule file - shortened` - Import a CSV schedule file exported from one of the Excel-based `Team Tournament Schedule Templates` in the [Tournament Manual](https://firstlegoleague-eventmanuals.pbworks.com/w/page/85093483/Chapter%209%20Home%20Page). The templates can be downloaded from the [Wiki](https://firstlegoleague-eventmanuals.pbworks.com/w/browse#view=ViewFolderNewGui&param=2017%20Schedule%20Templates). These CSV Export files do not contain match information, or table names. You will need to add table names afterward the import.
 - `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information, such as team affiliation, in the first 3 columns. This file does not contain match information, or table names. You will need to add table names afterward the import.
 
