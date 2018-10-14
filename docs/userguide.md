@@ -242,6 +242,13 @@ Press the ```+ Match``` button to add matches. This can be done if you have impo
 
 The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a scoresheet and by the `Head Referee` or `Scorekeeper` to manage the scores already entered into the system.
 
+### Communication status
+
+The top line of the Scoring screen shows the communication status.
+1. `Online` - Scoring results are being submitted sucessfully.
+1. `Comms Interruption` - Scoresheet results cannot be sent due to a communication issue. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
+1. `Offline` - Communications have been interrupted for 10 minutes or more. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
+
 ### Scoresheet
 
 The scoresheet text follows the official scoresheet exactly.
