@@ -318,19 +318,17 @@ The `Show only bad scores` button is shown when scores cannot be sent to the `Sc
 
 ## Scoreboard
 
-The `Scoreboard` shows the team scores for the current stage.
+The `Scoreboard` shows the team scores for the current stage and continuously scrolls through all the teams.
 
 <img src="./images/results-display.png" style="width:75%">
 
-Before any scores have been entered, teams are ordered by team number. (currenly there is a bug on this).
+The left-most column shows the team's rank. The rank is taken from the `High` score. Ties are broken using 2nd, then 3rd best scores. Teams without scores don't have a rank and are ordered by team number.
+
+The 2nd column shows the team's name. When available, the team affiliation information is shown in brackets (see [Import team data](#import-team-data)).
 
 When there are scores for a single round only, they are shown in a `Score` column. For example, during the Practice round and also during the 1st Ranking round, only one column is shown.
 
 When there are scores for multiple rounds, there will be a `High` column containing the team's best score, followed by a column for each round.
-
-The left-most column shows the team's rank. The rank is taken from the `High` score. Ties are broken using 2nd, then 3rd best scores.
-
-The `Scoreboard` continuously scrolls through all the teams.
 
 The tournament title is configured in the [Tournament Settings](#tournament-settings) screen.
 
