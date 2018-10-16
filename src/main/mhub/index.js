@@ -67,15 +67,6 @@ class Mhub {
       timeout: 500
     })
 
-    client.on('close', () => {
-      const _tryStart = () => {
-        return this.stop()
-          .then(() => this.start())
-          .catch(() => Promise.delay(5000).then(() => _tryStart()))
-      }
-      return _tryStart()
-    })
-
     this.client = client
 
     function _connect (retry = 0) {
