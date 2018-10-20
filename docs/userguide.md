@@ -2,6 +2,10 @@
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
+Click [here](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/userguide.md) for the latest version of this document.
+
+You can also watch a [recording of the Webinar](https://register.gotowebinar.com/register/8980264911390903809) that was held on Sep 24th, 2018 (the actual recording starts at 1’30”). After registering you will have immediate access to the Webinar.
+
 ## Table of Contents
 - [Overview](#overview)
 	- [Hardware required](#hardware-required)
@@ -59,9 +63,10 @@ Note: Currently we only support 64-bit computers. We are working to extend suppo
 
 Download (from fll-tools.com/software, scroll down to Bundled Installer) and run the setup file. The default installation drive is C: but you can choose a different drive if required.
 
-To upgrade this software with a new version, run the setup file without uninstalling the previous version first. The existing tournament configuration (schedule or team list) and team scores will be preserved.
+To upgrade this software with a new version, run the setup file without first uninstalling the previous version. The existing tournament configuration (schedule or team list) and team scores will be preserved. All TMS browser tabs MUST be refreshed by pressing CTRL-F5 (refresh with cache clear).
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
+Note: Some school computers and networks block various types of network traffic. This software requires that computer and network firewalls allow access to ports 2828 though 2833.
 
 There will be two separate Setup files when we extend support to 32-bit computers.
 
@@ -86,6 +91,13 @@ If you don't have time to read this whole guide or you need just to know the ste
 1. Open the Scoreboard page
 1. Open the Timer page
 1. Open the Scoresheet (click `Scoring`)
+    1. Enter the referee name (optional for admin or scorekeeper roles)
+    1. Choose the table  (optional for admin or scorekeeper roles)
+    1. Select the team from the dropdown list
+    1. Mark each mission, and have the technical sign the scoresheet
+    1. Press Submit
+1. On the left of the `Scoring` tab, click the menu icon (3 horizontal lines that look like a hamburger)
+    1. The list of scores entered so far are shown
 
 ## Launcher
 
@@ -119,22 +131,34 @@ Press `Save` to make the change permanent.
 **Scoreboard**  
 Configure whether negative scores are shown as 0 on the `Scoreboard`. Default is YES.
 
-Note: The Scoring screen (intended for the Head Referee) will still show negative scores.
+Note: The Scoring screen (intended for the Head Referee) will still show negative scores. 
+
+Note: The Referee Standards require that negative scores be shown as zero. This option will be removed in the future.
 
 **Scoring**
 
 Configure the [Scoring](#scoring) module settings.
 
 - Select the scoresheet `Challenge` and language.
-- `Require a referee name` selects whether a referee name is required on a scoresheet. Default: YES
-- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper. Default: YES.
-- `Require a Table` selects whether a table name is required on a scoresheet. Default: YES
-- `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information. Default: YES.
-- `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission: Default: NO  
+- `Require a referee name` selects whether a referee name is required on a scoresheet.
+    - Applies to all roles.
+    - Default: YES
+- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper.
+    - Applies to all roles
+    - Default: YES.
+- `Require a Table` selects whether a table name is required on a scoresheet.
+    - Applies to all roles
+    - Default: YES
+- `Require a team signature` selects whether the scoresheet must be signed before it can be submitted. Usually when the scoresheet is completed by the referee, the team technician will be required to sign the scoresheet. A signature is usually not required when a scorekeeper enters the mission information.
+    - Applies to all roles
+    - Default: YES.
+- `Display mission score if zero` selects whether `0` is shown on the scoresheet when the team robot has not succeeded in completing a mission.
+    - Applies to all roles
+    - Default: NO  
 
 Press `Save` to make the change permanent.
 
-Note: After making a change to one of the above settings you need to refresh the browser `Scoring` tab.
+Note: **After making a change to ANY of the above settings you need to refresh the browser `Scoring` tab (by going to the tab and pressing F5)**.
 
 **Advanced**
 
@@ -152,10 +176,20 @@ Show this document
 
 Access to the module screens are password protected. Each of the 4 predefined roles (admin, scorekeeper, referee and mc) has it's own password.
 
-- `admin` - tournament administrator or head referee. Default password: admin-pass
-- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far. Default password: sk-pass
-- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets. Default password: ref-pass
-- `mc` - Default password: mc-pass
+- `admin` - tournament administrator or head referee. 
+    - Has access to all screens. 
+    - Default password: admin-pass
+- `scorekeeper` - transfers missions completed from paper scoresheets into the digital scoresheets. Can also view all scores entered so far.
+    - Has access to scoresheet, scores and Timer screens.
+    - Can export rankings but cannot delete all scores.
+    - Can use the `Set default values` and `Reset scoresheet` buttons.
+    - Default password: sk-pass
+- `referee` - Records the state of the robot game on a digital scoresheet. Usually used on iPads or tablets.
+    - Only has access to the scoresheet.
+    - Does not have the `Set default values` or `Reset scoresheet` buttons.
+    - Default password: ref-pass
+- `mc` - Accesses the Timer screen. Can start and stop matches.
+    - Default password: mc-pass
 
 We strongly recommend that you change the default passwords.
 
@@ -199,9 +233,11 @@ Note: `Import` is only available when the team list is empty.
 
 <img src="./images/tournament-import.png" style="width:75%">
 
-- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule.
-- `Schedule file - shortened` - Import a CSV schedule file exported from one of the Excel-based `Team Tournament Schedule Templates` in the [Tournament Manual](https://firstlegoleague-eventmanuals.pbworks.com/w/page/85093483/Chapter%209%20Home%20Page). The templates can be downloaded from the [Wiki](https://firstlegoleague-eventmanuals.pbworks.com/w/browse#view=ViewFolderNewGui&param=2017%20Schedule%20Templates). Since these CSV Export files do not contain match information, system features requiring this data will be unavailable.
-- `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information in the first 3 columns. As this file does not contain match information, system features requiring this data will be unavailable.
+- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule. [Format specification](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/Scoring_Schedule_Input_File_Format.doc)
+- `Schedule file - shortened` - Import a CSV schedule file exported from one of the Excel-based `Team Tournament Schedule Templates` in the [Tournament Manual](https://firstlegoleague-eventmanuals.pbworks.com/w/page/85093483/Chapter%209%20Home%20Page). The templates can be downloaded from the [Wiki](https://firstlegoleague-eventmanuals.pbworks.com/w/browse#view=ViewFolderNewGui&param=2017%20Schedule%20Templates). These CSV Export files do not contain match information, or table names. You will need to add table names afterward the import.
+- `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information, such as team affiliation, in the first 3 columns. This file does not contain match information, or table names. You will need to add table names afterward the import.
+
+Note: We do not currently (In the beta versions, and in version 2018.0.0) make use of the match information. See [Tournament Status Display](#tournament-status-display).
 
 Drag and drop a schedule file or team list onto the popup.
 
@@ -215,7 +251,7 @@ If you need to replace the imported data with a different CSV file, you can dele
 
 ### Teams
 
-The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken. Note that a newly added team does not immeditaly apear - you must refreshthe browser or switch to a differet screen (such as 'Matches') and then back here to see a newly added team.
+The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken. Note that a newly added team does not immeditaly appear - you must refreshthe browser or switch to a differet screen (such as 'Matches') and then back here to see a newly added team.
 
 You can search for a team by number. Enter # and the team number in the search box. You can also search by team name
 
@@ -225,13 +261,30 @@ The `Matches` screen shows all the match information.
 
 <img src="./images/tournament-matches.png" style="width:75%">
 
-You can edit match information or delete a match. You can also add a match or add, delete or rename the tables. Be careful not to enter conflicting data.
+You can edit match information or delete a match. You can also [add a match](#+-match) or add, delete or rename the tables. Be careful not to enter conflicting data.
 
 You can search for matches of a team by entering the number in the search box.
+
+#### Manage Tables
+
+Press the ```Manage Tables``` button to add or edit table names. If you imported a schedule file, the table names will be those in the file. If you imported a shortened schedule file or team list, you can add the table names here.
+
+Note: The table names are optional but are required if you want the scorekeeper or referee to assign a table to each scoresheet.
+
+#### + Match
+
+Press the ```+ Match``` button to add matches. This can be done if you have imported a team list or schedule file without match information. See [Tournament Status Display](#tournament-status-display) for information on how the matches data is used.
 
 ## Scoring
 
 The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a scoresheet and by the `Head Referee` or `Scorekeeper` to manage the scores already entered into the system.
+
+### Communication status
+
+The top line of the Scoring screen shows the communication status.
+1. `Online` - Scoring results are being submitted sucessfully.
+1. `Comms Interruption` - Scoresheet results cannot be sent due to a communication issue. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
+1. `Offline` - Communications have been interrupted for 10 minutes or more. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
 
 ### Scoresheet
 
@@ -278,7 +331,7 @@ Press the menu icon on the top left of the `Scoresheet` to open the `Score manag
 
 ### Scoring tiles
 
-All the information relating to a particular score is shown in a scoring tile.  
+All the information relating to a particular score is shown in a scoring tile. 
 
 #### Scoring tile  
 
@@ -287,7 +340,7 @@ All the information relating to a particular score is shown in a scoring tile.
 - `Team number and name` - change the team to which this score is assigned
 - `Round` - change the `round` to which this score is assigned
 - `Score` - change the `score` for this match. Note: if you do this, the score will no longer be the same as the accumulated score on the scoresheet.
-- `referee` and `table` - change the `referee` and `table`. Note: Currently only the referee role sets this information.
+- `referee` and `table` - change the `referee` and `table`.
 - `Edit scoresheet` - open the scoresheet for editing. `Scorekeepers` may use this to verify the scores entered by the `referee`.
 - `Publish / Unpublish` - publishing (`+`) a score causes it to appear in the `Scoreboard`. Unpublishing (`-`) causes the score not to appear in the `Scoreboard`. Note: The `-` symbol that means the score is published, `+` means it is unpublished.
 - `Delete` - delete a score. You will be asked to confirm. **Note this is permanent and a deleted score cannot be recovered**.
@@ -302,19 +355,17 @@ The `Show only bad scores` button is shown when scores cannot be sent to the `Sc
 
 ## Scoreboard
 
-The `Scoreboard` shows the team scores for the current stage.
+The `Scoreboard` shows the team scores for the current stage and continuously scrolls through all the teams.
 
 <img src="./images/results-display.png" style="width:75%">
 
-Before any scores have been entered, teams are ordered by team number. (currenly there is a bug on this).
+The left-most column shows the team's rank. The rank is taken from the `High` score. Ties are broken using 2nd, then 3rd best scores. Teams without scores don't have a rank and are ordered by team number.
+
+The 2nd column shows the team's name. When available, the team affiliation information is shown in brackets (see [Import team data](#import-team-data)).
 
 When there are scores for a single round only, they are shown in a `Score` column. For example, during the Practice round and also during the 1st Ranking round, only one column is shown.
 
 When there are scores for multiple rounds, there will be a `High` column containing the team's best score, followed by a column for each round.
-
-The left-most column shows the team's rank. The rank is taken from the `High` score. Ties are broken using 2nd, then 3rd best scores.
-
-The `Scoreboard` continuously scrolls through all the teams.
 
 The tournament title is configured in the [Tournament Settings](#tournament-settings) screen.
 
@@ -340,9 +391,11 @@ The timer can be activated on any computer or tablet on the network. The sound f
 
 ## Tournament Status Display
 
-This display shows whether the tournament is running ahead of schedule or behind schedule. It also shows the teams that will play in the upcoming two matches.  
-Note: This display only works when a [schedule file is imported](#tournament-setup).
-Note: Not implemented yet.
+This display shows whether the tournament is running ahead of schedule or behind schedule. It also shows the teams that will play in the upcoming matches.
+
+Note: This display can only function if a [schedule file is imported](#tournament-setup).
+
+Note: Not implemented in the beta versions or version 2018.0.0 (release date 17-Oct-2018)
 
 ## Networked Computers
 
@@ -351,7 +404,7 @@ At a larger tournament you might have a number of computers connected to each ot
 ### Use of iPads and tablets
 
 We have done limited testing of referee score input using iPads and WiFi. No problems were encoutered. If  there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
-**Note:** Additional functionality has been added since these tests. Tournament organizers that intend using iPads should coordinate this with the development team.
+**Note:** Additional functionality has been added since these tests. Tournament organizers that intend using iPads should coordinate this with the development team. See the About screen for contact details.
 
 ## Network adapters
 
@@ -377,9 +430,4 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 
 1. 32-bit computers not supported
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
-
-## Todos
-
-1. Diagram of configuration
-1. Tournamet Status Display
-1. Define MC role
+1. Accessing Tournament Setup while logged in as Referee throws you out to the Login screen when you try to save changes. Solution: Log in as Admin. 
