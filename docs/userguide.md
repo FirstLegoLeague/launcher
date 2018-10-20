@@ -63,7 +63,7 @@ To upgrade this software with a new version, run the setup file without uninstal
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
 
-The software currently supports 64-bit computers only. When we extend support to 32-bit computers, there will be two separate Setup files.
+There will be two separate Setup files when we extend support to 32-bit computers.
 
 ### Modules
 
@@ -96,7 +96,11 @@ The `launcher` is used to open and configure the TMS modules.
 ### Home
 
 The `Home` screen provides clickable links to open the modules, each in it's own browser tab.
-For example, click the `Timer` or it's ip address to open the `Timer`. You can also press the `Copy link` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
+For example, click the `Timer` or it's ip address to open the `Timer`. 
+
+You can also press the `Copy link` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
+
+If you are using an iPad, the QR-Code can be used. The Chrome browser on the iPad has a built-in QR-Code reader.
 
 ### Settings
 
