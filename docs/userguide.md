@@ -2,6 +2,39 @@
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
+## Table of Contents
+- [Overview](#overview)
+	- [Hardware required](#hardware-required)
+	- [Computer requirements](#computer-requirements)
+	- [Installation](#installation)
+	- [Modules](#modules)
+- [Quick Start](#quick-start)
+- [Launcher](#launcher)
+	- [Home](#home)
+	- [Settings](#settings)
+- [Login](#login)
+- [Tournament Setup](#tournament-setup)
+	- [Tournament Settings](#tournament-settings)
+	- [Images](#images)
+	- [Import team data](#import-team-data)
+	- [Teams](#teams)
+	- [Matches](#matches)
+- [Scoring](#scoring)
+	- [Scoresheet](#scoresheet)
+	- [Score management screen](#score-management-screen)
+	- [Scoring tiles](#scoring-tiles)
+		- [Scoring tile](#scoring-tile)
+		- [Duplicate scores](#duplicate-scores)
+- [Scoreboard](#scoreboard)
+- [Timer](#timer)
+- [Tournament Status Display](#tournament-status-display)
+- [Networked Computers](#networked-computers)
+	- [Use of iPads and tablets](#use-of-ipads-and-tablets)
+- [Network adapters](#network-adapters)
+- [Log files](#log-files)
+- [Feedback](#feedback)
+- [Known Issues](#known-issues)
+
 ## Overview
 
 The Tournament Management System is an application that enables *FIRST* LEGO League tournament organizers to record robot game mission results on an digital scoresheet and to display the match results on a scoreboard.
