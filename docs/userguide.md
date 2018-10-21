@@ -7,6 +7,7 @@ Click [here](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/us
 You can also watch a [recording of the Webinar](https://register.gotowebinar.com/register/8980264911390903809) that was held on Sep 24th, 2018 (the actual recording starts at 1’30”). After registering you will have immediate access to the Webinar.
 
 ## Table of Contents
+
 - [Overview](#overview)
 	- [Hardware required](#hardware-required)
 	- [Computer requirements](#computer-requirements)
