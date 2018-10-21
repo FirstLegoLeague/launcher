@@ -2,8 +2,11 @@
 
 const opn = require('opn')
 const Promise = require('bluebird')
+const AdmZip = require('adm-zip')
 
-const { saveLogs } = require('../logs')
+const mongo = require('../mongo')
+const { LOG_DIR } = require('../logs')
+const { STORAGE_PATH } = require('../configurator')
 
 exports.HomeAdapter = class {
   constructor (server) {
@@ -43,8 +46,15 @@ exports.HomeAdapter = class {
     this.server.getIp().asCallback(callback)
   }
 
-  saveLogs (filename, callback) {
-    saveLogs(filename).asCallback(callback)
+  saveDebugData (filename, callback) {
+    const zip = new AdmZip()
+    return mongo.dump()
+      .then(() => {
+        zip.addLocalFolder(mongo.DUMP_PATH, 'data')
+        zip.addLocalFile(STORAGE_PATH, 'configuration')
+        zip.addLocalFolder(LOG_DIR, 'logs')
+        return Promise.fromCallback(cb => zip.writeZip(filename, cb))
+      }).asCallback(callback)
   }
 
   openSite (site, callback) {
