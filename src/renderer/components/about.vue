@@ -12,8 +12,9 @@ or you have any suggestions or questions, please contact us:
                     <div class="cell small-4">Email Alan Green: agreen@firstinspires.org</div>
                     <div class="cell small-4"><a @click="event => openSite(event, 'http://fll-tools.com/support/')">Visit our website Support Page</a></div>
                 </div>
-                <pre>When reporting a bug, please click "Save Logs" to export the software logs and attach them to the email or support ticket. <a @click="saveLogs">Save Logs</a>
+                <pre>When reporting a bug, please click "Save Logs" to export the software logs and attach them to the email or support ticket. 
 </pre>
+                <a class="button" @click="saveLogs">Save Logs</a>
                 <h4>Credits</h4>
                 <pre>Many people took part in the development of this software. We appreciate the help of:
 
