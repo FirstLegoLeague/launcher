@@ -1,5 +1,7 @@
 # Example Hardware Configurations
 
+We've prepared some example hardware configurations to demonstrate how you might equip your tournament, and how the various computers are used and connected to each other.
+
 ## Small competition
 
 A scrimmage or low-resource competition could run using a single laptop. 
