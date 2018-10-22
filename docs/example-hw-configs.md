@@ -27,7 +27,7 @@ A mid-sized comptition with two computers might look like this:
   1. Timer (could be on 2nd computer instead)
   1. Scoreboard (moved to extended display)
   1. Tournament (admin only)
-* On 2nd computer, open 2 browser tabs
+* On 2nd computer, open 2 browser tabs (left computer in image)
   1. Scoresheet
   1. Timer (could be on 1st computer instead)
 
