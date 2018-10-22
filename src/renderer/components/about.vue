@@ -10,10 +10,11 @@ or you have any suggestions or questions, please contact us:
 </pre>
                 <div class="grid-x text-center grid-padding-y">
                     <div class="cell small-4">Email Alan Green: agreen@firstinspires.org</div>
-                    <div class="cell small-4"><a href="http://fll-tools.com/support/">Visit our website Support Page</a></div>
+                    <div class="cell small-4"><a @click="event => openSite(event, 'http://fll-tools.com/support/')">Visit our website Support Page</a></div>
                 </div>
                 <pre>When reporting a bug, please click "Save debug data" to export the software logs and the team scores database. Attach the zip file to the email or support ticket. <a @click="saveDebugData">Save debug data</a>
 </pre>
+                <a class="button" @click="saveDebugData">Save debug data</a>
                 <h4>Credits</h4>
                 <pre>Many people took part in the development of this software. We appreciate the help of:
 
@@ -30,6 +31,14 @@ Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana
   export default {
     name: 'AboutPage',
     methods: {
+      openSite (event, site) {
+        event.preventDefault()
+
+        Promise.fromCallback(cb => this.adapter.openSite(site, cb))
+          .catch(err => {
+            console.error(err)
+          })
+      },
       saveDebugData () {
         this.dialog.showSaveDialog({
           title: 'Save debug data',
