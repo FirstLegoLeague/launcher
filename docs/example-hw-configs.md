@@ -40,7 +40,7 @@ A large or well-resourced competition could have 4 computers. A router is requir
 * Software installed on one computer (head ref computer), only browers are used on the other computers.
 * 1st and 2nd computers are used for Scorekeepers and Timer
   1. Open browser tab for scoresheet
-  1. Open broser tab for Timer (either on 1st or 2nd computer)
+  1. Open browser tab for Timer (either on 1st or 2nd computer)
 * On 3rd computer (for Head Ref), open 2 browser tabs
   1. Scoring (to monitor scores)
   1. Tournament (admin only)
