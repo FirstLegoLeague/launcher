@@ -23,7 +23,7 @@ A mid-sized comptition with two computers might look like this:
 <img src="./images/2 computers.png" style="width:75%">
 
 * Video and audio connections same as [Small competition](#small-competition)
-* Software installed on one computer, only brower used on 2nd computer
+* Software installed on one computer, only a browser used on 2nd computer
 * On 1st computer, open 4 browser tabs (right computer in image)
   1. Scoresheet
   1. Timer (could be on 2nd computer instead)
@@ -39,7 +39,7 @@ A large or well-resourced competition could have 4 computers. A router is requir
 
 <img src="./images/4 computers.png" style="width:75%">
 
-* Software installed on one computer (head ref computer), only browers are used on the other computers.
+* Software installed on one computer (head ref computer), only browsers are used on the other computers.
 * 1st and 2nd computers are used for Scorekeepers and Timer
   1. Open browser tab for scoresheet
   1. Open browser tab for Timer (either on 1st or 2nd computer)
