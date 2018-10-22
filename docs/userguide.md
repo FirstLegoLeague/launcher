@@ -52,7 +52,9 @@ This software is the result of volunteer efforts by groups in The Netherlands, I
 
 ### Hardware required
 
-The software can be run entirely on a single laptop (for small, low resource, competitions) through to larger installations with multiple scorekeeper computers, a separate scoreboard display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers)
+The software can be run entirely on a single laptop (for small, low resource, competitions) through to larger installations with multiple scorekeeper computers, a separate scoreboard display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers).
+
+The [Example hardware configurations](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/example-hw-configs.md#example-hardware-configurations) guide shows how you might equip your tournament, and how the various computers are used and connected to each other,
 
 ### Computer requirements
 
