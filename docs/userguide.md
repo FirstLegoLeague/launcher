@@ -97,10 +97,12 @@ If you don't have time to read this whole guide or you need just to know the ste
     1. Enter the referee name (optional for admin or scorekeeper roles)
     1. Choose the table  (optional for admin or scorekeeper roles)
     1. Select the team from the dropdown list
-    1. Mark each mission, and have the technical sign the scoresheet
+    1. Select the round from the list that appears to the right of the team list.
+    1. Score each mission, and let the technician sign the scoresheet
     1. Press Submit
 1. On the left of the `Scoring` tab, click the menu icon (3 horizontal lines that look like a hamburger)
     1. The list of scores entered so far are shown
+1. The Scoreboard page shows the scores entered **for the current stage**.
 
 ## Launcher
 
