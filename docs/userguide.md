@@ -413,7 +413,7 @@ At a larger tournament you might have a number of computers connected to each ot
 
 ### Use of iPads and tablets
 
-We have done limited testing of referee score input using iPads and WiFi. No problems were encoutered. If  there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
+We have done limited testing of referee score input using iPads and WiFi. No problems were encountered. If  there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
 **Note:** Additional functionality has been added since these tests. Tournament organizers that intend using iPads should coordinate this with the development team. See the About screen for contact details.
 
 ## Network adapters
