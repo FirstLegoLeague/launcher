@@ -243,8 +243,8 @@ Note: `Import` is only available when the team list is empty.
   * [Example 12 Team Tournament Schedule Template 3.1](./files/12_Team_Tournament_Schedule_Template_3.1.csv)
   * [Example 52 Team Tournament Schedule Template 3.1](./files/52_Team_Tournament_Schedule_Template_3.1.csv)  
 - `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information, such as team affiliation, in the first 3 columns. This file does not contain match information, or table names. You will need to add table names afterward the import.
-  * [Example 24 Team List](./files/24_Team_List.csv)
-
+  * [Example 24 Team List](./files/24_Team_List.csv) <a download="24_Team_List.csv" href="./files" title="(Click to Download)"><img alt="(Click to download)" src="./files"></a>
+  
 Note: We do not currently (In the beta versions, and in version 2018.1.0) make use of the match information. See [Tournament Status Display](#tournament-status-display).
 
 Drag and drop a schedule file or team list onto the popup.
