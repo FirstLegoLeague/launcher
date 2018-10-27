@@ -1,5 +1,7 @@
 # *FIRST* LEGO League TMS User Guide
 
+Last Updated: 27-Oct-2018
+
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
 Click [here](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/userguide.md) for the latest version of this document.
