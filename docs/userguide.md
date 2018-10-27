@@ -446,3 +446,4 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 1. In Scoring when logged in as Admin or Scorekeeper, if the referee name is not given, the scoring tile shows *undefined* instead of *No Name*.
 1. When starting the TMS app, if you click twice, sometimes to instances of the app are opened.
 1. In the Launcher, when clicking "Visit our website Support Page" in the About page, the Support page is opened in the app window, and you have to reopen the app to get back to the app screens.
+1. In the scores screen, the tick marks in the rounds dropdown are intended to indicate which rounds already have scores. Sometimes scored rounds are not marked with a tick.
