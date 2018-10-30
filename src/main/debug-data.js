@@ -3,9 +3,9 @@
 const AdmZip = require('adm-zip')
 const Promise = require('bluebird')
 
-const mongo = require('../mongo')
-const { LOG_DIR } = require('../logs')
-const { STORAGE_PATH } = require('../configurator')
+const mongo = require('./mongo')
+const { LOG_DIR } = require('./logs')
+const { STORAGE_PATH } = require('./configurator')
 
 exports.saveDebugData = filename => {
   const zip = new AdmZip()
