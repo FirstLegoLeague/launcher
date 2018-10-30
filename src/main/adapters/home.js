@@ -3,7 +3,7 @@
 const opn = require('opn')
 const Promise = require('bluebird')
 
-const { saveLogs } = require('../logs')
+const { saveDebugData } = require('../debug-data')
 
 exports.HomeAdapter = class {
   constructor (server) {
@@ -43,8 +43,8 @@ exports.HomeAdapter = class {
     this.server.getIp().asCallback(callback)
   }
 
-  saveLogs (filename, callback) {
-    saveLogs(filename).asCallback(callback)
+  saveDebugData (filename, callback) {
+    saveDebugData(filename).asCallback(callback)
   }
 
   openSite (site, callback) {
