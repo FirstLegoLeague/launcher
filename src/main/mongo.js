@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
+const { logger } = require('./logs')
 
 Promise.promisifyAll(fs)
 
@@ -40,6 +41,7 @@ class Mongo {
   }
 
   start () {
+    logger.debug(`MONGO_ARGUMENTS:${MONGO_ARGUMENTS}`)
     return mkdirpAsync('./data/$mongo')
       .then(() => this.serviceManager.startService({
         serviceName: 'mongo',
