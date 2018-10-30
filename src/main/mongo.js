@@ -41,7 +41,7 @@ class Mongo {
   }
 
   start () {
-    logger.debug(`MONGO_ARGUMENTS:${MONGO_ARGUMENTS}`)
+    logger.debug(`MONGO_ARGUMENTS:${MONGO_ARGUMENTS} process.arch:${process.arch}`)
     return mkdirpAsync('./data/$mongo')
       .then(() => this.serviceManager.startService({
         serviceName: 'mongo',
