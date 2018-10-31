@@ -15,7 +15,7 @@ const FILE_EXTENSION = (process.platform === 'win32') ? '.exe' : ''
 const MONGO_BIN_DIR = path.resolve(`./internals/mongo/bin`)
 const MONGO_EXECUTABLE_PATH = path.resolve(MONGO_BIN_DIR, `mongod${FILE_EXTENSION}`)
 const MONGO_ARGUMENTS = ['--dbpath', './data/$mongo']
-  .concat((process.arch === 'x32') ? ['--storageEngine=mmapv1'] : [])
+  .concat((process.arch === 'ia32') ? ['--storageEngine=mmapv1'] : [])
 
 const MONGODUMP_EXECUTABLE_PATH = path.resolve(MONGO_BIN_DIR, `mongodump${FILE_EXTENSION}`)
 const DUMP_PATH = exports.DUMP_PATH = path.resolve('./dump')
@@ -62,8 +62,7 @@ class Mongo {
   }
 
   start () {
-    logger.warn(`MONGO_ARGUMENTS:${MONGO_ARGUMENTS} process.arch:${process.arch}`)
-    console.log(`MONGO_ARGUMENTS:${MONGO_ARGUMENTS} process.arch:${process.arch}`)
+    logger.info(`process.arch:${process.arch} MONGO_ARGUMENTS:${MONGO_ARGUMENTS}`)
     return mkdirpAsync('./data/$mongo')
       .then(() => this.serviceManager.startService({
         serviceName: 'mongo',
