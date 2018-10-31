@@ -10,7 +10,7 @@ const { getDefaultValue, getUpdatedValue } = require('./types')
 
 const mkdirpAsync = Promise.promisify(mkdirp)
 
-const STORAGE_PATH = path.resolve('./data/$config.sqlite')
+const STORAGE_PATH = exports.STORAGE_PATH = path.resolve('./data/$config.sqlite')
 
 exports.Configurator = class extends EventEmitter {
   constructor () {

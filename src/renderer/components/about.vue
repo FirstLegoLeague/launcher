@@ -12,9 +12,9 @@ or you have any suggestions or questions, please contact us:
                     <div class="cell small-4">Email Alan Green: agreen@firstinspires.org</div>
                     <div class="cell small-4"><a @click="event => openSite(event, 'http://fll-tools.com/support/')">Visit our website Support Page</a></div>
                 </div>
-                <pre>When reporting a bug, please click "Save Logs" to export the software logs and attach them to the email or support ticket. 
+                <pre>When reporting a bug, please click "Save debug data" to export the software logs and the team scores database. Attach the zip file to the email or support ticket. <a @click="saveDebugData">Save debug data</a>
 </pre>
-                <a class="button" @click="saveLogs">Save Logs</a>
+                <a class="button" @click="saveDebugData">Save debug data</a>
                 <h4>Credits</h4>
                 <pre>Many people took part in the development of this software. We appreciate the help of:
 
@@ -39,23 +39,23 @@ Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana
             console.error(err)
           })
       },
-      saveLogs () {
+      saveDebugData () {
         this.dialog.showSaveDialog({
-          title: 'Save logs',
-          defaultPath: 'logs.zip',
+          title: 'Save debug data',
+          defaultPath: 'debug-data.zip',
           filter: [{ name: 'zip', extensions: ['zip'] }]
         }, filePath => {
-          Promise.fromCallback(cb => this.adapter.saveLogs(filePath, cb))
+          Promise.fromCallback(cb => this.adapter.saveDebugData(filePath, cb))
             .then(() => this.dialog.showMessageBox({
               type: 'info',
               buttons: ['Ok'],
-              message: 'Logs saved'
+              message: 'Debug data saved'
             }))
             .catch(err => {
               this.dialog.showMessageBox({
                 type: 'error',
                 buttons: ['Ok'],
-                message: 'Error saving logs'
+                message: 'Error saving debug data'
               })
               console.error(err)
             })
