@@ -240,14 +240,14 @@ Note: `Import` is only available when the team list is empty.
 
 <img src="./images/tournament-import.png" style="width:75%">
 
-- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule. 
+- `Schedule file` - Import a CSV schedule file that follows the format of the Tournament Scheduler Excel spreadsheet. This file contains team numbers and names as well as the tournament matches time schedule.
   * [Format specification](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/Scoring_Schedule_Input_File_Format.doc)
-  * [Example 24 Team Full Schedule](./files/24_Team_Full_Schedule.csv) - to download, right-click and select "Save link as ..." (Chrome)
+  * [Example 24 Team Full Schedule](./files/24_Team_Full_Schedule.csv). Click to [Download](./files/24_Team_Full_Schedule.csv.zip) and then unzip.
 - `Schedule file - shortened` - Import a CSV schedule file exported from one of the Excel-based `Team Tournament Schedule Templates` in the [_FIRST_ LEGO League Tournament Manual](https://firstlegoleague-eventmanuals.pbworks.com/w/page/85093483/Chapter%209%20Home%20Page). The templates can be downloaded from the [Wiki](https://firstlegoleague-eventmanuals.pbworks.com/w/browse#view=ViewFolderNewGui&param=2017%20Schedule%20Templates). These CSV Export files do not contain match information, or table names. You will need to add table names afterward the import.
-  * [Example 12 Team Tournament Schedule Template 3.1](./files/12_Team_Tournament_Schedule_Template_3.1.csv) - to download, right-click and select "Save link as ..." (Chrome)
-  * [Example 52 Team Tournament Schedule Template 3.1](./files/52_Team_Tournament_Schedule_Template_3.1.csv) - to download, right-click and select "Save link as ..." (Chrome)
+  * [Example 12 Team Tournament Schedule Template 3.1](./files/12_Team_Tournament_Schedule_Template_3.1.csv). Click to [Download](./files/12_Team_Tournament_Schedule_Template_3.csv.zip) and then unzip.
+  * [Example 52 Team Tournament Schedule Template 3.1](./files/52_Team_Tournament_Schedule_Template_3.1.csv). Click to [Download](./files/52_Team_Tournament_Schedule_Template_3.csv.zip) and then unzip.
 - `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information, such as team affiliation, in the first 3 columns. This file does not contain match information, or table names. You will need to add table names afterward the import.
-  * [Example 24 Team List](./files/24_Team_List.csv) - to download, right-click and select "Save link as ..." (Chrome)
+  * [Example 24 Team List](./files/24_Team_List.csv). Click to [Download](./files/24_Team_List.csv.zip) and then unzip.
   
 Note: We do not currently (In the beta versions, and in version 2018.1.0) make use of the match information. See [Tournament Status Display](#tournament-status-display).
 
