@@ -5,7 +5,6 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 const { spawn } = require('child_process')
-
 const { logger } = require('./logs')
 
 Promise.promisifyAll(fs)
@@ -63,6 +62,8 @@ class Mongo {
   }
 
   start () {
+    logger.warn(`MONGO_ARGUMENTS:${MONGO_ARGUMENTS} process.arch:${process.arch}`)
+    console.log(`MONGO_ARGUMENTS:${MONGO_ARGUMENTS} process.arch:${process.arch}`)
     return mkdirpAsync('./data/$mongo')
       .then(() => this.serviceManager.startService({
         serviceName: 'mongo',
