@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 1-Nov-2018
+Last Updated: 3-Nov-2018
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -138,7 +138,7 @@ Press `Save` to make the change permanent.
 **Scoreboard**  
 Configure whether negative scores are shown as 0 on the `Scoreboard`. Default is YES.
 
-Note: The Scoring screen (intended for the Head Referee) will still show negative scores. 
+Note: The Scoring screen (intended for the Head Referee) will still show negative scores.
 
 Note: The Referee Standards require that negative scores be shown as zero. This option will be removed in the future.
 
@@ -369,7 +369,7 @@ The `Show only bad scores` button is shown when scores cannot be sent to the `Sc
 
 The `Scoreboard` shows the team scores for the current stage and continuously scrolls through all the teams.
 
-<img src="./images/results-display.png" style="width:75%">
+<img src="./images/scoreboard.png" style="width:75%">
 
 The left-most column shows the team's rank. The rank is taken from the `High` score. Ties are broken using 2nd, then 3rd best scores. Teams without scores don't have a rank and are ordered by team number.
 
@@ -399,6 +399,10 @@ The musical note in the top left hand corner of the screen is used to test the f
 
 <img src="./images/test-sounds.png" style="width:75%">
 
+During a match the elapsed time is overlaid onto the Scoreboard.
+
+<img src="./images/scoreboard-with-timer.png" style="width:75%">
+
 The timer can be activated on any computer or tablet on the network. The sound files are played only on the computer where the TMS is installed and this computer must be connected to to a loudspeaker system if required.
 
 ## Tournament Status Display
@@ -407,7 +411,7 @@ This display shows whether the tournament is running ahead of schedule or behind
 
 Note: This display can only function if a [schedule file is imported](#tournament-setup).
 
-Note: Not implemented in the beta versions or version 2018.0.0 (release date 17-Oct-2018)
+Note: Not implemented in the beta versions or version 2018.1.0 (release date 17-Oct-2018)
 
 ## Networked Computers
 
