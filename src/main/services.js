@@ -16,6 +16,8 @@ const SIGNAL = 0
 const SIGINT = 2
 const SIGKILL = 9
 
+const SERVICE_RESTART_TIMEOUT = 3 * 1000
+
 function waitForTermination (childProcess) {
   return new Promise((resolve, reject) => {
     try {
@@ -35,10 +37,11 @@ function waitForTermination (childProcess) {
   })
 }
 
-function terminateGracefully (childProcess) {
+function terminateGracefully ({ child, restartCallback }) {
   return Promise.try(() => {
-    logger.info(`Starting termination of process ${childProcess.pid}`)
-    childProcess.kill(SIGINT)
+    logger.info(`Starting termination of process ${child.pid}`)
+    child.removeListener('exit', restartCallback)
+    child.kill(SIGINT)
   })
     .catch(err => {
       if (err.code !== 'ESRCH') {
@@ -46,16 +49,16 @@ function terminateGracefully (childProcess) {
       }
     })
     .then(() => {
-      return waitForTermination(childProcess)
+      return waitForTermination(child)
         .timeout(TERMINATION_TIMEOUT)
     })
     .catch(Promise.TimeoutError, () => {
-      logger.error(`Process ${childProcess.pid} is not terminating, stating force shutdown`)
-      childProcess.kill(SIGKILL)
+      logger.error(`Process ${child.pid} is not terminating, stating force shutdown`)
+      child.kill(SIGKILL)
       return waitForTermination()
         .timeout(TERMINATION_TIMEOUT)
     })
-    .tap(() => logger.info(`Process ${childProcess.pid} is terminated`))
+    .tap(() => logger.info(`Process ${child.pid} is terminated`))
     .catch(err => {
       if (err.code !== 'ESRCH') {
         throw err
@@ -85,9 +88,19 @@ exports.ServiceManager = class {
               child.stdout.pipe(options.logStream, { end: false })
               child.stderr.pipe(options.logStream, { end: false })
 
+              const restartCallback = () => {
+                logger.warn(`Service  ${serviceId} exited.`)
+                setTimeout(() => {
+                  logger.warn('Restarting.')
+                  this.startService(options)
+                }, SERVICE_RESTART_TIMEOUT)
+              }
+
+              child.on('exit', restartCallback)
+
               logger.info(`Service ${serviceId} start running with PID: ${child.pid}`)
 
-              this.services[serviceId] = { child }
+              this.services[serviceId] = { child, restartCallback }
             })
         }
       })
@@ -110,7 +123,7 @@ exports.ServiceManager = class {
 
   stopService (serviceId) {
     if (this.services[serviceId] && this.services[serviceId].child) {
-      return terminateGracefully(this.services[serviceId].child)
+      return terminateGracefully(this.services[serviceId])
     } else {
       return Promise.resolve(false)
     }
