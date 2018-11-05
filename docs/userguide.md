@@ -263,7 +263,7 @@ If you need to replace the imported data with a different CSV file, you can dele
 
 ### Teams
 
-The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken. Note that a newly added team does not immeditaly appear - you must refreshthe browser or switch to a differet screen (such as 'Matches') and then back here to see a newly added team.
+On the `Teams` screen you can edit the team name and affiliation, or delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken. Note that a newly added team does not immeditaly appear - you must refresh the browser or switch to a differet screen (such as 'Matches') and then back again to see a newly added team.
 
 You can search for a team by number. Enter # and the team number in the search box. You can also search by team name
 
