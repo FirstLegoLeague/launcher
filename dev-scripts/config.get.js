@@ -55,7 +55,7 @@ module.exports = {
     rankings: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#f98f167da5accc8e0e95ec42881389d28e05f006'
+        version: 'FirstLegoLeague/rankings#ecac223c4821760ffdd4cf97692d910c3ad34ca6'
       }
     },
     clock: {
