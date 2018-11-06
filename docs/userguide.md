@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 3-Nov-2018
+Last Updated: 6-Nov-2018
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -39,7 +39,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 	- [Use of iPads and tablets](#use-of-ipads-and-tablets)
 - [Network adapters](#network-adapters)
 - [Log files](#log-files)
-- [Feedback](#feedback)
+- [Bug reports and feedback](#bug-reports-and-feedback)
 - [Known Issues](#known-issues)
 
 ## Overview
@@ -430,7 +430,7 @@ Many laptop PCs have more than one `Network adapter`. For instance, there might 
 
 ## Log files
 
-The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Logs` button at the bottom of the `Launcher Home` screen.
+The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Save debug data`/`Save logs` button at the bottom of the app `About` screen.
 
 Logging should be set to DEBUG.
 
@@ -438,7 +438,23 @@ Logging should be set to DEBUG.
 
 Note: When reporting a bug please include the software version which can be seen in the Home screen of the [Launcher](#launcher).
 
-## Feedback
+## Bug reports and feedback
+
+Bug reports should be emailed to FLL-TMS-Support@firstinspires.org
+
+Please provide the following information:
+
+1. Software version. Can be found in the Home screen of the [Launcher](#launcher)
+1. A description of what went wrong.
+1. A description of your hardware configuration
+    - how many computers you are using and what you are running on each of them (e.g. [timer](#timer), [scoring](scoring), [scoreboard](#scoreboard))
+    - whether you are using a router for your network, or whether you are using the tournament venue's wired or WiFi network
+    - whether you use iPads for score entry
+1. Attach log files and debug data. These can be collected from the app About screen, by pressing the `Save debug data/Save logs` button.
+1. How you entered team information in [Tournament Setup](#tournament-setup).
+    - A schedule file or a team list was imported
+    - OR Teams were added one by one manually
+    - If you imported a file, please send that too.
 
 Please send comments/suggestions/questions about this document to Alan Green at agreen@firstinspires.org
 
