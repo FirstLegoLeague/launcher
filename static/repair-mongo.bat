@@ -1,0 +1,1 @@
+internals\mongo\bin\mongod --repair -dbpath data\$mongo > logs\repair.log
