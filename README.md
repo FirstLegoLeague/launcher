@@ -86,6 +86,8 @@ The advanced way (usually if you want to config debug in your ide) run:
 node ./node_modules/.bin/electron app/main.js
 ```
 
+To check
+
 ### Building ###
 
 To run the build, just use the shell script:
@@ -98,3 +100,4 @@ NOTE: the build script is a cross-compile script. you should be able
 
 Available platforms:
  - windows
+
