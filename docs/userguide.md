@@ -370,7 +370,7 @@ The `Show only duplicates` button is enabled when more than one score has been s
 
 The `Show only bad scores` button is enabled when scores cannot be sent to the `Scoreboard`. This might happen when entering match results on a iPad and the WiFi connection is interrupted. See [Communication status](#communication-status).
 
-Due to the interruption, the list of Rounds cannot be retrieved from the `Launcher` and the referee can choose to submit the score without the `Round`, thereby freeing up the iPad for the next match. On the head referee or scorekeeper [Scoring tile](#scoring-tile) this match's round will be shown as `Missing`, and the `Show only bad scores` button will be enabled. This will alert the head referee or scorekeeper to the fact that they need to fix the missing `Round`.
+Due to the interruption, the list of Rounds cannot be retrieved from the `Launcher` and the referee can choose to submit the score without the `Round`, thereby freeing up the iPad for the next match. On the head referee or scorekeeper [Scoring tile](#scoring-tile) this match's round will be shown as `Missing round`, and the `Show only bad scores` button will be enabled. This will alert the head referee or scorekeeper to the fact that they need to fix the missing `Round`.
 
 ## Scoreboard
 
