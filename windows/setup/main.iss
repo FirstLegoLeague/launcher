@@ -8,6 +8,7 @@
 #define platform GetEnv("PLATFORM")
 #define modules "..\..\modules"
 #define internals "..\..\internals"
+#define static "..\..\static"
 #define executable "FIRST LEGO League TMS.exe"
 #define add_firewall_rule "advfirewall firewall add rule protocol=tcp dir=in enable=yes action=allow profile=private"
 
@@ -31,6 +32,7 @@ Name: "{app}\tmp"
 Source: "{#app}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs;
 Source: "{#modules}\*"; DestDir: "{app}\modules"; Flags: ignoreversion recursesubdirs;
 Source: "{#internals}\*"; DestDir: "{app}\internals"; Flags: ignoreversion recursesubdirs;
+Source: "{#static}\repair-mongo.bat"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs;
 
 [Run]
 Filename: "{sys}\netsh.exe";  StatusMsg: "Adding firewall rules..."; Parameters: "{#add_firewall_rule} name=""FIRST LEGO League TMS"" program=""{app}\{#executable}"""
