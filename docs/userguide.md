@@ -467,7 +467,7 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 
 ## Changelog
 
-[List of updates and bug fixes](./changelog.md)
+[List of updates and bug fixes](./changelog.md#first-lego-league-tms-changelog)
 
 ## Known Issues
 
