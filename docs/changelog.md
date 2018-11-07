@@ -2,6 +2,8 @@
 
 V2018.1.1 - 7-Nov-2018
 
+## Version targetted for release: 8-Nov-2018
+
 ## Simply Speaking
 
 - **System freeze problem encountered at some events, and which required Launcher restart**, now fixed at two levels:
