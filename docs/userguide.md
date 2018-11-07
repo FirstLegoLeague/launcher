@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 6-Nov-2018
+Last Updated: 7-Nov-2018
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -32,6 +32,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 	- [Scoring tiles](#scoring-tiles)
 		- [Scoring tile](#scoring-tile)
 		- [Duplicate scores](#duplicate-scores)
+		- [Bad scores](#bad-scores)
 - [Scoreboard](#scoreboard)
 - [Timer](#timer)
 - [Tournament Status Display](#tournament-status-display)
@@ -40,6 +41,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 - [Network adapters](#network-adapters)
 - [Log files](#log-files)
 - [Bug reports and feedback](#bug-reports-and-feedback)
+- [Changelog](#changelog)
 - [Known Issues](#known-issues)
 
 ## Overview
@@ -294,9 +296,10 @@ The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a sco
 ### Communication status
 
 The top line of the Scoring screen shows the communication status.
+
 1. `Online` - Scoring results are being submitted sucessfully.
 1. `Comms Interruption` - Scoresheet results cannot be sent due to a communication issue. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
-1. `Offline` - Communications have been interrupted for 10 minutes or more. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
+1. `Offline` - Communications have been interrupted for 5 minutes or more. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
 
 ### Scoresheet
 
@@ -363,7 +366,11 @@ All the information relating to a particular score is shown in a scoring tile.
 
 The `Show only duplicates` button is enabled when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper a way to easily check for duplicate scores, and to correct the error.
 
-The `Show only bad scores` button is shown when scores cannot be sent to the `Scoreboard` for any reason. (Details TBD)
+#### Bad scores
+
+The `Show only bad scores` button is enabled when scores cannot be sent to the `Scoreboard`. This might happen when entering match results on a iPad and the WiFi connection is interrupted. See [Communication status](#communication-status).
+
+Due to the interruption, the list of Rounds cannot be retrieved from the `Launcher` and the referee can choose to submit the score without the `Round`, thereby freeing up the iPad for the next match. On the head referee or scorekeeper [Scoring tile](#scoring-tile) this match's round will be shown as `Missing`, and the `Show only bad scores` button will be enabled. This will alert the head referee or scorekeeper to the fact that they need to fix the missing `Round`.
 
 ## Scoreboard
 
@@ -458,14 +465,12 @@ Please provide the following information:
 
 Please send comments/suggestions/questions about this document to Alan Green at agreen@firstinspires.org
 
+## Changelog
+
+[List of updates and bug fixes](./changelog.md)
+
 ## Known Issues
 
-1. 32-bit computers not supported
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
 1. Accessing Tournament Setup while logged in as Referee throws you out to the Login screen when you try to save changes. Solution: Log in as Admin.
-1. Schedule and Team List import allow you to have a team name without a team number. Causes scoring to fail. **Team number must exist and be numeric**.
-1. In Scoring, connectivity status not updated when connectivity restored.
-1. In Scoring when logged in as Admin or Scorekeeper, if the referee name is not given, the scoring tile shows *undefined* instead of *No Name*.
 1. When starting the TMS app, if you click twice, sometimes to instances of the app are opened.
-1. In the Launcher, when clicking "Visit our website Support Page" in the About page, the Support page is opened in the app window, and you have to reopen the app to get back to the app screens.
-1. In the scores screen, the tick marks in the rounds dropdown are intended to indicate which rounds already have scores. Sometimes scored rounds are not marked with a tick.
