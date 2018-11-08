@@ -22,14 +22,14 @@
 1. Change internal communications mhub log level to INFO
 1. Restart module servers after crash.
 1. Fix support for Windows 32-bit
-1. Fix bug in rankings module - After crash and restart, scores not updated on Scoreboard.
+1. Fix bug in rankings module - After module crash and self-restart, scores not updated on Scoreboard.
 1. Launcher: after pressing link to Support, there is no way to go back again. Support website now opens in browser.
-1. Launcher About screen - replace Save debug data link with button
-1. Launcher: When saving logs, save scoring and configuration database too
-1. Tournament Setup: Don’t permit import team if it doesn’t have a team number
+1. Launcher About screen - replace Save debug data link with button.
+1. Launcher: When saving logs, save scoring and configuration database too.
+1. Tournament Setup: Don’t permit import team if it doesn’t have a team number.
 1. Tournament Setup: Fix import of schedule file containing table names with embedded blanks.
-1. Scoring: Entering score without referee name from role admin shows "undefined" in scoring tile
+1. Scoring: Entering score without referee name from role admin shows "undefined" in scoring tile.
 1. Scoring: During connectivity interruption, Select Round list is blocked, and score cannot be submitted.
-1. Scoring: Connectivity status not updated when connectivity restored
-1. Scoring: Sometimes completed rounds not shown with tick (Not all scenarios of this bug have been fixed
+1. Scoring: Connectivity status not updated when connectivity restored.
+1. Scoring: Sometimes completed rounds not shown with tick (Not all scenarios of this bug have been fixed).
 1. Scoreboard: Don't show empty affiliation next to team name.
