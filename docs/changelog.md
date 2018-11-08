@@ -1,4 +1,4 @@
-# FIRST LEGO League TMS Changelog
+# FIRST LEGO League TMS Release Notes
 
 ## V2018.1.1 - 8-Nov-2018
 
