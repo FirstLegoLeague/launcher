@@ -64,6 +64,11 @@ Development
     If you are missing it anyway you can use one of the following option:
     - [cygwin](http://www.cygwin.com/)
     - [MinGw](http://www.mingw.org/)
+- Python
+  - Install Python 2.7
+- Microsoft Build Tools
+  - Download from https://www.microsoft.com/en-in/download/details.aspx?id=48159
+  - Install BuildTools_Full.exe
 
 \*Optional - This is needed only for the building of the installation files
 
@@ -72,8 +77,8 @@ Development
 - Clone the repository
 - Run from cmd `yarn install`
 - Run from cmd `yarn get all` - this would download all external
-  modules for the luancher. Use `yarn get --help` to change the modules
-  that would download.
+  modules for the launcher. Use `yarn get --help` to choose the modules
+  to download. Do this if you know that only specific modules have been updated.
 
 ### Run Program Locally ###
 The simple way run:
