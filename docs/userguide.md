@@ -488,6 +488,6 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 
 ## Known Issues
 
+1. If you click twice when starting the TMS app, sometimes two instances of the app are opened. Close the app, and reopen, taking care to click once only.
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
 1. Accessing Tournament Setup while logged in as Referee throws you out to the Login screen when you try to save changes. Solution: Log in as Admin.
-1. When starting the TMS app, if you click twice, sometimes to instances of the app are opened.
