@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 7-Nov-2018
+Last Updated: 8-Nov-2018
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -40,6 +40,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 	- [Use of iPads and tablets](#use-of-ipads-and-tablets)
 - [Network adapters](#network-adapters)
 - [Log files](#log-files)
+- [32-bit computers](#32bit-computers)
 - [Bug reports and feedback](#bug-reports-and-feedback)
 - [Changelog](#changelog)
 - [Known Issues](#known-issues)
@@ -64,7 +65,7 @@ The [Example hardware configurations](https://github.com/FirstLegoLeague/Launche
 
 The computer on which the software is installed should be a Windows Intel I5 with 8GB of memory, or better. Approximately 1.5 GB of disk space is required. The other computers (scorekeepers, timer, scoreboard display) only need to run a browser and therefore have mimimal hardware needs.
 
-Note: Currently we only support 64-bit computers. We are working to extend support to older 32-bit computers.
+Note: Currently we only fully support 64-bit computers.  The 32-bit installation is available for Beta testing. See [32-bit computers](#32bit-computers).
 
 ### Installation
 
@@ -75,7 +76,7 @@ To upgrade this software with a new version, run the setup file without first un
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
 Note: Some school computers and networks block various types of network traffic. This software requires that computer and network firewalls allow access to ports 2828 though 2837, and also port 13900.
 
-There will be two separate Setup files when we extend support to 32-bit computers.
+There are two separate Setup files for 64-bit and 32-bit computers.
 
 ### Modules
 
@@ -444,6 +445,22 @@ Logging should be set to DEBUG.
 <img src="./images/launcher-loglevel.png" style="width:75%">
 
 Note: When reporting a bug please include the software version which can be seen in the Home screen of the [Launcher](#launcher).
+
+## 32bit computers
+
+In version v2018.1.1 we have extended support for 32-bit computers. Currently this Setup is in Beta.
+
+32-bit users please note: If the internal database is shut down unexpectedly, it might be left in an inconsistent state, and will need to be repaired.
+
+This is the sequence of steps to repair the database.
+
+1. Close the TMS app.
+1. Open a Command Prompt.
+1. Change directory to C:\FIRST_Lego_League_TMS (Note: if you installed to a different directory, change to that instead).
+1. Run the command `repair-mongo`
+1. Exit the Command Prompt and restart the TMS app.
+
+If you encounter issues, please follow the [Bug report](#bug-reports-and-feedback) instructions.
 
 ## Bug reports and feedback
 
