@@ -2,7 +2,7 @@
 
 V2018.1.1 - 7-Nov-2018
 
-## Version targetted for release: 8-Nov-2018
+## Version targeted for release: 8-Nov-2018
 
 ## Simply Speaking
 
