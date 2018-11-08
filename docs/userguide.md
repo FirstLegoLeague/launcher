@@ -41,7 +41,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 - [Network adapters](#network-adapters)
 - [Log files](#log-files)
 - [Bug reports and feedback](#bug-reports-and-feedback)
-- [Changelog](#changelog)
+- [Release Notes](#release-notes)
 - [Known Issues](#known-issues)
 
 ## Overview
@@ -465,9 +465,9 @@ Please provide the following information:
 
 Please send comments/suggestions/questions about this document to Alan Green at agreen@firstinspires.org
 
-## Changelog
+## Release notes
 
-[List of updates and bug fixes](./changelog.md#first-lego-league-tms-changelog)
+[List of updates and bug fixes](./changelog.md#first-lego-league-tms-release-notes)
 
 ## Known Issues
 
