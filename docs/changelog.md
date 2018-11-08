@@ -10,7 +10,7 @@ V2018.1.1 - 7-Nov-2018
   - The reason for the specific problem was identified and fixed.
   - In addition, a safety measure was added that causes critical system components (such as timer) to automatically restart if a similar problem should happen as result of a different issue.
   - **This version is significantly more stable than v2018.1.0**
-- Support for **32-bit computers** added.
+- Support for **32-bit computers** added (Note: 32-bit is in Beta)
 - Problem where **Scoreboard stopped updating** (user had to refresh the browser) now fixed.
 - Problems that were caused by **importing non-valid schedule files** are prevented by improved data validation during file import (reason given for abort of import)
 - Problem where you **couldn’t submit a score (because you couldn’t select the round), caused by network connectivity issues**, is now fixed. Round selection can be skipped, score can be submitted, and user can start scoring next team. When connectivity is restored, all accumulated scores are sent automatically to the server. See the [user-guide](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/userguide.md#bad-scores) for further details.
