@@ -1,10 +1,8 @@
 # FIRST LEGO League TMS Changelog
 
-V2018.1.1 - 7-Nov-2018
+## V2018.1.1 - 8-Nov-2018
 
-## Version targeted for release: 8-Nov-2018
-
-## Simply Speaking
+## Issues fixed - Simply Speaking
 
 - **System freeze problem encountered at some events, and which required Launcher restart**, now fixed at two levels:
   - The reason for the specific problem was identified and fixed.
@@ -19,7 +17,7 @@ V2018.1.1 - 7-Nov-2018
 - **Saving the logs for support** is now easier to perform, and captures more data.
 - Some other ‘cosmetic’ fixes.
 
-## Technically Speaking
+## Issues fixed - Technically Speaking
 
 1. Change internal communications mhub log level to INFO
 1. Restart module servers after crash.
@@ -33,5 +31,5 @@ V2018.1.1 - 7-Nov-2018
 1. Scoring: Entering score without referee name from role admin shows "undefined" in scoring tile
 1. Scoring: During connectivity interruption, Select Round list is blocked, and score cannot be submitted.
 1. Scoring: Connectivity status not updated when connectivity restored
-1. Scoring: Sometimes completed rounds not shown with tick.
+1. Scoring: Sometimes completed rounds not shown with tick (Not all scenarios of this bug have been fixed
 1. Scoreboard: Don't show empty affiliation next to team name.
