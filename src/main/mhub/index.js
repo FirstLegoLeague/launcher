@@ -18,7 +18,7 @@ Promise.promisifyAll(ejs)
 
 const mkdirpAsync = Promise.promisify(mkdirp)
 
-const MHUB_CONNECTION_STRING = 'ws://localhost:13900'
+const MHUB_CONNECTION_STRING = 'ws://127.0.0.1:13900'
 // const MHUB_NODE_NAME = 'default'
 const MHUB_EXECUTABLE_PATH = path.resolve('./internals/mhub/bin/mhub-server')
 const MHUB_FILE_TEMPLATE = path.join(__static, 'mhub-config.ejs')
