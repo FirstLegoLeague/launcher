@@ -78,6 +78,7 @@ const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) 
 if (isSecondInstance) {
   app.quit()
 } else {
+  app.commandLine.appendSwitch('js-flags', '--max-old-space-size=4096');
   app.on('ready', () => {
     protocol.interceptFileProtocol('file', (request, callback) => {
       if (request.url.includes('webfonts')) {
