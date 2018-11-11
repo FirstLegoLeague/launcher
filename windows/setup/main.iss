@@ -14,7 +14,7 @@
 
 [Setup]
 AppName=FIRST LEGO League TMS
-AppVersion=2018.1.1
+AppVersion=2018.1.2
 DefaultDirName=C:\FIRST_Lego_League_TMS
 ArchitecturesAllowed={#platform}
 DisableProgramGroupPage=yes
