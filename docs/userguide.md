@@ -71,6 +71,8 @@ Note: Currently we only fully support 64-bit computers.  The 32-bit installation
 
 Download (from fll-tools.com/software, scroll down to Bundled Installer) and run the setup file. The default installation drive is C: but you can choose a different drive if required.
 
+Note: You must install into a directory with write access. For example, the TMS software will not work if you install into `C:\Program Files`. If you don't know what this means, it's best to stick to the defaults.
+
 To upgrade this software with a new version, run the setup file without first uninstalling the previous version. The existing tournament configuration (schedule or team list) and team scores will be preserved. All TMS browser tabs MUST be refreshed by pressing CTRL-F5 (refresh with cache clear).
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
@@ -491,3 +493,4 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 1. If you click twice when starting the TMS app, sometimes two instances of the app are opened. Close the app, and reopen, taking care to click once only.
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
 1. Accessing Tournament Setup while logged in as Referee throws you out to the Login screen when you try to save changes. Solution: Log in as Admin.
+1. TMS Launcher will not start correctly if the computer has no network adapters. Possible workaround - open a mobile hotspot for the computer WiFi to connect to.
