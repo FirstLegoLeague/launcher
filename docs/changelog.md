@@ -1,8 +1,16 @@
 # FIRST LEGO League TMS Release Notes
 
+## V2018.1.2 - 13-Nov-2018
+
+### Issues fixed
+
+In **TMS Version v2018.1.1** there is an issue where the Timer resets approximately every 10 matches. In this update the Timer restarts from where it left off. Teams will notice the clock freeze for approximately 5 seconds after which the countdown will resume at the correct countdown value
+
+[Further details](http://www.fll-tools.com/general/workaround-for-timer-reset/)
+
 ## V2018.1.1 - 8-Nov-2018
 
-## Issues fixed - Simply Speaking
+### Issues fixed - Simply Speaking
 
 - **System freeze problem encountered at some events, and which required Launcher restart**, now fixed at two levels:
   - The reason for the specific problem was identified and fixed.
@@ -17,7 +25,7 @@
 - **Saving the logs for support** is now easier to perform, and captures more data.
 - Some other ‘cosmetic’ fixes.
 
-## Issues fixed - Technically Speaking
+##3 Issues fixed - Technically Speaking
 
 1. Change internal communications mhub log level to INFO
 1. Restart module servers after crash.
