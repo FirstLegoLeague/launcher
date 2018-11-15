@@ -4,7 +4,7 @@
 
 ### Issues fixed
 
-In **TMS Version v2018.1.1** there is an issue where the Timer resets approximately every 10 matches. In this update the Timer restarts from where it left off. Teams will notice the clock freeze for approximately 5 seconds after which the countdown will resume at the correct countdown value
+In **TMS Version v2018.1.1** there is an issue where the Timer resets approximately every 10 matches. In this update the Timer restarts from where it left off. Teams will notice the Timer freeze for approximately 5 seconds after which the countdown will resume at the correct countdown value.
 
 [Further details](http://www.fll-tools.com/general/workaround-for-timer-reset/)
 
