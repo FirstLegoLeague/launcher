@@ -76,7 +76,7 @@ Note: You must install into a directory with write access. For example, the TMS 
 To upgrade this software with a new version, run the setup file without first uninstalling the previous version. The existing tournament configuration (schedule or team list) and team scores will be preserved. All TMS browser tabs MUST be refreshed by pressing CTRL-F5 (refresh with cache clear).
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
-Note: Some school computers and networks block various types of network traffic. This software requires that computer and network firewalls allow access to ports 2828 though 2837, and also port 13900.
+Note: Some school computers and networks block various types of network traffic. This software requires that computer and network firewalls allow access to ports 2828 though 2841, and also ports 13900 and 13902.
 
 There are two separate Setup files for 64-bit and 32-bit computers.
 

@@ -25,7 +25,7 @@ In **TMS Version v2018.1.1** there is an issue where the Timer resets approximat
 - **Saving the logs for support** is now easier to perform, and captures more data.
 - Some other ‘cosmetic’ fixes.
 
-##3 Issues fixed - Technically Speaking
+### Issues fixed - Technically Speaking
 
 1. Change internal communications mhub log level to INFO
 1. Restart module servers after crash.
