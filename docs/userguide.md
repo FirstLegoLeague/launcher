@@ -171,11 +171,11 @@ Note: **After making a change to ANY of the above settings you need to refresh t
 
 Configure the software logging level and Network Adaptor.
 
-**About**
+### About
 
 Information about this software, including how to contact the developers.
 
-**Help**
+### Help
 
 Show this document
 
