@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 3-Nov-2018
+Last Updated: 8-Nov-2018
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -32,6 +32,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 	- [Scoring tiles](#scoring-tiles)
 		- [Scoring tile](#scoring-tile)
 		- [Duplicate scores](#duplicate-scores)
+		- [Bad scores](#bad-scores)
 - [Scoreboard](#scoreboard)
 - [Timer](#timer)
 - [Tournament Status Display](#tournament-status-display)
@@ -39,7 +40,9 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 	- [Use of iPads and tablets](#use-of-ipads-and-tablets)
 - [Network adapters](#network-adapters)
 - [Log files](#log-files)
-- [Feedback](#feedback)
+- [32-bit computers](#32bit-computers)
+- [Bug reports and feedback](#bug-reports-and-feedback)
+- [Release Notes](#release-notes)
 - [Known Issues](#known-issues)
 
 ## Overview
@@ -62,18 +65,20 @@ The [Example hardware configurations](https://github.com/FirstLegoLeague/Launche
 
 The computer on which the software is installed should be a Windows Intel I5 with 8GB of memory, or better. Approximately 1.5 GB of disk space is required. The other computers (scorekeepers, timer, scoreboard display) only need to run a browser and therefore have mimimal hardware needs.
 
-Note: Currently we only support 64-bit computers. We are working to extend support to older 32-bit computers.
+Note: Currently we only fully support 64-bit computers.  The 32-bit installation is available for Beta testing. See [32-bit computers](#32bit-computers).
 
 ### Installation
 
 Download (from fll-tools.com/software, scroll down to Bundled Installer) and run the setup file. The default installation drive is C: but you can choose a different drive if required.
 
+Note: You must install into a directory with write access. For example, the TMS software will not work if you install into `C:\Program Files`. If you don't know what this means, it's best to stick to the defaults.
+
 To upgrade this software with a new version, run the setup file without first uninstalling the previous version. The existing tournament configuration (schedule or team list) and team scores will be preserved. All TMS browser tabs MUST be refreshed by pressing CTRL-F5 (refresh with cache clear).
 
 When running the software for the 1st time, you might get a message regarding the Windows Defender Firewall. Press `Allow Access` for the software to work properly.
-Note: Some school computers and networks block various types of network traffic. This software requires that computer and network firewalls allow access to ports 2828 though 2837, and also port 13900.
+Note: Some school computers and networks block various types of network traffic. This software requires that computer and network firewalls allow access to ports 2828 though 2841, and also ports 13900 and 13902.
 
-There will be two separate Setup files when we extend support to 32-bit computers.
+There are two separate Setup files for 64-bit and 32-bit computers.
 
 ### Modules
 
@@ -263,7 +268,7 @@ If you need to replace the imported data with a different CSV file, you can dele
 
 ### Teams
 
-The `Teams` screen enables you to edit the team name and affiliation, and to delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken. Note that a newly added team does not immeditaly appear - you must refreshthe browser or switch to a differet screen (such as 'Matches') and then back here to see a newly added team.
+On the `Teams` screen you can edit the team name and affiliation, or delete a team. You cannot change the team number. There is also a `Add Team` button. Be sure not to use a team number that is already taken. Note that a newly added team does not immeditaly appear - you must refresh the browser or switch to a differet screen (such as 'Matches') and then back again to see a newly added team.
 
 You can search for a team by number. Enter # and the team number in the search box. You can also search by team name
 
@@ -294,9 +299,10 @@ The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a sco
 ### Communication status
 
 The top line of the Scoring screen shows the communication status.
+
 1. `Online` - Scoring results are being submitted sucessfully.
 1. `Comms Interruption` - Scoresheet results cannot be sent due to a communication issue. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
-1. `Offline` - Communications have been interrupted for 10 minutes or more. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
+1. `Offline` - Communications have been interrupted for 5 minutes or more. Check connectivity between the scoresheet computer or tablet, and the TMS server. Scoresheet results are saved in the browser and will be sent when communication is restored.
 
 ### Scoresheet
 
@@ -363,7 +369,11 @@ All the information relating to a particular score is shown in a scoring tile.
 
 The `Show only duplicates` button is enabled when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper a way to easily check for duplicate scores, and to correct the error.
 
-The `Show only bad scores` button is shown when scores cannot be sent to the `Scoreboard` for any reason. (Details TBD)
+#### Bad scores
+
+The `Show only bad scores` button is enabled when scores cannot be sent to the `Scoreboard`. This might happen when entering match results on a iPad and the WiFi connection is interrupted. See [Communication status](#communication-status).
+
+Due to the interruption, the list of Rounds cannot be retrieved from the `Launcher` and the referee can choose to submit the score without the `Round`, thereby freeing up the iPad for the next match. On the head referee or scorekeeper [Scoring tile](#scoring-tile) this match's round will be shown as `Missing round`, and the `Show only bad scores` button will be enabled. This will alert the head referee or scorekeeper to the fact that they need to fix the missing `Round`.
 
 ## Scoreboard
 
@@ -430,7 +440,7 @@ Many laptop PCs have more than one `Network adapter`. For instance, there might 
 
 ## Log files
 
-The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Logs` button at the bottom of the `Launcher Home` screen.
+The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Save debug data`/`Save logs` button at the bottom of the app `About` screen.
 
 Logging should be set to DEBUG.
 
@@ -438,18 +448,49 @@ Logging should be set to DEBUG.
 
 Note: When reporting a bug please include the software version which can be seen in the Home screen of the [Launcher](#launcher).
 
-## Feedback
+## 32bit computers
+
+In version v2018.1.1 we have extended support for 32-bit computers. Currently this Setup is in Beta.
+
+32-bit users please note: If the internal database is shut down unexpectedly, it might be left in an inconsistent state, and will need to be repaired.
+
+This is the sequence of steps to repair the database.
+
+1. Close the TMS app.
+1. Open a Command Prompt.
+1. Change directory to C:\FIRST_Lego_League_TMS (Note: if you installed to a different directory, change to that instead).
+1. Run the command `repair-mongo`
+1. Exit the Command Prompt and restart the TMS app.
+
+If you encounter issues, please follow the [Bug report](#bug-reports-and-feedback) instructions.
+
+## Bug reports and feedback
+
+Bug reports should be emailed to FLL-TMS-Support@firstinspires.org
+
+Please provide the following information:
+
+1. Software version. Can be found in the Home screen of the [Launcher](#launcher)
+1. A description of what went wrong.
+1. A description of your hardware configuration
+    - how many computers you are using and what you are running on each of them (e.g. [timer](#timer), [scoring](scoring), [scoreboard](#scoreboard))
+    - whether you are using a router for your network, or whether you are using the tournament venue's wired or WiFi network
+    - whether you use iPads for score entry
+1. Attach log files and debug data. These can be collected from the app About screen, by pressing the `Save debug data/Save logs` button.
+1. How you entered team information in [Tournament Setup](#tournament-setup).
+    - A schedule file or a team list was imported
+    - OR Teams were added one by one manually
+    - If you imported a file, please send that too.
 
 Please send comments/suggestions/questions about this document to Alan Green at agreen@firstinspires.org
 
+## Release notes
+
+[List of updates and bug fixes](./changelog.md#first-lego-league-tms-release-notes)
+
 ## Known Issues
 
-1. 32-bit computers not supported
+1. If you click twice when starting the TMS app, sometimes two instances of the app are opened. Close the app, and reopen, taking care to click once only.
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
 1. Accessing Tournament Setup while logged in as Referee throws you out to the Login screen when you try to save changes. Solution: Log in as Admin.
-1. Schedule and Team List import allow you to have a team name without a team number. Causes scoring to fail. **Team number must exist and be numeric**.
-1. In Scoring, connectivity status not updated when connectivity restored.
-1. In Scoring when logged in as Admin or Scorekeeper, if the referee name is not given, the scoring tile shows *undefined* instead of *No Name*.
-1. When starting the TMS app, if you click twice, sometimes to instances of the app are opened.
-1. In the Launcher, when clicking "Visit our website Support Page" in the About page, the Support page is opened in the app window, and you have to reopen the app to get back to the app screens.
-1. In the scores screen, the tick marks in the rounds dropdown are intended to indicate which rounds already have scores. Sometimes scored rounds are not marked with a tick.
+1. TMS Launcher will not start correctly if the computer has no network adapters. Possible workaround - open a mobile hotspot for the computer WiFi to connect to.
