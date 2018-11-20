@@ -12,10 +12,20 @@ const networkInterfaces = Object.entries(os.networkInterfaces())
 logger.debug(os.networkInterfaces())
 logger.debug(networkInterfaces)
 
+let warnedForOfflineMode = false
+
 exports.networkInterfaces = () => networkInterfaces
 
 exports.getIp = networkInterface => {
   networkInterface = networkInterface || Object.keys(networkInterfaces)[0]
 
-  return networkInterfaces[networkInterface][0].address
+  if (networkInterface[networkInterface]) {
+    return networkInterfaces[networkInterface][0].address
+  } else {
+    if (!warnedForOfflineMode) {
+      logger.warn('Running in offline mode')
+      warnedForOfflineMode = true
+    }
+    return '127.0.0.1'
+  }
 }
