@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 8-Nov-2018
+Last Updated: 20-Nov-2018
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -34,6 +34,8 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 		- [Duplicate scores](#duplicate-scores)
 		- [Bad scores](#bad-scores)
 - [Scoreboard](#scoreboard)
+    - [Scoreboard timer display](#scoreboard-timer-display)
+    - [Low resolution projection systems](#low-resolution-projection-systems)
 - [Timer](#timer)
 - [Tournament Status Display](#tournament-status-display)
 - [Networked Computers](#networked-computers)
@@ -349,7 +351,7 @@ Press the menu icon on the top left of the `Scoresheet` to open the `Score manag
 
 ### Scoring tiles
 
-All the information relating to a particular score is shown in a scoring tile. 
+All the information relating to a particular score is shown in a scoring tile.
 
 #### Scoring tile  
 
@@ -392,6 +394,14 @@ When there are scores for multiple rounds, there will be a `High` column contain
 The tournament title is configured in the [Tournament Settings](#tournament-settings) screen.
 
 The sponsor logos ribbon is configured in the [Tournament Images](#images) screen.
+
+### Scoreboard timer display
+
+The match Timer is overlaid onto the scores display during matches so that the Technicians can see how much time is remaining.
+
+### Low resolution projection systems
+
+Some projection systems have a resolution that is too low to clearly display the font size used on the Scoreboard. When that happens you can use the browser's `CTRL +` keyboard shortcut to zoom in, thereby increasing the size of the text. `CTRL 0` restores the default zoom level.
 
 ## Timer
 
