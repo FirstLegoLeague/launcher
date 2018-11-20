@@ -34,6 +34,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 		- [Duplicate scores](#duplicate-scores)
 		- [Bad scores](#bad-scores)
 - [Scoreboard](#scoreboard)
+    - [Score results table](#score-results-table)
     - [Scoreboard timer display](#scoreboard-timer-display)
     - [Low resolution projection systems](#low-resolution-projection-systems)
 - [Timer](#timer)
@@ -383,6 +384,8 @@ The `Scoreboard` shows the team scores for the current stage and continuously sc
 
 <img src="./images/scoreboard.png" style="width:75%">
 
+### Score results table
+
 The left-most column shows the team's rank. The rank is taken from the `High` score. Ties are broken using 2nd, then 3rd best scores. Teams without scores don't have a rank and are ordered by team number.
 
 The 2nd column shows the team's name. When available, the team affiliation information is shown in brackets (see [Import team data](#import-team-data)).
@@ -401,7 +404,7 @@ The match Timer is overlaid onto the scores display during matches so that the T
 
 ### Low resolution projection systems
 
-Some projection systems have a resolution that is too low to clearly display the font size used on the Scoreboard. When that happens you can use the browser's `CTRL +` keyboard shortcut to zoom in, thereby increasing the size of the text. `CTRL 0` restores the default zoom level.
+Some projection systems have a resolution that is too low to clearly read the text with the font size used on the Scoreboard. When that happens you can use the browser's `CTRL +` keyboard shortcut to zoom in, thereby increasing the size of the text. `CTRL 0` restores the default zoom level.
 
 ## Timer
 
