@@ -9,9 +9,6 @@ const networkInterfaces = Object.entries(os.networkInterfaces())
   .map(([name, interfaces]) => ({ [name]: interfaces }))
   .reduce((obj, entry) => Object.assign(obj, entry), {})
 
-logger.debug(os.networkInterfaces())
-logger.debug(networkInterfaces)
-
 let warnedForOfflineMode = false
 
 exports.networkInterfaces = () => networkInterfaces
@@ -23,6 +20,8 @@ exports.getIp = networkInterface => {
     return networkInterfaces[networkInterface][0].address
   } else {
     if (!warnedForOfflineMode) {
+      logger.debug(os.networkInterfaces())
+      logger.debug(networkInterfaces)
       logger.warn('Running in offline mode')
       warnedForOfflineMode = true
     }
