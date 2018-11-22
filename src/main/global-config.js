@@ -22,7 +22,7 @@ exports.globalModuleConfig = {
         type: 'values',
         default: 'INFO',
         values: ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
-      }      
+      }
     ]
   }]
 }
