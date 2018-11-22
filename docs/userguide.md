@@ -507,3 +507,4 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
 1. Accessing Tournament Setup while logged in as Referee throws you out to the Login screen when you try to save changes. Solution: Log in as Admin.
 1. TMS Launcher will not start correctly if the computer has no network adapters. Possible workaround - open a mobile hotspot for the computer WiFi to connect to.
+1. If you drag a file onto the launcher window, the app will open it in the window. There is no way to close the file again except to shut down and re-open the app.
