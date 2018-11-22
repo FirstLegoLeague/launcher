@@ -9,8 +9,6 @@ const networkInterfaces = Object.entries(os.networkInterfaces())
   .map(([name, interfaces]) => ({ [name]: interfaces }))
   .reduce((obj, entry) => Object.assign(obj, entry), {})
 
-let warnedForOfflineMode = false
-
 exports.networkInterfaces = () => networkInterfaces
 
 exports.getIp = networkInterface => {
