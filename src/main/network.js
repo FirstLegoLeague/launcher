@@ -20,8 +20,8 @@ exports.getIp = networkInterface => {
     return networkInterfaces[networkInterface][0].address
   } else {
     if (!warnedForOfflineMode) {
-      logger.debug(os.networkInterfaces())
-      logger.debug(networkInterfaces)
+      logger.warn(os.networkInterfaces())
+      logger.warn(networkInterfaces)
       logger.warn('Running in offline mode')
       warnedForOfflineMode = true
     }
