@@ -7,13 +7,6 @@ exports.globalModuleConfig = {
   config: [{
     fields: [
       {
-        name: 'logLevel',
-        display: 'Log Level',
-        type: 'values',
-        default: 'INFO',
-        values: ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
-      },
-      {
         name: 'netConnection',
         display: 'Network Connection',
         type: 'values',
@@ -22,7 +15,14 @@ exports.globalModuleConfig = {
           .map(([name, entries]) => ({ [name]: `${name} (${getIp(name)})` }))
           .reduce((obj, entry) => Object.assign(obj, entry), {}),
         default: Object.keys(networkInterfaces())[0]
-      }
+      },
+      {
+        name: 'logLevel',
+        display: 'Log Level',
+        type: 'values',
+        default: 'INFO',
+        values: ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
+      }      
     ]
   }]
 }

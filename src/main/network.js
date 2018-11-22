@@ -14,7 +14,7 @@ exports.networkInterfaces = () => networkInterfaces
 exports.getIp = networkInterface => {
   networkInterface = networkInterface || Object.keys(networkInterfaces)[0]
 
-  logger.debug(`Network interfaces: ${networkInterfaces} Active: ${networkInterfaces[networkInterface]}`)
+  logger.info(`Network interfaces: ${networkInterfaces} Active: ${networkInterfaces[networkInterface]}`)
 
   if (networkInterfaces[networkInterface]) {
     return networkInterfaces[networkInterface][0].address
