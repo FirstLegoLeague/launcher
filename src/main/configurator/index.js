@@ -6,7 +6,7 @@ const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 const EventEmitter = require('events')
 
-const { getDefaultValue, getUpdatedValue } = require('./types')
+const { getDefaultValue, getUpdatedValue, isValidValue } = require('./types')
 
 const mkdirpAsync = Promise.promisify(mkdirp)
 
@@ -65,7 +65,7 @@ exports.Configurator = class extends EventEmitter {
           if (defaultValue !== undefined) {
             return Promise.resolve(storage.get(key))
               .then(value => {
-                if (value === undefined) {
+                if (value === undefined || isValidValue(field, value)) {
                   return storage.set(key, defaultValue)
                 }
               })

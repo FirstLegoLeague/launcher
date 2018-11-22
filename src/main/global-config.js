@@ -1,6 +1,6 @@
 'use strict'
 
-const { getIp, networkInterfaces } = require('./network')
+const { getIp, networkInterfacesNames } = require('./network')
 
 exports.globalModuleConfig = {
   name: '$global',
@@ -10,11 +10,11 @@ exports.globalModuleConfig = {
         name: 'netConnection',
         display: 'Network Connection',
         type: 'values',
-        values: Object.keys(networkInterfaces()),
-        texts: Object.entries(networkInterfaces())
-          .map(([name, entries]) => ({ [name]: `${name} (${getIp(name)})` }))
+        values: networkInterfacesNames(),
+        texts: networkInterfacesNames()
+          .map(name => ({ [name]: `${name} (${getIp(name)})` }))
           .reduce((obj, entry) => Object.assign(obj, entry), {}),
-        default: Object.keys(networkInterfaces())[0]
+        default: networkInterfacesNames()[0]
       },
       {
         name: 'logLevel',

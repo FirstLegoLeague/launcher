@@ -3,23 +3,25 @@ const os = require('os')
 
 const { logger } = require('./logs')
 
+const LOCALHOST_IP = '127.0.0.1'
+
 const networkInterfaces = Object.entries(os.networkInterfaces())
   .map(([name, interfaces]) => [name, interfaces.filter(i => i.family === 'IPv4')])
   .filter(([name, interfaces]) => interfaces.length)
   .map(([name, interfaces]) => ({ [name]: interfaces }))
   .reduce((obj, entry) => Object.assign(obj, entry), {})
 
-exports.networkInterfaces = () => networkInterfaces
+if (Object.keys(networkInterfaces).length === 0) {
+  logger.warn('Offline Mode!!!')
+  networkInterfaces.Loopback = [{ address: LOCALHOST_IP }]
+}
 
-exports.getIp = networkInterface => {
-  networkInterface = networkInterface || Object.keys(networkInterfaces)[0]
+exports.networkInterfacesNames = () => Object.keys(networkInterfaces)
 
-  logger.info(`Network interfaces: ${JSON.stringify(networkInterfaces)} Active: ${JSON.stringify(networkInterfaces[networkInterface])}`)
-
-  if (networkInterfaces[networkInterface]) {
-    return networkInterfaces[networkInterface][0].address
+exports.getIp = networkInterfaceName => {
+  if (networkInterfaces[networkInterfaceName]) {
+    return networkInterfaces[networkInterfaceName][0].address
   } else {
-    logger.warn('Running in offline mode')
-    return '127.0.0.1'
+    throw new Error('Unknown Network Interface')
   }
 }
