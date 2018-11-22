@@ -16,7 +16,7 @@ exports.networkInterfaces = () => networkInterfaces
 exports.getIp = networkInterface => {
   networkInterface = networkInterface || Object.keys(networkInterfaces)[0]
 
-  if (networkInterface[networkInterface]) {
+  if (networkInterfaces[networkInterface]) {
     return networkInterfaces[networkInterface][0].address
   } else {
     if (!warnedForOfflineMode) {
