@@ -22,6 +22,6 @@ exports.getIp = networkInterfaceName => {
   if (networkInterfaces[networkInterfaceName]) {
     return networkInterfaces[networkInterfaceName][0].address
   } else {
-    throw new Error('Unknown Network Interface')
+    throw new Error(`Unknown Network Interface: ${networkInterfaceName}`)
   }
 }
