@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 20-Nov-2018
+Last Updated: 23-Nov-2018
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -144,6 +144,7 @@ Set `Passwords` for the four predefined `roles`. See [Login](#login) for a descr
 Press `Save` to make the change permanent.
 
 **Scoreboard**  
+
 Configure whether negative scores are shown as 0 on the `Scoreboard`. Default is YES.
 
 Note: The Scoring screen (intended for the Head Referee) will still show negative scores.
@@ -177,11 +178,15 @@ Note: **After making a change to ANY of the above settings you need to refresh t
 
 **Advanced**
 
-Configure the software logging level and Network Adaptor.
+Configure the Network Connection and software Log Level.
+
+Press `Save` to make the change permanent. It is not necessary to restart the TMS app after changing the Network Connection.
+
+Note: After the available network adaptors on your computer changes (such was when you turn Wi-Fi on), you will need to restart the TMS app for the change to be updated in thi screen.
 
 ### About
 
-Information about this software, including how to contact the developers.
+Information about this software, including how to contact the developers and how to submit bug reports or request support. See [Bug reports and feedback](#bug-reports-and-feedback)
 
 ### Help
 
