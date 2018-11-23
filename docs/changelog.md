@@ -1,5 +1,20 @@
 # FIRST LEGO League TMS Release Notes
 
+## V2018.1.3 - 27-Nov-2018
+
+### Issues fixed
+
+1. Fix bug that prevented TMS app startup when the computer had no network connections.
+1. On the Scoreboard, remove the shadow that overlaid the scores during a match. Change the background color of the box surrounding the match Timer to give it more contrast.
+1. Show the stage (Practice or Ranking) on the Scoreboard to help tournament organizers see why scores were not being displayed.
+1. In Tournament Setup, when adding matches manually, implement a dropdown for the stage names to restrict them to `Practice` and `Ranking`.
+1. Add support for the French Canadian scoresheet.
+1. When editing a Scoresheet, add a Cancel button. This allows the Scorekeeper to close a scoresheet they are editing without making changes.
+1. On the Scoresheet, ensure that buttons appear on the right. Previously, on iPads, they would shift to the left when the mission text was long. For example, missions M04 or M08.
+1. For clarity and consistency, add the word `Save` to the save buttons in the Setting screen of Tournament Setup.
+1. Ignore files dropped onto the launcher window. Previously the files would be opened in the window and there was no way to return to the launcher without closing the TMS app.
+1. On Scoreboard, add a left margin to the _FIRST_ LEGO League logo.
+
 ## V2018.1.2 - 13-Nov-2018
 
 ### Issues fixed
