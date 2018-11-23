@@ -65,7 +65,7 @@ exports.Configurator = class extends EventEmitter {
           if (defaultValue !== undefined) {
             return Promise.resolve(storage.get(key))
               .then(value => {
-                if (value === undefined || isValidValue(field, value)) {
+                if (value === undefined || !isValidValue(field, value)) {
                   return storage.set(key, defaultValue)
                 }
               })
