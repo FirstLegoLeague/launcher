@@ -2,24 +2,31 @@
 
 ## V2018.1.3 - 27-Nov-2018
 
-### Issues fixed
+### Issues fixed - Simply Speaking
+- Issue that prevented TMS app startup on some computers solved.
+- Added support for the French Canadian scoresheet.
+- Improved Scoreboard apearance.
+- Improved Scoresheet apearance on some devices.
+- Improved Tournamnet setup, preventing some common usage mistakes.
 
-1. Fix bug that prevented TMS app startup when the computer had no network connections.
-1. On the Scoreboard, remove the shadow that overlaid the scores during a match. Change the background color of the box surrounding the match Timer to give it more contrast.
-1. Show the stage (Practice or Ranking) on the Scoreboard to help tournament organizers see why scores were not being displayed.
-1. In Tournament Setup, when adding matches manually, implement a dropdown for the stage names to restrict them to `Practice` and `Ranking`.
-1. Add support for the French Canadian scoresheet.
-1. When editing a Scoresheet, add a Cancel button. This allows the Scorekeeper to close a scoresheet they are editing without making changes.
-1. On the Scoresheet, ensure that buttons appear on the right. Previously, on iPads, they would shift to the left when the mission text was long. For example, missions M04 or M08.
-1. For clarity and consistency, add the word `Save` to the save buttons in the Setting screen of Tournament Setup.
-1. Ignore files dropped onto the launcher window. Previously the files would be opened in the window and there was no way to return to the launcher without closing the TMS app.
-1. On Scoreboard, add a left margin to the _FIRST_ LEGO League logo.
+### Issues fixed - Technically speaking
+
+1. Fixed bug that prevented TMS app startup when the computer had no network connections.
+1. Improve aperance of timer on Scoreboard.
+1. Show the stage (Practice or Ranking) on the Scoreboard. This helps audience and tournament organizers understand what should be displayed.
+1. In Tournament Setup, when adding matches manually, implemented a dropdown for the stage names restricting them to `Practice` and `Ranking`.
+1. Added support for the French Canadian scoresheet.
+1. When editing a Scoresheet, added a Cancel button. This allows the Scorekeeper to close a scoresheet they are editing without making changes.
+1. On the Scoresheet, ensure that buttons appear on the right. Previously, they would sometimes shift to the left when the mission text was long. For example, missions M04 or M08.
+1. For clarity and consistency, added the word `Save` to the save buttons in the Settings screen of Tournament Setup.
+1. Now ignoring files dropped by mistake onto the launcher window. Previously dropping such a file would block using the launcher without restarting the TMS app.
+1. On Scoreboard, added a left margin to the _FIRST_ LEGO League logo.
 
 ## V2018.1.2 - 13-Nov-2018
 
 ### Issues fixed
 
-In **TMS Version v2018.1.1** there is an issue where the Timer resets approximately every 10 matches. In this update the Timer restarts from where it left off. Teams will notice the Timer freeze for approximately 5 seconds after which the countdown will resume at the correct countdown value.
+In **TMS Version v2018.1.1** there was an issue where the Timer resets approximately every 10 matches. In this update the Timer restarts from where it left off. In case of a similar error, Teams will notice the Timer freeze for only 5 seconds after which the countdown will resume at the correct countdown value.
 
 [Further details](http://www.fll-tools.com/general/workaround-for-timer-reset/)
 
