@@ -16,6 +16,16 @@ Vue.component(VueQrcode.name, VueQrcode)
 
 Object.defineProperty(Vue.prototype, 'Foundation', { value: global['Foundation'] })
 
+document.addEventListener('dragover', event => {
+  event.preventDefault()
+  return false
+}, false)
+
+document.addEventListener('drop', event => {
+  event.preventDefault()
+  return false
+}, false)
+
 /* eslint-disable no-new */
 new Vue({
   components: { App },

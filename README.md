@@ -2,21 +2,18 @@
 [![David Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher.png)](https://david-dm.org/FirstLegoLeague/Launcher)
 [![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher/dev-status.png)](https://david-dm.org/FirstLegoLeague/Launcher#info=devDependencies)
 
-FIRST LEGO League Launcher
-==========================
+# FIRST LEGO League Launcher
 
 This is the "FIRST LEGO League - Scoring System" Launcher. This project connect
  all the scoring system components to create a single execution file.
 
-Using
------
+## Using
 
 Currently the launcher is in first alpha step and includes only the
  'fllscoring'. To take a look on it you can download is
  [here](https://s3.eu-central-1.amazonaws.com/fll-scoring-launcher/FLL-scoring-setup.exe)
 
-Contributing
----------------
+## Contributing
 
 To contribute to this repository, please make a fork, make your changes and
  submit a pull request.
@@ -47,10 +44,31 @@ best practices / tips are:
 - keep your fork up to date with the base repo on a regular basis, by rebasing
   against it. This makes sure your pull requests will merge nicely
 
-Development
----------------
+## Updates
 
-### Prerequisites ###
+### Module updates
+
+To update a module versions in the launcher, make a change in `./dev-scripts/config-get.js`. Some modules are fetched from the npm, the Javascript Package Manager, while others are taken directly from github.
+
+- To update a module fetched from `npm`, update the version field with the version published to npm.
+- To update a module fetched from `github`, update the version field with the github commit hash.
+
+| Module | npm / github |
+| --- | --- |
+|identity-provider|github|
+|display|npm|
+|tournament|npm|
+|scoring|npm|
+|rankings|github
+|clock|github|
+
+### Launcher version update
+
+TBD
+
+## Development
+
+### Prerequisites
 
 - nodejs (version > 6.11.1)
   - Can be downloaded from [nodejs.org](https://nodejs.org).
@@ -67,7 +85,7 @@ Development
 
 \*Optional - This is needed only for the building of the installation files
 
-### Development Installation ###
+### Development Installation
 
 - Clone the repository
 - Run from cmd `yarn install`
@@ -75,7 +93,8 @@ Development
   modules for the luancher. Use `yarn get --help` to change the modules
   that would download.
 
-### Run Program Locally ###
+### Run Program Locally
+
 The simple way run:
 ```
 yarn start
@@ -88,7 +107,7 @@ node ./node_modules/.bin/electron app/main.js
 
 To check
 
-### Building ###
+### Building
 
 To run the build, just use the shell script:
 ```
@@ -100,4 +119,3 @@ NOTE: the build script is a cross-compile script. you should be able
 
 Available platforms:
  - windows
-
