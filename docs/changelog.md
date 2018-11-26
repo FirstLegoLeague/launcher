@@ -3,24 +3,25 @@
 ## V2018.1.3 - 27-Nov-2018
 
 ### Issues fixed - Simply Speaking
-- Issue that prevented TMS app startup on some computers solved.
+
+- Solved issue that prevented TMS app startup on some computers.
 - Added support for the French Canadian scoresheet.
-- Improved Scoreboard apearance.
-- Improved Scoresheet apearance on some devices.
-- Improved Tournamnet setup, preventing some common usage mistakes.
+- Improved Scoreboard appearance.
+- Improved Scoresheet appearance on some mobile devices.
+- Improved Tournament setup, preventing some common usage errors.
 
 ### Issues fixed - Technically speaking
 
 1. Fixed bug that prevented TMS app startup when the computer had no network connections.
-1. Improve aperance of timer on Scoreboard.
-1. Show the stage (Practice or Ranking) on the Scoreboard. This helps audience and tournament organizers understand what should be displayed.
-1. In Tournament Setup, when adding matches manually, implemented a dropdown for the stage names restricting them to `Practice` and `Ranking`.
 1. Added support for the French Canadian scoresheet.
-1. When editing a Scoresheet, added a Cancel button. This allows the Scorekeeper to close a scoresheet they are editing without making changes.
-1. On the Scoresheet, ensure that buttons appear on the right. Previously, they would sometimes shift to the left when the mission text was long. For example, missions M04 or M08.
-1. For clarity and consistency, added the word `Save` to the save buttons in the Settings screen of Tournament Setup.
-1. Now ignoring files dropped by mistake onto the launcher window. Previously dropping such a file would block using the launcher without restarting the TMS app.
+1. Improved appearance of timer on Scoreboard.
+1. Show the stage (Practice or Ranking) on the Scoreboard. This helps audience and tournament organizers understand which scores they are seeing.
 1. On Scoreboard, added a left margin to the _FIRST_ LEGO League logo.
+1. In Tournament Setup, when adding matches manually, implemented a dropdown for the stage names restricting them to `Practice` and `Ranking`.
+1. When editing a Scoresheet, added a Cancel button. This allows the Scorekeeper to close the scoresheet being edited without making changes.
+1. On the Scoresheet, ensure that buttons appear on the right. Previously, they would sometimes shift to the left when the mission text was long on a narrow screen. For example, missions M04 or M08.
+1. For clarity and consistency, added the word `Save` to the save buttons in the Settings screen of Tournament Setup.
+1. Ignore files dropped in error onto the launcher window. Previously dropping such a file would block access tpo the launcher, requiring a restart of the TMS app.
 
 ## V2018.1.2 - 13-Nov-2018
 
