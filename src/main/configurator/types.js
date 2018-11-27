@@ -4,7 +4,7 @@ const crypto = require('crypto')
 
 const PASSWORD_RANDOM_BYTES_COUNT = 6
 
-exports.getDefaultValue = function (field) {
+exports.getDefaultValue = field => {
   if (field.type === 'password') {
     const salt = crypto.randomBytes(PASSWORD_RANDOM_BYTES_COUNT)
       .toString('base64')
@@ -17,7 +17,7 @@ exports.getDefaultValue = function (field) {
   }
 }
 
-exports.getUpdatedValue = function (field, value) {
+exports.getUpdatedValue = (field, value) => {
   if (field.type === 'password') {
     const salt = crypto.randomBytes(PASSWORD_RANDOM_BYTES_COUNT)
       .toString('base64')
@@ -27,5 +27,13 @@ exports.getUpdatedValue = function (field, value) {
     return { hash: hashedPassword, salt }
   } else {
     return value
+  }
+}
+
+exports.isValidValue = (field, value) => {
+  if (field.type === 'values') {
+    return field.values.includes(value)
+  } else {
+    return true
   }
 }
