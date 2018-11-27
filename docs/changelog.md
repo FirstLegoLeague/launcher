@@ -21,7 +21,7 @@
 1. When editing a Scoresheet, added a Cancel button. This allows the Scorekeeper to close the scoresheet being edited without making changes.
 1. On the Scoresheet, ensure that buttons appear on the right. Previously, they would sometimes shift to the left when the mission text was long on a narrow screen. For example, missions M04 or M08.
 1. For clarity and consistency, added the word `Save` to the save buttons in the Settings screen of Tournament Setup.
-1. Ignore files dropped in error onto the launcher window. Previously dropping such a file would block access tpo the launcher, requiring a restart of the TMS app.
+1. Ignore files dropped in error onto the launcher window. Previously dropping such a file would block access to the launcher, requiring a restart of the TMS app.
 
 ## V2018.1.2 - 13-Nov-2018
 
