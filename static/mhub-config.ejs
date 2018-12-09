@@ -19,7 +19,8 @@
     "users": {
         "launcher": "<%= launcherPassword %>",
         "protected-client": "<%= protectedPassword %>",
-        "configuration": "<%= configurationPassword %>"
+        "configuration": "<%= configurationPassword %>",
+        "config-readonly": "config-readonly"
     },
     "rights": {
         "": {
@@ -61,6 +62,16 @@
                     "config:*"
                 ]
             }
+        },
+        "config-readonly": {
+            "subscribe": {
+                "public": false,
+                "protected": false,
+                "configuration": [
+                    "config:*"
+                ]
+            },
+            "publish": false
         },
         "launcher": {
             "subscribe": true,
