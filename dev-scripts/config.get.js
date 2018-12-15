@@ -45,7 +45,7 @@ module.exports = {
         version: '1.9.6-status-beta.1'
       }
     },
-    tournamentStatus: {
+    'tournament-status': {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
