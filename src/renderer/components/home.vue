@@ -4,7 +4,7 @@
           <div id="challenge" class="cell small-2"></div>
           <div class="cell small-8">
               <h2>Tournament Management System</h2>
-              <h4>v2018.2.0.beta.4</h4>
+              <h4>v2018.2.0-beta.5</h4>
           </div>
           <div id="fll" class="cell small-2"></div>
         </div>
