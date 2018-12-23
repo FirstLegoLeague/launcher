@@ -42,14 +42,14 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '1.9.6-status-beta.5b'
+        version: '1.9.6-status-beta.6'
       }
     },
     'tournament-status': {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
-        version: '0.1.0-beta.5'
+        version: '0.1.0-beta.6'
       }
     },
     scoring: {
