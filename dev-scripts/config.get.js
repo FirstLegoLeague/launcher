@@ -42,21 +42,21 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '1.9.6-status-beta.8b'
+        version: '2.0.0'
       }
     },
     'tournament-status': {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
-        version: '0.1.0-beta.8'
+        version: '1.0.0'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.2.5'
+        version: '2.3.0'
       }
     },
     rankings: {
@@ -69,7 +69,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.3.1'
+        version: '2.4.0'
       }
     }
   },
