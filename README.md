@@ -2,7 +2,7 @@
 [![David Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher.png)](https://david-dm.org/FirstLegoLeague/Launcher)
 [![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher/dev-status.png)](https://david-dm.org/FirstLegoLeague/Launcher#info=devDependencies)
 
-# FIRST LEGO League Launcher
+# FIRST LEGO League Launcher 
 
 This is the "FIRST LEGO League - Scoring System" Launcher. This project connect
  all the scoring system components to create a single execution file.
