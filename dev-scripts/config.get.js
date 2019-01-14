@@ -56,7 +56,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.3.1'
+        version: '2.2.4'
       }
     },
     rankings: {
