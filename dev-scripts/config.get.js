@@ -49,20 +49,20 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
-        version: '1.0.0'
+        version: '1.0.1'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.3.5'
+        version: '2.3.7'
       }
     },
     rankings: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#680fd8f4ac5b4d0ce9f58248050e2ccc9d67f0c0'
+        version: 'FirstLegoLeague/rankings#cbdd03a55d63e7cafea62eb8d963a9101cd59096'
       }
     },
     clock: {
