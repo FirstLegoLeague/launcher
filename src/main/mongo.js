@@ -22,19 +22,22 @@ const MONGODUMP_EXECUTABLE_PATH = path.resolve(MONGO_BIN_DIR, `mongodump${FILE_E
 const DUMP_PATH = exports.DUMP_PATH = path.resolve('./dump')
 
 exports.dump = function () {
-  return mkdirpAsync(DUMP_PATH).then(() => {
-    const mongodump = spawn(MONGODUMP_EXECUTABLE_PATH, ['--out', DUMP_PATH])
-    mongodump.stdout.on('data', data => logger.info(data))
-    mongodump.stderr.on('error', err => logger.error(err))
-    mongodump.on('data', code => {
-      if (code === 0) {
-        logger.info(`Mongodump exited with code ${code}`)
-      } else {
-        logger.error(`Mongodump exited with code ${code}`)
-        throw new Error('Mongodump exited with non-zero status code.')
-      }
+  return mkdirpAsync(DUMP_PATH).then(() =>
+    new Promise((resolve, reject) => {
+      const mongodump = spawn(MONGODUMP_EXECUTABLE_PATH, ['--out', DUMP_PATH])
+      mongodump.stdout.on('data', data => logger.info(data))
+      mongodump.stderr.on('error', err => logger.error(err))
+      mongodump.on('exit', code => {
+        if (code === 0) {
+          logger.info(`Mongodump exited with code ${code}`)
+          resolve()
+        } else {
+          logger.error(`Mongodump exited with code ${code}`)
+          reject(new Error('Mongodump exited with non-zero status code.'))
+        }
+      })
     })
-  })
+  )
 }
 
 function createMongoUri (options) {
