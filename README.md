@@ -4,7 +4,7 @@
 
 # FIRST LEGO League Launcher 
 
-This is the "FIRST LEGO League - Scoring System" Launcher. This project connect
+This is the "FIRST LEGO League Tournament Management System" Launcher. This project connects
  all the scoring system components to create a single execution file.
 
 ## Using
