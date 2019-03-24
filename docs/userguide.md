@@ -1,6 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 29-Nov-2018
+Last Updated: 24-Mar-2019 for v2018.1.5
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -36,6 +36,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 - [Scoreboard](#scoreboard)
     - [Score results table](#score-results-table)
     - [Scoreboard timer display](#scoreboard-timer-display)
+    - [Scoreboard local settings](#scoreboard-local-settings)
     - [Low resolution projection systems](#low-resolution-projection-systems)
 - [Timer](#timer)
 - [Tournament Status Display](#tournament-status-display)
@@ -143,7 +144,9 @@ Timer settings - display countdown in minutes:seconds from 2:30 or in seconds fr
 Set `Passwords` for the four predefined `roles`. See [Login](#login) for a description of the roles.  
 Press `Save` to make the change permanent.
 
-**Scoreboard**  
+**Scoreboard**
+
+See also [Scoreboard local settings](#scoreboard-local-settings)
 
 Configure whether negative scores are shown as 0 on the `Scoreboard`. Default is YES.
 
@@ -406,6 +409,28 @@ The sponsor logos ribbon is configured in the [Tournament Images](#images) scree
 ### Scoreboard timer display
 
 The match Timer is overlaid onto the scores display during matches so that the Technicians can see how much time is remaining.
+
+### Scoreboard local settings
+
+The Scoreboard has a number of settings that allow scoreboard screens to be configured individually. Press the `Settings` button on the bottom left of the screen to access the settings. Note that the `Settings` button is not shown when the screen is in Full-Screen (F11) mode.
+
+<img src="./images/scoreboard-settings.png" style="width:75%">
+
+#### Show timer
+
+Change to Off if you do not want the match timer to be displayed on the scoreboard.
+
+#### Show Logos Strip
+
+Controls whether the sponsor logos scroll across the bottom of the screen. When set to Off, more team results are shown.
+
+#### Use High Contrast colors
+
+Some projection systems do not display the two-toned colors well. Set this setting to Off to display the results in a black font against a white background.
+
+#### Right to Left
+
+Swap the direction of the display 
 
 ### Low resolution projection systems
 
