@@ -28,14 +28,14 @@ module.exports = {
     'identity-provider': {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/identity-provider#83c597a4fb35a680fb447837d402546066d5909a'
+        version: 'FirstLegoLeague/identity-provider#c93abf808d44a90d06da945212cb19b45d5923d2'
       }
     },
     display: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.4.3'
+        version: '2.4.5'
       }
     },
     tournament: {
