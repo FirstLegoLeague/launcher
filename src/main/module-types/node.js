@@ -25,12 +25,18 @@ exports.NodeModule = class {
   }
 
   start (options, dependencies) {
+    const nodeArgs = []
+
+    if (process.env.NODE_ENV === 'development') {
+      nodeArgs.push(`--inspect=1${options.port}`)
+    }
+
     return startModuleProcess(options, dependencies, {
       name: this.name,
       requirements: this.requirements,
       executable: process.execPath,
       path: this.path,
-      arguments: [this.script].concat(this.arguments || []),
+      arguments: nodeArgs.concat(this.script, this.arguments || []),
       env: {
         'ELECTRON_RUN_AS_NODE': '1'
       }
