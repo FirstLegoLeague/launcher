@@ -1,4 +1,3 @@
-'use strict'
 
 /**
  * Set `__static` path to static files in production

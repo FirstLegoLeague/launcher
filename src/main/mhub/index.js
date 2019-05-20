@@ -1,4 +1,3 @@
-'use strict'
 
 // eslint-disable-next-line node/no-deprecated-api
 const Domain = require('domain')

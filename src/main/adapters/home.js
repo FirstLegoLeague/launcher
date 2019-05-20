@@ -1,4 +1,3 @@
-'use strict'
 
 const opn = require('opn')
 const Promise = require('bluebird')

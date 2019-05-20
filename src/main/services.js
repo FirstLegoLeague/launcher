@@ -1,4 +1,3 @@
-'use strict'
 
 const randomatic = require('randomatic')
 const { execFile } = require('child_process')

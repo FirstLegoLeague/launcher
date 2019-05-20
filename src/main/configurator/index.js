@@ -1,4 +1,3 @@
-'use strict'
 
 const Keyv = require('keyv')
 const path = require('path')

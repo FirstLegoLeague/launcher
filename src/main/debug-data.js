@@ -1,4 +1,3 @@
-'use strict'
 
 const AdmZip = require('adm-zip')
 const Promise = require('bluebird')

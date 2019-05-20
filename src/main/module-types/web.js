@@ -1,4 +1,3 @@
-'use strict'
 
 const camelCase = require('camelcase')
 
