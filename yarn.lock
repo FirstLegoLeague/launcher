@@ -113,10 +113,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@first-lego-league/eslint-config@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/eslint-config/-/eslint-config-0.0.4.tgz#9195a99172c1f7c02b860474e33ada28b17221c5"
-  integrity sha512-MunLXTChjMhrdvYH3IrcFeh05JPMkWNZLhqZ6R3QpS/K+C+ICKv2v5auHzZNoLvX88za8i5p69wSrOuxHxJw+Q==
+"@first-lego-league/eslint-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/eslint-config/-/eslint-config-1.0.0.tgz#897677bf32a4ea842bbf4e3a63b225d6a044d4a4"
+  integrity sha512-FYWnInc/zvbnV794tOhQS44qVVi4d9XJkJRWiZo7luWmwkJg8evP+vi7623klw7UrSsPv8q8J1nSHllh3ks4UQ==
 
 "@first-lego-league/user-interface@^1.2.10":
   version "1.2.12"

@@ -11,7 +11,7 @@
   "scripts": {
     "get": "node ./dev-scripts/get.js",
     "start": "node .electron-vue/dev-runner.js",
-    "lint": "eslint --ext .js,.vue src",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "build:win": "cross-env NODE_ENV=production node .electron-vue/build.js && electron-builder -w --dir",
     "build:linux": "cross-env NODE_ENV=production node .electron-vue/build.js && electron-builder -l --dir",
@@ -60,7 +60,7 @@
     "winston": "^3.1.0"
   },
   "devDependencies": {
-    "@first-lego-league/eslint-config": "^0.0.4",
+    "@first-lego-league/eslint-config": "^1.0.0",
     "@first-lego-league/user-interface": "^1.2.10",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
