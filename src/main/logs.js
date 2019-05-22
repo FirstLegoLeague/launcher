@@ -1,4 +1,3 @@
-'use strict'
 
 const path = require('path')
 const mkdirp = require('mkdirp')

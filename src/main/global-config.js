@@ -1,4 +1,3 @@
-'use strict'
 
 const { getIp, networkInterfacesNames } = require('./network')
 

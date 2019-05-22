@@ -1,4 +1,3 @@
-'use strict'
 
 require('./static') // Must run before everything
 

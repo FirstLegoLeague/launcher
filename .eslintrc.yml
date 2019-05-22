@@ -1,5 +1,6 @@
 extends:
-- standard
+  - "@first-lego-league"
+  - plugin:vue/base
 
 globals:
   __static: true
@@ -8,45 +9,7 @@ parserOptions:
   sourceType: module
 
 plugins:
-  - html
+  - vue
 
 rules:
-  arrow-parens:
-  - warn
-  - as-needed
-  - requireForBlockBody: false
-  no-shadow: warn
-  no-var: warn
-  object-curly-spacing: [ warn, always ]
-  prefer-arrow-callback: warn
-  prefer-const: warn
-
-
-  import/newline-after-import: warn
-  import/no-absolute-path: warn
-  import/no-dynamic-require: warn
-  import/no-extraneous-dependencies: warn
-  import/no-mutable-exports: warn
-  import/order:
-  - warn
-  - groups:
-    - [ builtin, external ]
-    - [ sibling, index ]
-    - parent
-    newlines-between: always-and-inside-groups
-
-  node/exports-style: [ warn, exports ]
-  node/no-unsupported-features:
-  - warn
-  - ignores:
-    - modules
-  node/shebang: warn
-
-  promise/catch-or-return:
-  - warn
-  - terminationMethod:
-    - catch
-    - asCallback
-  promise/no-callback-in-promise: warn
-  promise/no-native: warn
-  promise/no-return-wrap: warn
+  indent: off
