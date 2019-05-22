@@ -2,16 +2,16 @@
 [![David Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher.png)](https://david-dm.org/FirstLegoLeague/Launcher)
 [![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/Launcher/dev-status.png)](https://david-dm.org/FirstLegoLeague/Launcher#info=devDependencies)
 
-# FIRST LEGO League Launcher 
+# _FIRST_ LEGO League TMS Launcher 
 
-This is the "FIRST LEGO League - Scoring System" Launcher. This project connect
- all the scoring system components to create a single execution file.
+This is the "_FIRST_ LEGO League - Tournament Management System" Launcher. This project connect
+ all the tournament management system components to create a single
+ user-friendly application.
 
 ## Using
 
-Currently the launcher is in first alpha step and includes only the
- 'fllscoring'. To take a look on it you can download is
- [here](https://s3.eu-central-1.amazonaws.com/fll-scoring-launcher/FLL-scoring-setup.exe)
+You can find the installation file of the launcher at the _FIRST_ LEGO League
+ software page [here](http://www.fll-tools.com/software/).
 
 ## Contributing
 
@@ -20,8 +20,8 @@ To contribute to this repository, please make a fork, make your changes and
 
 This way of work allows us to maintain proper code quality, which is important
  when working with a large amount of people on the same project. Feel free to
- join the discussion on the [issues page](https://github.com/FirstLegoLeague/fllscoring/issues)
- .
+ join the discussion on the
+ [issues page](https://github.com/FirstLegoLeague/fllscoring/issues).
 
 The best way to work on a feature or a bug is to follow these steps:
 
@@ -48,7 +48,9 @@ best practices / tips are:
 
 ### Module updates
 
-To update a module versions in the launcher, make a change in `./dev-scripts/config-get.js`. Some modules are fetched from the npm, the Javascript Package Manager, while others are taken directly from github.
+To update a module versions in the launcher, make a change in
+ `./dev-scripts/config-get.js`. Some modules are fetched from the npm, the
+ Javascript Package Manager, while others are taken directly from github.
 
 - To update a module fetched from `npm`, update the version field with the version published to npm.
 - To update a module fetched from `github`, update the version field with the github commit hash.
@@ -70,28 +72,18 @@ TBD
 
 ### Prerequisites
 
-- nodejs (version > 6.11.1)
+- nodejs (version >= 8.2.1)
   - Can be downloaded from [nodejs.org](https://nodejs.org).
 - yarn
   - Can be downloaded from [yarnpkg.com](https://yarnpkg.com).
-- docker - optional\*
-  - Can be download from [docker](https://www.docker.com/)
-- shell (`sh`) - optional\*
-  - On Mac OS and Linux platforms, `sh` comes with the OS
-  - On Windows platform, shell is usually comes with git installation.
-    If you are missing it anyway you can use one of the following option:
-    - [cygwin](http://www.cygwin.com/)
-    - [MinGw](http://www.mingw.org/)
-
-\*Optional - This is needed only for the building of the installation files
 
 ### Development Installation
 
 - Clone the repository
 - Run from cmd `yarn install`
 - Run from cmd `yarn get all` - this would download all external
-  modules for the luancher. Use `yarn get --help` to change the modules
-  that would download.
+  modules for the launcher. Use `yarn get --help` to change the modules
+  that you want to download.
 
 ### Run Program Locally
 
@@ -105,17 +97,25 @@ The advanced way (usually if you want to config debug in your ide) run:
 node ./node_modules/.bin/electron app/main.js
 ```
 
-To check
+### Debugging Node Modules
+
+While running the launcher in development mode, each of the node modules is
+ given a port for debug with the port `1####` where `####` is the main port of
+ the module itself. To use connect use your node debugger (For more
+ information: [node-debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/)) 
 
 ### Building
 
-To run the build, just use the shell script:
+To run the build, use the following script:
 ```
-./${platform}/build.sh
+yarn build:$paltform$
 ```
+where `$platform$` must be replaced with either `win` or `linux` depend on
+ your environment. You would be able to find the artifact in the `./dist`
+ project in your project files. 
 
-NOTE: the build script is a cross-compile script. you should be able
- to run the script on any platform to create every platform-installation
+NOTE: the build script is not cross-compile script, si you should be run
+ the script on the platform to which your installation is desired.
 
-Available platforms:
+Official platforms:
  - windows
