@@ -1,4 +1,3 @@
-'use strict'
 
 const { getMhub } = require('./.get/get-mhub')
 const { getCaddy } = require('./.get/get-caddy')
@@ -11,11 +10,13 @@ module.exports = {
   modules: {
     caddy: {
       internal: true,
-      get: getCaddy
+      get: getCaddy,
+      devFiles: './init/'
     },
     mongo: {
       internal: true,
-      get: getMongo
+      get: getMongo,
+      devFiles: '**/*.pdb'
     },
     mhub: {
       internal: true,

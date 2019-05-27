@@ -1,6 +1,6 @@
-'use strict'
 
 const fs = require('fs')
+const glob = require('glob')
 const path = require('path')
 const rimraf = require('rimraf')
 const mkdirp = require('mkdirp')
@@ -11,6 +11,7 @@ const config = require('./config.get')
 
 Promise.promisifyAll(fs)
 
+const globAsync = Promise.promisify(glob)
 const rimrafAsync = Promise.promisify(rimraf)
 const mkdirpAsync = Promise.promisify(mkdirp)
 
@@ -27,7 +28,7 @@ function getModule (name, options) {
 
   let setupPromise
   if (options.force) {
-    console.log(`Cleaning directory of module ${name}...`)
+    console.log(`Removing old directory of module ${name}...`)
     setupPromise = rimrafAsync(options.directory)
       .then(() => mkdirpAsync(options.directory))
       .return(true)
@@ -54,6 +55,22 @@ function getModule (name, options) {
           verbose: options.verbose
         }, Object.assign({}, options.moduleOptions, module.options, { name }))
           .then(() => console.log(`Finish download of module ${name}.`))
+          .then(() => {
+            if (options.production && module.devFiles) {
+              console.log(`Cleaning development files of module ${name}`)
+              globAsync(module.devFiles, {
+                cwd: options.directory
+              })
+                .each(file => {
+                  return rimrafAsync(path.join(options.directory, file))
+                    .catch(e => {
+                      if (e.code !== 'ENOENT') {
+                        throw e
+                      }
+                    })
+                })
+            }
+          })
       } else {
         console.log(`Skipping download of module ${name}`)
       }
@@ -107,6 +124,7 @@ caporal
   .option('--internals-only', 'Download only internals', caporal.BOOL, false)
   .option('--regulars-only', 'Download only internals', caporal.BOOL, false)
   .option('--excludes <exclude>', 'Exclude a module', caporal.REPEATABLE, [])
+  .option('--production', 'Leave only production files')
   .action((args, options) => {
     getAll(options)
       .catch(err => {
@@ -122,6 +140,7 @@ caporal
   .option('--force', 'Force downloading the modules')
   .option('--dir, -d <directory>', 'The path to the internals directory')
   .option('--option <moduleOptions>', 'A option of the module type', /^[a-z]+=/i)
+  .option('--production', 'Leave only production files')
   .action((args, options) => {
     getModule(args.name, options)
       .catch(err => {
