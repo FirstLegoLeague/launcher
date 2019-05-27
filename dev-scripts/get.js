@@ -99,11 +99,12 @@ function getAll (options) {
 
       return getModule(name, {
         directory,
-        platform: options.platform,
         arch: options.arch,
         force: options.force,
-        verbose: options.verbose,
-        saveBroken: options.saveBroken
+        platform: options.platform,
+        production: options.production,
+        saveBroken: options.saveBroken,
+        verbose: options.verbose
       })
     }, { concurrency: options.concurrency })
 }
