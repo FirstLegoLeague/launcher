@@ -16,8 +16,8 @@ environment:
 # Install scripts. (runs after repo cloning)
 install:
 - ps: Install-Product node $env:nodejs_version $env:PLATFORM
-- yarn install --frozen-lockfile
-- yarn run get all --platform win32 --arch %PLATFORM:x86=x32% -c 5 -i ./internals -m ./modules
+- yarn install --frozen-lockfile --ignore-scripts
+- yarn run get all --platform win32 --arch %PLATFORM:x86=x32% -c 5 -i ./internals -m ./modules --production
 
 build_script:
 - yarn run build:win --c.directories.output=./dist/
