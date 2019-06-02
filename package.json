@@ -108,7 +108,7 @@
     "node-loader": "^0.6.0",
     "semver": "^5.5.0",
     "style-loader": "^0.21.0",
-    "tar-fs": "^1.16.3",
+    "tar-fs": "^2.0.0",
     "unzip-stream": "^0.3.0",
     "url-loader": "^1.0.1",
     "vue-html-loader": "^1.2.4",
