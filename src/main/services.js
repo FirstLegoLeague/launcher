@@ -1,6 +1,6 @@
 
 const randomatic = require('randomatic')
-const { execFile } = require('child_process')
+const { spawn } = require('child_process')
 const Promise = require('bluebird')
 
 const { logger } = require('./logs')
@@ -79,10 +79,11 @@ exports.ServiceManager = class {
         if (!isRunning) {
           return Promise.try(init)
             .then(() => {
-              const child = execFile(options.executable, options.arguments || [], {
+              const child = spawn(options.executable, options.arguments || [], {
                 stdio: ['pipe', 'pipe', 'pipe'],
                 env: options.env || {},
-                cwd: options.cwd || '.'
+                cwd: options.cwd || '.',
+                shell: false
               })
               child.stdout.pipe(options.logStream, { end: false })
               child.stderr.pipe(options.logStream, { end: false })

@@ -51,7 +51,9 @@ exports.getCaddy = function ({ directory, platform, arch }) {
           } else if (response.headers['content-type'] === 'application/x-gzip') {
             req
               .pipe(createGunzip())
-              .pipe(tar.extract(directory)
+              .pipe(tar.extract(directory, {
+                writable: true
+              })
                 .on('finish', () => {
                   resolve()
                 }))

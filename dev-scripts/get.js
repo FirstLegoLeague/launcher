@@ -80,6 +80,13 @@ function getModule (name, options) {
         return rimrafAsync(options.directory)
       }
     })
+    .tapCatch(err => {
+      if (options.verbose) {
+        console.error(err.stack)
+      } else {
+        console.error(err.message)
+      }
+    })
 }
 
 function getAll (options) {
@@ -126,10 +133,10 @@ caporal
   .option('--regulars-only', 'Download only internals', caporal.BOOL, false)
   .option('--excludes <exclude>', 'Exclude a module', caporal.REPEATABLE, [])
   .option('--production', 'Leave only production files')
+  .option('--verbose, -v', 'Prints additional data on error', false)
   .action((args, options) => {
     getAll(options)
-      .catch(err => {
-        console.error(err.message)
+      .catch(() => {
         process.exitCode = 1
       })
   })
@@ -142,10 +149,10 @@ caporal
   .option('--dir, -d <directory>', 'The path to the internals directory')
   .option('--option <moduleOptions>', 'A option of the module type', /^[a-z]+=/i)
   .option('--production', 'Leave only production files')
+  .option('--verbose, -v', 'Prints additional data on error', false)
   .action((args, options) => {
     getModule(args.name, options)
-      .catch(err => {
-        console.error(err.message)
+      .catch(() => {
         process.exitCode = 1
       })
   })
