@@ -1,5 +1,6 @@
 
 const camelCase = require('camelcase')
+const path = require('path')
 
 const { immutableObject } = require('./helpers')
 
@@ -22,6 +23,7 @@ exports.WebModule = class {
     this.name = description.name
     this.path = modulePath
     this.index = description.index
+    this.root = description.root || '.'
 
     this.hidden = description.hidden
     this.displayName = description.display
@@ -35,7 +37,7 @@ exports.WebModule = class {
     return caddy.addSite({
       name: this.name,
       port: options.port,
-      root: this.path,
+      root: path.join(this.path, this.root),
       env: createEnvironment(portsAllocations, options.globalConfig)
     })
       .return(() => caddy.removeSite(this.name))
