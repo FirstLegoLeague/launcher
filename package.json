@@ -34,12 +34,12 @@
     ]
   },
   "dependencies": {
-    "@keyv/sqlite": "^1.2.12",
+    "@keyv/sqlite": "^2.0.0",
     "@xkeshi/vue-qrcode": "^1.0.0",
     "adm-zip": "^0.4.11",
     "bluebird": "^3.5.0",
     "camelcase": "^5.0.0",
-    "clipboardy": "^1.1.4",
+    "clipboardy": "^2.1.0",
     "ejs": "^2.5.8",
     "electron-debug": "^1.5.0",
     "electron-is-dev": "^0.3.0",
