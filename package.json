@@ -4,7 +4,7 @@
   "description": "A Launcher to the FIRST LEGO League scoring system",
   "main": "./dist/electron/main.js",
   "author": "FIRST",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "engines": {
     "node": ">=8.2.1"
   },
