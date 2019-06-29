@@ -1,19 +1,27 @@
+version: 0.1.{build}
+
 branches:
   only:
-  - master
+    - master
 skip_branch_with_pr: true
 
-cache:
-  - "%LOCALAPPDATA%\\Yarn"
-
+image: Visual Studio 2017
 platform:
   - x64
   - x86
 
+cache:
+  - node_modules
+  - '%APPDATA%\npm-cache'
+  - '%USERPROFILE%\.electron'
+  - '%USERPROFILE%\AppData\Local\Yarn\cache'
+
 environment:
   nodejs_version: "8.11.3"
 
-# Install scripts. (runs after repo cloning)
+init:
+  - git config --global core.autocrlf input
+
 install:
 - ps: Install-Product node $env:nodejs_version $env:PLATFORM
 - yarn install --frozen-lockfile --ignore-scripts
@@ -25,6 +33,7 @@ build_script:
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
   /FFIRST_LEGO_League_Tournament_Management_System_Setup_%BUILD_VERSION%_%PLATFORM% .\\windows\\setup\\main.iss
+
 artifacts:
 - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
   name: Installer

@@ -1,10 +1,15 @@
-
-require('./static') // Must run before everything
+/**
+ * Set `__static` path to static files in production
+ * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
+ */
+// Must run before everything
+if (process.env.NODE_ENV !== 'development') {
+  global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+}
 
 const path = require('path')
-const fs = require('fs')
 const Promise = require('bluebird')
-const { app, BrowserWindow, protocol, dialog } = require('electron')
+const { app, BrowserWindow, dialog } = require('electron')
 
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
@@ -56,18 +61,12 @@ function createWindow () {
   })
 }
 
-// function getIcon () {
-//   return path.join(__static, 'img', 'first-favicon.ico')
-// }
-
-// let tray = null
-
 const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
   // Someone tried to run a second instance, we should focus our window.
   if (mainWindow) {
     if (mainWindow.isMinimized()) {
       mainWindow.restore()
-    }
+  }
     mainWindow.show()
   } else {
     createWindow()
@@ -78,15 +77,6 @@ if (isSecondInstance) {
   app.quit()
 } else {
   app.on('ready', () => {
-    protocol.interceptFileProtocol('file', (request, callback) => {
-      if (request.url.includes('webfonts')) {
-        callback(fs.createReadStream(decodeURIComponent(request.url.replace(/.+webfonts/, path.join(__static, '/webfonts')))))
-      } else {
-        callback(fs.createReadStream(decodeURIComponent(request.url.substr(8)).replace(/#.+/, '')))
-      }
-    }, err => {
-      if (err) logger.error('Failed to register protocol')
-    })
     // Commented out, because of current bug in electron logging.
     // TODO solve this.
     // For reference: https://github.com/electron/electron/issues/683
@@ -99,13 +89,6 @@ if (isSecondInstance) {
     exports.homeAdapter = new HomeAdapter(server)
 
     server.start()
-      // .then(() => buildAppMenu(server.getModules()))
-      // .then(appMenu => {
-      //   const tray = new Tray(getIcon())
-      //   const contextMenu = appMenu
-      //   tray.setToolTip('FIRST LEGO League Scoring')
-      //   tray.setContextMenu(contextMenu)
-      // })
       .then(() => createWindow())
       .catch(err => {
         logger.error(err)
