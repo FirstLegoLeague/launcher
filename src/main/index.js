@@ -7,9 +7,9 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
-const path = require('path')
 const Promise = require('bluebird')
-const { app, BrowserWindow, dialog } = require('electron')
+const { app, BrowserWindow, dialog, protocol } = require('electron')
+const path = require('path')
 
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
@@ -31,10 +31,14 @@ function createWindow () {
     height: 563,
     width: 1000,
     title: 'FIRST LEGO League Tournament Management System',
-    useContentSize: true
+    useContentSize: true,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
 
   mainWindow.setMenu(null)
+  mainWindow.setMenuBarVisibility(false)
 
   mainWindow.loadURL(winURL)
 
@@ -61,12 +65,14 @@ function createWindow () {
   })
 }
 
-const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
+const isSecondInstance = !app.requestSingleInstanceLock()
+
+app.on('second-instance', (event, commandLine, workingDirectory) => {
   // Someone tried to run a second instance, we should focus our window.
   if (mainWindow) {
     if (mainWindow.isMinimized()) {
       mainWindow.restore()
-  }
+    }
     mainWindow.show()
   } else {
     createWindow()
@@ -77,6 +83,16 @@ if (isSecondInstance) {
   app.quit()
 } else {
   app.on('ready', () => {
+    protocol.interceptFileProtocol('file', (request, callback) => {
+      if (request.url.includes('webfonts')) {
+        callback(decodeURIComponent(request.url.replace(/.+webfonts/, path.join(__static, '/webfonts'))))
+      } else {
+        callback(decodeURIComponent(request.url.substr(7)).replace(/#.+/, ''))
+      }
+    }, err => {
+      if (err) logger.error('Failed to register protocol')
+    })
+
     // Commented out, because of current bug in electron logging.
     // TODO solve this.
     // For reference: https://github.com/electron/electron/issues/683

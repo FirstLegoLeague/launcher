@@ -17,7 +17,7 @@ cache:
   - '%USERPROFILE%\AppData\Local\Yarn\cache'
 
 environment:
-  nodejs_version: "8.11.3"
+  nodejs_version: "10.11.0"
 
 init:
   - git config --global core.autocrlf input
@@ -28,7 +28,7 @@ install:
 - yarn run get all --platform win32 --arch %PLATFORM:x86=x32% -c 5 -i ./internals -m ./modules --production
 
 build_script:
-- yarn run build:win --c.directories.output=./dist/
+- yarn run build:dir -w --c.directories.output=./dist/
 - SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
