@@ -1,5 +1,3 @@
-'use strict'
-
 process.env.BABEL_ENV = 'web'
 
 const path = require('path')
@@ -9,9 +7,9 @@ const BabiliWebpackPlugin = require('babili-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
-const webConfig = {
+let webConfig = {
   devtool: '#cheap-module-eval-source-map',
   entry: {
     web: path.join(__dirname, '../src/renderer/main.js')
@@ -25,17 +23,17 @@ const webConfig = {
         use: {
           loader: 'eslint-loader',
           options: {
-            emitWarning: process.env.NODE_ENV !== 'production',
             formatter: require('eslint-friendly-formatter')
           }
         }
       },
       {
+        test: /\.less$/,
+        use: ['vue-style-loader', 'css-loader', 'less-loader']
+      },
+      {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
+        use: ['vue-style-loader', 'css-loader']
       },
       {
         test: /\.html$/,
@@ -44,7 +42,7 @@ const webConfig = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: [ path.resolve(__dirname, '../src/renderer') ],
+        include: [path.resolve(__dirname, '../src/renderer')],
         exclude: /node_modules/
       },
       {
@@ -55,7 +53,8 @@ const webConfig = {
             extractCSS: true,
             loaders: {
               sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
-              scss: 'vue-style-loader!css-loader!sass-loader'
+              scss: 'vue-style-loader!css-loader!sass-loader',
+              less: 'vue-style-loader!css-loader!less-loader'
             }
           }
         }
@@ -83,7 +82,8 @@ const webConfig = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin('styles.css'),
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({ filename: 'styles.css' }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../src/index.ejs'),
@@ -98,8 +98,7 @@ const webConfig = {
       'process.env.IS_WEB': 'true'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new VueLoaderPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   output: {
     filename: '[name].js',
