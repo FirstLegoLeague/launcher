@@ -84,7 +84,7 @@
     "decompress": "^4.2.0",
     "del": "^4.1.1",
     "devtron": "^1.4.0",
-    "electron": "^3.0.0",
+    "electron": "^1.8.4",
     "electron-builder": "^20.10.0",
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^2.2.3",
