@@ -21,6 +21,8 @@ const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
+const fileProtocolPrefixLength = (process.platform === 'win32') ? 'file:///'.length : 'file://'.length
+
 let server = null
 
 function createWindow () {
@@ -87,7 +89,7 @@ if (isSecondInstance) {
       if (request.url.includes('webfonts')) {
         callback(decodeURIComponent(request.url.replace(/.+webfonts/, path.join(__static, '/webfonts'))))
       } else {
-        callback(decodeURIComponent(request.url.substr(7)).replace(/#.+/, ''))
+        callback(decodeURIComponent(request.url.substr(fileProtocolPrefixLength)).replace(/#.+/, ''))
       }
     }, err => {
       if (err) logger.error('Failed to register protocol')
