@@ -33,7 +33,7 @@
     "files": [
       "dist/electron/**/*"
     ],
-    "nodeGypRebuild": true
+    "buildDependenciesFromSource": true
   },
   "dependencies": {
     "@keyv/sqlite": "^2.0.0",
