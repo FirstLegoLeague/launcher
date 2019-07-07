@@ -3,28 +3,27 @@
   "env": {
     "main": {
       "presets": [
-        ["env", {
+        ["@babel/env", {
           "targets": { "node": 7 }
-        }],
-        "stage-0"
+        }]
       ]
     },
     "renderer": {
       "presets": [
-        ["env", {
+        ["@babel/env", {
           "modules": false
-        }],
-        "stage-0"
+        }]
       ]
     },
     "web": {
       "presets": [
-        ["env", {
+        ["@babel/env", {
           "modules": false
-        }],
-        "stage-0"
+        }]
       ]
     }
   },
-  "plugins": ["transform-runtime"]
+  "plugins": [
+      "@babel/transform-runtime"
+  ]
 }
