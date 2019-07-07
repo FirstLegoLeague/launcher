@@ -1,5 +1,5 @@
 
-const opn = require('opn')
+const open = require('open')
 const Promise = require('bluebird')
 
 const { saveDebugData } = require('../debug-data')
@@ -47,6 +47,6 @@ exports.HomeAdapter = class {
   }
 
   openSite (site, callback) {
-    Promise.resolve(opn(site)).asCallback(callback)
+    Promise.resolve(open(site)).asCallback(callback)
   }
 }
