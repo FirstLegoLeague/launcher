@@ -32,7 +32,7 @@ build_script:
 - SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
-  /FFIRST_LEGO_League_Tournament_Management_System_Setup_%BUILD_VERSION%_%PLATFORM% .\\windows\\setup\\main.iss
+  /FFIRST_LEGO_League_TMS_Setup_%BUILD_VERSION%_%PLATFORM% .\\windows\\setup\\main.iss
 
 artifacts:
 - path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
