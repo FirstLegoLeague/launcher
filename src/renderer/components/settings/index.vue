@@ -1,7 +1,7 @@
 <template>
     <div>
         <SettingsMenu :modules="modules" />
-        <div class="top-bar-page">
+        <div>
           <router-view></router-view>
         </div>
     </div>

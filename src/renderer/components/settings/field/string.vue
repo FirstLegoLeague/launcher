@@ -1,15 +1,17 @@
 <template>
-    <label>
-        {{ field.display || field.name }}
-        <input
-            type="text"
-            :name="field.name"
-            :minLength="field.minLength"
-            :maxLength="field.maxLength"
-            :value="value"
-            @change="$emit('value-change', $event.target.value)"
-        />
-    </label>
+    <div class="inline fields">
+        <div class="field">
+            <label>{{ field.display || field.name }}</label>
+            <input
+                type="text"
+                :name="field.name"
+                :minLength="field.minLength"
+                :maxLength="field.maxLength"
+                :value="value"
+                @change="$emit('value-change', $event.target.value)"
+            />
+        </div>
+    </div>
 </template>
 
 <script>

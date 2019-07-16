@@ -1,7 +1,8 @@
 <template>
-    <div>
-        <h4 v-if="group.name">{{ group.name }}</h4>
+    <div class="ui segment">
+        <h4 class="ui dividing header" v-if="group.name">{{ group.name }}</h4>
         <Field v-for="field in group.fields"
+               xclass="ui segment"
                :field="field"
                :value="values[field.name]"
                :key="field.name"

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 
-import VueQrcode from '@xkeshi/vue-qrcode'
-import '@first-lego-league/user-interface/current/assets/js/app.js'
-import '@first-lego-league/user-interface/current/assets/css/app.css'
+import SuiVue from 'semantic-ui-vue'
+import VueQrcode from '@chenfengyuan/vue-qrcode'
+import '@first-lego-league/user-interface/current/app.js'
+import '@first-lego-league/user-interface/current/app.css'
 
 import App from './app'
 import router from './router'
@@ -10,11 +11,11 @@ import router from './router'
 if (!process.env.IS_WEB) {
   Vue.use(require('vue-electron'))
 }
+
 Vue.config.productionTip = false
 
+Vue.use(SuiVue)
 Vue.component(VueQrcode.name, VueQrcode)
-
-Object.defineProperty(Vue.prototype, 'Foundation', { value: global['Foundation'] })
 
 document.addEventListener('dragover', event => {
   event.preventDefault()

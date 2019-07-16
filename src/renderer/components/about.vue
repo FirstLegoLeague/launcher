@@ -1,26 +1,51 @@
 <template>
-    <div id="about" class="grid-container">
-        <div class="grid-x">
-            <div class="cell">
-                <h4>Contact us</h4>
-                <pre>This software is the result of several years of development, testing, doing and redoing.
-A lot of thought and effort went into making it work well.
-However, if you encounter any problems at your competition,
-or you have any suggestions or questions, please contact us:
-</pre>
-                <div class="grid-x text-center grid-padding-y">
-                    <div class="cell small-4">Email FLL-TMS-Support@firstinspires.org</div>
-                    <div class="cell small-4"><a @click="event => openSite(event, 'http://fll-tools.com/support/')">Visit our website Support Page</a></div>
+    <div id="about" class="ui container">
+        <h1>Contact us</h1>
+        <p>
+            This software is the result of several years of development, testing, doing and redoing.
+            A lot of thought and effort went into making it work well.
+            However, if you encounter any problems at your competition,
+            or you have any suggestions or questions, you can get support:
+        </p>
+        <div class="ui three cards">
+            <a class="link card" @click="event => openSite(event, 'mailto:FLL-TMS-Support@firstinspires.org')">
+                <div class="content">
+                    <div class="header">
+                        <i class="envelope icon"></i> By our support email
+                    </div>
+                    <div class="description">
+                        FLL-TMS-Support@firstinspires.org
+                    </div>
                 </div>
-                <pre>When reporting a bug, please click "Save debug data" to export the software logs and the team scores database.
-Attach the zip file to the email or support ticket.
-</pre>
-                <a class="button" @click="saveDebugData">Save debug data</a>
-                <h4>Credits</h4>
-                <pre>Many people took part in the development of this software. We appreciate the help of:
-
-Jeroen Bosch, Rikkert Koppes, Sander Leemans, Kenny Meesters, Martin Poelstra, Rob van Wijk,
-Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana, Roy Shmueli, Idan Stark, Tal Taub</pre>
+            </a>
+            <a class="link card" @click="event => openSite(event, 'http://fll-tools.com/support/')">
+                <div class="content">
+                    <div class="header">
+                        <i class="globe icon"></i> In our support website
+                    </div>
+                    <div class="description">
+                        fll-tools.com/support
+                    </div>
+                </div>
+            </a>
+        </div>
+        <p>
+            When reporting a bug, please click "Save debug data" to export the software logs and the
+            team scores database. Attach the zip file to the email or support ticket.
+        </p>
+        <a class="ui button" @click="saveDebugData">Save debug data</a>
+        <h1>Credits</h1>
+        <p>Many people took part in the development of this software. We appreciate the help of:</p>
+        <div class="ui four cards">
+            <div v-for="contributor in contributors" class="card">
+                <div class="content">
+                    <div class="header">
+                        {{contributor.name}}
+                    </div>
+                    <div class="meta">
+                        <i :class="`${contributor.country.code.toLowerCase()} flag`"></i> {{contributor.country.name}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -28,6 +53,9 @@ Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana
 
 <script>
   import Promise from 'bluebird'
+  import iso3166 from 'iso-3166-2'
+
+  import contributors from './contributors.json'
 
   export default {
     name: 'AboutPage',
@@ -60,6 +88,16 @@ Dafner Dafner, Yonatan Gideoni, Alan Green, Itamar Green, Yosi Karl, Barak Ohana
               })
               console.error(err)
             })
+        })
+      }
+    },
+    data () {
+      return {
+        contributors: contributors.map(contributor => {
+          return {
+          name: contributor.name,
+            country: iso3166.country(contributor.countryCode)
+          }
         })
       }
     },

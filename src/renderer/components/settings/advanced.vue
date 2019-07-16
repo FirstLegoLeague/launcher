@@ -1,22 +1,20 @@
 <template>
-  <div id="settings-global" v-bind:class="{ loading: loading }">
-    <div class="dimmer">
-      <div class="large slow loader"></div>
+  <div id="settings-global">
+    <div class="ui inverted dimmer" :class="{ active: loading }">
+      <div class="ui text loader">Loading</div>
     </div>
-    <div v-if="!loading">
-        <SettingsGroup :group="mainGroup"
-                       :values="values"
-                       @value-change="updateValue"
-        />
-        <SettingsGroup v-for="group in titledGroups"
-                       :group="group"
-                       :values="values"
-                       :key="group.name"
-                       @value-change="updateValue"
-        />
-        <div class="text-center">
-          <button class="button" @click="save"><i class="fas fa-save"></i>&nbsp;Save</button>
-        </div>
+    <div class="ui container form" v-if="!loading">
+      <SettingsGroup :group="mainGroup"
+                     :values="values"
+                     @value-change="updateValue"
+      />
+      <SettingsGroup v-for="group in titledGroups"
+                     :group="group"
+                     :values="values"
+                     :key="group.name"
+                     @value-change="updateValue"
+      />
+      <button class="ui button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
     </div>
   </div>
 </template>

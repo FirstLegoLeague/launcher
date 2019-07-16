@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 const Promise = require('bluebird')
-const { app, BrowserWindow, dialog, protocol } = require('electron')
+const { app, BrowserWindow, dialog } = require('electron')
 const path = require('path')
 
 const { Server } = require('./server')
@@ -20,8 +20,6 @@ let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
-
-const fileProtocolPrefixLength = (process.platform === 'win32') ? 'file:///'.length : 'file://'.length
 
 let server = null
 
@@ -85,16 +83,6 @@ if (isSecondInstance) {
   app.quit()
 } else {
   app.on('ready', () => {
-    protocol.interceptFileProtocol('file', (request, callback) => {
-      if (request.url.includes('webfonts')) {
-        callback(decodeURIComponent(request.url.replace(/.+webfonts/, path.join(__static, '/webfonts'))))
-      } else {
-        callback(decodeURIComponent(request.url.substr(fileProtocolPrefixLength)).replace(/#.+/, ''))
-      }
-    }, err => {
-      if (err) logger.error('Failed to register protocol')
-    })
-
     // Commented out, because of current bug in electron logging.
     // TODO solve this.
     // For reference: https://github.com/electron/electron/issues/683

@@ -1,0 +1,17 @@
+[
+  { "name": "Jeroen Bosch", "countryCode": "nl"},
+  { "name": "Rikkert Koppes", "countryCode": "nl" },
+  { "name": "Sander Leemans", "countryCode": "nl" },
+  { "name": "Kenny Meesters", "countryCode": "nl" },
+  { "name": "Martin Poelstra", "countryCode": "nl" },
+  { "name": "Rob van Wijk", "countryCode": "nl" },
+  { "name": "Dafner Dafner", "countryCode": "il" },
+  { "name": "Yonatan Gideoni", "countryCode": "il" },
+  { "name": "Alan Green", "countryCode": "il" },
+  { "name": "Itamar Green", "countryCode": "il" },
+  { "name": "Yosi Karl", "countryCode": "il" },
+  { "name": "Barak Ohana", "countryCode": "il" },
+  { "name": "Roy Shmueli", "countryCode": "il" },
+  { "name": "Idan Stark", "countryCode": "il" },
+  { "name": "Tal Taub", "countryCode": "il" }
+]
