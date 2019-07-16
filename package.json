@@ -20,7 +20,7 @@
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps",
-    "start": "node .electron-vue/dev-runner.js"
+    "start": "chmod -R u+x . && node .electron-vue/dev-runner.js"
   },
   "build": {
     "appId": "com.fll-tools.launcher",
