@@ -33,6 +33,12 @@
     "files": [
       "dist/electron/**/*"
     ],
+    "mac": {
+      "category": "public.app-category.education"
+    },
+    "dmg": {
+      "background": "resources/dmg-background.png"
+    },
     "buildDependenciesFromSource": true
   },
   "dependencies": {
