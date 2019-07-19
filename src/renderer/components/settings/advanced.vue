@@ -53,10 +53,10 @@
         this.changedValues = {}
 
         Promise.fromCallback(cb => this.adapter.saveGlobalValues(changedValues, cb))
-          .then(() => new this.Foundation.Notification('Settings saved', 'success'))
+          .then(() => this.toastr.success('Settings saved'))
           .catch(err => {
             console.error(err)
-            return new this.Foundation.Notification('Settings failed saving', 'error')
+            return this.toastr.error('Settings failed saving')
           })
       }
     },

@@ -7,16 +7,16 @@
                     <sui-checkbox radio
                                   :name="field.name"
                                   :value="v"
-                                  :checked="value === v"
+                                  :input-value="value"
                                   :label="field.texts ? field.texts[v] : v"
-                                  @change="$event.target.checked && $emit('value-change', $event.target.value)" />
+                                  @change="newValue => newValue && $emit('value-change', newValue)" />
                 </div>
             </template>
             <sui-dropdown v-else
                           selection
-                          :value="value"
+                          v-model="current"
                           :options="field.values.map(v => ({ value: v, text: field.texts ? field.texts[v] : v }))"
-                          @change="$emit('value-change', $event.target.value)" />
+                          @input="v => $emit('value-change', v)" />
         </div>
     </div>
 </template>
@@ -24,7 +24,12 @@
 <script>
   export default {
     name: 'values-field',
-    props: ['field', 'value']
+    props: ['field', 'value'],
+    data () {
+      return {
+        current: this.value
+      }
+    }
   }
 </script>
 

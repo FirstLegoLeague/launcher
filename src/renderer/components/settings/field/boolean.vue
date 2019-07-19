@@ -3,8 +3,8 @@
         <sui-checkbox toggle
                       :label="field.display || field.name"
                       :name="field.name"
-                      :checked="value"
-                      @change="$emit('value-change', $event.target.checked)" />
+                      :input-value="value"
+                      @change="v => $emit('value-change', v)" />
     </div>
 </template>
 

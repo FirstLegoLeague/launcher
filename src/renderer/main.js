@@ -17,6 +17,8 @@ Vue.config.productionTip = false
 Vue.use(SuiVue)
 Vue.component(VueQrcode.name, VueQrcode)
 
+Object.defineProperty(Vue.prototype, 'toastr', { value: global['toastr'] })
+
 document.addEventListener('dragover', event => {
   event.preventDefault()
   return false
