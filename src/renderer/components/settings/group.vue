@@ -1,13 +1,19 @@
 <template>
-    <div>
-        <h4 v-if="group.name">{{ group.name }}</h4>
-        <Field v-for="field in group.fields"
-               :field="field"
-               :value="values[field.name]"
-               :key="field.name"
-               @value-change="v => $emit('value-change', field.name, v)"
-        />
+  <div class="row">
+    <div class="column">
+      <div class="ui container segment">
+        <div class="ui large header" v-if="group.name">{{ group.name }}</div>
+        <div class="ui form">
+          <Field v-for="field in group.fields"
+                 :field="field"
+                 :value="values[field.name]"
+                 :key="field.name"
+                 @value-change="v => $emit('value-change', field.name, v)"
+          />
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

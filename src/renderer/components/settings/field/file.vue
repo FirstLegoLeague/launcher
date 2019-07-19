@@ -1,6 +1,5 @@
 <template>
-    <label>
-        {{ field.display || field.name }}
+    <div class="ui input">
         <input
             type="file"
             :name="field.name"
@@ -8,7 +7,7 @@
             :accept="field.extensions"
             @change="$emit('value-change', $event.target.value)"
         />
-    </label>
+    </div>
 </template>
 
 <script>

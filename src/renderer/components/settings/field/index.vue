@@ -1,5 +1,6 @@
 <template>
-  <div v-if="fieldComponent">
+  <div v-if="fieldComponent" class="field">
+    <label>{{ field.display || field.name }}</label>
     <component :is="fieldComponent" v-bind="{ field, value }" @value-change="v => $emit('value-change', v)" />
   </div>
 </template>

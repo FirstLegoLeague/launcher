@@ -1,8 +1,8 @@
 import Vue from 'vue'
 
 import VueQrcode from '@xkeshi/vue-qrcode'
-import '@first-lego-league/user-interface/current/assets/js/app.js'
-import '@first-lego-league/user-interface/current/assets/css/app.css'
+import '@first-lego-league/user-interface/current/app.js'
+import '@first-lego-league/user-interface/current/app.css'
 
 import App from './app'
 import router from './router'
@@ -14,7 +14,7 @@ Vue.config.productionTip = false
 
 Vue.component(VueQrcode.name, VueQrcode)
 
-Object.defineProperty(Vue.prototype, 'Foundation', { value: global['Foundation'] })
+Object.defineProperty(Vue.prototype, 'toastr', { value: global['toastr'] })
 
 document.addEventListener('dragover', event => {
   event.preventDefault()

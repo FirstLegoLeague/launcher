@@ -1,28 +1,38 @@
 <template>
-    <div class="grid-container fluid text-center">
-        <div class="grid-x grid-padding-y">
-          <div id="challenge" class="cell small-2"></div>
-          <div class="cell small-8">
-              <h2>Tournament Management System</h2>
-              <h4>v2018.2.0</h4>
+  <div>
+    <div class="ui grid container">
+      <div class="row">
+        <div class="ui padded grid">
+          <div class="row">
+            <div id="challenge" class="two wide column"></div>
+            <div class="twelve wide column">
+              <div class="ui huge center aligned header">Tournament Management System</div>
+            </div>
+            <div id="fll" class="two wide right aligned column"></div>
           </div>
-          <div id="fll" class="cell small-2"></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell grid-x grid-margin-x">
-            <fieldset v-for="module in modules" class="cell small-3 fieldset">
-              <legend class="text-left">
-                <a @click="event => openSite(event, module.site)" :href="module.site">{{module.name}}</a>
-              </legend>
-              <label>
-                <div><qrcode :value="module.site"></qrcode></div>
-                <a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a>
-                <button class="button" @click="() => saveInClipboard(module.site)"><i class="fas fa-copy"></i>&nbsp;Copy link</button>
-              </label>
-            </fieldset>
+          <div class="row">
+            <div class="ui centered raised link cards" @click="event => openSite(event, module.site)">
+              <div v-for="module in modules" class="card">
+                <div class="content">
+                  <div class="ui header">{{module.name}}</div>
+                </div>
+                <div class="center aligned content">
+                  <qrcode :value="module.site"></qrcode>
+                </div>
+                <div class="extra content">
+                  <a>{{module.site}}</a>
+                  <div class="ui right floated icon primary button" @click="() => saveInClipboard(module.site)">
+                    <i class="ui copy icon"></i>
+                    <span class="hover text">Copy link</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -75,13 +85,11 @@
 
 <style scoped>
 #challenge {
-  background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png');
   background-size: auto 90%;
   background-position: center;
   background-repeat: no-repeat;
 }
 #fll {
-  background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png');
   background-size: auto 90%;
   background-position: center;
   background-repeat: no-repeat;

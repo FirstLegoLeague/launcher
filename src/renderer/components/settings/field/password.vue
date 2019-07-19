@@ -1,18 +1,17 @@
 <template>
-    <div class="grid-x grid-padding-x">
-      <label class="cell" :for="field.name+'-id'">
-        {{ field.display || field.name }}
-      </label>
-      <div class="cell small-4 flex-container">
-        <input
-            :type="inputType"
-            :name="field.name"
-            :id="field.name+'-id'"
-            :minLength="field.minLength"
-            :maxLength="field.maxLength"
-            @change="$emit('value-change', $event.target.value)"
-        />
-        <button class="secondary small button" @click="toggleShow"><i class="fas" v-bind:class="{ 'fa-eye-slash': isShowingPassword, 'fa-eye': !isShowingPassword }"></i></button>
+  <div class="ui grid">
+    <div class="five wide column">
+        <div class="ui action input">
+          <input
+              :type="inputType"
+              :name="field.name"
+              :id="field.name+'-id'"
+              :minLength="field.minLength"
+              :maxLength="field.maxLength"
+              @change="$emit('value-change', $event.target.value)"
+          />
+          <button class="ui icon button" @click="toggleShow"><i class="ui icon" v-bind:class="{ 'slash eye': isShowingPassword, 'eye': !isShowingPassword }"></i></button>
+        </div>
       </div>
     </div>
 </template>

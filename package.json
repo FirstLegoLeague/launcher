@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@first-lego-league/eslint-config": "^1.0.0",
-    "@first-lego-league/user-interface": "^1.2.10",
+    "@first-lego-league/user-interface": "2.0.3",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

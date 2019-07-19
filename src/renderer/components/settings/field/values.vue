@@ -1,17 +1,16 @@
 <template>
-    <div style="padding: 1em">
-        <fieldset class="fieldset">
-            <legend>{{ field.display || field.name }}</legend>
-            <label v-for="v in field.values">
-                <input
-                    type="radio"
-                    :name="field.name"
-                    :value="v"
-                    :checked="value === v"
-                    @change="$event.target.checked && $emit('value-change', $event.target.value)"
-                /> {{ field.texts ? field.texts[v] : v }}
-            </label>
-        </fieldset>
+    <div v-if="field.values.length <= 3" class="ui buttons">
+        <div class="ui button" v-for="v in field.values" v-bind:class="{ primary: value === v }" @click="value = v; $emit('value-change', v)">
+            {{ field.texts ? field.texts[v] : v }}
+        </div>
+    </div>
+    <div v-else>
+        <div class="field" v-for="v in field.values">
+            <div class="ui radio checkbox" @click="value = v; $emit('value-change', v)">
+                <input type="radio" :name="field.name" :checked="value === v">
+                <label>{{ field.texts ? field.texts[v] : v }}</label>
+            </div>
+        </div>
     </div>
 </template>
 

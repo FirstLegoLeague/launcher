@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="fll tile-background">
     <MainMenu></MainMenu>
-    <router-view class="top-bar-page"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 

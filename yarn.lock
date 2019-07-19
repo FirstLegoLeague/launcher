@@ -118,12 +118,10 @@
   resolved "https://registry.yarnpkg.com/@first-lego-league/eslint-config/-/eslint-config-1.0.0.tgz#897677bf32a4ea842bbf4e3a63b225d6a044d4a4"
   integrity sha512-FYWnInc/zvbnV794tOhQS44qVVi4d9XJkJRWiZo7luWmwkJg8evP+vi7623klw7UrSsPv8q8J1nSHllh3ks4UQ==
 
-"@first-lego-league/user-interface@^1.2.10":
-  version "1.2.12"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-1.2.12.tgz#841e178e1e20c57cdc18849b2c8a274890fb08c2"
-  integrity sha512-SEg+CCXjcr5VU6vxKhOnuNZR3gFjuCEQX6Ps1087OsH5k7np16Gg4woLb5VDeVd5l5p7Aj7c49+r7ljA8mDn3Q==
-  dependencies:
-    hamburgers "^0.9.3"
+"@first-lego-league/user-interface@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-2.0.3.tgz#80a45ae540439cf948dc80ea7b3f946e835401cb"
+  integrity sha512-C5rOc4FEkKWMx1f672rlB8IIjlPTvhXGZQyoLnbyuueacN1uQG4I3AFlgXVvulJNUm2cBKPf7k4EWenyflRCSA==
 
 "@keyv/sql@1.1.2":
   version "1.1.2"
@@ -4766,11 +4764,6 @@ graceful-fs@^4.1.10, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
   integrity sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=
-
-hamburgers@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/hamburgers/-/hamburgers-0.9.3.tgz#73b3d299652a028647ca68b2957df172c76cc636"
-  integrity sha512-7pC2GkvKcBtfUalg2Vfm2z3wOCUFI7ZHgqThUg6kHZ7ZcLelSzGhboB9UjlleRCBEUjAVCpcrdGdN7PcaJBQKQ==
 
 handle-thing@^1.2.5:
   version "1.2.5"

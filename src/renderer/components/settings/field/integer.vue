@@ -1,6 +1,5 @@
 <template>
-  <label>
-    {{ field.display || field.name }}
+  <div class="ui compact input">
     <input
       type="number"
       :name="field.name"
@@ -9,7 +8,7 @@
       :max="field.max"
       @change="$emit('value-change', $event.target.value)"
     />
-  </label>
+  </div>
 </template>
 
 <script>

@@ -3,20 +3,22 @@
     <div class="dimmer">
       <div class="large slow loader"></div>
     </div>
-    <div v-if="!loading">
-        <SettingsGroup :group="mainGroup"
-                       :values="values"
-                       @value-change="updateValue"
-        />
-        <SettingsGroup v-for="group in titledGroups"
-                       :group="group"
-                       :values="values"
-                       :key="group.name"
-                       @value-change="updateValue"
-        />
-        <div class="text-center">
-          <button class="button" @click="save"><i class="fas fa-save"></i>&nbsp;Save</button>
-        </div>
+    <div class="ui padded one column grid" v-if="!loading">
+      <SettingsGroup :group="mainGroup"
+                     :values="values"
+                     @value-change="updateValue"
+      />
+      <SettingsGroup v-for="group in titledGroups"
+                     :group="group"
+                     :values="values"
+                     :key="group.name"
+                     @value-change="updateValue"
+      />
+      <div class="ui center aligned column">
+        <button class="ui primary button" @click="save">
+          <i class="save icon"></i>Save
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -55,10 +57,10 @@
         this.changedValues = {}
 
         Promise.fromCallback(cb => this.adapter.saveGlobalValues(changedValues, cb))
-          .then(() => new this.Foundation.Notification('Settings saved', 'success'))
+          .then(() => this.toastr.success('Settings saved'))
           .catch(err => {
             console.error(err)
-            return new this.Foundation.Notification('Settings failed saving', 'error')
+            return this.toastr.error('Settings failed saving')
           })
       }
     },

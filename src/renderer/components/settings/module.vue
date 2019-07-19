@@ -3,8 +3,9 @@
     <div class="dimmer">
       <div class="large slow loader"></div>
     </div>
-    <div class="grid-container" v-if="!loading">
-      <SettingsGroup :group="mainGroup"
+    <div class="ui padded one column grid" v-if="!loading">
+      <SettingsGroup v-if="mainGroup.fields.length > 0"
+                     :group="mainGroup"
                      :values="values"
                      @value-change="updateValue"
       />
@@ -14,8 +15,10 @@
                      :key="group.name"
                      @value-change="updateValue"
       />
-      <div class="text-center">
-        <button class="button" @click="save"><i class="fas fa-save"></i>&nbsp;Save</button>
+      <div class="ui center aligned column">
+        <button class="ui primary button" @click="save">
+          <i class="save icon"></i>Save
+        </button>
       </div>
     </div>
   </div>
@@ -49,16 +52,18 @@
       updateValue (fieldName, newValue) {
         this.values[fieldName] = newValue
         this.changedValues[fieldName] = newValue
+        console.log(this.values)
+        console.log(this.changedValues)
       },
       save () {
         const changedValues = this.changedValues
         this.changedValues = {}
 
         Promise.fromCallback(cb => this.adapter.saveValues(this.module, changedValues, cb))
-          .then(() => new this.Foundation.Notification('Settings saved', 'success'))
+          .then(() => this.toastr.success('Settings saved'))
           .catch(err => {
             console.error(err)
-            return new this.Foundation.Notification('Settings failed saving', 'error')
+            return this.toastr.error('Settings failed saving')
           })
       },
       fetchConfig (moudleName) {

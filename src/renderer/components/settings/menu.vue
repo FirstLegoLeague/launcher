@@ -1,15 +1,19 @@
 <template>
-    <div id="settings-menu" class="top-bar secondary">
-        <ul class="menu">
-            <router-link v-for="module in Object.keys(modules)" tag="li" active-class="is-active" :to="{ name: 'settings-module', params: { module } }"
-                :key="module">
-                <a>{{ modules[module] }}</a>
-            </router-link>
-            <router-link tag="li" active-class="is-active" :to="{ name: 'settings-advanced' }"
-                key="settings">
-                <a>advanced</a>
-            </router-link>
-        </ul>
+    <div id="settings-menu" class="ui padded one column grid">
+        <div class="row">
+            <div class="column">
+                <div class="ui compact menu">
+                    <router-link class="icon link item" v-for="module in Object.keys(modules)" active-class="active" :to="{ name: 'settings-module', params: { module } }"
+                        :key="module">
+                        {{ modules[module] }}
+                    </router-link>
+                    <router-link class="icon link item" active-class="active" :to="{ name: 'settings-advanced' }"
+                        key="settings">
+                        advanced
+                    </router-link>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -21,7 +25,4 @@
 </script>
 
 <style scoped>
-#settings-menu {
-    border-bottom: 2px solid lightgray;
-}
 </style>
