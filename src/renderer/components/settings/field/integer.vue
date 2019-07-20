@@ -1,6 +1,6 @@
 <template>
-    <div class="inline field">
-        <label>{{ field.display || field.name }}</label>
+    <div class="six wide field">
+        <label>{{ field.display || field.name }}:</label>
         <input type="number"
             :name="field.name"
             :value="value"

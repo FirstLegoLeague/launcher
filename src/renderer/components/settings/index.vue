@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="ui container">
         <SettingsMenu :modules="modules" />
         <div>
           <router-view></router-view>

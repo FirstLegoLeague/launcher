@@ -1,5 +1,5 @@
 <template>
-    <div class="inline field">
+    <div class="six wide field">
         <label>{{ field.display || field.name }}</label>
         <div class="ui action input">
             <input

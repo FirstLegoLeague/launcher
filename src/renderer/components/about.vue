@@ -41,7 +41,7 @@
         </div>
     </div>
         <div class="ui segment">
-        <h1>Credits</h1>
+        <h1 class="ui header">Credits</h1>
         <p>Many people took part in the development of this software. We appreciate the help of:</p>
         <div class="ui four cards">
             <div v-for="contributor in contributors" class="card">

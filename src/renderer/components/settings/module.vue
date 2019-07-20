@@ -1,6 +1,6 @@
 <template>
     <div class="module">
-        <div class="ui container form">
+        <div class="ui form">
             <template v-if="!loading">
                 <SettingsGroup :group="mainGroup"
                                :values="values"

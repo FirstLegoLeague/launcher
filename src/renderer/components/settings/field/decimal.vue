@@ -1,5 +1,5 @@
 <template>
-    <div class="inline field">
+    <div class="three wide field">
         <label>{{ field.display || field.name }}:</label>
         <input
             type="number"
