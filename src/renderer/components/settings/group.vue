@@ -1,5 +1,5 @@
 <template>
-    <div class="ui segment">
+    <div class="ui segment" v-if="group.fields.length > 0">
         <h4 class="ui dividing header" v-if="group.name">{{ group.name }}</h4>
         <Field v-for="field in group.fields"
                xclass="ui segment"

@@ -1,5 +1,5 @@
 <template>
-    <div class="ui huge secondary menu">
+    <div id="main-menu" class="ui page menu">
         <router-link class="item" active-class="active" :to="{ name: 'home-page' }">
             <i class="home icon"></i>&nbsp;Home
         </router-link>
@@ -38,3 +38,16 @@
     }
   }
 </script>
+
+<style>
+  #main-menu {
+      margin-bottom: 0;
+  }
+
+  #main-menu + * {
+    padding-top: 1rem;
+    /*min-height: available;*/
+    /*max-height: ;*/
+    /*overflow-y: inherit;*/
+  }
+</style>

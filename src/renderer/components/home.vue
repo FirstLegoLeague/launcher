@@ -3,8 +3,10 @@
         <div class="ui segment grid">
             <div id="challenge" class="three wide column"></div>
             <div class="ten wide column">
-                <h2>Tournament Management System</h2>
-                <h4>v2019.0.0</h4>
+                <h2 class="ui header">
+                    Tournament Management System
+                    <span class="sub header">v2019.0.0</span>
+                </h2>
             </div>
             <div id="fll" class="three wide column"></div>
         </div>

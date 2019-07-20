@@ -1,7 +1,9 @@
 <template>
   <div id="app" class="fll tile-background">
     <MainMenu></MainMenu>
-    <router-view></router-view>
+    <div id="content">
+        <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,8 +18,12 @@
 
 <style>
   #app {
-    padding-bottom: 1.5rem;
     min-height: 100vh;
     background-attachment: fixed;
+  }
+
+  #content {
+    padding-bottom: 1rem;
+    height: calc(100vh - 3rem);
   }
 </style>

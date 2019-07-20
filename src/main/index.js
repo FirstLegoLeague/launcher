@@ -32,6 +32,7 @@ function createWindow () {
     width: 1000,
     title: 'FIRST LEGO League Tournament Management System',
     useContentSize: true,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true
     }

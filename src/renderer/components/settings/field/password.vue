@@ -2,18 +2,19 @@
     <div class="inline fields">
         <div class="field">
             <label>{{ field.display || field.name }}</label>
-            <input
-                :type="inputType"
-                :name="field.name"
-                :id="field.name+'-id'"
-                :minLength="field.minLength"
-                :maxLength="field.maxLength"
-                @change="$emit('value-change', $event.target.value)"
-            />
-
-            <button class="ui icon button" @click="toggleShow">
-                <i class="eye icon" :class="{ slash: isShowingPassword }"></i>
-            </button>
+            <div class="ui action input">
+                <input
+                    :type="inputType"
+                    :name="field.name"
+                    :id="field.name+'-id'"
+                    :minLength="field.minLength"
+                    :maxLength="field.maxLength"
+                    @change="$emit('value-change', $event.target.value)"
+                />
+                <button class="ui icon button" @click="toggleShow">
+                    <i class="eye icon" :class="{ slash: isShowingPassword }"></i>
+                </button>
+            </div>
         </div>
     </div>
 </template>

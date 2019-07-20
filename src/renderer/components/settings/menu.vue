@@ -1,5 +1,5 @@
 <template>
-    <div id="settings-menu" class="ui large secondary menu">
+    <div id="settings-menu" class="ui page sub menu">
         <router-link v-for="module in Object.keys(modules)"
                      tag="a"
                      class="item"
@@ -25,8 +25,5 @@
     }
 </script>
 
-<style scoped>
-#settings-menu {
-    border-bottom: 2px solid lightgray;
-}
+<style>
 </style>
