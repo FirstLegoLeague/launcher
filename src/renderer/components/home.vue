@@ -1,6 +1,6 @@
 <template>
     <div class="ui center aligned container">
-        <div class="ui padded segment grid">
+        <div class="ui segment grid">
             <div id="challenge" class="three wide column"></div>
             <div class="ten wide column">
                 <h2>Tournament Management System</h2>

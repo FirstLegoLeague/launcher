@@ -1,22 +1,27 @@
 <template>
-  <div class="module">
-    <div class="ui inverted dimmer" :class="{ active: loading }">
-      <div class="ui text loader">Loading</div>
+    <div class="module">
+        <div class="ui container form">
+            <template v-if="!loading">
+                <SettingsGroup :group="mainGroup"
+                               :values="values"
+                               @value-change="updateValue"
+                />
+                <SettingsGroup v-for="group in titledGroups"
+                               :group="group"
+                               :values="values"
+                               :key="group.name"
+                               @value-change="updateValue"
+                />
+                <button class="ui button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
+            </template>
+            <div v-else class="ui placeholder segment">
+                <div class="ui icon header">
+                    <i class="spinner loading icon"></i>
+                    Loading...
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="ui container form" v-if="!loading">
-      <SettingsGroup :group="mainGroup"
-                     :values="values"
-                     @value-change="updateValue"
-      />
-      <SettingsGroup v-for="group in titledGroups"
-                     :group="group"
-                     :values="values"
-                     :key="group.name"
-                     @value-change="updateValue"
-      />
-      <button class="ui button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
-    </div>
-  </div>
 </template>
 
 <script>
