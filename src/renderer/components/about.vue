@@ -1,12 +1,14 @@
 <template>
     <div id="about" class="ui container">
-        <h1>Contact us</h1>
+        <div class="ui segment">
+        <h1 class="ui header">Contact us</h1>
         <p>
             This software is the result of several years of development, testing, doing and redoing.
             A lot of thought and effort went into making it work well.
             However, if you encounter any problems at your competition,
             or you have any suggestions or questions, you can get support:
         </p>
+            <div class="ui basic segment">
         <div class="ui three cards">
             <a class="link card" @click="event => openSite(event, 'mailto:FLL-TMS-Support@firstinspires.org')">
                 <div class="content">
@@ -29,11 +31,14 @@
                 </div>
             </a>
         </div>
+            </div>
         <p>
             When reporting a bug, please click "Save debug data" to export the software logs and the
             team scores database. Attach the zip file to the email or support ticket.
         </p>
         <a class="ui button" @click="saveDebugData">Save debug data</a>
+    </div>
+        <div class="ui segment">
         <h1>Credits</h1>
         <p>Many people took part in the development of this software. We appreciate the help of:</p>
         <div class="ui four cards">
@@ -47,6 +52,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </template>

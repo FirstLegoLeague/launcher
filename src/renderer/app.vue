@@ -16,6 +16,8 @@
 
 <style>
   #app {
-    height: 100vh;
+    padding-bottom: 1.5rem;
+    min-height: 100vh;
+    background-attachment: fixed;
   }
 </style>

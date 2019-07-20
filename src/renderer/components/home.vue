@@ -1,6 +1,6 @@
 <template>
-    <div class="ui center aligned grid container">
-        <div class="row">
+    <div class="ui center aligned container">
+        <div class="ui padded segment grid">
             <div id="challenge" class="three wide column"></div>
             <div class="ten wide column">
                 <h2>Tournament Management System</h2>
@@ -8,7 +8,7 @@
             </div>
             <div id="fll" class="three wide column"></div>
         </div>
-        <div class="row ui four cards">
+        <div class="ui four cards">
             <div v-for="module in modules" class="card">
                 <div class="content">
                     <a class="header" @click="event => openSite(event, module.site)" :href="module.site">
