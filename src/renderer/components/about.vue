@@ -36,7 +36,9 @@
             When reporting a bug, please click "Save debug data" to export the software logs and the
             team scores database. Attach the zip file to the email or support ticket.
         </p>
-        <a class="ui button" @click="saveDebugData">Save debug data</a>
+        <div class="ui center aligned basic segment">
+            <a class="ui primary button" @click="saveDebugData">Save debug data</a>
+        </div>
     </div>
         <div class="ui segment">
         <h1>Credits</h1>
