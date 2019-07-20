@@ -18,11 +18,11 @@
                     <div class="description">
                         <qrcode :value="module.site"></qrcode>
                     </div>
-                </div>
-                <div class="extra content">
-                    <a class="header" @click="event => openSite(event, module.site)" :href="module.site">
+                    <a class="meta" @click="event => openSite(event, module.site)" :href="module.site">
                         {{module.site}}
                     </a>
+                </div>
+                <div class="extra content">
                     <div class="ui button" @click="() => saveInClipboard(module.site)">
                         <i class="copy icon"></i>
                         Copy link
