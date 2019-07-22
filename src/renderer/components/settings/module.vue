@@ -12,7 +12,9 @@
                                :key="group.name"
                                @value-change="updateValue"
                 />
-                <button class="ui button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
+                <div class="ui center aligned padded segment">
+                    <button class="ui primary button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
+                </div>
             </template>
             <div v-else class="ui placeholder segment">
                 <div class="ui icon header">

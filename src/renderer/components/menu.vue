@@ -1,17 +1,17 @@
 <template>
     <div id="main-menu" class="ui page menu">
         <router-link class="item" active-class="active" :to="{ name: 'home-page' }">
-            <i class="home icon"></i>&nbsp;Home
+            <i class="home icon"></i><span class="hover text">Home</span>
         </router-link>
         <router-link class="item" active-class="active" :to="{ name: 'settings' }">
-            <i class="cogs icon"></i>&nbsp;Settings
+            <i class="cogs icon"></i><span class="hover text">Settings</span>
         </router-link>
         <router-link class="item" active-class="active" :to="{ name: 'about-page' }">
-            <i class="info circle icon"></i>&nbsp;About
+            <i class="info circle icon"></i><span class="hover text">About</span>
         </router-link>
         <div class="right menu">
             <a class="item" @click="event => openSite(event, this.helpLink)">
-                <i class="question circle icon"></i>&nbsp;Help
+                <i class="question circle icon"></i><span class="hover text">Help</span>
             </a>
         </div>
     </div>
@@ -46,8 +46,5 @@
 
   #main-menu + * {
     padding-top: 1rem;
-    /*min-height: available;*/
-    /*max-height: ;*/
-    /*overflow-y: inherit;*/
   }
 </style>
