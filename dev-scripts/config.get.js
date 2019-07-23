@@ -23,54 +23,56 @@ module.exports = {
       get: getMhub,
       options: {
         package: 'mhub',
-        version: '0.9.1'
+        version: '1.0.1'
       }
     },
     'identity-provider': {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/identity-provider#83c597a4fb35a680fb447837d402546066d5909a'
+        package: '@first-lego-league/idp',
+        version: '1.0.5'
       }
     },
     display: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.4.3'
+        version: '2.5.0'
       }
     },
     tournament: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '2.0.2'
+        version: '2.0.6'
       }
     },
     'tournament-status': {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
-        version: '1.0.1'
+        version: '1.2.0'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.3.8'
+        version: '2.3.9'
       }
     },
     rankings: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#5300e21842bf1ead56be329ac62cb4a44e6c697e'
+        package: '@first-lego-league/rankings',
+        version: '1.0.5'
       }
     },
     clock: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.4.2'
+        version: '2.4.4'
       }
     }
   },
