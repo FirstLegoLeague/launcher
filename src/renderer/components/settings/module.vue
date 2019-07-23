@@ -13,7 +13,7 @@
                                @value-change="updateValue"
                 />
                 <div class="ui center aligned padded segment">
-                    <button class="ui primary button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
+                    <button class="ui primary button" @click="save"><i class="save icon"></i>Save</button>
                 </div>
             </template>
             <div v-else class="ui placeholder segment">
