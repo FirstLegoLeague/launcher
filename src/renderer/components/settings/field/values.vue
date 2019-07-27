@@ -2,7 +2,7 @@
     <div>
         <div class="inline fields">
             <label :for="field.name">{{ field.display || field.name }}:</label>
-            <template v-if="field.values.length <= 5">
+            <template v-if="field.values.length <= 3">
                 <div v-for="v in field.values" class="field">
                     <sui-checkbox radio
                                   :name="field.name"

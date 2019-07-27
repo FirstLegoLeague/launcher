@@ -898,10 +898,10 @@
   resolved "https://registry.yarnpkg.com/@first-lego-league/eslint-config/-/eslint-config-1.0.0.tgz#897677bf32a4ea842bbf4e3a63b225d6a044d4a4"
   integrity sha512-FYWnInc/zvbnV794tOhQS44qVVi4d9XJkJRWiZo7luWmwkJg8evP+vi7623klw7UrSsPv8q8J1nSHllh3ks4UQ==
 
-"@first-lego-league/user-interface@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-2.0.3.tgz#80a45ae540439cf948dc80ea7b3f946e835401cb"
-  integrity sha512-C5rOc4FEkKWMx1f672rlB8IIjlPTvhXGZQyoLnbyuueacN1uQG4I3AFlgXVvulJNUm2cBKPf7k4EWenyflRCSA==
+"@first-lego-league/user-interface@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-2.1.0.tgz#e5c4179e298e6b4b69cd71b2885e710494a94077"
+  integrity sha512-mOfCBO8hPhIAmSFGdHECyH6HbQ57QcvtmwwEr/n2U07YaouktbvGJPjt9FCf84jG8QwgMWAi/a9DbkkyNxAUJA==
 
 "@keyv/sql@1.1.2":
   version "1.1.2"

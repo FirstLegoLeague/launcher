@@ -87,7 +87,7 @@
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.5.4",
     "@first-lego-league/eslint-config": "^1.0.0",
-    "@first-lego-league/user-interface": "^2.0.3",
+    "@first-lego-league/user-interface": "^2.1.0",
     "ajv": "^6.10.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",

@@ -1,7 +1,8 @@
 <template>
-    <div class="module">
-        <div class="ui form">
+    <div class="module column">
+        <div class="ui container form">
             <template v-if="!loading">
+              <div class="ui segment">
                 <SettingsGroup :group="mainGroup"
                                :values="values"
                                @value-change="updateValue"
@@ -12,13 +13,14 @@
                                :key="group.name"
                                @value-change="updateValue"
                 />
-                <div class="ui center aligned padded segment">
-                    <button class="ui primary button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
+                <div class="ui center aligned basic segment">
+                    <button class="ui primary button" @click="save"><i class="save icon"></i>Save</button>
                 </div>
+              </div>
             </template>
             <div v-else class="ui placeholder segment">
                 <div class="ui icon header">
-                    <i class="spinner loading icon"></i>
+                    <i class="notched circle loading icon"></i>
                     Loading...
                 </div>
             </div>
@@ -99,7 +101,7 @@
 </script>
 
 <style scoped>
-.module {
+/*.module {
   height: 100%;
-}
+}*/
 </style>
