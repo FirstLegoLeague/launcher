@@ -85,10 +85,11 @@ For windows platform:
 ### Development Installation
 
 - Clone the repository
-- Run from cmd `yarn install`
-- Run from cmd `yarn get all` - this would download all external
+- Run from cmd/Terminal `yarn install`
+- Run from cmd/Terminal `yarn get all` - this would download all external
   modules for the launcher. Use `yarn get --help` to change the modules
   that you want to download.
+- If you're using macOS run from the Terminal ``sudo chmod -R u+x .``.
 
 ### Run Program Locally
 

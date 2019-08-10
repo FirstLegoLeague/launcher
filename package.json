@@ -20,12 +20,13 @@
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps",
-    "start": "chmod -R u+x . && node .electron-vue/dev-runner.js"
+    "start": "node .electron-vue/dev-runner.js"
   },
   "build": {
     "appId": "com.fll-tools.launcher",
     "productName": "FIRST LEGO League TMS",
     "artifactName": "fll-launcher-${version}",
+    "afterPack": "./afterPackHook.js",
     "directories": {
       "buildResources": "resources",
       "output": "dist"
@@ -35,9 +36,6 @@
     ],
     "mac": {
       "category": "public.app-category.education"
-    },
-    "dmg": {
-      "background": "resources/dmg-background.png"
     },
     "buildDependenciesFromSource": true
   },
