@@ -26,7 +26,7 @@
     "appId": "com.fll-tools.launcher",
     "productName": "FIRST LEGO League TMS",
     "artifactName": "fll-launcher-${version}",
-    "afterPack": "./macos/afterPackHook.js",
+    "afterPack": "./afterPackHook.js",
     "directories": {
       "buildResources": "resources",
       "output": "dist"
@@ -35,8 +35,7 @@
       "dist/electron/**/*"
     ],
     "mac": {
-      "category": "public.app-category.education",
-      "target": "dir"
+      "category": "public.app-category.education"
     },
     "buildDependenciesFromSource": true
   },
