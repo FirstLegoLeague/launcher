@@ -1,24 +1,27 @@
 <template>
-  <div id="settings-global" v-bind:class="{ loading: loading }">
-    <div class="dimmer">
-      <div class="large slow loader"></div>
-    </div>
-    <div v-if="!loading">
-        <SettingsGroup :group="mainGroup"
-                       :values="values"
-                       @value-change="updateValue"
-        />
-        <SettingsGroup v-for="group in titledGroups"
-                       :group="group"
-                       :values="values"
-                       :key="group.name"
-                       @value-change="updateValue"
-        />
-        <div class="text-center">
-          <button class="button" @click="save"><i class="fas fa-save"></i>&nbsp;Save</button>
+    <div id="settings-global">
+        <div class="ui container form">
+            <template v-if="!loading">
+                <SettingsGroup :group="mainGroup"
+                               :values="values"
+                               @value-change="updateValue"
+                />
+                <SettingsGroup v-for="group in titledGroups"
+                               :group="group"
+                               :values="values"
+                               :key="group.name"
+                               @value-change="updateValue"
+                />
+                <button class="ui button" @click="save"><i class="save icon"></i>&nbsp;Save</button>
+            </template>
+            <div v-else class="ui placeholder segment">
+                <div class="ui icon header">
+                    <i class="spinner loading icon"></i>
+                    Loading...
+                </div>
+            </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -55,10 +58,10 @@
         this.changedValues = {}
 
         Promise.fromCallback(cb => this.adapter.saveGlobalValues(changedValues, cb))
-          .then(() => new this.Foundation.Notification('Settings saved', 'success'))
+          .then(() => this.toastr.success('Settings saved'))
           .catch(err => {
             console.error(err)
-            return new this.Foundation.Notification('Settings failed saving', 'error')
+            return this.toastr.error('Settings failed saving')
           })
       }
     },

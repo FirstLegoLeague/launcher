@@ -35,5 +35,5 @@ build_script:
   /FFIRST_LEGO_League_TMS_Setup_%BUILD_VERSION%_%PLATFORM% .\\windows\\setup\\main.iss
 
 artifacts:
-- path: .\dist\FIRST_LEGO_League_Tournament_Management_System_Setup_*.exe
+- path: .\dist\FIRST_LEGO_League_TMS_Setup_*.exe
   name: Installer

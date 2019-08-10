@@ -66,9 +66,6 @@ function startRenderer () {
         quiet: true,
         before (app, ctx) {
           app.use(hotMiddleware)
-          app.get('/webfonts/:path', (req, res) => {
-            res.sendFile(path.resolve(__dirname, '../node_modules/@first-lego-league/user-interface/current/assets/fonts', req.params.path))
-          })
           ctx.middleware.waitUntilValid(() => {
             resolve()
           })
@@ -130,7 +127,7 @@ function startElectron () {
   }
 
   electronProcess = spawn(electron, args)
-  
+
   electronProcess.stdout.on('data', data => {
     electronLog(data, 'blue')
   })

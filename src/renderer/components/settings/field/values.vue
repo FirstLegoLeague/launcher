@@ -1,24 +1,35 @@
 <template>
-    <div style="padding: 1em">
-        <fieldset class="fieldset">
-            <legend>{{ field.display || field.name }}</legend>
-            <label v-for="v in field.values">
-                <input
-                    type="radio"
-                    :name="field.name"
-                    :value="v"
-                    :checked="value === v"
-                    @change="$event.target.checked && $emit('value-change', $event.target.value)"
-                /> {{ field.texts ? field.texts[v] : v }}
-            </label>
-        </fieldset>
+    <div>
+        <div class="inline fields">
+            <label :for="field.name">{{ field.display || field.name }}:</label>
+            <template v-if="field.values.length <= 5">
+                <div v-for="v in field.values" class="field">
+                    <sui-checkbox radio
+                                  :name="field.name"
+                                  :value="v"
+                                  :input-value="value"
+                                  :label="field.texts ? field.texts[v] : v"
+                                  @change="newValue => newValue && $emit('value-change', newValue)" />
+                </div>
+            </template>
+            <sui-dropdown v-else
+                          selection
+                          v-model="current"
+                          :options="field.values.map(v => ({ value: v, text: field.texts ? field.texts[v] : v }))"
+                          @input="v => $emit('value-change', v)" />
+        </div>
     </div>
 </template>
 
 <script>
   export default {
     name: 'values-field',
-    props: ['field', 'value']
+    props: ['field', 'value'],
+    data () {
+      return {
+        current: this.value
+      }
+    }
   }
 </script>
 

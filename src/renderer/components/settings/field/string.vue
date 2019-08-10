@@ -1,6 +1,6 @@
 <template>
-    <label>
-        {{ field.display || field.name }}
+    <div class="six wide field">
+        <label>{{ field.display || field.name }}</label>
         <input
             type="text"
             :name="field.name"
@@ -9,7 +9,7 @@
             :value="value"
             @change="$emit('value-change', $event.target.value)"
         />
-    </label>
+    </div>
 </template>
 
 <script>
