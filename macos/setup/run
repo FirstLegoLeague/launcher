@@ -2,12 +2,13 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${DIR}"
-cd ./FIRST\ LEGO\ League\ TMS.app
 
+echo ""
+echo ""
 echo "Welcome to FIRST LEGO League TMS!"
 echo "This application requires super user status."
 echo "If prompted, please enter in your account password."
 
 sudo chmod -R u+x .
-sudo "./Contents/macOS/FIRST LEGO League TMS"
-
+mkdir -p "internals"
+sudo "./FIRST LEGO League TMS.app/Contents/macOS/FIRST LEGO League TMS"
