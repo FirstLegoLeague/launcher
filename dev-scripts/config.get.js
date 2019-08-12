@@ -29,7 +29,8 @@ module.exports = {
     'identity-provider': {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/identity-provider#1d66bd25911a1157541622b7382824f8a11429d7'
+        package: '@first-lego-league/identity-provider',
+        version: '1.1.0'
       }
     },
     display: {
