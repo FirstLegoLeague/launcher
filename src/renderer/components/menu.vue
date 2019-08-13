@@ -1,16 +1,16 @@
 <template>
-    <div id="main-menu" class="ui page menu">
+    <div class="ui iconed splashing top attached page menu">
         <router-link class="item" active-class="active" :to="{ name: 'home-page' }">
-            <i class="home icon"></i><span class="hover text">Home</span>
+            <i class="home icon"></i>Home
         </router-link>
         <router-link class="item" active-class="active" :to="{ name: 'settings' }">
-            <i class="cogs icon"></i><span class="hover text">Settings</span>
+            <i class="cogs icon"></i>Settings
         </router-link>
         <router-link class="item" active-class="active" :to="{ name: 'about-page' }">
-            <i class="info circle icon"></i><span class="hover text">About</span>
+            <i class="info circle icon"></i>About
         </router-link>
         <div class="right menu">
-            <a class="item" @click="event => openSite(event, this.helpLink)">
+            <a class="icon item" @click="event => openSite(event, this.helpLink)">
                 <i class="question circle icon"></i><span class="hover text">Help</span>
             </a>
         </div>
@@ -40,11 +40,4 @@
 </script>
 
 <style>
-  #main-menu {
-      margin-bottom: 0;
-  }
-
-  #main-menu + * {
-    padding-top: 1rem;
-  }
 </style>

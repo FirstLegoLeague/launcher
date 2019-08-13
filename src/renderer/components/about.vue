@@ -1,62 +1,68 @@
 <template>
-    <div id="about" class="ui container">
+  <div id="about" class="ui container">
+    <div class="ui one column padded grid">
+      <div class="column">
         <div class="ui segment">
-        <h1 class="ui header">Contact us</h1>
-        <p>
-            This software is the result of several years of development, testing, doing and redoing.
-            A lot of thought and effort went into making it work well.
-            However, if you encounter any problems at your competition,
-            or you have any suggestions or questions, you can get support:
-        </p>
-            <div class="ui basic segment">
-        <div class="ui three cards">
-            <a class="link card" @click="event => openSite(event, 'mailto:FLL-TMS-Support@firstinspires.org')">
+          <h1 class="ui header">Contact us</h1>
+          <p>
+              This software is the result of several years of development, testing, doing and redoing.
+              A lot of thought and effort went into making it work well.
+              However, if you encounter any problems at your competition,
+              or you have any suggestions or questions, you can get support:
+          </p>
+          <div class="ui basic segment">
+            <div class="ui three cards">
+              <a class="link card" @click="event => openSite(event, 'mailto:FLL-TMS-Support@firstinspires.org')">
                 <div class="content">
-                    <div class="header">
-                        <i class="envelope icon"></i> By our support email
-                    </div>
-                    <div class="description">
-                        FLL-TMS-Support@firstinspires.org
-                    </div>
+                  <div class="header">
+                    <i class="envelope icon"></i> By our support email
+                  </div>
+                  <div class="description">
+                    FLL-TMS-Support@firstinspires.org
+                  </div>
                 </div>
-            </a>
-            <a class="link card" @click="event => openSite(event, 'http://fll-tools.com/support/')">
+              </a>
+              <a class="link card" @click="event => openSite(event, 'http://fll-tools.com/support/')">
                 <div class="content">
-                    <div class="header">
-                        <i class="globe icon"></i> In our support website
-                    </div>
-                    <div class="description">
-                        fll-tools.com/support
-                    </div>
+                  <div class="header">
+                    <i class="globe icon"></i> In our support website
+                  </div>
+                  <div class="description">
+                    fll-tools.com/support
+                  </div>
                 </div>
-            </a>
-        </div>
+              </a>
             </div>
-        <p>
+          </div>
+          <p>
             When reporting a bug, please click "Save debug data" to export the software logs and the
             team scores database. Attach the zip file to the email or support ticket.
-        </p>
-        <div class="ui center aligned basic segment">
-            <a class="ui primary button" @click="saveDebugData">Save debug data</a>
+          </p>
+          <div class="ui center aligned basic segment">
+            <a class="ui primary button" @click="saveDebugData"><i class="ui bug icon"></i>Save debug data</a>
+          </div>
         </div>
-    </div>
+      </div>
+      <div class="column">
         <div class="ui segment">
-        <h1 class="ui header">Credits</h1>
-        <p>Many people took part in the development of this software. We appreciate the help of:</p>
-        <div class="ui four cards">
+          <h1 class="ui header">Credits</h1>
+          <p>Many people took part in the development of this software. We appreciate the help of:</p>
+          <div class="ui four cards">
             <div v-for="contributor in contributors" class="card">
-                <div class="content">
-                    <div class="header">
-                        {{contributor.name}}
-                    </div>
-                    <div class="meta">
-                        <i :class="`${contributor.country.code.toLowerCase()} flag`"></i> {{contributor.country.name}}
-                    </div>
+              <div class="content">
+                <div class="header">
+                    {{contributor.name}}
                 </div>
+                <div class="meta">
+                  <i :class="`${contributor.country.code.toLowerCase()} flag`"></i> {{contributor.country.name}}
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

@@ -1,6 +1,9 @@
 <template>
-    <div class="ui center aligned container">
-        <div class="ui segment grid">
+  <div class="ui container">
+    <div class="ui one column padded grid">
+      <div class="column">
+        <div class="ui center aligned segment">
+          <div class="ui grid">
             <div id="challenge" class="three wide column"></div>
             <div class="ten wide column">
                 <h2 class="ui header">
@@ -9,6 +12,7 @@
                 </h2>
             </div>
             <div id="fll" class="three wide column"></div>
+          </div>
         </div>
         <div class="ui four cards">
             <div v-for="module in modules" class="card">
@@ -32,7 +36,9 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -83,15 +89,15 @@
 
 <style scoped>
   #challenge {
-    background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/images/challenge_logo.png');
-    background-size: auto 90%;
+    background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/images/challenge_logo_horizontal.png');
+    background-size: 90% auto;
     background-position: center;
     background-repeat: no-repeat;
   }
 
   #fll {
-    background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/images/fll_logo_tall.png');
-    background-size: auto 90%;
+    background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/images/fll_logo_wide.png');
+    background-size: 90% auto;
     background-position: center;
     background-repeat: no-repeat;
   }

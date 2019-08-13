@@ -29,36 +29,36 @@ module.exports = {
     'identity-provider': {
       get: getNpmModule,
       options: {
-        package: '@first-lego-league/idp',
-        version: '1.0.5'
+        package: '@first-lego-league/identity-provider',
+        version: '1.1.0'
       }
     },
     display: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.5.0'
+        version: '2.6.0'
       }
     },
     tournament: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '2.0.6'
+        version: '2.1.0'
       }
     },
     'tournament-status': {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
-        version: '1.2.0'
+        version: '1.3.0'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.3.9'
+        version: '2.4.0'
       }
     },
     rankings: {
@@ -72,7 +72,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.4.4'
+        version: '2.5.0'
       }
     }
   },
