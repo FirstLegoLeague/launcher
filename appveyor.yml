@@ -16,7 +16,7 @@ cache:
   - '%USERPROFILE%\AppData\Local\Yarn\cache'
 
 environment:
-  nodejs_version: "10.11.0"
+  nodejs_version: "10.13.0"
 
 init:
   - git config --global core.autocrlf input

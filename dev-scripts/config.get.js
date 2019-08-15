@@ -1,5 +1,4 @@
 
-const { getMhub } = require('./.get/get-mhub')
 const { getCaddy } = require('./.get/get-caddy')
 const { getMongo } = require('./.get/get-mongo')
 const { getNpmModule } = require('./.get/get-npm-module')
@@ -20,7 +19,7 @@ module.exports = {
     },
     mhub: {
       internal: true,
-      get: getMhub,
+      get: getNpmModule,
       options: {
         package: 'mhub',
         version: '1.0.1'
