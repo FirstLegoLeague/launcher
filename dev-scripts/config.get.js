@@ -12,10 +12,26 @@ module.exports = {
       get: getCaddy,
       devFiles: './init/'
     },
-    mongo: {
-      internal: true,
-      get: getMongo,
-      devFiles: '**/*.pdb'
+    clock: {
+      get: getNpmModule,
+      options: {
+        package: '@first-lego-league/clock',
+        version: '2.5.0'
+      }
+    },
+    display: {
+      get: getNpmModule,
+      options: {
+        package: '@first-lego-league/display',
+        version: '2.6.0'
+      }
+    },
+    'identity-provider': {
+      get: getNpmModule,
+      options: {
+        package: '@first-lego-league/identity-provider',
+        version: '1.1.4'
+      }
     },
     mhub: {
       internal: true,
@@ -25,18 +41,23 @@ module.exports = {
         version: '1.0.1'
       }
     },
-    'identity-provider': {
+    mongo: {
+      internal: true,
+      get: getMongo,
+      devFiles: '**/*.pdb'
+    },
+    rankings: {
       get: getNpmModule,
       options: {
-        package: '@first-lego-league/identity-provider',
-        version: '1.1.1'
+        package: '@first-lego-league/rankings',
+        version: '1.0.5'
       }
     },
-    display: {
+    scoring: {
       get: getNpmModule,
       options: {
-        package: '@first-lego-league/display',
-        version: '2.6.0'
+        package: '@first-lego-league/scoring',
+        version: '2.4.1'
       }
     },
     tournament: {
@@ -51,27 +72,6 @@ module.exports = {
       options: {
         package: '@first-lego-league/tournament-status',
         version: '1.3.0'
-      }
-    },
-    scoring: {
-      get: getNpmModule,
-      options: {
-        package: '@first-lego-league/scoring',
-        version: '2.4.0'
-      }
-    },
-    rankings: {
-      get: getNpmModule,
-      options: {
-        package: '@first-lego-league/rankings',
-        version: '1.0.5'
-      }
-    },
-    clock: {
-      get: getNpmModule,
-      options: {
-        package: '@first-lego-league/clock',
-        version: '2.5.0'
       }
     }
   },
