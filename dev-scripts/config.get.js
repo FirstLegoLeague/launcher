@@ -30,7 +30,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/identity-provider',
-        version: '1.1.4'
+        version: '1.1.5'
       }
     },
     mhub: {
@@ -57,7 +57,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.4.1'
+        version: '2.4.3'
       }
     },
     tournament: {
