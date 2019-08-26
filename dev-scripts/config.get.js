@@ -16,7 +16,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.5.1'
+        version: '2.5.2'
       }
     },
     display: {
@@ -30,7 +30,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/identity-provider',
-        version: '1.1.5'
+        version: '1.1.6'
       }
     },
     mhub: {
@@ -50,21 +50,21 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/rankings',
-        version: '1.0.5'
+        version: '1.0.7'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.4.6'
+        version: '2.4.8'
       }
     },
     tournament: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '2.1.1'
+        version: '2.1.3'
       }
     },
     'tournament-status': {
