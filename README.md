@@ -72,10 +72,15 @@ TBD
 
 ### Prerequisites
 
-- nodejs (version >= 8.2.1)
+- nodejs (version >= 10.11.0)
   - Can be downloaded from [nodejs.org](https://nodejs.org).
 - yarn
   - Can be downloaded from [yarnpkg.com](https://yarnpkg.com).
+- python 2.7
+  - Can be downloaded from [python.org](https://www.python.org)
+
+For windows platform:
+- MS build tool 2017 + VC++ 2015.3 v140 toolset (x86,x64)
 
 ### Development Installation
 
@@ -108,14 +113,16 @@ While running the launcher in development mode, each of the node modules is
 
 To run the build, use the following script:
 ```
-yarn build:$paltform$
+yarn build:dir --${platform}
 ```
 where `$platform$` must be replaced with either `win` or `linux` depend on
- your environment. You would be able to find the artifact in the `./dist`
- project in your project files. 
+ your environment. You would be able to find the directory with the compiled
+ application's files `./dist/${platform}-upacked`. This directory contains the
+ the application files only without the modules (and internals modules). Use
+ the right packaging to create an installation file. 
 
-NOTE: the build script is not cross-compile script, si you should be run
- the script on the platform to which your installation is desired.
+NOTE: the build script is not cross-compile script, so you should run
+ the script on your desired platform.
 
 Official platforms:
  - windows

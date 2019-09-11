@@ -1,37 +1,51 @@
 <template>
-    <div class="grid-container fluid text-center">
-        <div class="grid-x grid-padding-y">
-          <div id="challenge" class="cell small-2"></div>
-          <div class="cell small-8">
-              <h2>Tournament Management System</h2>
-              <h4>v2018.2.0</h4>
-          </div>
-          <div id="fll" class="cell small-2"></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell grid-x grid-margin-x">
-            <fieldset v-for="module in modules" class="cell small-3 fieldset">
-              <legend class="text-left">
-                <a @click="event => openSite(event, module.site)" :href="module.site">{{module.name}}</a>
-              </legend>
-              <label>
-                <div><qrcode :value="module.site"></qrcode></div>
-                <a @click="event => openSite(event, module.site)" :href="module.site">{{module.site}}</a>
-                <button class="button" @click="() => saveInClipboard(module.site)"><i class="fas fa-copy"></i>&nbsp;Copy link</button>
-              </label>
-            </fieldset>
+  <div class="ui container">
+    <div class="ui one column padded grid">
+      <div class="column">
+        <div class="ui center aligned segment">
+          <div class="ui grid">
+            <div id="challenge" class="three wide column"></div>
+            <div class="ten wide column">
+                <h2 class="ui header">
+                    Tournament Management System
+                    <span class="sub header">v2019.0.0</span>
+                </h2>
+            </div>
+            <div id="fll" class="three wide column"></div>
           </div>
         </div>
+        <div class="ui four cards">
+            <div v-for="module in modules" class="card">
+                <div class="content">
+                    <a class="header" @click="event => openSite(event, module.site)" :href="module.site">
+                        {{module.name}}
+                    </a>
+                    <div class="ui divider"></div>
+                    <div class="description">
+                        <qrcode :value="module.site"></qrcode>
+                    </div>
+                    <a class="meta" @click="event => openSite(event, module.site)" :href="module.site">
+                        {{module.site}}
+                    </a>
+                </div>
+                <div class="extra content">
+                    <div class="ui button" @click="() => saveInClipboard(module.site)">
+                        <i class="copy icon"></i>
+                        Copy link
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
   import Promise from 'bluebird'
-  import VueQrcode from '@xkeshi/vue-qrcode'
 
   export default {
     name: 'HomePage',
-    components: { VueQrcode },
     methods: {
       openSite (event, site) {
         event.preventDefault()
@@ -74,16 +88,17 @@
 </script>
 
 <style scoped>
-#challenge {
-  background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/img/challenge_logo.png');
-  background-size: auto 90%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-#fll {
-  background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/img/fll_logo_tall.png');
-  background-size: auto 90%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  #challenge {
+    background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/images/challenge_logo_horizontal.png');
+    background-size: 90% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #fll {
+    background-image: url('../../../node_modules/@first-lego-league/user-interface/current/assets/images/fll_logo_wide.png');
+    background-size: 90% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 </style>

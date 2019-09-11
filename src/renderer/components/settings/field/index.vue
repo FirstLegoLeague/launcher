@@ -1,7 +1,5 @@
-<template>
-  <div v-if="fieldComponent">
+<template v-if="fieldComponent">
     <component :is="fieldComponent" v-bind="{ field, value }" @value-change="v => $emit('value-change', v)" />
-  </div>
 </template>
 
 <script>

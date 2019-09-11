@@ -1,6 +1,6 @@
 <template>
-    <label>
-        {{ field.display || field.name }}
+    <div class="six wide field">
+        <label>{{ field.display || field.name }}:</label>
         <input
             type="file"
             :name="field.name"
@@ -8,7 +8,7 @@
             :accept="field.extensions"
             @change="$emit('value-change', $event.target.value)"
         />
-    </label>
+    </div>
 </template>
 
 <script>

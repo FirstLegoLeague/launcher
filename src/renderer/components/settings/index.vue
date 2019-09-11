@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <SettingsMenu :modules="modules" />
-        <div class="top-bar-page">
-          <router-view></router-view>
-        </div>
+  <div id="settings">
+    <SettingsMenu :modules="modules"/>
+    <div class="ui padded grid">
+      <router-view></router-view>
     </div>
+  </div>
 </template>
 
 <script>
@@ -41,5 +41,7 @@
 </script>
 
 <style scoped>
-
+  #settings {
+    height: 100%;
+  }
 </style>

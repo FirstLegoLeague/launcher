@@ -1,10 +1,15 @@
+/**
+ * Set `__static` path to static files in production
+ * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
+ */
+// Must run before everything
+if (process.env.NODE_ENV !== 'development') {
+  global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+}
 
-require('./static') // Must run before everything
-
-const path = require('path')
-const fs = require('fs')
 const Promise = require('bluebird')
-const { app, BrowserWindow, protocol, dialog } = require('electron')
+const { app, BrowserWindow, dialog } = require('electron')
+const path = require('path')
 
 const { Server } = require('./server')
 const { SettingsAdapter } = require('./adapters/settings')
@@ -26,10 +31,15 @@ function createWindow () {
     height: 563,
     width: 1000,
     title: 'FIRST LEGO League Tournament Management System',
-    useContentSize: true
+    useContentSize: true,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
 
   mainWindow.setMenu(null)
+  mainWindow.setMenuBarVisibility(false)
 
   mainWindow.loadURL(winURL)
 
@@ -56,13 +66,9 @@ function createWindow () {
   })
 }
 
-// function getIcon () {
-//   return path.join(__static, 'img', 'first-favicon.ico')
-// }
+const isSecondInstance = !app.requestSingleInstanceLock()
 
-// let tray = null
-
-const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
+app.on('second-instance', (event, commandLine, workingDirectory) => {
   // Someone tried to run a second instance, we should focus our window.
   if (mainWindow) {
     if (mainWindow.isMinimized()) {
@@ -78,15 +84,6 @@ if (isSecondInstance) {
   app.quit()
 } else {
   app.on('ready', () => {
-    protocol.interceptFileProtocol('file', (request, callback) => {
-      if (request.url.includes('webfonts')) {
-        callback(fs.createReadStream(decodeURIComponent(request.url.replace(/.+webfonts/, path.join(__static, '/webfonts')))))
-      } else {
-        callback(fs.createReadStream(decodeURIComponent(request.url.substr(8)).replace(/#.+/, '')))
-      }
-    }, err => {
-      if (err) logger.error('Failed to register protocol')
-    })
     // Commented out, because of current bug in electron logging.
     // TODO solve this.
     // For reference: https://github.com/electron/electron/issues/683
@@ -99,13 +96,6 @@ if (isSecondInstance) {
     exports.homeAdapter = new HomeAdapter(server)
 
     server.start()
-      // .then(() => buildAppMenu(server.getModules()))
-      // .then(appMenu => {
-      //   const tray = new Tray(getIcon())
-      //   const contextMenu = appMenu
-      //   tray.setToolTip('FIRST LEGO League Scoring')
-      //   tray.setContextMenu(contextMenu)
-      // })
       .then(() => createWindow())
       .catch(err => {
         logger.error(err)

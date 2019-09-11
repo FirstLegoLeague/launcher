@@ -1,5 +1,3 @@
-'use strict'
-
 process.env.NODE_ENV = 'production'
 
 const { say } = require('cfonts')
@@ -7,7 +5,7 @@ const chalk = require('chalk')
 const del = require('del')
 const webpack = require('webpack')
 const Multispinner = require('multispinner')
-const Promise = require('bluebird')
+
 
 const mainConfig = require('./webpack.main.config')
 const rendererConfig = require('./webpack.renderer.config')
@@ -71,21 +69,22 @@ function build () {
 
 function pack (config) {
   return new Promise((resolve, reject) => {
+    config.mode = 'production'
     webpack(config, (err, stats) => {
       if (err) reject(err.stack || err)
       else if (stats.hasErrors()) {
-        let errorMessage = ''
+        let err = ''
 
         stats.toString({
           chunks: false,
           colors: true
         })
-          .split(/\r?\n/)
-          .forEach(line => {
-            errorMessage += `    ${line}\n`
-          })
+        .split(/\r?\n/)
+        .forEach(line => {
+          err += `    ${line}\n`
+        })
 
-        reject(errorMessage)
+        reject(err)
       } else {
         resolve(stats.toString({
           chunks: false,
@@ -98,6 +97,7 @@ function pack (config) {
 
 function web () {
   del.sync(['dist/web/*', '!.gitkeep'])
+  webConfig.mode = 'production'
   webpack(webConfig, (err, stats) => {
     if (err || stats.hasErrors()) console.log(err)
 

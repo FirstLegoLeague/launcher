@@ -1,5 +1,4 @@
 
-const { getMhub } = require('./.get/get-mhub')
 const { getCaddy } = require('./.get/get-caddy')
 const { getMongo } = require('./.get/get-mongo')
 const { getNpmModule } = require('./.get/get-npm-module')
@@ -13,64 +12,66 @@ module.exports = {
       get: getCaddy,
       devFiles: './init/'
     },
-    mongo: {
-      internal: true,
-      get: getMongo,
-      devFiles: '**/*.pdb'
-    },
-    mhub: {
-      internal: true,
-      get: getMhub,
-      options: {
-        package: 'mhub',
-        version: '0.9.1'
-      }
-    },
-    'identity-provider': {
+    clock: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/identity-provider#83c597a4fb35a680fb447837d402546066d5909a'
+        package: '@first-lego-league/clock',
+        version: '2.5.2'
       }
     },
     display: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.4.3'
+        version: '2.6.1'
       }
     },
-    tournament: {
+    'identity-provider': {
       get: getNpmModule,
       options: {
-        package: '@first-lego-league/tournament',
-        version: '2.0.2'
+        package: '@first-lego-league/identity-provider',
+        version: '1.1.7'
       }
     },
-    'tournament-status': {
+    mhub: {
+      internal: true,
       get: getNpmModule,
       options: {
-        package: '@first-lego-league/tournament-status',
+        package: 'mhub',
         version: '1.0.1'
+      }
+    },
+    mongo: {
+      internal: true,
+      get: getMongo,
+      devFiles: '**/*.pdb'
+    },
+    rankings: {
+      get: getNpmModule,
+      options: {
+        package: '@first-lego-league/rankings',
+        version: '1.0.7'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.3.8'
+        version: '2.4.11'
       }
     },
-    rankings: {
+    tournament: {
       get: getNpmModule,
       options: {
-        version: 'FirstLegoLeague/rankings#5300e21842bf1ead56be329ac62cb4a44e6c697e'
+        package: '@first-lego-league/tournament',
+        version: '2.1.4'
       }
     },
-    clock: {
+    'tournament-status': {
       get: getNpmModule,
       options: {
-        package: '@first-lego-league/clock',
-        version: '2.4.2'
+        package: '@first-lego-league/tournament-status',
+        version: '1.3.0'
       }
     }
   },

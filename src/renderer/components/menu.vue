@@ -1,22 +1,18 @@
 <template>
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <ul class="menu">
-              <router-link tag="li" active-class="is-active" :to="{ name: 'home-page' }">
-                <a><i class="fas fa-home"></i>&nbsp;Home</a>
-              </router-link>
-              <router-link tag="li" active-class="is-active" :to="{ name: 'settings' }">
-                <a><i class="fas fa-cogs"></i>&nbsp;Settings</a>
-              </router-link>
-              <router-link tag="li" active-class="is-active" :to="{ name: 'about-page' }">
-                <a><i class="fas fa-info-circle"></i>&nbsp;About</a>
-              </router-link>
-            </ul>
-        </div>
-        <div class="top-bar-right">
-          <ul class="menu">
-            <li><a @click="event => openSite(event, this.helpLink)"><i class="fas fa-question-circle"></i>&nbsp;Help</a></li>
-          </ul>
+    <div class="ui iconed splashing top attached page menu">
+        <router-link class="item" active-class="active" :to="{ name: 'home-page' }">
+            <i class="home icon"></i>Home
+        </router-link>
+        <router-link class="item" active-class="active" :to="{ name: 'settings' }">
+            <i class="cogs icon"></i>Settings
+        </router-link>
+        <router-link class="item" active-class="active" :to="{ name: 'about-page' }">
+            <i class="info circle icon"></i>About
+        </router-link>
+        <div class="right menu">
+            <a class="icon item" @click="event => openSite(event, this.helpLink)">
+                <i class="question circle icon"></i><span class="hover text">Help</span>
+            </a>
         </div>
     </div>
 </template>
@@ -43,8 +39,5 @@
   }
 </script>
 
-<style scoped>
-  .router-link-active {
-    font-weight: bold
-  }
+<style>
 </style>

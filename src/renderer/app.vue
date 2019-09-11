@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="fll tile-background">
     <MainMenu></MainMenu>
-    <router-view class="top-bar-page"></router-view>
+    <div id="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,6 +18,6 @@
 
 <style>
   #app {
-    height: 100vh;
+    height: 100%;
   }
 </style>
