@@ -4,12 +4,13 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 const EventEmitter = require('events')
+const { app } = require('electron')
 
 const { getDefaultValue, getUpdatedValue, isValidValue } = require('./types')
 
 const mkdirpAsync = Promise.promisify(mkdirp)
 
-const STORAGE_PATH = exports.STORAGE_PATH = path.resolve('./data/$config.sqlite')
+const STORAGE_PATH = exports.STORAGE_PATH = path.resolve(app.getPath('userData'), '$config.sqlite')
 
 exports.Configurator = class extends EventEmitter {
   constructor () {

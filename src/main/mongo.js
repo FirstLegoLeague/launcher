@@ -4,6 +4,7 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 const Promise = require('bluebird')
 const { spawn } = require('child_process')
+const { app } = require('electron')
 
 const { logger } = require('./logs')
 
@@ -14,7 +15,7 @@ const mkdirpAsync = Promise.promisify(mkdirp)
 const FILE_EXTENSION = (process.platform === 'win32') ? '.exe' : ''
 const MONGO_BIN_DIR = path.resolve(`./internals/mongo/bin`)
 const MONGO_EXECUTABLE_PATH = path.resolve(MONGO_BIN_DIR, `mongod${FILE_EXTENSION}`)
-const MONGO_ARGUMENTS = ['--dbpath', './data/$mongo']
+const MONGO_ARGUMENTS = ['--dbpath', path.resolve(app.getPath('userData'), '$mongo')]
   .concat((process.arch === 'ia32') ? ['--storageEngine=mmapv1'] : [])
 
 const MONGODUMP_EXECUTABLE_PATH = path.resolve(MONGO_BIN_DIR, `mongodump${FILE_EXTENSION}`)
