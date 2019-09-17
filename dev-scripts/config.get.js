@@ -23,7 +23,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.6.2'
+        version: '2.6.3'
       }
     },
     'identity-provider': {
@@ -64,7 +64,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '2.1.4'
+        version: '2.1.5'
       }
     },
     'tournament-status': {
