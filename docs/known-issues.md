@@ -6,8 +6,8 @@
 
 ## Tournament Setup
 1. When opening the `Tournament Setup` page, the page does not load.
-    * Press F5 to refresh the webpage
+    * Workaround: Press F5 to refresh the webpage
 
 ## Scoreboard
 1. Scores do not appear on the `Scoreboard`.
-    * Press F5 to refresh the webpage.
+    * Workaround: Press F5 to refresh the webpage.
