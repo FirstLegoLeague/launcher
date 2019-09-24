@@ -16,7 +16,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.5.2'
+        version: '2.6.0'
       }
     },
     display: {
