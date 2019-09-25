@@ -16,7 +16,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.5.2'
+        version: '2.6.0'
       }
     },
     display: {
@@ -50,14 +50,14 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/rankings',
-        version: '1.0.7'
+        version: '1.0.8'
       }
     },
     scoring: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.4.12'
+        version: '2.4.13'
       }
     },
     tournament: {
