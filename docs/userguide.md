@@ -18,7 +18,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 - [Quick Start](#quick-start)
 - [Launcher](#launcher)
 	- [Home](#home)
-	- [Settings](#settings)
+    - [Settings](#settings)
 - [Login](#login)
 - [Tournament Setup](#tournament-setup)
 	- [Tournament Settings](#tournament-settings)
@@ -63,7 +63,7 @@ This software is the result of volunteer efforts by groups in The Netherlands, I
 
 The software can be run entirely on a single laptop (for small, low resource, competitions) through to larger installations with multiple scorekeeper computers, a separate scoreboard display computer and head referee/field manager computer. If a wireless router is available, referees can do score input using iPads or tablets. See [Networked Computers](#networked-computers).
 
-The [Example hardware configurations](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/example-hw-configs.md#example-hardware-configurations) guide shows how you might equip your tournament, and how the various computers are used and connected to each other,
+The [Example hardware configurations](https://github.com/FirstLegoLeague/launcher/blob/user-guide/docs/example-hw-configs.md#example-hardware-configurations) guide shows how you might equip your tournament, and how the various computers are used and connected to each other,
 
 ### Computer requirements
 
@@ -100,18 +100,19 @@ If you don't have time to read this whole guide or you need just to know the ste
 1. Start the `Launcher`
 1. Open the Tournament Setup page (role: admin, password:admin-pass)
     1. Set your Tournament name (Tournament Settings / Tournament Title / Save)
-    1. Add your sponsor logos (Images / Add Image)
-    1. Load the schedule file or team list (Import / Import Schedule file)
+    1. Add your sponsor logos (Images)
+    1. Load the schedule file or team list (Import)
 1. Open the Scoreboard page
 1. Open the Timer page
-1. Open the Scoresheet (click `Scoring`)
+1. Open the Scoring page
+    1. Press New
     1. Enter the referee name (optional for admin or scorekeeper roles)
     1. Choose the table  (optional for admin or scorekeeper roles)
     1. Select the team from the dropdown list
-    1. Select the round from the list that appears to the right of the team list.
-    1. Score each mission, and let the technician sign the scoresheet
-    1. Press Submit
-1. On the left of the `Scoring` tab, click the menu icon (3 horizontal lines that look like a hamburger)
+    1. Select the round (practice #1 / ranking #1 / ranking #2 / ranking #3).
+    1. Score each mission, and have the technician sign the scoresheet
+    1. Press Done
+1. On the top left of the `Scoring` tab, click `Back to scores`
     1. The list of scores entered so far are shown
 1. The Scoreboard page shows the scores entered **for the current stage**.
 
@@ -124,7 +125,7 @@ The `launcher` is used to open and configure the TMS modules.
 ### Home
 
 The `Home` screen provides clickable links to open the modules, each in it's own browser tab.
-For example, click the `Timer` or it's ip address to open the `Timer`. 
+For example, click the `Timer` or it's ip address to open the `Timer`.
 
 You can also press the `Copy link` button to copy the module address, and then paste it into the browser address bar. Do this when your default browser is not Chrome.
 
@@ -137,7 +138,9 @@ Module configuration is accessed through the `Settings` screen.
 <img src="./images/settings.png" style="width:75%">  
 
 **Timer**  
-Timer settings - display countdown in minutes:seconds from 2:30 or in seconds from 150.
+
+- Clock format - display countdown in minutes:seconds from 2:30 or in seconds from 150.
+- Seconds of countdown to match - Set the number of seconds for the `Timer` delayed start.
 
 **Passwords**
 
@@ -250,7 +253,7 @@ Note: A later version of this software will support hiding logos that you do not
 
 ### Import team data
 
-The next step is to import a schedule file or team list. Click `Import` on the right of the screen and select to import a `Schedule File` or `Team List`
+The next step is to import a schedule file or team list. Click the `Import` icon at the top right of the screen and select to import a `Schedule File` or `Team List`.
 
 Note: `Import` is only available when the team list is empty.
 
@@ -265,7 +268,7 @@ Note: `Import` is only available when the team list is empty.
 - `Team List` file - Import a plain CSV team list. The file must have the team number, team name and general information, such as team affiliation, in the first 3 columns. This file does not contain match information, or table names. You will need to add table names afterward the import.
   * [Example 24 Team List](./files/24_Team_List.csv). Click to [Download](./files/24_Team_List.csv.zip) and then unzip.
   
-Note: We do not currently (In the beta versions, and in version 2018.1.0) make use of the match information. See [Tournament Status Display](#tournament-status-display).
+Note: See [Tournament Status Display](#tournament-status-display) for an explanation of how the matches time schedule data is used.
 
 Drag and drop a schedule file or team list onto the popup.
 
@@ -273,7 +276,7 @@ Drag and drop a schedule file or team list onto the popup.
 
 Verify that the data looks correct and then press `Import`.
 
-Once you have imported the file you can see all the imported data by pressing the `Teams` and `Matches` buttons. 
+Once you have imported the file you can see the imported data by pressing the `Teams` and `Matches` buttons.
 
 If you need to replace the imported data with a different CSV file, you can delete all the teams and matches, and import again. See [Tournament Settings](#tournament-settings) - `Delete Tournament Data`.
 
@@ -295,13 +298,13 @@ You can search for matches of a team by entering the number in the search box.
 
 #### Manage Tables
 
-Press the ```Manage Tables``` button to add or edit table names. If you imported a schedule file, the table names will be those in the file. If you imported a shortened schedule file or team list, you can add the table names here.
+Press the ```Manage Tables``` button to add or edit table names. (The button is at the top right side of the screen when the Matches are displayed). If you imported a schedule file, the table names will be those in the file. If you imported a shortened schedule file or team list, you can add the table names here.
 
 Note: The table names are optional but are required if you want the scorekeeper or referee to assign a table to each scoresheet.
 
-#### + Match
+#### New Match
 
-Press the ```+ Match``` button to add matches. This can be done if you have imported a team list or schedule file without match information. See [Tournament Status Display](#tournament-status-display) for information on how the matches data is used.
+Press the ```New Match``` button to add matches. (The button is at the top right side of the screen when the Matches are displayed). This can be done if you have imported a team list or schedule file without match information. See [Tournament Status Display](#tournament-status-display) for information on how the matches data is used.
 
 ## Scoring
 
