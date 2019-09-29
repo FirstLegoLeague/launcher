@@ -247,7 +247,7 @@ The sponsor logos shown on the [Scoreboard](#Scoreboard) ribbon are configured h
 
 <img src="./images/tournament-images.png" style="width:75%">
 
-The four *FIRST* LEGO League global sponsors are preloaded. You can add additional images files by pressing the `Add Image` button. Press the `Delete` button on an image tile to remove it.
+The five *FIRST* LEGO League global sponsors are preloaded. You can add additional images files by pressing the `Add Image` button. Press the `Delete` button on an image tile to remove it.
 
 Note: A later version of this software will support hiding logos that you do not want to be displayed but that you wish to keep.
 
