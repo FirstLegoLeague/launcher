@@ -313,17 +313,12 @@ The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a sco
 ### Referee login
 
 When you login as a `Referee` you see this screen.
+
 <img src="./images/scoring-ref-login.png" style="width:75%">
 
 Enter the referee name and select a table from the list and press `Save`. The referee scoresheet will be shown.
 
 <img src="./images/scoring-ref-scoresheet.png" style="width:75%">
-
-### Scorekeeper or Admin login
-
-When you login as a `Scorekeeper` or `Admin` you see this screen.
-
-<img src="./images/scoring-admin-login.png" style="width:75%">
 
 ### Communication status
 
@@ -340,17 +335,20 @@ The scoresheet text follows the official scoresheet exactly.
 <img src="./images/scoring.png" style="width:75%">
 
 - `Select Team` - Choose the team to score. After selecting a team, you select the `Round`.
-- `Select Round` - Select the `Round` to score. Rounds for which a score have already been entered are indicated by a tick mark.
+- `Select Round` - Click the `Round` to score.
 - `Points` shows the accumulated points of missions scored so far.
 - `Default` sets all the unscored missions to their default (usually unscored) value. This shortcut may be used when a team has successfully done only a few missions - score those missions and then press `Default` to rapidly complete the other missions. This option is not available when the referee role is logged in since the referee is required to go over all the missions with the team technicians.
+- `No show` - mark a No Show team
 - `Reset` - reset the scoresheet to it's unscored state.
 - `?` - Show the mission description.
 
-As you click each mission condition, the system checks for consistency. For instance, in the 2018 challenge `INTO ORBIT - M05 Extraction` mission, the `Gas Core Sample` cannot be both in the `Lander's Target Circle` and in `Base`.
-
-<img src="./images/scoring-mission.png" style="width:75%">
-
 Once all the scoring requirements of a mission have been marked, the mission score value is shown, and the accumulated points are updated. The page automatically scrolls to the next mission.
+
+<img src="./images/scoring-mission-complete.png" style="width:75%">
+
+As you click each mission condition, the system checks for consistency. For instance, in the 2019 challenge `CITY SHAPER - M2 Crane` mission, the `Hooked Blue Unit` cannot be `Independant and Supported by another Blue Unit` if it has not been `lowered any distance`.
+
+<img src="./images/scoring-mission-conflict.png" style="width:75%">
 
 If you get to the end of the scoresheet without having scored all the missions, you will see a red `Some missions are incomplete` notification.
 
@@ -358,10 +356,14 @@ If you get to the end of the scoresheet without having scored all the missions, 
 
 Click the notification to jump to the first incomplete mission. You will also be notified if the `Team` or `Round` has not been selected.
 
-The team signs the scoresheet in the space provided, and then press `Submit`. You will see a `Score saved successfully` message.  
+The team signs the scoresheet in the space provided, and then press `Done`. You will see a `Score saved` notification.  
 Note: [Require a Signature](#settings) is configurable in the Settings.
 
-### Score management screen
+### Scorekeeper or Admin login
+
+When you login as `Scorekeeper` or `Admin` you see this screen.
+
+<img src="./images/scoring-admin-login.png" style="width:75%">
 
 Press the menu icon on the top left of the `Scoresheet` to open the `Score management` screen.  
 
