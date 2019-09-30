@@ -310,6 +310,21 @@ Press the ```New Match``` button to add matches. (The button is at the top right
 
 The `Scoring` module is used by the `Referee` or `Scorekeeper` to complete a scoresheet and by the `Head Referee` or `Scorekeeper` to manage the scores already entered into the system.
 
+### Referee login
+
+When you login as a `Referee` you see this screen.
+<img src="./images/scoring-ref-login.png" style="width:75%">
+
+Enter the referee name and select a table from the list and press `Save`. The referee scoresheet will be shown.
+
+<img src="./images/scoring-ref-scoresheet.png" style="width:75%">
+
+### Scorekeeper or Admin login
+
+When you login as a `Scorekeeper` or `Admin` you see this screen.
+
+<img src="./images/scoring-admin-login.png" style="width:75%">
+
 ### Communication status
 
 The top line of the Scoring screen shows the communication status.
