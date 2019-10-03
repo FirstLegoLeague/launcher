@@ -11,14 +11,16 @@ caporal
   .option('--output <output>', 'The output file')
   .argument('<semver>', 'The semver version for the file')
   .action((args, options) => {
-    const timestamp = (options.ts) ? Number(options.ts) : Date.now()
+    const timestamp = options.ts ? Number(options.ts) : Date.now()
 
     if (Number.isNaN(timestamp)) {
       console.error('ERROR: timestamp should be in unix timestamp format')
       return
     }
 
-    fs.writeFileSync(path.resolve(options.output), JSON.stringify({
+    const outputFile = path.resolve(options.output || './dist/version.json')
+
+    fs.writeFileSync(outputFile, JSON.stringify({
       semver: args.semver || 'none',
       timestamp: timestamp,
       commit: options.commit || 'NA'
