@@ -37,8 +37,8 @@ install:
 
 build_script:
 - yarn run build:dir -w --c.directories.output=./dist/
-  - SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
-  - SET GIT_COMMIT=%APPVEYOR_REPO_COMMIT%
+- SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
+- SET GIT_COMMIT=%APPVEYOR_REPO_COMMIT%
 - >-
   node -e "console.log(JSON.stringify(require('./src/main/version.js')))" >> ./dist/version.json
 - >-
