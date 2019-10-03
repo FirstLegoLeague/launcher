@@ -15,7 +15,7 @@ function getGitCommit () {
 
 function getDefaultVersionObject () {
   return {
-    semver: 'snapshot',
+    semver: process.env.BUILD_VERSION || 'snapshot',
     timestamp: Date.now(),
     commit: getGitCommit()
   }

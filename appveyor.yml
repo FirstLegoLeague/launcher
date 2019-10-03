@@ -40,13 +40,7 @@ build_script:
   - SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
   - SET GIT_COMMIT=%APPVEYOR_REPO_COMMIT%
 - >-
-  node << CODE
-    console.log(JSON.stringify({
-      semver: process.env.BUILD_VERSION,
-      timestamp: Date.now(),
-      commit: process.env.GIT_COMMIT
-    }))
-  CODE >> ./dist/version.json
+  node -e "console.log(JSON.stringify(require('./src/main/version.js')))" >> ./dist/version.json
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
   /FFIRST_LEGO_League_TMS_Setup_%BUILD_VERSION%_%PLATFORM% .\\windows\\setup\\main.iss
