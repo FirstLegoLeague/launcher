@@ -1,5 +1,6 @@
 {
   "name": "fll-launcher",
+  "version": "0.0.0",
   "author": "Roy Shmueli <2903801+2roy999@users.noreply.github.com>",
   "description": "A Launcher to the FIRST LEGO League tournament managment system",
   "main": "./dist/electron/main.js",
