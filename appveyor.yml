@@ -38,7 +38,7 @@ install:
 build_script:
 - yarn run build:dir -w --c.directories.output=./dist/
 - SET BUILD_VERSION=%APPVEYOR_BUILD_VERSION%
-- yarn run create-version-file %BUILD_VERSION% --commit %APPVEYOR_REPO_COMMIT%
+- yarn run version-file %BUILD_VERSION% --commit %APPVEYOR_REPO_COMMIT%
 - >-
   "C:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe" /Odist
   /FFIRST_LEGO_League_TMS_Setup_%BUILD_VERSION%_%PLATFORM% .\\windows\\setup\\main.iss

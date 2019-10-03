@@ -2,7 +2,7 @@
 const caporal = require('caporal')
 
 caporal
-  .name('create-version-file')
+  .name('version-file')
   .version('v1')
   .option('--commit, -c <commit>', 'The git commit of the version')
   .option('--ts <timestamp>', 'The timestamp of the build')
