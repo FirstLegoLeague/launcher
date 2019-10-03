@@ -1,10 +1,8 @@
-/* eslint-disable node/exports-style */
+const fs = require('fs')
+const path = require('path')
 
 function getGitCommit () {
   try {
-    const fs = require('fs')
-    const path = require('path')
-
     const gitHead = fs.readFileSync(path.resolve('./.git/HEAD'), 'utf8').trim()
     return fs.readFileSync(path.resolve('./.git', gitHead.substring('ref: '.length)), 'utf8').trim()
   } catch (e) {
@@ -14,14 +12,14 @@ function getGitCommit () {
 
 function getDefaultVersionObject () {
   return {
-    semver: process.env.BUILD_VERSION || 'snapshot',
+    semver: 'snapshot',
     timestamp: Date.now(),
-    commit: process.env.GIT_COMMIT || getGitCommit() || 'N/A'
+    commit: getGitCommit() || 'NA'
   }
 }
 
-try {
-  module.exports = require('../../version.json')
-} catch (e) {
-  module.exports = getDefaultVersionObject()
+if (process.env.NODE_ENV !== 'development') {
+  Object.assign(exports, JSON.parse(fs.readFileSync(path.resolve('./version.json'))))
+} else {
+  Object.assign(exports, getDefaultVersionObject())
 }
