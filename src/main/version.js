@@ -8,8 +8,7 @@ function getGitCommit () {
     const gitHead = fs.readFileSync(path.resolve('./.git/HEAD'), 'utf8').trim()
     return fs.readFileSync(path.resolve('./.git', gitHead.substring('ref: '.length)), 'utf8').trim()
   } catch (e) {
-    console.log('WARNING: Error getting current git commit')
-    return 'N/A'
+    console.error('WARNING: Error getting current git commit')
   }
 }
 
@@ -17,7 +16,7 @@ function getDefaultVersionObject () {
   return {
     semver: process.env.BUILD_VERSION || 'snapshot',
     timestamp: Date.now(),
-    commit: getGitCommit()
+    commit: process.env.GIT_COMMIT || getGitCommit() || 'N/A'
   }
 }
 
