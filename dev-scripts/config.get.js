@@ -16,14 +16,14 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.6.3'
+        version: '2.6.5'
       }
     },
     display: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '2.6.4'
+        version: '2.6.6'
       }
     },
     'identity-provider': {
