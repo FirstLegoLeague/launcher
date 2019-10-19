@@ -11,37 +11,37 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
 ## Table of Contents
 
 - [Overview](#overview)
-	- [Hardware required](#hardware-required)
-	- [Computer requirements](#computer-requirements)
-	- [Installation](#installation)
-	- [Modules](#modules)
+  - [Hardware required](#hardware-required)
+  - [Computer requirements](#computer-requirements)
+  - [Installation](#installation)
+  - [Modules](#modules)
 - [Quick Start](#quick-start)
 - [Launcher](#launcher)
-	- [Home](#home)
-    - [Settings](#settings)
+  - [Home](#home)
+  - [Settings](#settings)
 - [Login roles](#login-roles)
 - [Tournament Setup](#tournament-setup)
-	- [Tournament Settings](#tournament-settings)
-	- [Images](#images)
-	- [Import team information](#import-team-information)
-	- [Teams](#teams)
-	- [Matches](#matches)
+  - [Tournament Settings](#tournament-settings)
+  - [Images](#images)
+  - [Import team information](#import-team-information)
+  - [Teams](#teams)
+  - [Matches](#matches)
 - [Scoring](#scoring)
-	- [Scoresheet](#scoresheet)
-	- [Score management screen](#score-management-screen)
-	- [Scoring tiles](#scoring-tiles)
-		- [Scoring tile](#scoring-tile)
-		- [Duplicate scores](#duplicate-scores)
-		- [Bad scores](#bad-scores)
+  - [Scoresheet](#scoresheet)
+  - [Score management screen](#score-management-screen)
+  - [Scoring tiles](#scoring-tiles)
+    - [Scoring tile](#scoring-tile)
+    - [Duplicate scores](#duplicate-scores)
+    - [Bad scores](#bad-scores)
 - [Scoreboard](#scoreboard)
-    - [Score results table](#score-results-table)
-    - [Scoreboard timer display](#scoreboard-timer-display)
-    - [Scoreboard local settings](#scoreboard-local-settings)
-    - [Low resolution projection systems](#low-resolution-projection-systems)
+  - [Score results table](#score-results-table)
+  - [Scoreboard timer display](#scoreboard-timer-display)
+  - [Scoreboard local settings](#scoreboard-local-settings)
+  - [Low resolution projection systems](#low-resolution-projection-systems)
 - [Timer](#timer)
 - [Tournament Status Display](#tournament-status-display)
 - [Networked Computers](#networked-computers)
-	- [Use of iPads and tablets](#use-of-ipads-and-tablets)
+  - [Use of iPads and tablets](#use-of-ipads-and-tablets)
 - [Network adapters](#network-adapters)
 - [Log files](#log-files)
 - [32-bit computers](#32bit-computers)
@@ -165,7 +165,7 @@ Configure the [Scoring](#scoring) module settings.
 - `Require a referee name` selects whether a referee name is required on a scoresheet.
 - Applies to all roles.
 - Default: YES
-- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually published](#scoring-tile), usually by the scorekeeper.
+- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually set as Public](#scoring-tile), usually by the scorekeeper.
 - Applies to all roles
 - Default: YES.
 - `Require a Table` selects whether a table name is required on a scoresheet.
@@ -342,9 +342,10 @@ The scoresheet text follows the official scoresheet exactly.
 - `Select Team` - Choose the team to score. After selecting a team, you select the `Round`.
 - `Select Round` - Click the `Round` to score.
 - `Points` shows the accumulated points of missions scored so far.
-- `Default` sets all the unscored missions to their default (usually unscored) value. This shortcut may be used when a team has successfully done only a few missions - score those missions and then press `Default` to rapidly complete the other missions. This option is not available when the referee role is logged in since the referee is required to go over all the missions with the team technicians.
-- `No show` - mark a No Show team
-- `Reset` - reset the scoresheet to it's unscored state.
+- `Default` sets all the unscored missions to their default (usually unscored) value. This shortcut may be used when a team has successfully completed only a few missions - score those missions and then press `Default` to rapidly complete the other missions. This option is not available when the referee role is logged in since the referee is required to go over all the missions with the team technicians.
+- `No show` - mark a team that has missed their match as No Show
+- `Reset` - reset the scoresheet to it's unscored state
+- `Cancel` - closes the scoresheet without saving it
 - `?` - Show the mission description.
 
 Once all the scoring requirements of a mission have been marked, the mission score value is shown, and the accumulated points are updated. The page automatically scrolls to the next mission.
@@ -370,18 +371,43 @@ When you login as `Scorekeeper` or `Admin` you see this screen.
 
 <img src="./images/scoring-admin-login.png" style="width:75%">
 
-Press the menu icon on the top left of the `Scoresheet` to open the `Score management` screen.  
+The top line has four icons:
 
-<img src="./images/scoring-management.png" style="width:75%">
+- New scoresheet
+- Score management view
+- Ranks view
+- Logout
 
-- **Search scores** - enter text to filter which scores are shown. Examples:  
+#### New scoresheet
+
+This button opens a scoresheet as described in the referee [Scoresheet](#scoresheet).
+
+#### Score management
+
+This screen is used by the Head referee or Scorekeeper to view all the scores entered and to modify the team score information
+
+<img src="./images/scoring-tiles.png" style="width:75%">
+
+- Buttons
+  - Scores - shows the number of scores entered into the system and the number shown
+  - Filter - you can filter scores by a large number of paramters -  Public / Valid / Duplicate / No-show / Team number / Stage / Round / Table / Referee
+  - Sort order - order the scores by Team number / Match / Score / Last update time
+  - Export stage - exports the  scores to a CSV file that can be used by Judging-Lite. 
+  
+    Note: When the `Stage` in `Tournament Settings` is set to `practice`, those scores are exported. When it is set to `ranking`, ranking stage scores are exported.
+  
+  - Delete all - delete all scores on the system. You will be asked to confirm. This button is only available when `admin` is logged in.
+
+    **Note: this is permanent and deleted scores cannot be recovered**.
+
+- Using the Filter
+
+  Examples:  
   - `practice` - show all practice scores
   - `ranking #2` - show all scores in round `ranking 2`
   - `#62` - show all scores of team 62
   - `#7` - show all scores of teams with team numbers that start with 7. Add a space after the number 7 to show only scores for team 7
   - `Table 3` - show all scores on `Table 3`
-- **Delete all scores** deletes all scores on the system. You will be asked to confirm. **Note this is permanent and deleted scores cannot be recovered**.
-- **Download rankings** downloads the  scores to a CSV file that can be used by Judging-Lite. Note: When the `Stage` in `Tournament Settings` is set to `practice`, those scores are exported. When it is set to `ranking`, ranking stage scores are exported.
 
 ### Scoring tiles
 
@@ -391,25 +417,31 @@ All the information relating to a particular score is shown in a scoring tile.
 
 <img src="./images/scoring-tile.png" style="width:75%">
 
-- `Team number and name` - change the team to which this score is assigned
-- `Round` - change the `round` to which this score is assigned
+- `Team number and name` - change the team to which this score is assigned.
+- `Round` - change the `round` to which this score is assigned.
 - `Score` - change the `score` for this match. Note: if you do this, the score will no longer be the same as the accumulated score on the scoresheet.
-- `referee` and `table` - change the `referee` and `table`.
-- `Edit scoresheet` - open the scoresheet for editing. `Scorekeepers` may use this to verify the scores entered by the `referee`.
-- `Publish / Unpublish` - publishing (`+`) a score causes it to appear in the `Scoreboard`. Unpublishing (`-`) causes the score not to appear in the `Scoreboard`. Note: The `-` symbol that means the score is published, `+` means it is unpublished.
+- `referee` and `table` - change the `referee` name and `table`.
+scores entered by the `referee`.
+- `Public / Unpublic` - setting a score as `Public` causes it to appear on the `Scoreboard`. Setting it as `Unpublic` causes the score not to appear on the `Scoreboard`. Note that the default `Public` state of a new score is configured in the `Scoring` settings.
+- `No Show` sets the state of the match for a team as No Show. No Show teams are marked with a `-` on the `Scoreboard`.
+- `Edit scoresheet` - open the scoresheet for editing. `Scorekeepers` may use this to verify the missions complted by a team.
 - `Delete` - delete a score. You will be asked to confirm. **Note this is permanent and a deleted score cannot be recovered**.
 
 #### Duplicate scores
 
 <img src="./images/scoring-duplicate.png" style="width:75%">
 
-The `Show only duplicates` button is enabled when more than one score has been submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper a way to easily check for duplicate scores, and to correct the error.
+The `Show only duplicates` button is automatically enabled when more than one score is submitted for the same team and round. Clicking the button filters out all scores that are not duplicates. This gives the head referee or scorekeeper a way to easily check for duplicate scores, in order to correct the error.
 
 #### Bad scores
 
-The `Show only bad scores` button is enabled when scores cannot be sent to the `Scoreboard`. This might happen when entering match results on a iPad and the WiFi connection is interrupted. See [Communication status](#communication-status).
+The `Show only bad scores` button is enabled when scores cannot be sent to the `Scoreboard` because the information is incomplete. This might happen when entering match results on a iPad and the WiFi connection is interrupted. See [Communication status](#communication-status).
 
-Due to the interruption, the list of Rounds cannot be retrieved from the `Launcher` and the referee can choose to submit the score without the `Round`, thereby freeing up the iPad for the next match. On the head referee or scorekeeper [Scoring tile](#scoring-tile) this match's round will be shown as `Missing round`, and the `Show only bad scores` button will be enabled. This will alert the head referee or scorekeeper to the fact that they need to fix the missing `Round`.
+Due to the interruption, the list of Rounds cannot be retrieved from the `Launcher`. The referee can choose to submit the score without the `Round`, thereby freeing up the iPad for the next match. On the [Scoring management view](#score-management) this match's round will be shown as `Missing round`, and the `Show only bad scores` button will be enabled. This will alert the head referee or scorekeeper to the fact that they need to fix the missing `Round`.
+
+### Ranks view
+
+TBD
 
 ## Scoreboard
 
@@ -437,7 +469,7 @@ The match Timer is overlaid onto the scores display during matches so that the T
 
 ### Scoreboard local settings
 
-The Scoreboard has a number of settings that allow scoreboard screens to be configured individually. Press the `Settings` button on the bottom left of the screen to access the settings. Note that the `Settings` button is not shown when the screen is in Full-Screen (F11) mode.
+The Scoreboard has a number of settings that allow scoreboard screens to be configured individually. Press the `Settings` button on the top right of the screen to access the settings. Note that the `Settings` button is not shown when the screen is in Full-Screen (F11) mode.
 
 <img src="./images/scoreboard-settings.png" style="width:75%">
 
@@ -447,15 +479,19 @@ Change to Off if you do not want the match timer to be displayed on the scoreboa
 
 #### Show Logos Strip
 
-Controls whether the sponsor logos scroll across the bottom of the screen. When set to Off, more team results are shown.
-
-#### Use High Contrast colors
-
-Some projection systems do not display the two-toned colors well. Set this setting to Off to display the results in a black font against a white background.
+Controls whether the sponsor logos scroll across the bottom of the screen. When set to Off, the local sponsors are not shown, and more team results can be seen.
 
 #### Right to Left
 
-Swap the direction of the display 
+Swap the direction of the display.
+
+#### Scroll Speed
+
+Adjust the speed at which team results scroll.
+
+#### Text Size
+
+Adjust the size of font used for the results.
 
 ### Low resolution projection systems
 
