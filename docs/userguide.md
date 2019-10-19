@@ -1,6 +1,8 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 24-Mar-2019 for v2018.1.5
+Last Updated: 19-Oct-2019 for v2019.1.1
+
+NOTE: As of 19-Oct-2019 this guide has not been fully updated for the CITY SHAPER season.
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -503,21 +505,26 @@ The `Timer` (clock) is used to start matches and provides a 2:30 minute countdow
 
 <img src="./images/timer.png" style="width:75%">
 
-There are 3 action buttons
+The timer can be activated on any computer or tablet on the network. The sounds are played on all computers which have the timer screen open. If required, you can [mute](#sound-on/off) the sounds on a particular computer.
+
+There are 4 action buttons
 
 - Start the timer
-- Reload the timer - resets the timer to 2:30 minutes
-- Stop the timer - does an automatic reload
+- Start the timer after a delay - starts a 5 second countdown, at the end of which the 2:30 minute timer starts.
+- Reload the timer - resets the timer to 2:30 minutes.
+- Abort the timer - does an automatic reload.
 
-The musical note in the top left hand corner of the screen is used to test the four sounds.
+### Test sounds
 
-<img src="./images/test-sounds.png" style="width:75%">
+The `Test sounds` button at the top left of the screen is used to test the four sounds.
+
+### Sound on/off
+
+The `Sound on/off` button may be used to turn off the sounds on one screen.
 
 During a match the elapsed time is overlaid onto the Scoreboard.
 
 <img src="./images/scoreboard-with-timer.png" style="width:75%">
-
-The timer can be activated on any computer or tablet on the network. The sound files are played only on the computer where the TMS is installed and this computer must be connected to to a loudspeaker system if required.
 
 ## Tournament Status Display
 
@@ -547,10 +554,6 @@ Many laptop PCs have more than one `Network adapter`. For instance, there might 
 The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Save debug data`/`Save logs` button at the bottom of the app `About` screen.
 
 Logging should be set to DEBUG.
-
-<img src="./images/launcher-loglevel.png" style="width:75%">
-
-Note: When reporting a bug please include the software version which can be seen in the Home screen of the [Launcher](#launcher).
 
 ## 32bit computers
 
@@ -598,4 +601,3 @@ Please send comments/suggestions/questions about this document to Alan Green at 
 1. After making changes to the scoring settings in the Launcher, the Scoring browser tab needs to be refreshed (press F5)
 1. Accessing Tournament Setup while logged in as Referee throws you out to the Login screen when you try to save changes. Solution: Log in as Admin.
 1. TMS Launcher will not start correctly if the computer has no network adapters. Possible workaround - open a mobile hotspot for the computer WiFi to connect to.
-1. If you drag a file onto the launcher window, the app will open it in the window. There is no way to close the file again except to shut down and re-open the app.
