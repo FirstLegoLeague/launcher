@@ -57,7 +57,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '2.4.22'
+        version: '2.4.23'
       }
     },
     tournament: {
@@ -71,7 +71,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
-        version: '1.3.0'
+        version: '1.3.2'
       }
     }
   },
