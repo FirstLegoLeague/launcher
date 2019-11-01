@@ -1,4 +1,4 @@
-version: 2019.0.{build}
+version: 2019.1.2.{build}
 
 branches:
   only:
