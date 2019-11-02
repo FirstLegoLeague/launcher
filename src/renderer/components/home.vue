@@ -1,40 +1,38 @@
 <template>
-  <div class="ui container">
-    <div class="ui one column padded grid">
-      <div class="column">
-        <div class="ui center aligned segment">
-          <div class="ui grid">
-            <div id="challenge" class="three wide column"></div>
-            <div class="ten wide column">
-                <h2 class="ui header">
-                    Tournament Management System
-                    <span class="sub header">v2019.0.0</span>
-                </h2>
-            </div>
-            <div id="fll" class="three wide column"></div>
+  <div class="ui one column padded grid">
+    <div class="column">
+      <div class="ui center aligned segment">
+        <div class="ui grid">
+          <div id="challenge" class="three wide column"></div>
+          <div class="ten wide column">
+            <h2 class="ui header">
+              Tournament Management System
+              <span class="sub header">v2019.1.2</span>
+            </h2>
           </div>
+          <div id="fll" class="three wide column"></div>
         </div>
-        <div class="ui four cards">
-            <div v-for="module in modules" class="card">
-                <div class="content">
-                    <a class="header" @click="event => openSite(event, module.site)" :href="module.site">
-                        {{module.name}}
-                    </a>
-                    <div class="ui divider"></div>
-                    <div class="description">
-                        <qrcode :value="module.site"></qrcode>
-                    </div>
-                    <a class="meta" @click="event => openSite(event, module.site)" :href="module.site">
-                        {{module.site}}
-                    </a>
-                </div>
-                <div class="extra content">
-                    <div class="ui button" @click="() => saveInClipboard(module.site)">
-                        <i class="copy icon"></i>
-                        Copy link
-                    </div>
-                </div>
+      </div>
+      <div class="ui five cards">
+        <div v-for="module in modules" class="card">
+          <div class="content">
+            <a class="header" @click="event => openSite(event, module.site)" :href="module.site">
+              {{module.name}}
+            </a>
+            <div class="ui divider"></div>
+            <div class="description">
+              <qrcode :value="module.site"></qrcode>
             </div>
+            <a class="meta" @click="event => openSite(event, module.site)" :href="module.site">
+              {{module.site}}
+            </a>
+          </div>
+          <div class="extra content">
+            <div class="ui button" @click="() => saveInClipboard(module.site)">
+              <i class="copy icon"></i>
+              Copy link
+            </div>
+          </div>
         </div>
       </div>
     </div>

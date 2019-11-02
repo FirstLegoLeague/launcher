@@ -15,7 +15,7 @@
               <a class="link card" @click="event => openSite(event, 'mailto:FLL-TMS-Support@firstinspires.org')">
                 <div class="content">
                   <div class="header">
-                    <i class="envelope icon"></i> By our support email
+                    <i class="envelope icon"></i> Support email
                   </div>
                   <div class="description">
                     FLL-TMS-Support@firstinspires.org
@@ -25,7 +25,7 @@
               <a class="link card" @click="event => openSite(event, 'http://fll-tools.com/support/')">
                 <div class="content">
                   <div class="header">
-                    <i class="globe icon"></i> In our support website
+                    <i class="globe icon"></i> Support website
                   </div>
                   <div class="description">
                     fll-tools.com/support
