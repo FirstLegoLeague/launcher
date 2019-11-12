@@ -13,3 +13,4 @@
 1. In Scoresheet, fixed Next Round advance after submitting scoresheet.
 1. In Scores tiles view, add Sort by date.
 1. In Scoring - fixed spurious communications loss warning.
+1. In Tournament Setup - fix bug that resulted in clicking Import for the 2nd time showed the data from the 1st import.
