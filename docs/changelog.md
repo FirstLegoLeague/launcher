@@ -1,6 +1,6 @@
 # FIRST LEGO League TMS Release Notes
 
-## V2019.1.2.514 - 14-Nov-2019
+## V2019.1.2 - 14-Nov-2019
 
 ### Issues fixed - Simply Speaking
 
