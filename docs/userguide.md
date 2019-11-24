@@ -553,6 +553,8 @@ Many laptop PCs have more than one `Network adapter`. For instance, there might 
 
 The software records activities in logfiles. When reporting a bug please attach these logs. The logs may be collected into a .ZIP file by pressing the `Save debug data` button at the bottom of the TMS app `About` screen. Please email the .ZIP file to FLL-TMS-Support@firstinspires.org or attach it to the support ticket.
 
+<img src="./images/launcher-debug-data.png" style="width:75%">
+
 Logging should be set to DEBUG.
 
 ## 32bit computers
