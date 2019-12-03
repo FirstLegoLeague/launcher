@@ -587,7 +587,7 @@ Please provide the following information:
     - whether you use iPads for score entry
 1. Attach log files and debug data. These can be collected from the app About screen, by pressing the `Save debug data/Save logs` button.
 1. How you entered team information in [Tournament Setup](#tournament-setup).
-    - A schedule file or a team list was imported
+    - Whether a schedule file or a team list file was imported
     - OR Teams were added one by one manually
     - If you imported a file, please send that too.
 
