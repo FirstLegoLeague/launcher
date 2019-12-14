@@ -1,8 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
-Last Updated: 19-Oct-2019 for v2019.1.1
-
-NOTE: As of 19-Oct-2019 this guide has not been fully updated for the CITY SHAPER season.
+Last Updated: 14-Dec-2019 for v2019.1.2
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
 
@@ -111,12 +109,12 @@ If you don't have time to read this whole guide or you need just to know the ste
 1. Select the team from the dropdown list
 1. Enter the referee name (optional for admin or scorekeeper roles)
 1. Choose the table  (optional for admin or scorekeeper roles)
-1. Select the round (practice #1 / ranking #1 / ranking #2 / ranking #3).
+1. Select the round (practice #1 / ranking #1 / ranking #2 / ranking #3)
 1. Score each mission, and have the Team Technician sign the scoresheet
 1. Press Done
 1. On the top left of the `Scoring` tab, click `Back to scores`
 1. The list of scores entered so far are shown
-1. The Scoreboard page shows the scores entered **for the current stage**.
+1. The Scoreboard page shows the scores entered **for the current stage**
 
 ## Launcher
 
@@ -256,7 +254,7 @@ The five *FIRST* LEGO League global sponsors are preloaded. You can add addition
 
 The next step is to import a schedule file or team list. Click the `Import` icon at the top right of the screen and drag `Schedule File` or `Team List` file as indicated.
 
-Note: `Import` is only available when the team list is empty.
+Note: `Import` is only available when the schedule or team list is empty.
 
 <img src="./images/tournament-import.png" style="width:75%">
 
@@ -270,6 +268,8 @@ Note: `Import` is only available when the team list is empty.
   * [Example 24 Team List](./files/24_Team_List.csv). Click to [Download](./files/24_Team_List.csv.zip) and then unzip.
   
 Note: See [Tournament Status Display](#tournament-status-display) for an explanation of how the matches time schedule data is used.
+
+Note: If you use Excel to create your schedule file or team list, and your team names include Unicode characters (Greek, Chinese, Arabic, Hebrew, etc) then when you save the file as .CSV you need to save it as `CSV UTF-8 (Comma delimited)`.
 
 Drag and drop a schedule file or team list onto the popup.
 
