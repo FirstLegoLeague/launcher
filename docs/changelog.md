@@ -1,6 +1,6 @@
 # FIRST LEGO League TMS Release Notes
 
-## V2019.1.3 - 14-Nov-2019
+## V2019.1.3 - 18-Jan-2020
 
 1. Scoring
     1. Fix: Fixed issue where when pressing Edit on a score in the ranking round 1, the round selection button for round 2 was selected, so that when Done was pressed, the score was saved for round  2.
