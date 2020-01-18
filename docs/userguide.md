@@ -237,7 +237,15 @@ The `Tournament Settings` screen is where you configure general settings for the
 <img src="./images/tournament-settings.png" style="width:75%">
 
 - The `Tournament Title` shown on the `Scoreboard` is configured here.
-- Use the `Current Stage` dropdown to set the current stage of the tournament. Most tournaments have `practice` and `ranking` stages. When you import a `Schedule File` the stage names in the file are used. Default stage names are used if you import a `Team List`. Press the `Save` button after changing the stage. If scores have already been entered for the newly selected `Stage` they will appear on the `Scoreboard`.
+- Use the `Current Stage` dropdown to set the current stage of the tournament. Most tournaments have `practice` and `ranking` stages.
+  - When you import a `Schedule File` the stage names in the file are used. 
+  - Default stage names are used if you import a `Team List`. 
+  - Press the `Save` button after changing the stage. If scores have already been entered for the newly selected `Stage` they will appear on the `Scoreboard`.
+  - The `Current stage` is not advanced automatically at the end of the `Practice` stage.
+- The `Current Match` is the match number of the match being played.
+  - The `Current Match` starts at 0 and is automatically advanced when the `Timer` is started.
+  - The current match is not advanced at `Timer` start if the previous timer was aborted.
+  - Should you need to set the current match manually, enter a new value (or press the arrows) and then press `Save`.
 - If you have a non-default number of Practice or Ranking rounds, make the change in the `Number of rounds per stage` setting.
 - The `Schedule offset` setting is used when you have imported a full schedule file, with match times, and your tournament is running behind schedule (e.g. snow days).
 - `Delete Tournament Data` - Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note this is permanent and deleted data cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches, which means that you will have to delete scores before deleting teams (and matches). You delete scores in the `Scoring` module.
