@@ -1,5 +1,6 @@
 # Dockerfile for FLL scoring software
 # change rovitotv to your username
+# For the docker run command specify the second volume to save data from the tournament between runs
 #
 # The FLL launcher is an electron-js application that starts a GUI which displays the ip address
 # and port numbers of each service.  For some reason the electron-js application starts in debug
