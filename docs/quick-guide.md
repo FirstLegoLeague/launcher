@@ -4,6 +4,35 @@ Last Updated: 24-Jan-2020 for v2019.1.3
 
 This guide is intended to be a quick HOW-TO guide to using the scoring software. It is a supplement to the [full *FIRST* LEGO League TMS User Guide](https://github.com/FirstLegoLeague/Launcher/blob/user-guide/docs/userguide.md)
 
+## Table of Contents
+
+- [Launcher app](#launcher-app)
+  - [Home](#home)
+  - [Settings](#settings)
+- [Logging in](#logging-in)
+- [Tournament Setup](#tournament-setup)
+  - [Tournament Settings](#tournament-settings)
+  - [Sponsor Logos](#sponsor-logos)
+  - [Import team information](#import-team-information)
+  - [Teams](#teams)
+  - [Matches](#matches)
+    - [Manage Tables](#manage-tables)
+- [Scoring](#scoring)
+  - [Referee login](#referee-login)
+  - [Scoresheet](#scoresheet)
+  - [Scorekeeper or Admin login](#scorekeeper-or-admin-login)
+  - [Score mangement](#score-mangement)
+  - [Scoring tiles](#scoring-tiles)
+    - [Scoring tile](#scoring-tile)
+    - [Duplicate scores](#duplicate-scores)
+- [Scoreboard](#scoreboard)
+  - [Score results](#score-results)
+  - [Scoreboard timer display](#scoreboard-timer-display)
+- [Timer](#timer)
+  - [Test sounds](#test-sounds)
+  - [Sound on/off](#sound-onoff)
+- [Tournament Status Display](#tournament-status-display)
+
 ## Launcher app
 
 The `launcher` is used to open and configure the TMS modules.
