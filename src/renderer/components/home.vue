@@ -7,7 +7,7 @@
           <div class="ten wide column">
             <h2 class="ui header">
               Tournament Management System
-              <span class="sub header">v2019.1.3</span>
+              <span class="sub header">v2019.1.4</span>
             </h2>
           </div>
           <div id="fll" class="three wide column"></div>
