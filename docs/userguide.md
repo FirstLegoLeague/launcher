@@ -1,5 +1,6 @@
 # *FIRST* LEGO League TMS User Guide
 
+Upcoming release: 1-Mar-2020 for v2019.1.4 ([Release Notes](#release-notes))
 Last Updated: 1-Feb-2020 for v2019.1.3 ([Release Notes](#release-notes))
 
 This guide is intended to help *FIRST* LEGO League tournament orgnizers use the Tournament Management System (TMS).
@@ -28,7 +29,7 @@ You can also watch a [recording of the Webinar](https://register.gotowebinar.com
   - [Matches](#matches)
 - [Scoring](#scoring)
   - [Scoresheet](#scoresheet)
-  - [Score management screen](#score-management-screen)
+  - [Score management screen](#scorekeeper-or-admin-login)
   - [Scoring tiles](#scoring-tiles)
     - [Scoring tile](#scoring-tile)
     - [Duplicate scores](#duplicate-scores)
@@ -165,7 +166,7 @@ Configure the [Scoring](#scoring) module settings.
 - `Require a referee name` selects whether a referee name is required on a scoresheet.
 - Applies to all roles.
 - Default: YES
-- `Auto-publish team scores` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually set as Public](#scoring-tile), usually by the scorekeeper.
+- `Automatically set team score to public` - When configured to YES, scores will be sent to the `Scoreboard` immediately when the referee or scorekeeper presses the `Submit` button. If configured to NO the scores must be [manually set as Public](#scoring-tile), usually by the scorekeeper.
 - Applies to all roles
 - Default: YES.
 - `Require a Table` selects whether a table name is required on a scoresheet.
@@ -247,7 +248,7 @@ The `Tournament Settings` screen is where you configure general settings for the
   - The current match is not advanced at `Timer` start if the previous timer was aborted.
   - Should you need to set the current match manually, enter a new value (or press the arrows) and then press `Save`.
 - If you have a non-default number of Practice or Ranking rounds, make the change in the `Number of rounds per stage` setting.
-- The `Schedule offset` setting is used when you have imported a full schedule file, with match times, and your tournament is running behind schedule (e.g. snow days).
+- The `Schedule offset` setting is used when you have imported a full schedule file, with match times, and your tournament is running behind schedule (e.g. snow days). See [Tournament Status Display](#tournament-status-display)
 - `Delete Tournament Data` - Use the `Delete` button to delete the Teams and Matches.  You will be asked to confirm. **Note this is permanent and deleted data cannot be recovered**. The system will verify that there are no team scores before deleting teams or matches, which means that you will have to delete scores before deleting teams (and matches). You delete scores in the `Scoring` module.
 
 ### Sponsor Logos
@@ -377,22 +378,24 @@ Note: [Require a Signature](#settings) is configurable in the Settings.
 
 ### Scorekeeper or Admin login
 
-When you login as `Scorekeeper` or `Admin` you see this screen.
+When you login as `Scorekeeper` or `Admin` you see the score management screen.
 
 <img src="./images/scoring-admin-login.png" style="width:75%">
 
 The top line has four icons:
 
-- New scoresheet
-- Score management view
-- Ranks view
-- Logout
+- [New scoresheet](#new-scoresheet)
+- [Score management view](#score-management)
+- [Ranks view](#ranks-view)
+- [Recycle bin](#recycle-bin)
+- [Score settings](#score-settings)
+- [Logout](#scoring-logout)
 
 #### New scoresheet
 
 This button opens a scoresheet as described in the referee [Scoresheet](#scoresheet).
 
-#### Score management
+### Score management
 
 This screen is used by the Head referee or Scorekeeper to view all the scores entered and to modify the team score information
 
@@ -435,7 +438,7 @@ scores entered by the `referee`.
 - `Public / Unpublic` - setting a score as `Public` causes it to appear on the `Scoreboard`. Setting it as `Unpublic` causes the score not to appear on the `Scoreboard`. Note that the default `Public` state of a new score is configured in the `Scoring` settings.
 - `No Show` sets the state of the match for a team as No Show. No Show teams are marked with a `-` on the `Scoreboard`.
 - `Edit scoresheet` - open the scoresheet for editing. `Scorekeepers` may use this to verify the missions complted by a team.
-- `Delete` - delete a score. You will be asked to confirm. **Note this is permanent and a deleted score cannot be recovered**.
+- `Delete` - delete a score. Scores are moved into the [recycle bin](#recycle-bin). Press the Undo button on `Score deleted` notification to restore a score, or go to the [recycle bin](#recycle-bin)
 
 #### Duplicate scores
 
@@ -452,6 +455,27 @@ Due to the interruption, the list of Rounds cannot be retrieved from the `Launch
 ### Ranks view
 
 TBD
+
+### Recycle bin
+
+When individual scoresheets are deleted, the scoring information is not lost. Press the bin icon to view all scores that have been deleted.
+
+<img src="./images/scoring-recycle-bin.png" style="width:75%">
+
+Press the `Restore` button to undelete a score.
+
+**Note** Pressing the `Delete all` button deletes all scores permanently.
+
+### Score settings
+
+<img src="./images/scoring-settings.png" style="width:75%">
+
+- You can set the scoresheet language for the current input device (e.g. iPad).
+- Turn off Autoscroll if you do not want the scoresheet to scroll automatically to the next mission.
+
+### Scoring logout
+
+Log out from your current role. Note that if you have other open TMS browser tabs, they will be logged out too.
 
 ## Scoreboard
 
@@ -536,11 +560,13 @@ During a match the elapsed time is overlaid onto the Scoreboard.
 
 ## Tournament Status Display
 
-This display shows whether the tournament is running ahead of schedule or behind schedule. It also shows the teams that will play in the upcoming matches.
+This display can be used to whether the tournament is running ahead of schedule or behind schedule. It shows how much time there is until the scheduled start of the next match. It also shows the teams that will play in the upcoming matches.
+
+<img src="./images/tournament-status.png" style="width:75%">
+
+If your tournament starts late (for instance, due to snow) you can adjust for this in the [Tournament Settings](#tournament-settings) screen.
 
 Note: This display can only function if a [schedule file is imported](#tournament-setup).
-
-Note: Not implemented in the beta versions or version 2018.1.0 (release date 17-Oct-2018)
 
 ## Networked Computers
 
@@ -548,8 +574,11 @@ At a larger tournament you might have a number of computers connected to each ot
 
 ### Use of iPads and tablets
 
-We have done limited testing of referee score input using iPads and WiFi. No problems were encountered. If  there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again together with the submit of the subsequent scoresheet.  
-**Note:** Additional functionality has been added since these tests. Tournament organizers that intend using iPads should coordinate this with the development team. See the About screen for contact details.
+In the CITY SHAPER season the developers used iPads and WiFi for score input. No problems were encountered. If  there is a temporary loss of connectivity when the scoresheet is submitted, the results are saved locally in the iPad, and are sent again later.
+
+A method that worked well for us was to set `Automatically set team  score to public` to off (see [Settings](#settings)), and for a Scorekeeper to verify new scores as they came in, against a printed schedule. By setting the `Unpublic` filter, the scores screen only showed new scores. After verifying that the team matched the schedule, the scorekeeper set the score to `Public`.
+
+We do not have experience with other tablets.
 
 ## Network adapters
 
