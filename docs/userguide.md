@@ -464,7 +464,7 @@ When individual scoresheets are deleted, the scoring information is not lost. Pr
 
 Press the `Restore` button to undelete a score.
 
-**Note** Pressing the `Delete all` button deletes all scores permanently.
+**Note** Pressing the `Delete all` button does not use the recycle bin and deletes all scores permanently.
 
 ### Score settings
 
