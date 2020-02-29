@@ -1,5 +1,35 @@
 # FIRST LEGO League TMS Release Notes
 
+## V2019.1.4 - 1-Mar-2020 (to be released soon)
+
+### Issues fixed - Simply Speaking
+
+This is not a mandatory update. If you are happy with the way the scoring system has worked for you so far this season, then don't update.
+
+1. `Scoring` has a recycle bin from which deleted scores can be restored. Note that the `Delete all` button still deletes scores permanently.
+1. In `Scoring`, Modal dropdown menus on iPads have  been fixed.
+1. The traditional `Timer` sounds are back
+1. New Next Up teams screen
+
+### Issues fixed - Technically speaking
+
+1. Scoring
+    1. Enhancement: `Scoring` now has a recycle bin. Deleted scores go into the Recycle Bin, and can be restored. Also, the `Score deleted` notifcation has a restore icon.
+    1. Fix: In the button list of rounds at the top of the scoresheet, Practice rounds will always precede Ranking rounds.
+    1. Fix: A bug in the French Canadian scoresheet has been fixed.
+    1. Fix: A problem with Modal Dropdown  menus on iPads has been fixed. This affected the ability to choose referee tables, and to select an alternate scoresheet language.
+
+1. Timer
+    1. Timer sounds now have the traditional sounds together with the StarWars themed sounds.
+    1. Timer action buttons have been replaced with a large, easy to click, button strip.
+
+1. Status screen
+    1. Layout improved
+    1. Setting for 12hr / 24hr clock
+
+1. Scoreboard
+    1. Add a new option that shows the Next Up teams. For World Festival use.
+
 ## V2019.1.3 - 1-Feb-2020
 
 ### Issues fixed - Simply Speaking
