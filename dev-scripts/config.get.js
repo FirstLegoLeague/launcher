@@ -16,7 +16,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/clock',
-        version: '2.6.10'
+        version: '2.6.11'
       }
     },
     display: {
@@ -71,7 +71,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament-status',
-        version: '1.3.4'
+        version: '1.4.0'
       }
     }
   },
