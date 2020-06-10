@@ -1,24 +1,23 @@
 
 const fs = require('fs')
-const path = require('path')
 const Promise = require('bluebird')
 const randomatic = require('randomatic')
 
-const { Mhub } = require('./mhub')
+const { DATA_DIR } = require('./app-paths')
 const { Caddy } = require('./caddy')
+const { Configurator } = require('./configurator')
+const { loadLogsOptions, createLogStream, logger } = require('./logs')
+const { globalModuleConfig } = require('./global-config')
+const { Mhub } = require('./mhub')
+const { loadModules } = require('./module-loader')
 const { Mongo } = require('./mongo')
 const { getIp } = require('./network')
-const { loadModules } = require('./module-loader')
-const { loadLogsOptions, createLogStream, logger } = require('./logs')
 const { ServiceManager } = require('./services')
-const { Configurator } = require('./configurator')
-const { globalModuleConfig } = require('./global-config')
 
 Promise.promisifyAll(fs)
 
 const STARTING_PORT = 2828
 const SECRET_LENGTH = 12
-const DATA_DIR = path.resolve('./data/')
 
 exports.Server = class {
   constructor (modulesFile) {

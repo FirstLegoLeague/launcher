@@ -11,6 +11,7 @@ const randomatic = require('randomatic')
 const { MClient } = require('mhub')
 
 const { logger } = require('../logs')
+const { TEMP_DIR } = require('../app-paths')
 
 Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
@@ -21,7 +22,7 @@ const MHUB_CONNECTION_STRING = 'ws://127.0.0.1:13900'
 // const MHUB_NODE_NAME = 'default'
 const MHUB_EXECUTABLE_PATH = path.resolve('./internals/mhub/bin/mhub-server')
 const MHUB_FILE_TEMPLATE = path.join(__static, 'mhub-config.ejs')
-const MHUB_FILE_PATH = path.resolve('./tmp/$mhub.config.json')
+const MHUB_FILE_PATH = path.join(TEMP_DIR, '$mhub.config.json')
 
 const MAX_RETRIES = 5
 
