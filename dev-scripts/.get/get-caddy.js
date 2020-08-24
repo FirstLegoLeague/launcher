@@ -1,10 +1,14 @@
 'use strict'
 
+const fs = require('fs')
+const path = require('path')
 const tar = require('tar-fs')
 const unzip = require('unzip-stream')
 const request = require('request')
 const Promise = require('bluebird')
 const { createGunzip } = require('zlib')
+
+Promise.promisifyAll(fs)
 
 function calculateCaddyPlatform (platform) {
   return (platform === 'win32') ? 'windows' : platform
@@ -22,12 +26,14 @@ function calculateCaddyArch (arch) {
   throw new Error(`Unknown architecture '${arch}' for caddy`)
 }
 
+function calculateCaddyFilename (platform) {
+  return 'caddy' + (platform === 'win32'? '.exe' : '')
+}
+
 function createDownloadLink (platform, arch) {
-  const extension = (platform === 'linux') ? 'tar.gz' : 'zip'
   const caddyPlatform = calculateCaddyPlatform(platform)
   const caddyArch = calculateCaddyArch(arch)
-  return `https://github.com/caddyserver/caddy/releases/download/v1.0.4/` +
-    `caddy_v1.0.4_${caddyPlatform}_${caddyArch}.${extension}`
+  return `https://caddyserver.com/api/download?os=${caddyPlatform}&arch=${caddyArch}`
 }
 
 exports.getCaddy = function ({ directory, platform, arch }) {
@@ -59,6 +65,13 @@ exports.getCaddy = function ({ directory, platform, arch }) {
                 .on('finish', () => {
                   resolve()
                 }))
+              .on('error', reject)
+          } else if (response.headers['content-type'] === 'application/octet-stream') {
+            const filename = calculateCaddyFilename(platform)
+
+            req
+              .pipe(fs.createWriteStream(path.join(directory, filename), { mode: 0o775 }))
+              .on('finish', resolve)
               .on('error', reject)
           } else {
             throw new Error('Unknown content type')
