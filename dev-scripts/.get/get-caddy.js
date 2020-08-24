@@ -23,9 +23,11 @@ function calculateCaddyArch (arch) {
 }
 
 function createDownloadLink (platform, arch) {
+  const extension = (platform === 'linux') ? 'tar.gz' : 'zip'
   const caddyPlatform = calculateCaddyPlatform(platform)
   const caddyArch = calculateCaddyArch(arch)
-  return `https://caddyserver.com/download/${caddyPlatform}/${caddyArch}?license=personal`
+  return `https://github.com/caddyserver/caddy/releases/download/v1.0.4/` +
+    `caddy_v1.0.4_${caddyPlatform}_${caddyArch}.${extension}`
 }
 
 exports.getCaddy = function ({ directory, platform, arch }) {
