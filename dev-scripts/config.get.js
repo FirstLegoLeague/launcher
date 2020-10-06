@@ -23,14 +23,14 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/display',
-        version: '3.0.1'
+        version: '3.0.2'
       }
     },
     'identity-provider': {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/identity-provider',
-        version: '3.0.1'
+        version: '3.0.2'
       }
     },
     mhub: {
@@ -57,14 +57,14 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/scoring',
-        version: '3.0.1'
+        version: '3.0.2'
       }
     },
     tournament: {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '3.0.2'
+        version: '3.0.3'
       }
     },
     'tournament-status': {
