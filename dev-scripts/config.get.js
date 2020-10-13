@@ -64,7 +64,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/tournament',
-        version: '3.0.3'
+        version: '3.0.4'
       }
     },
     'tournament-status': {
