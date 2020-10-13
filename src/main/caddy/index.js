@@ -68,7 +68,7 @@ class Caddy {
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: this.executable,
-      arguments: ['--config', this.caddyFile]
+      arguments: ['start', '--config', this.caddyFile, '--adapter', 'caddyfile']
     })
       .then(serviceId => {
         this.serviceId = serviceId
