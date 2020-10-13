@@ -30,7 +30,7 @@ module.exports = {
       get: getNpmModule,
       options: {
         package: '@first-lego-league/identity-provider',
-        version: '3.0.2'
+        version: '3.0.3'
       }
     },
     mhub: {
