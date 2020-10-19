@@ -3,7 +3,7 @@
 }
 
 :<%= configPort %> {
-	root "<%= envDir -%>"
+    root "<%= envDir %>"
     file_server
 }
 
@@ -11,9 +11,9 @@
 :<%= site.port %> {
     root "<%= site.root %>"
     rewrite /environment.json :<%= configPort %>/<%= site.id %>.json
-    <% if(site.index) { -%>
+<% if(site.index) { -%>
     index <%= site.index %>
-    <% } -%>
+<% } -%>
     file_server
 }
-<% } -%>
+<% }) -%>
