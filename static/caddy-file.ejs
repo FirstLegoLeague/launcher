@@ -10,7 +10,7 @@
 <% sites.forEach(site => { -%>
 :<%= site.port %> {
     root "<%= site.root %>"
-    redir /environment.json :<%= configPort %>/<%= site.id %>.json permanent
+    redir /environment.json {host}:<%= configPort %>/<%= site.id %>.json permanent
 <% if(site.index) { -%>
     index <%= site.index %>
 <% } -%>
