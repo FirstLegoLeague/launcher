@@ -2,7 +2,7 @@
 	admin off
 }
 
-<%= configPort %> {
+:<%= configPort %> {
 	root "<%= envDir %>"
     file_server
 }
@@ -10,7 +10,7 @@
 <% sites.forEach(site => { %>
 :<%= site.port %> {
     root "<%= site.root -%>"
-    rewrite /environment.json <%= configPort %>/<%= site.id %>.json
+    rewrite /environment.json :<%= configPort %>/<%= site.id %>.json
     <% if(site.index) { %>
     index <%= site.index -%>
     <% } %>
