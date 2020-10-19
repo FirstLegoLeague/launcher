@@ -18,9 +18,10 @@ const CADDY_FILE_TEMPLATE = path.join(__static, 'caddy-file.ejs')
 const CADDY_FILE_PATH = path.resolve('./tmp/$CaddyFile')
 const CADDY_ENV_DIR = path.resolve('./tmp/$caddy/')
 
-function generateCaddyFileContent (caddyFile, sites) {
+function generateCaddyFileContent (caddyFile, sites, configPort) {
   return mkdirpAsync(path.dirname(caddyFile))
     .then(() => ejs.renderFileAsync(CADDY_FILE_TEMPLATE, {
+      configPort,
       sites,
       envDir: CADDY_ENV_DIR
     }))
@@ -54,10 +55,10 @@ class Caddy {
     this.sites = []
   }
 
-  start () {
+  start (configPort) {
     return this.serviceManager.startService({
       init: () => {
-        const caddyFilePromise = generateCaddyFileContent(this.caddyFile, this.sites)
+        const caddyFilePromise = generateCaddyFileContent(this.caddyFile, this.sites, configPort)
         const siteEnvFilesPromise = createEnvironmentDirectory(this.caddyEnvDir)
           .then(() => this.sites.map(site => generateWebEnvironment(this.caddyEnvDir, site.id, site.env)))
           .all()

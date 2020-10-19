@@ -85,7 +85,7 @@ exports.Server = class {
         }))
       )
       .then(stopFunctions => { this.modulesStopFunctionsPromise = Promise.resolve(stopFunctions) })
-      .then(() => this.caddy.start())
+      .then(() => this.caddy.start(Math.max.apply(Math, Object.values(portsAllocations)) + 1))
   }
 
   restart () {

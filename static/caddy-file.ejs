@@ -2,19 +2,17 @@
 	admin off
 }
 
+<%= configPort %> {
+	root "<%= envDir %>"
+    file_server
+}
+
 <% sites.forEach(site => { %>
 :<%= site.port %> {
     root "<%= site.root -%>"
+    rewrite /environment.json <%= configPort %>/<%= site.id %>.json
     <% if(site.index) { %>
     index <%= site.index -%>
     <% } %>
     file_server
 }
-
-:<%= site.port %>/environment.json {
-    root "<%= envDir %>"
-    templates
-    rewrite /environment.json /<%= site.id %>.json
-    file_server
-}
-<% }) %>
