@@ -42,6 +42,7 @@ exports.Server = class {
     this.modulesPromise
       .map(module => this.moduleConfigurator.addModule(module))
       .then(() => this.moduleConfigurator.seal())
+      .then(() => this.caddy.setConfigPort(STARTING_PORT + modules.length))
       .catch(err => logger.error(err))
 
     this.modulesStopFunctionsPromise = Promise.resolve([])
@@ -86,7 +87,7 @@ exports.Server = class {
       )
       .then(stopFunctions => { this.modulesStopFunctionsPromise = Promise.resolve(stopFunctions) })
       .then(() => this.modulesPromise)
-      .then(modules => this.caddy.start(STARTING_PORT + modules.length))
+      .then(modules => this.caddy.start())
   }
 
   restart () {

@@ -55,10 +55,10 @@ class Caddy {
     this.sites = []
   }
 
-  start (configPort) {
+  start () {
     return this.serviceManager.startService({
       init: () => {
-        const caddyFilePromise = generateCaddyFileContent(this.caddyFile, this.sites, configPort)
+        const caddyFilePromise = generateCaddyFileContent(this.caddyFile, this.sites, this.configPort)
         const siteEnvFilesPromise = createEnvironmentDirectory(this.caddyEnvDir)
           .then(() => this.sites.map(site => generateWebEnvironment(this.caddyEnvDir, site.id, site.env)))
           .all()
@@ -69,7 +69,7 @@ class Caddy {
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: this.executable,
-      arguments: ['start', '--config', this.caddyFile, '--adapter', 'caddyfile']
+      arguments: ['run', '--config', this.caddyFile, '--adapter', 'caddyfile']
     })
       .then(serviceId => {
         this.serviceId = serviceId
@@ -86,7 +86,7 @@ class Caddy {
     }))
 
     if (this.child !== undefined) {
-      return generateCaddyFileContent(this.caddyFile, this.sites)
+      return generateCaddyFileContent(this.caddyFile, this.sites, this.configPort)
         .then(() => generateWebEnvironment(this.caddyEnvDir, site.id, site.env))
         .then(() => this.child.kill('SIGUSR1'))
     } else {
@@ -100,12 +100,16 @@ class Caddy {
     this.sites.splice(siteIndex, 1)
 
     if (this.child !== undefined) {
-      return generateCaddyFileContent(this.caddyFile, this.sites)
+      return generateCaddyFileContent(this.caddyFile, this.sites, this.configPort)
         .then(() => removeWebEnvironment(this.caddyEnvDir, site.id))
         .then(() => this.child.kill('SIGUSR1'))
     } else {
       return Promise.resolve()
     }
+  }
+
+  setConfigPort (configPort) {
+    this.configPort = configPort
   }
 }
 
