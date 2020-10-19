@@ -3,16 +3,17 @@
 }
 
 :<%= configPort %> {
-	root "<%= envDir %>"
+	root "<%= envDir -%>"
     file_server
 }
 
-<% sites.forEach(site => { %>
+<% sites.forEach(site => { -%>
 :<%= site.port %> {
-    root "<%= site.root -%>"
+    root "<%= site.root %>"
     rewrite /environment.json :<%= configPort %>/<%= site.id %>.json
-    <% if(site.index) { %>
-    index <%= site.index -%>
-    <% } %>
+    <% if(site.index) { -%>
+    index <%= site.index %>
+    <% } -%>
     file_server
 }
+<% } -%>
