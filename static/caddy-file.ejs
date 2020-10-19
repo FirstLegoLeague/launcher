@@ -11,7 +11,7 @@
 <% sites.forEach(site => { -%>
 :<%= site.port %> {
     root "<%= site.root %>"
-    hedaer /environment.json Cache-Control no-cache 
+    header /environment.json Cache-Control no-cache 
     redir /environment.json http://{host}:<%= configPort %>/<%= site.id %>.json permanent
 <% if(site.index) { -%>
     index <%= site.index %>
