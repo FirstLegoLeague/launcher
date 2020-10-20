@@ -1,6 +1,11 @@
 # FIRST LEGO League TMS Release Notes
 
-## V2019.1.4 - 1-Mar-2020 (to be released soon)
+## V2020.1.0 - 20-Oct-2020
+
+1. Scoresheet for RePLAY challenge
+2. Changed theme to RePLAY
+
+## V2019.1.4 - 1-Mar-2020
 
 ### Issues fixed - Simply Speaking
 
