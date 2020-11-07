@@ -40,6 +40,10 @@ exports.Server = class {
     })
 
     this.modulesPromise
+      .then(modules => {
+        this.caddy.setConfigPort(STARTING_PORT + modules.length)
+        return modules
+      })
       .map(module => this.moduleConfigurator.addModule(module))
       .then(() => this.moduleConfigurator.seal())
       .catch(err => logger.error(err))

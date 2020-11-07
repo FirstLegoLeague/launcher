@@ -1,20 +1,21 @@
-<% sites.forEach(site => { %>
-:<%= site.port %> {
-    root "<%= site.root -%>"
-    <% if(site.index) { %>
-    index <%= site.index -%>
-    <% } %>
+{
+	admin off
 }
 
-:<%= site.port %>/environment.json {
+:<%= configPort %> {
     root "<%= envDir %>"
-    templates
-    rewrite {
-        if {path} is /environment.json
-        to /<%= site.id %>.json
-    }
-    rewrite {
-        to /
-    }
+    header Access-Control-Allow-Origin *
+    file_server
 }
-<% }) %>
+
+<% sites.forEach(site => { -%>
+:<%= site.port %> {
+    root "<%= site.root %>"
+    header /environment.json Cache-Control no-cache 
+    redir /environment.json http://{host}:<%= configPort %>/<%= site.id %>.json permanent
+<% if(site.index) { -%>
+    index <%= site.index %>
+<% } -%>
+    file_server
+}
+<% }) -%>

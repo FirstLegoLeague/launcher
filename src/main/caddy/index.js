@@ -18,9 +18,10 @@ const CADDY_FILE_TEMPLATE = path.join(__static, 'caddy-file.ejs')
 const CADDY_FILE_PATH = path.resolve('./tmp/$CaddyFile')
 const CADDY_ENV_DIR = path.resolve('./tmp/$caddy/')
 
-function generateCaddyFileContent (caddyFile, sites) {
+function generateCaddyFileContent (caddyFile, sites, configPort) {
   return mkdirpAsync(path.dirname(caddyFile))
     .then(() => ejs.renderFileAsync(CADDY_FILE_TEMPLATE, {
+      configPort,
       sites,
       envDir: CADDY_ENV_DIR
     }))
@@ -57,7 +58,7 @@ class Caddy {
   start () {
     return this.serviceManager.startService({
       init: () => {
-        const caddyFilePromise = generateCaddyFileContent(this.caddyFile, this.sites)
+        const caddyFilePromise = generateCaddyFileContent(this.caddyFile, this.sites, this.configPort)
         const siteEnvFilesPromise = createEnvironmentDirectory(this.caddyEnvDir)
           .then(() => this.sites.map(site => generateWebEnvironment(this.caddyEnvDir, site.id, site.env)))
           .all()
@@ -68,7 +69,7 @@ class Caddy {
       serviceId: this.serviceId,
       logStream: this.logStream,
       executable: this.executable,
-      arguments: ['-conf', this.caddyFile]
+      arguments: ['run', '--config', this.caddyFile, '--adapter', 'caddyfile']
     })
       .then(serviceId => {
         this.serviceId = serviceId
@@ -85,7 +86,7 @@ class Caddy {
     }))
 
     if (this.child !== undefined) {
-      return generateCaddyFileContent(this.caddyFile, this.sites)
+      return generateCaddyFileContent(this.caddyFile, this.sites, this.configPort)
         .then(() => generateWebEnvironment(this.caddyEnvDir, site.id, site.env))
         .then(() => this.child.kill('SIGUSR1'))
     } else {
@@ -99,12 +100,16 @@ class Caddy {
     this.sites.splice(siteIndex, 1)
 
     if (this.child !== undefined) {
-      return generateCaddyFileContent(this.caddyFile, this.sites)
+      return generateCaddyFileContent(this.caddyFile, this.sites, this.configPort)
         .then(() => removeWebEnvironment(this.caddyEnvDir, site.id))
         .then(() => this.child.kill('SIGUSR1'))
     } else {
       return Promise.resolve()
     }
+  }
+
+  setConfigPort (configPort) {
+    this.configPort = configPort
   }
 }
 
