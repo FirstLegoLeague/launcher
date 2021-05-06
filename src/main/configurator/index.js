@@ -7,9 +7,11 @@ const EventEmitter = require('events')
 
 const { getDefaultValue, getUpdatedValue, isValidValue } = require('./types')
 
+const { DATA_DIR } = require('../app-paths')
+
 const mkdirpAsync = Promise.promisify(mkdirp)
 
-const STORAGE_PATH = exports.STORAGE_PATH = path.resolve('./data/$config.sqlite')
+const STORAGE_PATH = exports.STORAGE_PATH = path.join(DATA_DIR, '$config.sqlite')
 
 exports.Configurator = class extends EventEmitter {
   constructor () {
@@ -17,6 +19,7 @@ exports.Configurator = class extends EventEmitter {
     this.configMetadata = {}
     this.sealed = false
     this.started = false
+    this.storagePath = path.join(DATA_DIR, '$config.sqlite')
 
     this.storagePromise = mkdirpAsync(path.dirname(STORAGE_PATH))
       .then(() => new Keyv(`sqlite://${STORAGE_PATH}`))

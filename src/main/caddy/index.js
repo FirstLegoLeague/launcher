@@ -1,11 +1,13 @@
 
-const fs = require('fs')
-const ejs = require('ejs')
-const path = require('path')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
 const Promise = require('bluebird')
+const ejs = require('ejs')
+const fs = require('fs')
+const mkdirp = require('mkdirp')
+const path = require('path')
 const randomatic = require('randomatic')
+const rimraf = require('rimraf')
+
+const { TEMP_DIR } = require('../app-paths')
 
 Promise.promisifyAll(fs)
 Promise.promisifyAll(ejs)
@@ -15,8 +17,8 @@ const rimrafAsync = Promise.promisify(rimraf)
 const FILE_EXTENSION = (process.platform === 'win32') ? '.exe' : ''
 const CADDY_EXECUTABLE_PATH = path.resolve(`./internals/caddy/caddy${FILE_EXTENSION}`)
 const CADDY_FILE_TEMPLATE = path.join(__static, 'caddy-file.ejs')
-const CADDY_FILE_PATH = path.resolve('./tmp/$CaddyFile')
-const CADDY_ENV_DIR = path.resolve('./tmp/$caddy/')
+const CADDY_FILE_PATH = path.resolve(TEMP_DIR, '$CaddyFile')
+const CADDY_ENV_DIR = path.resolve(TEMP_DIR, '$caddy')
 
 function generateCaddyFileContent (caddyFile, sites) {
   return mkdirpAsync(path.dirname(caddyFile))
