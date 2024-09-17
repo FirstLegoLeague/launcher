@@ -1,13 +1,14 @@
 
-const path = require('path')
+const Promise = require('bluebird')
 const mkdirp = require('mkdirp')
+const path = require('path')
 const rotate = require('rotating-file-stream')
 const winston = require('winston')
-const Promise = require('bluebird')
+
+const { LOG_DIR } = require('./app-paths')
 
 const LOG_SIZE = '10M'
 const LOG_INTERVAL = '1d'
-const LOG_DIR = exports.LOG_DIR = path.resolve('./logs/')
 
 const { combine, timestamp, json } = winston.format
 

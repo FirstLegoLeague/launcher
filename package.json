@@ -1,6 +1,6 @@
 {
-  "name": "fll-launcher",
-  "version": "2.0.0",
+  "name": "first-lego-league-tms",
+  "version": "0.0.0",
   "author": "Roy Shmueli <2903801+2roy999@users.noreply.github.com>",
   "description": "A Launcher to the FIRST LEGO League tournament managment system",
   "main": "./dist/electron/main.js",
@@ -20,12 +20,13 @@
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps",
-    "start": "node .electron-vue/dev-runner.js"
+    "start": "node .electron-vue/dev-runner.js",
+    "version-file": "node ./dev-scripts/version-file.js"
   },
   "build": {
     "appId": "com.fll-tools.launcher",
     "productName": "FIRST LEGO League TMS",
-    "artifactName": "fll-launcher-${version}",
+    "artifactName": "fll-launcher-${env.BUILD_VERSION || 'snapshot'}",
     "directories": {
       "buildResources": "resources",
       "output": "dist"
